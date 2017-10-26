@@ -17,7 +17,3 @@ class TannakianSymbol[E <: MonoidElement, M <: Monoid[E]] (elements : Array[Pair
         return "string"
     } 
 }
-
-object TannakianSymbol {
-    
-}
