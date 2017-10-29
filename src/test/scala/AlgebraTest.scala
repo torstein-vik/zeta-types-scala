@@ -3,7 +3,7 @@ import org.scalatest.FunSuite
 import io.zetatypes.algebra.Monoids.{Monoid, Element => MonoidElement}
 import io.zetatypes.algebra.Rings.{Ring, RingClass, Element => RingElement}
 
-class MainTest extends FunSuite {
+class AlgebraTest extends FunSuite {
     test ("algebra test") {
         class TestInteger (val x : Int) extends RingElement[TestInteger]{
             override def +(that : TestInteger) = TestInteger(x + that.x) 
