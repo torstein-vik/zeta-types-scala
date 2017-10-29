@@ -4,7 +4,7 @@ import io.zetatypes.algebra.Monoids.{Monoid, Element => MonoidElement}
 import io.zetatypes.algebra.Rings.{Ring, RingClass, Element => RingElement}
 
 class AlgebraTest extends FunSuite {
-    test ("algebra test") {
+    test ("ring test") {
         class TestInteger (val x : Int) extends RingElement[TestInteger]{
             override def +(that : TestInteger) = TestInteger(x + that.x) 
             override def *(that : TestInteger) = TestInteger(x * that.x)
