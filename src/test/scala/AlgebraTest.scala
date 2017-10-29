@@ -9,7 +9,7 @@ class AlgebraTest extends FunSuite {
             override def +(that : TestInteger) = TestInteger(x + that.x) 
             override def *(that : TestInteger) = TestInteger(x * that.x)
             
-            def ==(that : TestInteger) = that.x == x
+            override def equals(that : TestInteger) = that.x == x
             override def toString = "TestInteger " + x
         }
         
