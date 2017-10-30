@@ -1,6 +1,6 @@
 package io.zetatypes.algebra
 
-trait RingElement[T <: MonoidElement with GroupElement with Additive[T] with Multiplicative[T]] extends MonoidElement with GroupElement with Additive[T] with Multiplicative[T]
+trait RingElement[T <: GroupElement with Additive[T] with Subtractive[T] with Multiplicative[T]] extends GroupElement with Additive[T] with Subtractive[T] with Multiplicative[T]
 
 trait Ring[E <: RingElement[E]] {
     val additive       : AdditiveGroup[E]
