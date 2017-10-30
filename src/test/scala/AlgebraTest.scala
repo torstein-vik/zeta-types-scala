@@ -7,8 +7,6 @@ class AlgebraTest extends FunSuite {
         case class TestInteger (x : Int) extends RingElement[TestInteger]{
             override def +(that : TestInteger) = TestInteger(x + that.x) 
             override def *(that : TestInteger) = TestInteger(x * that.x)
-            
-            override def toString = "TestInteger " + x
         }
         
         object TestIntegers extends RingClass[TestInteger](TestInteger(0), TestInteger(1))
