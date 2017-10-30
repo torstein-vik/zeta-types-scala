@@ -14,7 +14,14 @@ class TannakianSymbol[E <: MonoidElement] (val elements : Seq[(E, Int)]) extends
     override def negation() = new TannakianSymbol(elements.map({case (x, i) => (x, -i)}))
     
     override def equals(that : Any) : Boolean = {
-        return false
+        return that match {
+            case _ : TannakianSymbol[E] => {
+                val diff = (this - that.asInstanceOf[TannakianSymbol[E]])
+                diff.elements.length == 0
+            }
+            
+            case _ => false
+        }
     }
     
     override def toString : String = {
