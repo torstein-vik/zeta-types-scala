@@ -15,6 +15,8 @@ class AlgebraTest extends FunSuite {
         
         assert(TestIntegers.additive      .identity == TestInteger(0))
         assert(TestIntegers.multiplicative.identity == TestInteger(1))
+        assert(TestIntegers.zero == TestInteger(0))
+        assert(TestIntegers.one  == TestInteger(1))
         assert(TestInteger(1) + TestInteger(2) == TestInteger(3))
         assert(TestInteger(2) * TestInteger(3) == TestInteger(6))
         
