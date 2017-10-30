@@ -3,7 +3,7 @@ import org.scalatest.FunSuite
 import io.zetatypes.algebra._
 import io.zetatypes.algebra.structures._
 
-class AlgebraTest extends FunSuite {
+class IntegerTest extends FunSuite {
     
     val (a, b, c) = (2, -3, 7)
     
