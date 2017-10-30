@@ -11,6 +11,7 @@ class TannakianSymbol[E <: MonoidElement, M <: Monoid[E]] (elements : Seq[(E, In
     RingElement[TannakianSymbol[E, M]] {
     override def +(that : TannakianSymbol[E, M]) = null 
     override def *(that : TannakianSymbol[E, M]) = null
+    override def unary_-() = null
     
     override def equals(that : Any) : Boolean = {
         return false
