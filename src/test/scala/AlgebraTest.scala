@@ -11,8 +11,15 @@ class AlgebraTest extends FunSuite {
     
     object TestIntegers extends RingClass[TestInteger](TestInteger(0), TestInteger(1))
     
+    val (a, b, c) = (2, -3, 7)
+    
     test ("equality test") {
-        assert(TestInteger(2) === TestInteger(2))
+        assert(TestInteger(a) === TestInteger(a))
+        assert(TestInteger(b) === TestInteger(b))
+        assert(TestInteger(c) === TestInteger(c))
+        assert(TestInteger(c) !== TestInteger(c + 1))
+        assert(TestInteger(c) !== TestInteger(c - 1))
+        assert(TestInteger(c) !== TestInteger(c + 3))
     }
     
     test ("identities test") {
@@ -26,30 +33,44 @@ class AlgebraTest extends FunSuite {
     }
     
     test ("additive inverse test") {
-        assert(TestIntegers.additive.invert(TestInteger(4)) === TestInteger(-4))
+        assert(TestIntegers.additive.invert(TestInteger(a)) === TestInteger(-a))
+        assert(TestIntegers.additive.invert(TestInteger(b)) === TestInteger(-b))
+        assert(TestIntegers.additive.invert(TestInteger(c)) === TestInteger(-c))
     }
     
     test ("addition test") {
-        assert(TestIntegers.additive.combine(TestInteger(1), TestInteger(2)) === TestInteger(3))
+        assert(TestIntegers.additive.combine(TestInteger(a), TestInteger(b)) === TestInteger(a + b))
+        assert(TestIntegers.additive.combine(TestInteger(b), TestInteger(c)) === TestInteger(b + c))
+        assert(TestIntegers.additive.combine(TestInteger(c), TestInteger(a)) === TestInteger(c + a))
     }
     
     test ("multiplication test") {
-        assert(TestIntegers.multiplicative.combine(TestInteger(2), TestInteger(3)) === TestInteger(6))
+        assert(TestIntegers.multiplicative.combine(TestInteger(a), TestInteger(b)) === TestInteger(a * b))
+        assert(TestIntegers.multiplicative.combine(TestInteger(b), TestInteger(c)) === TestInteger(b * c))
+        assert(TestIntegers.multiplicative.combine(TestInteger(c), TestInteger(a)) === TestInteger(c * a))
     }
     
     test ("notation adidition test") {
-        assert(TestInteger(1) + TestInteger(2) === TestInteger(3))
+        assert(TestInteger(a) + TestInteger(b) === TestInteger(a + b))
+        assert(TestInteger(b) + TestInteger(c) === TestInteger(b + c))
+        assert(TestInteger(c) + TestInteger(a) === TestInteger(c + a))
     }
     
     test ("notation multiplication test") {
-        assert(TestInteger(2) * TestInteger(3) === TestInteger(6))    
+        assert(TestInteger(a) * TestInteger(b) === TestInteger(a * b))
+        assert(TestInteger(b) * TestInteger(c) === TestInteger(b * c))
+        assert(TestInteger(c) * TestInteger(a) === TestInteger(c * a))
     }
     
     test ("notation negation test") {
-        assert(- TestInteger(3) === TestInteger(-3))
+        assert(-TestInteger(a) === TestInteger(-a))
+        assert(-TestInteger(b) === TestInteger(-b))
+        assert(-TestInteger(c) === TestInteger(-c))
     }
     
     test ("subtraction test") {
-        assert(TestInteger(7) - TestInteger(4) === TestInteger(3))    
+        assert(TestInteger(a) - TestInteger(b) === TestInteger(a - b))
+        assert(TestInteger(b) - TestInteger(c) === TestInteger(b - c))
+        assert(TestInteger(c) - TestInteger(a) === TestInteger(c - a))
     }
 }
