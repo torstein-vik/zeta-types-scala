@@ -16,7 +16,9 @@ trait AdditiveGroup[T <: GroupElement with Additive[T] with Subtractive[T]] exte
     def invert (x : T) = -x
 }
 
-trait MultiplicativeGroup[T <: GroupElement with Multiplicative[T]] extends MultiplicativeMonoid[T]
+trait MultiplicativeGroup[T <: GroupElement with Multiplicative[T] with Divisible[T]] extends MultiplicativeMonoid[T] {
+    def invert (x : T) = x.inverse()
+}
 
 trait Subtractive[that <: Subtractive[that]] extends GroupElement with Additive[that]{
     def unary_-() : that
