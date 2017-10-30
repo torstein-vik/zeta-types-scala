@@ -5,3 +5,10 @@ trait Magma[T <: AlgebraicElement] {
 }
 
 trait AlgebraicElement
+
+trait Additive[that <: Additive[that]] extends AlgebraicElement{
+    def +(y : that) : that
+}
+trait Multiplicative[that <: Multiplicative[that]] extends AlgebraicElement {
+    def *(y : that) : that
+}

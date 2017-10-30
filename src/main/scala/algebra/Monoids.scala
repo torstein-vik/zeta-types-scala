@@ -4,17 +4,6 @@ trait Monoid[T <: MonoidElement] extends Magma[T]{
     def identity : T
 }
 
-trait GeneralAdditive[that, output] {
-    def +(that : that) : output
-}
-
-trait GeneralMultiplicative[that, output] {
-    def *(that : that) : output
-}
-
-trait Additive[that <: Additive[that]] extends GeneralAdditive[that, that] with MonoidElement
-trait Multiplicative[that <: Multiplicative[that]] extends GeneralMultiplicative[that, that] with MonoidElement
-
 trait AdditiveMonoid[T <: Additive[T]] extends Monoid[T] {
     def zero : T = identity
     override def combine (x : T, y : T) : T = x + y
