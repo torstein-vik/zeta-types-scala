@@ -14,11 +14,31 @@ class TannakianSymbolRigorousTest extends FunSuite{
     import io.zetatypes.tannakiansymbols._
     import io.zetatypes.algebra.structures._
     
-    val X = new TannakianSymbol(Seq((Integer(1), 1), (Integer(1), -1)))
-    val Y = new TannakianSymbol(Seq((Integer(3), 2), (Integer(3), -1), (Integer(2), 1)))
-    val Z = new TannakianSymbol(Seq((Integer(1), 1), (Integer(2), -1), (Integer(3), 1), (Integer(3), -2)))
+    {// Most basic tests
     
-    test ("TannakianSymbol identity") {
+        val X     = new TannakianSymbol(Seq((Integer(1), 1), (Integer(2), -1)))
+        val Xcopy = new TannakianSymbol(Seq((Integer(1), 1), (Integer(2), -1)))
+        val Y     = new TannakianSymbol(Seq((Integer(3), 2), (Integer(2), 1)))
+        val Ycopy = new TannakianSymbol(Seq((Integer(3), 2), (Integer(2), 1)))
+        val Z     = new TannakianSymbol(Seq((Integer(1), 1), (Integer(2), -1), (Integer(3), 1)))
+        val Zcopy = new TannakianSymbol(Seq((Integer(1), 1), (Integer(2), -1), (Integer(3), 1)))
         
+        test ("TannakianSymbol basic equality") {
+            assert(X !== Y)
+            assert(Y !== Z)
+            assert(Z !== X)
+            
+            assert(X === Xcopy)
+            assert(Y === Ycopy)
+            assert(Z === Zcopy)
+        }
+        
+        test ("TannakianSymbol toString") {
+            assert(X.toString() === "{1}/{2}")
+            assert(Y.toString() === "{3, 3}/{2}")
+            assert(Z.toString() === "{1, 3}/{2}")
+        }
     }
+    
+    
 }
