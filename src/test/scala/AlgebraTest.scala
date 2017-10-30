@@ -1,7 +1,6 @@
 import org.scalatest.FunSuite
 
-import io.zetatypes.algebra.Monoids.{Monoid, Element => MonoidElement}
-import io.zetatypes.algebra.Rings.{Ring, RingClass, Element => RingElement}
+import io.zetatypes.algebra._
 
 class AlgebraTest extends FunSuite {
     test ("ring test") {
