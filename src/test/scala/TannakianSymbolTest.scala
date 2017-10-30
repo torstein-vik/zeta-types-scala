@@ -40,5 +40,8 @@ class TannakianSymbolRigorousTest extends FunSuite{
         }
     }
     
+    {// Cancellation tests
+        
+    }
     
 }
