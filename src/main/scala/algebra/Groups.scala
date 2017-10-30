@@ -22,3 +22,8 @@ trait Subtractive[that <: Subtractive[that]] extends GroupElement with Additive[
     def unary_-() : that
     def -(y : that) : that = (this + -y)
 }
+
+trait Divisible[that <: Divisible[that]] extends GroupElement with Multiplicative[that]{
+    def inverse() : that
+    def /(y : that) : that = (this * y.inverse())
+}
