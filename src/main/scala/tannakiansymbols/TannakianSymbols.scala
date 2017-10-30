@@ -7,7 +7,7 @@ class TannakianSymbols[E <: MonoidElement](monoid : Monoid[E]) extends
     new TannakianSymbol(Seq.empty), 
     new TannakianSymbol(Seq((monoid.identity, 1))))
 
-class TannakianSymbol[E <: MonoidElement] (elements : Seq[(E, Int)]) extends 
+class TannakianSymbol[E <: MonoidElement] (val elements : Seq[(E, Int)]) extends 
     RingElement[TannakianSymbol[E]] {
     override def +(that : TannakianSymbol[E]) = null 
     override def *(that : TannakianSymbol[E]) = null
