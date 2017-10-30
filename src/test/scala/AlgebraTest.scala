@@ -4,16 +4,11 @@ import io.zetatypes.algebra._
 
 class AlgebraTest extends FunSuite {
     test ("ring test") {
-        class TestInteger (val x : Int) extends RingElement[TestInteger]{
+        case class TestInteger (x : Int) extends RingElement[TestInteger]{
             override def +(that : TestInteger) = TestInteger(x + that.x) 
             override def *(that : TestInteger) = TestInteger(x * that.x)
             
-            override def equals(that : Any) = that.isInstanceOf[TestInteger] && that.asInstanceOf[TestInteger].x == x
             override def toString = "TestInteger " + x
-        }
-        
-        object TestInteger extends (Int => TestInteger){
-            override def apply (x : Int) = new TestInteger(x)
         }
         
         object TestIntegers extends RingClass[TestInteger](TestInteger(0), TestInteger(1))
