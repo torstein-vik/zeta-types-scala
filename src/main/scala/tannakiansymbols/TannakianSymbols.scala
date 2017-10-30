@@ -9,7 +9,7 @@ class TannakianSymbols[E <: MonoidElement](monoid : Monoid[E]) extends
 
 class TannakianSymbol[E <: MonoidElement] (val elements : Seq[(E, Int)]) extends 
     RingElement[TannakianSymbol[E]] {
-    override def +(that : TannakianSymbol[E]) = null 
+    override def +(that : TannakianSymbol[E]) = new TannakianSymbol(elements ++ that.elements).cleanup 
     override def *(that : TannakianSymbol[E]) = null
     override def negation() = new TannakianSymbol(elements.map({case (x, i) => (x, -i)}))
     
