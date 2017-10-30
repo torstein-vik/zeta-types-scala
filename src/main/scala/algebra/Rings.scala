@@ -1,15 +1,15 @@
 package io.zetatypes.algebra
 
-trait RingElement[T <: MonoidElement with Additive[T] with Multiplicative[T]] extends MonoidElement with Additive[T] with Multiplicative[T]
+trait RingElement[T <: MonoidElement with GroupElement with Additive[T] with Multiplicative[T]] extends MonoidElement with GroupElement with Additive[T] with Multiplicative[T]
 
 trait Ring[E <: RingElement[E]] {
-    val additive       : AdditiveMonoid[E]
+    val additive       : AdditiveGroup[E]
     val multiplicative : MultiplicativeMonoid[E]
 }
 
 // TODO: Fix name
 abstract class RingClass[E <: RingElement[E]] (val zero : E, val one : E) extends Ring[E]{ outer =>
-    override object additive extends AdditiveMonoid[E] {
+    override object additive extends AdditiveGroup[E] {
         def identity = outer.zero
     }
     
