@@ -12,7 +12,7 @@ class TannakianSymbol[E <: MonoidElement, M <: Monoid[E]] (elements : Seq[(E, In
     override def +(that : TannakianSymbol[E, M]) = null 
     override def *(that : TannakianSymbol[E, M]) = null
     
-    override def equals(that : TannakianSymbol[E, M]) : Boolean = {
+    override def equals(that : Any) : Boolean = {
         return false
     }
     
