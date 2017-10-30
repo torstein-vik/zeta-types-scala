@@ -1,6 +1,6 @@
-package io.zetatypes
+package io.zetatypes.tannakiansymbols
 
-import algebra._
+import io.zetatypes.algebra._
 
 class TannakianSymbols[E <: MonoidElement](monoid : Monoid[E]) extends 
     RingClass[TannakianSymbol[E]](
