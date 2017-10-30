@@ -1,8 +1,7 @@
 package io.zetatypes.algebra
 
-trait Monoid[T <: MonoidElement] {
+trait Monoid[T <: MonoidElement] extends Magma[T]{
     def identity : T
-    def combine (x : T, y : T) : T
 }
 
 trait GeneralAdditive[that, output] {
@@ -26,4 +25,4 @@ trait MultiplicativeMonoid[T <: Multiplicative[T]] extends Monoid[T] {
     override def combine (x : T, y : T) : T = x * y
 }
 
-trait MonoidElement
+trait MonoidElement extends AlgebraicElement
