@@ -3,13 +3,6 @@ import org.scalatest.FunSuite
 import io.zetatypes.algebra._
 
 class AlgebraTest extends FunSuite {
-    case class TestInteger (x : Int) extends RingElement[TestInteger]{
-        override def +(that : TestInteger) = TestInteger(x + that.x) 
-        override def *(that : TestInteger) = TestInteger(x * that.x)
-        override def unary_-() = TestInteger(-x)
-    }
-    
-    object TestIntegers extends RingClass[TestInteger](TestInteger(0), TestInteger(1))
     
     val (a, b, c) = (2, -3, 7)
     
