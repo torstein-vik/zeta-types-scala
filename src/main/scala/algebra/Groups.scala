@@ -21,7 +21,8 @@ trait MultiplicativeGroup[T <: GroupElement with Multiplicative[T] with Divisibl
 }
 
 trait Subtractive[that <: Subtractive[that]] extends GroupElement with Additive[that]{
-    def unary_-() : that
+    def negation() : that 
+    def unary_-() : that = this.negation()
     def -(y : that) : that = (this + -y)
 }
 
