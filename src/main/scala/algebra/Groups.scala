@@ -12,7 +12,10 @@ trait Group[T <: GroupElement] extends PartialGroup[T] {
     def partialinvert (x : T) = Some(invert(x))
 }
 
-trait AdditiveGroup[T <: GroupElement with Additive[T]] extends AdditiveMonoid[T]
+trait AdditiveGroup[T <: GroupElement with Additive[T] with Subtractive[T]] extends AdditiveMonoid[T] {
+    def invert (x : T) = -x
+}
+
 trait MultiplicativeGroup[T <: GroupElement with Multiplicative[T]] extends MultiplicativeMonoid[T]
 
 trait Subtractive[that <: Subtractive[that]] extends GroupElement with Additive[that]{
