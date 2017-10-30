@@ -11,5 +11,11 @@ class TannakianSymbolTest extends FunSuite{
 }
 
 class TannakianSymbolRigorousTest extends FunSuite{
+    val X = new TannakianSymbol(Seq((1, 1), (1, -1)))
+    val Y = new TannakianSymbol(Seq((3, 2), (3, -1), (2, 1)))
+    val Z = new TannakianSymbol(Seq((1, 1), (2, -1), (3, 1), (3, -2)))
     
+    test ("TannakianSymbol identity") {
+        
+    }
 }
