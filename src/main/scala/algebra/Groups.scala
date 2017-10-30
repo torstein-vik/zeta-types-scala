@@ -14,3 +14,8 @@ trait Group[T <: GroupElement] extends PartialGroup[T] {
 
 trait AdditiveGroup[T <: GroupElement with Additive[T]] extends AdditiveMonoid[T]
 trait MultiplicativeGroup[T <: GroupElement with Multiplicative[T]] extends MultiplicativeMonoid[T]
+
+trait Subtractive[that <: Subtractive[that]] extends GroupElement with Additive[that]{
+    def unary_-() : that
+    def -(y : that) : that = (this + -y)
+}
