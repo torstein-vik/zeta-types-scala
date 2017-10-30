@@ -11,7 +11,7 @@ class TannakianSymbol[E <: MonoidElement] (elements : Seq[(E, Int)]) extends
     RingElement[TannakianSymbol[E]] {
     override def +(that : TannakianSymbol[E]) = null 
     override def *(that : TannakianSymbol[E]) = null
-    override def unary_-() = null
+    override def negation() = null
     
     override def equals(that : Any) : Boolean = {
         return false
