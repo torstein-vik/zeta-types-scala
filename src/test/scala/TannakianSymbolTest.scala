@@ -11,11 +11,14 @@ class TannakianSymbolTest extends FunSuite{
 }
 
 class TannakianSymbolRigorousTest extends FunSuite{
-    /*val X = new TannakianSymbol(Seq((1, 1), (1, -1)))
-    val Y = new TannakianSymbol(Seq((3, 2), (3, -1), (2, 1)))
-    val Z = new TannakianSymbol(Seq((1, 1), (2, -1), (3, 1), (3, -2)))
+    import io.zetatypes.tannakiansymbols._
+    import io.zetatypes.algebra.structures._
+    
+    val X = new TannakianSymbol(Seq((Integer(1), 1), (Integer(1), -1)))
+    val Y = new TannakianSymbol(Seq((Integer(3), 2), (Integer(3), -1), (Integer(2), 1)))
+    val Z = new TannakianSymbol(Seq((Integer(1), 1), (Integer(2), -1), (Integer(3), 1), (Integer(3), -2)))
     
     test ("TannakianSymbol identity") {
         
-    }*/
+    }
 }
