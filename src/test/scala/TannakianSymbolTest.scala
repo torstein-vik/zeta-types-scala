@@ -9,3 +9,7 @@ class TannakianSymbolTest extends FunSuite{
         assertCompiles("ms(1, 2, 3) / ms(1, 2, 3, -4)")
     }
 }
+
+class TannakianSymbolRigorousTest extends FunSuite{
+    
+}
