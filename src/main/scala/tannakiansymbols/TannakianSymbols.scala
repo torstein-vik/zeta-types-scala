@@ -20,4 +20,10 @@ class TannakianSymbol[E <: MonoidElement] (val elements : Seq[(E, Int)]) extends
     override def toString : String = {
         return "string"
     } 
+    
+    def cleanup : TannakianSymbol[E] = {
+        var data : Map[E, Int] = Map()
+        elements.foreach({case (x, i) => data += x -> (data.getOrElse(x, 0) + i)})
+        return new TannakianSymbol(data.toSeq.filter({case (x, i) => i != 0}))
+    }
 }
