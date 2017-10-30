@@ -67,4 +67,13 @@ class AlgebraTest extends FunSuite {
         assert(Integer(b) - Integer(c) === Integer(b - c))
         assert(Integer(c) - Integer(a) === Integer(c - a))
     }
+    
+    test ("implicit integer test") {
+        import scala.language.implicitConversions
+        import io.zetatypes.algebra.structures.DSL._
+        
+        assert(a.negation == -Integer(a))
+        assert(b.negation == -Integer(b))
+        assert(c.negation == -Integer(c))
+    }
 }
