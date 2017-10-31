@@ -77,23 +77,24 @@ class TannakianSymbolRigorousTest extends FunSuite{
     
     {// Upstairs & Downstairs
         import io.zetatypes.tannakiansymbols.DSL._
+        import io.zetatypes.algebra.structures.DSL._
         val X = new TannakianSymbol(Seq((Integer(1), 1), (Integer(1), -1), (Integer(2), 1)))
         val Y = new TannakianSymbol(Seq((Integer(10), 5), (Integer(10), -4), (Integer(2), -1)))
         val Z = new TannakianSymbol(Seq((Integer(3), 2), (Integer(3), -8), (Integer(3), 4)))
         val W = new TannakianSymbol(Seq((Integer(-1), 1), (Integer(10), 0), (Integer(2), 1)))
         
         test ("TS.upstairs works") {
-            assert(X.upstairs === ms(2))
-            assert(Y.upstairs === ms(10))
-            assert(Z.upstairs === Ø)
-            assert(W.upstairs === ms(-1, 2))
+            assert(X.upstairs === ms[Integer](2))
+            assert(Y.upstairs === ms[Integer](10))
+            assert(Z.upstairs === Ø[Integer])
+            assert(W.upstairs === ms[Integer](-1, 2))
         }
         
         test ("TS.downstairs works") {
-            assert(X.downstairs === Ø)
-            assert(Y.downstairs === ms(2))
-            assert(Z.downstairs === ms(3, 3))
-            assert(W.downstairs === ms(-1, 2))
+            assert(X.downstairs === Ø[Integer])
+            assert(Y.downstairs === ms[Integer](2))
+            assert(Z.downstairs === ms[Integer](3, 3))
+            assert(W.downstairs === ms[Integer](-1, 2))
         }
     }
 }
