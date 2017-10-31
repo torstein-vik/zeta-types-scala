@@ -4,9 +4,10 @@
 ## Installation
 
 1. Clone this repo to your computer
-2. Add 'resolvers += "Artima Maven Repository" at "http://repo.artima.com/releases"' to ~/.sbt/1.0/global.sbt
-3. Run 'sbt' in the main directory to start SBT
-4. Inside SBT, run 'test' to test the codebase 
+2. Make sure you have SBT (simple build tool) installed on your computer
+3. Add 'resolvers += "Artima Maven Repository" at "http://repo.artima.com/releases"' to ~/.sbt/1.0/global.sbt
+4. Run 'sbt' in the main directory to start SBT
+5. Inside SBT, run 'test' to test the codebase 
 
 Please tell us if this doesn't work, because that means something is wrong with our instructions.
 
