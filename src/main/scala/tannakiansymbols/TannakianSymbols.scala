@@ -27,7 +27,7 @@ class TannakianSymbol[E <: MonoidElement] (val elements : Seq[(E, Int)]) extends
     }
     
     override def toString : String = {
-        return "string"
+        return upstairs + "/" + downstairs
     } 
     
     def upstairs : Multiset[E] = {
