@@ -96,7 +96,7 @@ class TannakianSymbolRigorousTest extends FunSuite{
             assert(X.downstairs === Ø[Integer])
             assert(Y.downstairs === ms[Integer](2))
             assert(Z.downstairs === ms[Integer](3, 3))
-            assert(W.downstairs === ms[Integer](-1, 2))
+            assert(W.downstairs === Ø[Integer])
         }
     }
 }
