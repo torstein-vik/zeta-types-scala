@@ -64,6 +64,13 @@ class TannakianSymbolRigorousTest extends FunSuite{
             assert(Y === Ysimp)
             assert(Z === Zsimp)
             assert(W === Wsimp)
+            
+            assert(X + Ysimp === Xsimp + Y)
+            assert(Y + Zsimp === Ysimp + Z)
+            assert(Z + Wsimp === Zsimp + W)
+            assert(W + Xsimp === Wsimp + X)
+            
+            assert(X + Y + Z + W + Y + Y === Xsimp + Y + Z + Wsimp + Ysimp + Y)
         }
         
     }
