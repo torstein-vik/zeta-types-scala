@@ -1,5 +1,7 @@
 package io.zetatypes.tannakiansymbols
 
+import io.zetatypes.algebra._
+
 class Multiset[T](val elements : T*) {
     
     override def toString : String = {
@@ -19,4 +21,11 @@ class Multiset[T](val elements : T*) {
         }
         case _ => false
     }
+    
+    def toMap : Map[T, Int] = {
+        var el : Map[T, Int] = Map()
+        elements.foreach(x => el += x -> (el.getOrElse(x, 0) + 1))
+        return el
+    }
+    
 }
