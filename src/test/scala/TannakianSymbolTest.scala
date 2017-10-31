@@ -97,3 +97,13 @@ class TannakianSymbolRigorousTest extends FunSuite{
         }
     }
 }
+
+class MultisetTest extends FunSuite {
+    
+    {// With DSL
+        import io.zetatypes.tannakiansymbols.DSL._
+        
+        
+        
+    }
+}
