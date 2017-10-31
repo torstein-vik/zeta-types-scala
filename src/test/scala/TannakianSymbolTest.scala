@@ -36,7 +36,7 @@ class TannakianSymbolRigorousTest extends FunSuite{
         
         test ("TannakianSymbol toString") {
             assert(X.toString() === "{1}/{2}")
-            assert(Y.toString() === "{3, 3}/{2}")
+            assert(Y.toString() === "{3, 3, 2}/Ø")
             assert(Z.toString() === "{1, 3}/{2}")
             assert(new TannakianSymbols(Integers.multiplicative).one.toString() === "{1}/Ø")
             assert(new TannakianSymbols(Integers.multiplicative).zero.toString() === "Ø/Ø")
