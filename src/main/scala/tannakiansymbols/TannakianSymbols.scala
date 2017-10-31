@@ -14,6 +14,9 @@ class TannakianSymbol[E <: MonoidElement] (val elements : Seq[(E, Int)]) extends
     override def negation() = new TannakianSymbol(elements.map({case (x, i) => (x, -i)}))
     
     override def equals(that : Any) : Boolean = {
+        // Other choice: upstairs == other.upstairs && downstairs == other.downstairs. Unsure which is best... 
+        // that depends on multiplicities, but the current choice allows for high multiplicity without issue
+        
         return that match {
             case _ : TannakianSymbol[E] => {
                 val diff = (this - that.asInstanceOf[TannakianSymbol[E]])
