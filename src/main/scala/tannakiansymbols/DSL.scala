@@ -1,5 +1,7 @@
 package io.zetatypes.tannakiansymbols
 
+import scala.language.implicitConversions
+
 package object DSL {
     implicit def toMS[T] (x : T) : Multiset[T] = new Multiset(x)
     
