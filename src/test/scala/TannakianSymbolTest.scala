@@ -116,6 +116,10 @@ class MultisetTest extends FunSuite {
             assert(ms(1, 2, 3) !== ms(1, 2, 3, 4))
             assert(ms(1, 2, 3) !== ms(1, 2, 2, 3))
             assert(ms(2, 3) !== ms(2, 2))
+            assert(ms(2, 2) !== ms(2, 2, 1))
+            assert(ms(2, 2) !== ms(2, 1))
+            assert(ms(2, 1, 1) !== ms(2, 2, 1))
+            assert(ms(2, 1, 1) !== ms(1, 2, 2))
             
             assert(ms(1, 2) === ms(2, 1))
             assert(ms(1, 2, 2) === ms(2, 1, 2))
