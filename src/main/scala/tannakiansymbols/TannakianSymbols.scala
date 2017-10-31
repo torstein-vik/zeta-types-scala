@@ -28,6 +28,14 @@ class TannakianSymbol[E <: MonoidElement] (val elements : Seq[(E, Int)]) extends
         return "string"
     } 
     
+    def upstairs : Multiset[E] = {
+        return new Multiset(this.cleanup.elements.filter({case (x, i) => i > 0}).flatMap({case (x, i) => (1 to i).map( _ => x)}) : _*)
+    }
+    
+    def downstairs : Multiset[E] = {
+        return this.negation.upstairs
+    }
+    
     def cleanup : TannakianSymbol[E] = {
         var data : Map[E, Int] = Map()
         elements.foreach({case (x, i) => data += x -> (data.getOrElse(x, 0) + i)})
