@@ -1,6 +1,7 @@
 import org.scalatest.FunSuite
 
 class TannakianSymbolTest extends FunSuite{
+    import scala.language.implicitConversions
     import io.zetatypes.tannakiansymbols.DSL._
         
     test ("Defining TannakianSymbol using multisets"){
