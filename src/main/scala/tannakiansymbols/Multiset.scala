@@ -10,4 +10,13 @@ class Multiset[T](val elements : T*) {
         }
     }
     
+    override def equals (that : Any) : Boolean = that match {
+        case _ : Multiset[_] =>  {
+            val those = that.asInstanceOf[Multiset[_]].elements
+            
+            // If the lengths are the same, then 'those' cancelling all in elements must mean they are equal
+            return those.length == elements.length && elements.diff(those) == Seq() 
+        }
+        case _ => false
+    }
 }
