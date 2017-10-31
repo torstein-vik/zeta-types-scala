@@ -76,6 +76,7 @@ class TannakianSymbolRigorousTest extends FunSuite{
     }
     
     {// Upstairs & Downstairs
+        import io.zetatypes.tannakiansymbols.DSL._
         val X = new TannakianSymbol(Seq((Integer(1), 1), (Integer(1), -1), (Integer(2), 1)))
         val Y = new TannakianSymbol(Seq((Integer(10), 5), (Integer(10), -4), (Integer(2), -1)))
         val Z = new TannakianSymbol(Seq((Integer(3), 2), (Integer(3), -8), (Integer(3), 4)))
