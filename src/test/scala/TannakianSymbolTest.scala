@@ -75,4 +75,18 @@ class TannakianSymbolRigorousTest extends FunSuite{
         
     }
     
+    {// Upstairs & Downstairs
+        val X = new TannakianSymbol(Seq((Integer(1), 1), (Integer(1), -1), (Integer(2), 1)))
+        val Y = new TannakianSymbol(Seq((Integer(10), 5), (Integer(10), -4), (Integer(2), -1)))
+        val Z = new TannakianSymbol(Seq((Integer(3), 2), (Integer(3), -8), (Integer(3), 4)))
+        val W = new TannakianSymbol(Seq((Integer(-1), 1), (Integer(10), 0), (Integer(2), 1)))
+        
+        test ("TS.upstairs works") {
+            assert(X.upstairs === ms(2))
+            assert(Y.upstairs === ms(10))
+            assert(Z.upstairs === Ø)
+            assert(W.upstairs === ms(-1, 2))
+        }
+        
+    }
 }
