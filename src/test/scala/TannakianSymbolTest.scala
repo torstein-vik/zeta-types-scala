@@ -42,6 +42,29 @@ class TannakianSymbolRigorousTest extends FunSuite{
     
     {// Cancellation tests
         
+        val X     = new TannakianSymbol(Seq((Integer(1), 1), (Integer(1), -1), (Integer(2), 1)))
+        val Xsimp = new TannakianSymbol(Seq((Integer(2), 1)))
+        val Y     = new TannakianSymbol(Seq((Integer(10), 5), (Integer(10), -4), (Integer(2), -1)))
+        val Ysimp = new TannakianSymbol(Seq((Integer(10), 1), (Integer(2), -1)))
+        val Z     = new TannakianSymbol(Seq((Integer(3), 2), (Integer(3), -44), (Integer(3), 4)))
+        val Zsimp = new TannakianSymbol(Seq((Integer(3), -38)))
+        val W     = new TannakianSymbol(Seq((Integer(-1), 1), (Integer(10), 0), (Integer(2), 1)))
+        val Wsimp = new TannakianSymbol(Seq((Integer(-1), 1), (Integer(2), 1)))
+        
+        test ("Cleanup works") {
+            assert(X.cleanup.elements === Xsimp.elements)
+            assert(Y.cleanup.elements === Ysimp.elements)
+            assert(Z.cleanup.elements === Zsimp.elements)
+            assert(W.cleanup.elements === Wsimp.elements)
+        }
+        
+        test ("Equality works") {
+            assert(X === Xsimp)
+            assert(Y === Ysimp)
+            assert(Z === Zsimp)
+            assert(W === Wsimp)
+        }
+        
     }
     
 }
