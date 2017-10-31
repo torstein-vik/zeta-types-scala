@@ -88,5 +88,11 @@ class TannakianSymbolRigorousTest extends FunSuite{
             assert(W.upstairs === ms(-1, 2))
         }
         
+        test ("TS.downstairs works") {
+            assert(X.downstairs === Ø)
+            assert(Y.downstairs === ms(2))
+            assert(Z.downstairs === ms(3, 3))
+            assert(W.downstairs === ms(-1, 2))
+        }
     }
 }
