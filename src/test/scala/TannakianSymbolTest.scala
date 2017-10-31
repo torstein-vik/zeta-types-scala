@@ -104,7 +104,7 @@ class MultisetTest extends FunSuite {
         import io.zetatypes.tannakiansymbols.DSL._
         
         test ("Multiset equality") {
-            assert(Ø === ms())
+            assert(Ø[Int] === ms())
             
             assert(ms(1, 2) === ms(1, 2))
             assert(ms(1, 2, 2, 3) === ms(1, 2, 2, 3))
