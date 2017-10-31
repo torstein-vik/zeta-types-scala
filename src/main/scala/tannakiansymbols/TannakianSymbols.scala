@@ -19,8 +19,7 @@ class TannakianSymbol[E <: MonoidElement] (val elements : Seq[(E, Int)]) extends
         
         return that match {
             case _ : TannakianSymbol[E] => {
-                val diff = (this - that.asInstanceOf[TannakianSymbol[E]])
-                diff.elements.length == 0
+                (this - that.asInstanceOf[TannakianSymbol[E]]).elements.length == 0
             }
             
             case _ => false
