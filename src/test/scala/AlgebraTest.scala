@@ -97,9 +97,9 @@ class IntegerTest extends FunSuite {
         assert((Integer(b) ** 3) === Integer(b * b * b))
         assert((Integer(c) ** 3) === Integer(c * c * c))
         
-        assert((Integer(a) ** 0) === Integers.one)
-        assert((Integer(b) ** 0) === Integers.one)
-        assert((Integer(c) ** 0) === Integers.one)
+        assertThrows[AlgebraicException] {
+            Integer(1) ** 0
+        }
         
         assertThrows[AlgebraicException] {
             Integer(1) ** (-1)
@@ -117,9 +117,9 @@ class IntegerTest extends FunSuite {
         assert((Integer(b) ++ 3) === Integer(b + b + b))
         assert((Integer(c) ++ 3) === Integer(c + c + c))
         
-        assert((Integer(a) ++ 0) === Integers.zero)
-        assert((Integer(b) ++ 0) === Integers.zero)
-        assert((Integer(c) ++ 0) === Integers.zero)
+        assertThrows[AlgebraicException] {
+            Integer(1) ++ 0
+        }
         
         assertThrows[AlgebraicException] {
             Integer(1) ++ (-1)
