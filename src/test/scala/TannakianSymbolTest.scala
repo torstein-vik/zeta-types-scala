@@ -97,7 +97,14 @@ class TannakianSymbolTest extends FunSuite{
         val Z = new TannakianSymbol(Seq((Integer(2), 2), (Integer(3), -8), (Integer(4), 4)))
         val W = new TannakianSymbol(Seq((Integer(-1), 1), (Integer(10), 0), (Integer(2), 1)))
         
-        
+        test ("TS DSL notaion") {
+            assert(X === ms(1, 3) / ms(2))
+            assert(Y === ms(10, 10, 10, 10, 10) / ms(11, 11, 11, 11, 2))
+            assert(Z === ms(2, 2, 4, 4, 4, 4) / ms(3, 3, 3, 3, 3, 3, 3, 3))
+            assert(W === ms(-1, 2) / Ø)
+            assert(TS(Integers.multiplicative).one === ms(1) / Ø)
+            assert(TS(Integers.multiplicative).zero === Ø / Ø)
+        }
         
         test ("TS. upstairs / downstairs test") {
             Seq(X, Y, Z, W).foreach(x => assert(x === x.upstairs / x.downstairs))
