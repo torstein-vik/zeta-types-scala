@@ -130,6 +130,13 @@ class TannakianSymbolTest extends FunSuite{
             assert(- (Ø / ms(5, 5)) === ms(5, 5) / Ø)
             assert(- (Ø / Ø) === Ø / Ø)
         }
+        
+        test ("TS Subtraction") {
+            assert(ms(1, 2)/Ø - ms(2)/Ø === ms(1)/Ø)
+            assert(ms(1, 2)/Ø - ms(3)/Ø === ms(1, 2)/ms(3))
+            assert(ms(1, 2)/Ø - ms(1, 2)/ms(3) === ms(3)/Ø)
+            assert(Ø/Ø - ms(1)/ms(3) === ms(3)/ms(1))
+        }
     }
 }
 
