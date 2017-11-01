@@ -2,7 +2,7 @@ package io.zetatypes.tannakiansymbols
 
 import io.zetatypes.algebra._
 
-class TannakianSymbols[E <: MonoidElement](monoid : Monoid[E]) extends 
+case class TS[E <: MonoidElement](monoid : Monoid[E]) extends 
     RingClass[TannakianSymbol[E]](
     new TannakianSymbol(Seq.empty), 
     new TannakianSymbol(Seq((monoid.identity, 1))))
