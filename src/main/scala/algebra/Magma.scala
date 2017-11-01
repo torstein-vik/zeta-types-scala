@@ -26,9 +26,9 @@ trait Additive[that <: Additive[that]] extends AlgebraicElement{
 
 trait Multiplicative[that <: Multiplicative[that]] extends AlgebraicElement {
     def *(y : that) : that
-    def ^(n : Int)(implicit ev: this.type <:< that) : that = n match {
+    def **(n : Int)(implicit ev: this.type <:< that) : that = n match {
         case n if n > 0 => expTailRec(n, ev(this))
-        case _ => throw new AlgebraicException("Magmatic expontiation requires n > 0")
+        case _ => throw new AlgebraicException("Magmatic repeated multiplication requires n > 0")
     }
     
     @tailrec
