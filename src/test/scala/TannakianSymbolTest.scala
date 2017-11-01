@@ -113,7 +113,7 @@ class TannakianSymbolTest extends FunSuite{
         }
     }
     
-    {// Addition test
+    {// Addition & Multication test
         import io.zetatypes.tannakiansymbols.DSL._
         import io.zetatypes.algebra.structures.DSL._
         
@@ -136,6 +136,17 @@ class TannakianSymbolTest extends FunSuite{
             assert(ms(1, 2)/Ø - ms(3)/Ø === ms(1, 2)/ms(3))
             assert(ms(1, 2)/Ø - ms(1, 2)/ms(3) === ms(3)/Ø)
             assert(Ø/Ø - ms(1)/ms(3) === ms(3)/ms(1))
+        }
+        
+        test ("TS Multiplication") {
+            assert((ms(1)/Ø) * (ms(1)/Ø) === ms(1)/Ø)
+            assert((ms(2)/Ø) * (ms(3)/Ø) === ms(6)/Ø)
+            assert((ms(1, 2)/Ø) * (ms(1, 2)/Ø) === ms(1, 2, 2, 4)/Ø)
+            assert((ms(1)/ms(2, 3)) * (ms(1)/Ø) === ms(1)/ms(2, 3))
+            assert((ms(1, 2)/ms(3, 3)) * (ms(2)/Ø) === ms(2, 4)/ms(6, 6))
+            assert((ms(1, 2)/ms(3, 3)) * (ms(1, 2)/ms(3, 3)) === ms(1, 2, 2, 4, 9, 9, 9, 9)/ms(3, 3, 6, 6))
+            assert((Ø/ms(2, 3)) * (ms(1, 2)/Ø) === Ø/ms(2, 3, 4, 6))
+            assert((ms(-1)/ms(1, 2, 3)) * (ms(1, -1)/Ø) === ms(1, -1)/ms(2, 3, -2, -3))
         }
     }
 }
