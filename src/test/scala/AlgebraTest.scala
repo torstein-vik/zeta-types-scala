@@ -87,22 +87,22 @@ class IntegerTest extends FunSuite {
     }
     
     test ("Integer exponentiation") {
-        assert((Integer(a) ^ 1) === Integer(a))
-        assert((Integer(b) ^ 1) === Integer(b))
-        assert((Integer(c) ^ 1) === Integer(c))
-        assert((Integer(a) ^ 2) === Integer(a * a))
-        assert((Integer(b) ^ 2) === Integer(b * b))
-        assert((Integer(c) ^ 2) === Integer(c * c))
-        assert((Integer(a) ^ 3) === Integer(a * a * a))
-        assert((Integer(b) ^ 3) === Integer(b * b * b))
-        assert((Integer(c) ^ 3) === Integer(c * c * c))
+        assert((Integer(a) ** 1) === Integer(a))
+        assert((Integer(b) ** 1) === Integer(b))
+        assert((Integer(c) ** 1) === Integer(c))
+        assert((Integer(a) ** 2) === Integer(a * a))
+        assert((Integer(b) ** 2) === Integer(b * b))
+        assert((Integer(c) ** 2) === Integer(c * c))
+        assert((Integer(a) ** 3) === Integer(a * a * a))
+        assert((Integer(b) ** 3) === Integer(b * b * b))
+        assert((Integer(c) ** 3) === Integer(c * c * c))
         
         assertThrows[AlgebraicException] {
-            Integer(1) ^ 0
+            Integer(1) ** 0
         }
         
         assertThrows[AlgebraicException] {
-            Integer(1) ^ (-1)
+            Integer(1) ** (-1)
         }
     }
 }
