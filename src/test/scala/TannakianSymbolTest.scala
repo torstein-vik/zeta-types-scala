@@ -27,8 +27,10 @@ class TannakianSymbolTest extends FunSuite{
             assert(X.toString() === "{1}/{2}")
             assert(Y.toString() === "{3, 3, 2}/Ø")
             assert(Z.toString() === "{1, 3}/{2}")
-            assert(TS(Integers.multiplicative).one.toString() === "{1}/Ø")
-            assert(TS(Integers.multiplicative).zero.toString() === "Ø/Ø")
+            
+            import io.zetatypes.algebra.structures.DSL._
+            assert(TS(Integers).one.toString() === "{1}/Ø")
+            assert(TS(Integers).zero.toString() === "Ø/Ø")
         }
     }
     
@@ -102,8 +104,8 @@ class TannakianSymbolTest extends FunSuite{
             assert(Y === ms(10, 10, 10, 10, 10) / ms(11, 11, 11, 11, 2))
             assert(Z === ms(2, 2, 4, 4, 4, 4) / ms(3, 3, 3, 3, 3, 3, 3, 3))
             assert(W === ms(-1, 2) / Ø)
-            assert(TS(Integers.multiplicative).one === ms(1) / Ø)
-            assert(TS(Integers.multiplicative).zero === Ø / Ø)
+            assert(TS(Integers).one === ms(1) / Ø)
+            assert(TS(Integers).zero === Ø / Ø)
         }
         
         test ("TS. upstairs / downstairs test") {
