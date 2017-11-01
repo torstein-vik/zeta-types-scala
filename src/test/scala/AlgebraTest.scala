@@ -76,4 +76,13 @@ class IntegerTest extends FunSuite {
         assert(b.negation == -Integer(b))
         assert(c.negation == -Integer(c))
     }
+    
+    test ("Integer psi^k") {
+        assert(Integer(a).psi(10) === Integer(a))
+        assert(Integer(b).psi(10) === Integer(a))
+        assert(Integer(c).psi(10) === Integer(a))
+        assert(Integer(a).psi(5) === Integer(a))
+        assert(Integer(b).psi(5) === Integer(a))
+        assert(Integer(c).psi(5) === Integer(a))
+    }
 }
