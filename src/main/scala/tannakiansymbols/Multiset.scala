@@ -28,10 +28,10 @@ class Multiset[T](val elements : T*) {
         return el
     }
     
-    def /[S <: MonoidElement](downstairs : Multiset[T])(implicit conv: T => S) : TannakianSymbol[S] = {
+    def /[S <: MonoidElement](downstairs : Multiset[T])(implicit conv: T => S, monoid : Monoid[S]) : TannakianSymbol[S] = {
         var el : Map[S, Int] = Map()
                    elements.foreach(x => el += conv(x) -> (el.getOrElse(conv(x), 0) + 1))
         downstairs.elements.foreach(x => el += conv(x) -> (el.getOrElse(conv(x), 0) - 1))
-        return new TannakianSymbol[S](el.toSeq)
+        return new TannakianSymbol[S](el.toSeq)(monoid)
     }
 }
