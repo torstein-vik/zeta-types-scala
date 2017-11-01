@@ -3,6 +3,9 @@ import org.scalatest.FunSuite
 class TannakianSymbolTest extends FunSuite{
     import io.zetatypes.tannakiansymbols._
     import io.zetatypes.algebra.structures._
+    import io.zetatypes.algebra._
+    
+    implicit val monoid : Monoid[Integer] = Integers.multiplicative
     
     {// Most basic tests
     
