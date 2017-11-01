@@ -117,10 +117,12 @@ class TannakianSymbolTest extends FunSuite{
         import io.zetatypes.tannakiansymbols.DSL._
         import io.zetatypes.algebra.structures.DSL._
         
-        assert(ms(1, 2) / Ø + ms(1, 2) / Ø === ms(1, 1, 2, 2) / Ø)
-        assert(ms(1, 2) / Ø + Ø / ms(1, 2) === Ø / Ø)
-        assert(ms(1) / Ø + Ø / ms(2) === ms(1) / ms(2))
-        assert(ms(1, 2, 2, 2) / ms(3, 3) + ms(3, 4, 5) / ms(2, 7) === ms(1, 2, 2, 4, 5) / ms(3, 7))
+        test ("TS Addition") {
+            assert(ms(1, 2) / Ø + ms(1, 2) / Ø === ms(1, 1, 2, 2) / Ø)
+            assert(ms(1, 2) / Ø + Ø / ms(1, 2) === Ø / Ø)
+            assert(ms(1) / Ø + Ø / ms(2) === ms(1) / ms(2))
+            assert(ms(1, 2, 2, 2) / ms(3, 3) + ms(3, 4, 5) / ms(2, 7) === ms(1, 2, 2, 4, 5) / ms(3, 7))
+        }
     }
 }
 
