@@ -98,6 +98,10 @@ class TannakianSymbolTest extends FunSuite{
         val W = new TannakianSymbol(Seq((Integer(-1), 1), (Integer(10), 0), (Integer(2), 1)))
         
         
+        
+        test ("TS. upstairs / downstairs test") {
+            Seq(X, Y, Z, W).foreach(x => assert(x === x.upstairs / x.downstairs))
+        }
     }
 }
 
