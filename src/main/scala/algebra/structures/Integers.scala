@@ -1,6 +1,6 @@
-package io.zetatypes.algebra.structures
+package org.zetatypes.algebra.structures
 
-import io.zetatypes.algebra._
+import org.zetatypes.algebra._
 
 case class Integer (x : Int) extends StandardLambdaRingElement[Integer]{
     override def +(that : Integer) = Integer(x + that.x) 

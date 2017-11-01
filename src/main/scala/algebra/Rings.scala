@@ -1,4 +1,4 @@
-package io.zetatypes.algebra
+package org.zetatypes.algebra
 
 trait RingElement[T <: RingElement[T]] extends GroupElement with Additive[T] with Subtractive[T] with Multiplicative[T]
 

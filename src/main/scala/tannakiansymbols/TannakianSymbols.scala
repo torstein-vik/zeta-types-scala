@@ -1,6 +1,6 @@
-package io.zetatypes.tannakiansymbols
+package org.zetatypes.tannakiansymbols
 
-import io.zetatypes.algebra._
+import org.zetatypes.algebra._
 
 case class TS[E <: MonoidElement](monoid : Monoid[E]) extends 
     RingClass[TannakianSymbol[E]](

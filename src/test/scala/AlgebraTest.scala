@@ -1,7 +1,7 @@
 import org.scalatest.FunSuite
 
-import io.zetatypes.algebra._
-import io.zetatypes.algebra.structures._
+import org.zetatypes.algebra._
+import org.zetatypes.algebra.structures._
 
 class IntegerTest extends FunSuite {
     
@@ -70,7 +70,7 @@ class IntegerTest extends FunSuite {
     
     test ("implicit integer test") {
         import scala.language.implicitConversions
-        import io.zetatypes.algebra.structures.DSL._
+        import org.zetatypes.algebra.structures.DSL._
         
         assert(a.negation == -Integer(a))
         assert(b.negation == -Integer(b))

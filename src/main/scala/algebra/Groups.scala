@@ -1,4 +1,4 @@
-package io.zetatypes.algebra
+package org.zetatypes.algebra
 
 trait PartialGroupElement extends MonoidElement
 trait GroupElement extends PartialGroupElement

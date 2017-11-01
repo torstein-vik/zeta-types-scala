@@ -1,9 +1,9 @@
 import org.scalatest.FunSuite
 
 class TannakianSymbolTest extends FunSuite{
-    import io.zetatypes.tannakiansymbols._
-    import io.zetatypes.algebra.structures._
-    import io.zetatypes.algebra._
+    import org.zetatypes.tannakiansymbols._
+    import org.zetatypes.algebra.structures._
+    import org.zetatypes.algebra._
     
     implicit val monoid : Monoid[Integer] = Integers.multiplicative
     
@@ -31,7 +31,7 @@ class TannakianSymbolTest extends FunSuite{
             assert(Y.toString() === "{3, 3, 2}/Ø")
             assert(Z.toString() === "{1, 3}/{2}")
             
-            import io.zetatypes.algebra.structures.DSL._
+            import org.zetatypes.algebra.structures.DSL._
             assert(TS(Integers).one.toString() === "{1}/Ø")
             assert(TS(Integers).zero.toString() === "Ø/Ø")
         }
@@ -72,8 +72,8 @@ class TannakianSymbolTest extends FunSuite{
     }
     
     {// Upstairs & Downstairs
-        import io.zetatypes.tannakiansymbols.DSL._
-        import io.zetatypes.algebra.structures.DSL._
+        import org.zetatypes.tannakiansymbols.DSL._
+        import org.zetatypes.algebra.structures.DSL._
         val X = new TannakianSymbol(Seq((Integer(1), 1), (Integer(1), -1), (Integer(2), 1)))
         val Y = new TannakianSymbol(Seq((Integer(10), 5), (Integer(10), -4), (Integer(2), -1)))
         val Z = new TannakianSymbol(Seq((Integer(3), 2), (Integer(3), -8), (Integer(3), 4)))
@@ -95,8 +95,8 @@ class TannakianSymbolTest extends FunSuite{
     }
     
     {// Using ms(...) / ms(...) notation
-        import io.zetatypes.tannakiansymbols.DSL._
-        import io.zetatypes.algebra.structures.DSL._
+        import org.zetatypes.tannakiansymbols.DSL._
+        import org.zetatypes.algebra.structures.DSL._
         val X = new TannakianSymbol(Seq((Integer(1), 1), (Integer(2), -1), (Integer(3), 1)))
         val Y = new TannakianSymbol(Seq((Integer(10), 5), (Integer(11), -4), (Integer(2), -1)))
         val Z = new TannakianSymbol(Seq((Integer(2), 2), (Integer(3), -8), (Integer(4), 4)))
@@ -117,8 +117,8 @@ class TannakianSymbolTest extends FunSuite{
     }
     
     {// Addition & Multication test
-        import io.zetatypes.tannakiansymbols.DSL._
-        import io.zetatypes.algebra.structures.DSL._
+        import org.zetatypes.tannakiansymbols.DSL._
+        import org.zetatypes.algebra.structures.DSL._
         
         test ("TS Addition") {
             assert(ms(1, 2) / Ø + ms(1, 2) / Ø === ms(1, 1, 2, 2) / Ø)
@@ -165,7 +165,7 @@ class TannakianSymbolTest extends FunSuite{
 class MultisetTest extends FunSuite {
     
     {// With DSL
-        import io.zetatypes.tannakiansymbols.DSL._
+        import org.zetatypes.tannakiansymbols.DSL._
         
         test ("Multiset equality") {
             assert(Ø[Int] === ms())

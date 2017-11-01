@@ -1,8 +1,8 @@
-package io.zetatypes.algebra.structures
+package org.zetatypes.algebra.structures
 
 import scala.language.implicitConversions
 
-import io.zetatypes.algebra._
+import org.zetatypes.algebra._
 
 package object DSL {
     implicit def toInteger (x : Int) : Integer = Integer(x)
