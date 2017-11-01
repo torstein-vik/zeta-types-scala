@@ -88,6 +88,17 @@ class TannakianSymbolTest extends FunSuite{
             assert(W.downstairs === Ø[Integer])
         }
     }
+    
+    {// Using ms(...) / ms(...) notation
+        import io.zetatypes.tannakiansymbols.DSL._
+        import io.zetatypes.algebra.structures.DSL._
+        val X = new TannakianSymbol(Seq((Integer(1), 1), (Integer(2), -1), (Integer(3), 1)))
+        val Y = new TannakianSymbol(Seq((Integer(10), 5), (Integer(11), -4), (Integer(2), -1)))
+        val Z = new TannakianSymbol(Seq((Integer(2), 2), (Integer(3), -8), (Integer(4), 4)))
+        val W = new TannakianSymbol(Seq((Integer(-1), 1), (Integer(10), 0), (Integer(2), 1)))
+        
+        
+    }
 }
 
 class MultisetTest extends FunSuite {
