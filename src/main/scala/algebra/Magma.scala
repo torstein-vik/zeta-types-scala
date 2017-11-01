@@ -2,6 +2,8 @@ package io.zetatypes.algebra
 
 trait AlgebraicElement
 
+class AlgebraicException(msg : String) extends Exception(msg)
+
 trait Magma[T <: AlgebraicElement] {
     def combine (x : T, y : T) : T
 }
