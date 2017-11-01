@@ -127,6 +127,7 @@ class TannakianSymbolTest extends FunSuite{
         test ("TS Negation") {
             assert(- (ms(1, 2) / Ø) === Ø / ms(1, 2))
             assert(- (ms(2, 3) / ms(5, 5)) === ms(5, 5) / ms(2, 3))
+            assert(- (Ø / ms(5, 5)) === ms(5, 5) / Ø)
             assert(- (Ø / Ø) === Ø / Ø)
         }
     }
