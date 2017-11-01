@@ -153,11 +153,11 @@ class TannakianSymbolTest extends FunSuite{
         }
         
         test ("TS psi^k") {
-            assert(ms(1) / Ø psi(10) === ms(1) / Ø)
-            assert(ms(2) / Ø psi(6) === ms(64) / Ø)
-            assert(ms(1, -1) / Ø psi(2) === ms(1, 1) / Ø)
-            assert(ms(1, -1) / Ø psi(2000) === ms(1, 1) / Ø)
-            assert(ms(1, -7) / ms(7, 2, 5) psi(2) === ms(1) / ms(4, 25))
+            assert((ms(1) / Ø psi(10)) === ms(1) / Ø)
+            assert((ms(2) / Ø psi(6)) === ms(64) / Ø)
+            assert((ms(1, -1) / Ø psi(2)) === ms(1, 1) / Ø)
+            assert((ms(1, -1) / Ø psi(2000)) === ms(1, 1) / Ø)
+            assert((ms(1, -7) / ms(7, 2, 5) psi(2)) === ms(1) / ms(4, 25))
         }
     }
 }
