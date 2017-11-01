@@ -16,6 +16,8 @@ class TannakianSymbol[E <: MonoidElement] (val elements : Seq[(E, Int)])(implici
     
     override def negation() = new TannakianSymbol(elements.map({case (x, i) => (x, -i)}))
     
+    override def psi(n : Int) = new TannakianSymbol(elements.map({case (x, i) => (monoid.repeated(x, n), i)}))
+    
     override def equals(that : Any) : Boolean = {
         // Other choice: upstairs == other.upstairs && downstairs == other.downstairs. Unsure which is best... 
         // that depends on multiplicities, but the current choice allows for high multiplicity without issue
