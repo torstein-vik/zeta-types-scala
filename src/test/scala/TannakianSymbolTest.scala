@@ -159,6 +159,33 @@ class TannakianSymbolTest extends FunSuite{
             assert((ms(1, -1) / Ø psi(2000)) === ms(1, 1) / Ø)
             assert((ms(1, -7) / ms(7, 2, 5) psi(2)) === ms(1) / ms(4, 25))
         }
+        
+        test ("TS q algebra test") {            
+            assert((ms(1)/Ø).partialQMult(Rational(2)) === Some(ms(1, 1)/Ø))
+            assert((ms(1)/Ø).partialQMult(Rational(4, 2)) === Some(ms(1, 1)/Ø))
+            assert((ms(1)/Ø).partialQMult(Rational(2, 2)) === Some(ms(1)/Ø))
+            assert((ms(1)/ms(2)).partialQMult(Rational(3)) === Some(ms(1, 1, 1)/ms(2, 2, 2)))
+            
+            assert((ms(1)/Ø).partialQMult(Rational(1, 2)) === None)
+            assert((ms(1, 1, 1)/Ø).partialQMult(Rational(1, 2)) === None)
+            assert((ms(1, 1)/Ø).partialQMult(Rational(1, 3)) === None)
+            assert((ms(1, 2)/Ø).partialQMult(Rational(1, 2)) === None)
+            
+            assert((ms(1)/ms(2)).partialQMult(Rational(1, 2)) === None)
+            assert((ms(1)/ms(2, 2)).partialQMult(Rational(1, 2)) === None)
+            assert((ms(1, 1)/ms(2, 2)).partialQMult(Rational(1, 4)) === None)
+            assert((ms(1, 1, 1)/ms(2, 2, 2)).partialQMult(Rational(1, 6)) === None)
+            
+            assert((ms(1, 1, 1)/Ø).partialQMult(Rational(1, 3)) === Some(ms(1)/Ø))
+            assert((ms(1, 1, 1)/ms(2, 2, 2)).partialQMult(Rational(1, 3)) === Some(ms(1)/ms(2)))
+            assert((ms(1, 1, 1, 1, 1, 1)/Ø).partialQMult(Rational(1, 3)) === Some(ms(1, 1)/Ø))
+            assert((ms(1, 1, 1, 1)/Ø).partialQMult(Rational(1, 2)) === Some(ms(1, 1)/Ø))
+            
+            assert((ms(1, 1, 1)/Ø).partialQMult(Rational(2, 3)) === Some(ms(1, 1)/Ø))
+            assert((ms(1, 1, 1)/Ø).partialQMult(Rational(4, 3)) === Some(ms(1, 1, 1, 1)/Ø))
+            assert((ms(1, 1, 1)/Ø).partialQMult(Rational(12, 9)) === Some(ms(1, 1)/Ø))
+            assert((ms(1, 1, 1, 1, 1, 1)/Ø).partialQMult(Rational(2, 3)) === Some(ms(1, 1, 1, 1)/Ø))
+        }
     }
 }
 
