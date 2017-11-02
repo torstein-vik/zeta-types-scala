@@ -12,6 +12,13 @@ class Fraction[T <: RingElement[T]] (val ring : Ring[T])(val numerator : T, val 
         throw new AlgebraicException("Denominator may not be zero!")
     }
     
+    override def equals(that : Any) : Boolean = that match {
+        case _ : Fraction[T] => {
+            val other = that.asInstanceOf[Fraction[T]]
+            this.numerator * other.denominator == other.numerator * this.denominator
+        }
+        case _ => false
+    }
 
     
     override def toString : String = {
