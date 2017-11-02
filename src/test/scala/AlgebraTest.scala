@@ -198,5 +198,15 @@ class RationalTest extends FunSuite {
         assert(Rationals.additive.combine(Rational(b, c), Rational(d, a)) === Rational(b * a + c * d, c * a))
     }
     
+    test ("multiplication test") {
+        assert(Rationals.multiplicative.combine(Rational(a), Rational(b)) === Rational(a * b))
+        assert(Rationals.multiplicative.combine(Rational(b), Rational(c)) === Rational(b * c))
+        assert(Rationals.multiplicative.combine(Rational(c), Rational(d)) === Rational(c * d))
+        assert(Rationals.multiplicative.combine(Rational(d), Rational(a)) === Rational(d * a))
+        
+        assert(Rationals.multiplicative.combine(Rational(a, b), Rational(c, d)) === Rational(a * c, b * d))
+        assert(Rationals.multiplicative.combine(Rational(b, c), Rational(d, a)) === Rational(b * d, c * a))
+    }
+    
     
 }
