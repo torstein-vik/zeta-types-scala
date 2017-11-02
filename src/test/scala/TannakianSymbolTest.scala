@@ -237,6 +237,13 @@ class TannakianSymbolTest extends FunSuite{
                 (ms(1)/Ø).lambda(-1)
             }
         }
+        
+        test ("TS superdimension") {
+            assert((ms(1, 2)/Ø).superdimension === (2, 0))
+            assert((ms(1)/ms(2)).superdimension === (1, 1))
+            assert((ms(1)/ms(1)).superdimension === (0, 0))
+            assert((Ø/ms(1, 2, 4, 4)).superdimension === (0, 4))
+        }
     }
 }
 
