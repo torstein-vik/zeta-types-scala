@@ -228,5 +228,12 @@ class RationalTest extends FunSuite {
         assert(Rational(b, c) * Rational(d, a) === Rational(b * d, c * a))
     }
     
+    test ("notation negation test") {
+        assert(-Rational(a, b) === Rational(-a, b))
+        assert(-Rational(b, c) === Rational(-b, c))
+        assert(-Rational(c, d) === Rational(-c, d))
+        assert(-Rational(d, a) === Rational(-d, a))
+    }
+    
     
 }
