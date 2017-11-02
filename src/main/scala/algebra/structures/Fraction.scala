@@ -15,6 +15,8 @@ class Fraction[T <: RingElement[T]] (val ring : Ring[T])(val numerator : T, val 
     
     override def +(that : Fraction[T]) = new Fraction(ring)(numerator * that.denominator + that.numerator * denominator, denominator * that.denominator)
     
+    override def *(that : Fraction[T]) = new Fraction(ring)(numerator * that.numerator, denominator * that.denominator)
+    
     override def negation() = new Fraction(ring)(-numerator, denominator)
     
     override def equals(that : Any) : Boolean = that match {
