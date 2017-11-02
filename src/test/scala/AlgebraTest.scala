@@ -152,6 +152,24 @@ class RationalTest extends FunSuite {
         assert(Rational(d, a).toString === d.toString + "/" + a.toString)
     }
     
+    test ("equality test") {
+        assert(Rational(a, b) === Rational(a, b))
+        assert(Rational(b, c) === Rational(b, c))
+        assert(Rational(c, d) === Rational(c, d))
+        assert(Rational(a, b) !== Rational(a + 1, b))
+        assert(Rational(a, b) !== Rational(a - 1, b))
+        assert(Rational(a, b) !== Rational(a + 3, b))
+        
+        assert(Rational(2, 4) === Rational(1, 2))
+        assert(Rational(4, 8) === Rational(1, 2))
+        assert(Rational(2, 8) === Rational(1, 4))
+        assert(Rational(-2, -4) === Rational(1, 2))
+        
+        assert(Rational(a, a) === Rational(1))
+        assert(Rational(b, b) === Rational(1))
+        assert(Rational(c, c) === Rational(1))
+        assert(Rational(d, d) === Rational(1))
+    }
     
     
 }
