@@ -9,12 +9,12 @@ class TannakianSymbolTest extends FunSuite{
     
     {// Most basic tests
     
-        val X     = new TannakianSymbol(Seq((Integer(1), 1), (Integer(2), -1)))
-        val Xcopy = new TannakianSymbol(Seq((Integer(1), 1), (Integer(2), -1)))
-        val Y     = new TannakianSymbol(Seq((Integer(3), 2), (Integer(2), 1)))
-        val Ycopy = new TannakianSymbol(Seq((Integer(3), 2), (Integer(2), 1)))
-        val Z     = new TannakianSymbol(Seq((Integer(1), 1), (Integer(2), -1), (Integer(3), 1)))
-        val Zcopy = new TannakianSymbol(Seq((Integer(1), 1), (Integer(2), -1), (Integer(3), 1)))
+        val X     = new TannakianSymbol(Seq((Integer(1), 1 : BigInt), (Integer(2), -1 : BigInt)))
+        val Xcopy = new TannakianSymbol(Seq((Integer(1), 1 : BigInt), (Integer(2), -1 : BigInt)))
+        val Y     = new TannakianSymbol(Seq((Integer(3), 2 : BigInt), (Integer(2), 1 : BigInt)))
+        val Ycopy = new TannakianSymbol(Seq((Integer(3), 2 : BigInt), (Integer(2), 1 : BigInt)))
+        val Z     = new TannakianSymbol(Seq((Integer(1), 1 : BigInt), (Integer(2), -1 : BigInt), (Integer(3), 1 : BigInt)))
+        val Zcopy = new TannakianSymbol(Seq((Integer(1), 1 : BigInt), (Integer(2), -1 : BigInt), (Integer(3), 1 : BigInt)))
         
         test ("TannakianSymbol basic equality") {
             assert(X !== Y)
@@ -39,14 +39,14 @@ class TannakianSymbolTest extends FunSuite{
     
     {// Cancellation tests
         
-        val X     = new TannakianSymbol(Seq((Integer(1), 1), (Integer(1), -1), (Integer(2), 1)))
-        val Xsimp = new TannakianSymbol(Seq((Integer(2), 1)))
-        val Y     = new TannakianSymbol(Seq((Integer(10), 5), (Integer(10), -4), (Integer(2), -1)))
-        val Ysimp = new TannakianSymbol(Seq((Integer(10), 1), (Integer(2), -1)))
-        val Z     = new TannakianSymbol(Seq((Integer(3), 2), (Integer(3), -44), (Integer(3), 4)))
-        val Zsimp = new TannakianSymbol(Seq((Integer(3), -38)))
-        val W     = new TannakianSymbol(Seq((Integer(-1), 1), (Integer(10), 0), (Integer(2), 1)))
-        val Wsimp = new TannakianSymbol(Seq((Integer(-1), 1), (Integer(2), 1)))
+        val X     = new TannakianSymbol(Seq((Integer(1), 1 : BigInt), (Integer(1), -1 : BigInt), (Integer(2), 1 : BigInt)))
+        val Xsimp = new TannakianSymbol(Seq((Integer(2), 1 : BigInt)))
+        val Y     = new TannakianSymbol(Seq((Integer(10), 5 : BigInt), (Integer(10), -4 : BigInt), (Integer(2), -1 : BigInt)))
+        val Ysimp = new TannakianSymbol(Seq((Integer(10), 1 : BigInt), (Integer(2), -1 : BigInt)))
+        val Z     = new TannakianSymbol(Seq((Integer(3), 2 : BigInt), (Integer(3), -44 : BigInt), (Integer(3), 4 : BigInt)))
+        val Zsimp = new TannakianSymbol(Seq((Integer(3), -38 : BigInt)))
+        val W     = new TannakianSymbol(Seq((Integer(-1), 1 : BigInt), (Integer(10), 0 : BigInt), (Integer(2), 1 : BigInt)))
+        val Wsimp = new TannakianSymbol(Seq((Integer(-1), 1 : BigInt), (Integer(2), 1 : BigInt)))
         
         test ("Cleanup works") {
             assert(X.cleanup.elements === Xsimp.elements)
@@ -74,10 +74,10 @@ class TannakianSymbolTest extends FunSuite{
     {// Upstairs & Downstairs
         import org.zetatypes.tannakiansymbols.DSL._
         import org.zetatypes.algebra.structures.DSL._
-        val X = new TannakianSymbol(Seq((Integer(1), 1), (Integer(1), -1), (Integer(2), 1)))
-        val Y = new TannakianSymbol(Seq((Integer(10), 5), (Integer(10), -4), (Integer(2), -1)))
-        val Z = new TannakianSymbol(Seq((Integer(3), 2), (Integer(3), -8), (Integer(3), 4)))
-        val W = new TannakianSymbol(Seq((Integer(-1), 1), (Integer(10), 0), (Integer(2), 1)))
+        val X = new TannakianSymbol(Seq((Integer(1), 1 : BigInt), (Integer(1), -1 : BigInt), (Integer(2), 1 : BigInt)))
+        val Y = new TannakianSymbol(Seq((Integer(10), 5 : BigInt), (Integer(10), -4 : BigInt), (Integer(2), -1 : BigInt)))
+        val Z = new TannakianSymbol(Seq((Integer(3), 2 : BigInt), (Integer(3), -8 : BigInt), (Integer(3), 4 : BigInt)))
+        val W = new TannakianSymbol(Seq((Integer(-1), 1 : BigInt), (Integer(10), 0 : BigInt), (Integer(2), 1 : BigInt)))
         
         test ("TS.upstairs works") {
             assert(X.upstairs === ms[Integer](2))
@@ -97,10 +97,10 @@ class TannakianSymbolTest extends FunSuite{
     {// Using ms(...) / ms(...) notation
         import org.zetatypes.tannakiansymbols.DSL._
         import org.zetatypes.algebra.structures.DSL._
-        val X = new TannakianSymbol(Seq((Integer(1), 1), (Integer(2), -1), (Integer(3), 1)))
-        val Y = new TannakianSymbol(Seq((Integer(10), 5), (Integer(11), -4), (Integer(2), -1)))
-        val Z = new TannakianSymbol(Seq((Integer(2), 2), (Integer(3), -8), (Integer(4), 4)))
-        val W = new TannakianSymbol(Seq((Integer(-1), 1), (Integer(10), 0), (Integer(2), 1)))
+        val X = new TannakianSymbol(Seq((Integer(1), 1 : BigInt), (Integer(2), -1 : BigInt), (Integer(3), 1 : BigInt)))
+        val Y = new TannakianSymbol(Seq((Integer(10), 5 : BigInt), (Integer(11), -4 : BigInt), (Integer(2), -1 : BigInt)))
+        val Z = new TannakianSymbol(Seq((Integer(2), 2 : BigInt), (Integer(3), -8 : BigInt), (Integer(4), 4 : BigInt)))
+        val W = new TannakianSymbol(Seq((Integer(-1), 1 : BigInt), (Integer(10), 0 : BigInt), (Integer(2), 1 : BigInt)))
         
         test ("TS DSL notaion") {
             assert(X === ms(1, 3) / ms(2))
