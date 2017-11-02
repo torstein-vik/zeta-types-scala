@@ -171,5 +171,15 @@ class RationalTest extends FunSuite {
         assert(Rational(d, d) === Rational(1))
     }
     
+    test ("identities test") {
+        assert(Rationals.additive.identity === Rational(0))
+        assert(Rationals.multiplicative.identity === Rational(1))
+    }
+    
+    test ("zero and one test") {
+        assert(Rationals.zero === Rational(0))
+        assert(Rationals.one  === Rational(1))
+    }
+    
     
 }
