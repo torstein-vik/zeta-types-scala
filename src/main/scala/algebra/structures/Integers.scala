@@ -11,8 +11,9 @@ case class Integer (x : BigInt) extends StandardLambdaRingElement[Integer] with 
     
     override def partialQMult(n : Rational) : Option[Integer] = {
         val Rational(Integer(num), Integer(den)) = n
-        if ((num * x) % den == 0) {
-            return Some(Integer((num * x) / den))
+        val (div, mod) = (num * x) /% den
+        if (mod == 0) {
+            return Some(Integer(div))
         } else {
             return None
         }
