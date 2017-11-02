@@ -18,13 +18,13 @@ trait StandardLambdaRingElement[T <: StandardLambdaRingElement[T]] extends Lambd
         case 1 => this * canonicalRing.one
         case n if lambdacache.contains(n) => lambdacache(n)
         case n if n > 1 => {
-            var res = canonicalRing.additive.zero
+            var res = canonicalRing.zero
             for (i <- 0 to n - 1) {
-                val ires = this.psi(n - i) * this.lambda(i)
+                val ires = this.psi(n - i) * this.lambda(i)(ev, ev2)
                 res += (if (i % 2 == 0) ires else ires.negation)
             }
-            val mayberes : Option[T] = ev(res).partialQMult(Rational(if (n % 2 == 0) Integer(-1) else Integer(1), Integer(n))).map(ev2)
-            mayberes match {
+            val coeff = Rational(if (n % 2 == 0) Integer(-1) else Integer(1), Integer(n))
+            ev(res).partialQMult(coeff).map(ev2) match {
                 case None => throw new AlgebraicException("Wilkersons hypothesis did not hold! You may not use lambda in this ring")
                 case Some(r) => {
                     lambdacache += n -> r
