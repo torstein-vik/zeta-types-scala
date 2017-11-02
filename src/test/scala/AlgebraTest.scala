@@ -133,15 +133,15 @@ class IntegerTest extends FunSuite {
     }
     
     test ("Integer lambda operation") {
-        assert(Integer(4).lambda(2) === 6)
-        assert(Integer(3).lambda(3) === 6)
-        assert(Integer(0).lambda(3) === 6)
-        assert(Integer(1).lambda(7) === 6)
-        assert(Integer(7).lambda(2) === 6)
-        assert(Integer(4).lambda(3) === 6)
-        assert(Integer(5).lambda(1) === 6)
-        assert(Integer(40).lambda(30) === 6)
-        assert(Integer(45).lambda(39) === 6)
+        assert(Integer(4).lambda(2) === Integer(6))
+        assert(Integer(3).lambda(3) === Integer(1))
+        assert(Integer(0).lambda(3) === Integer(0))
+        assert(Integer(1).lambda(7) === Integer(0))
+        assert(Integer(7).lambda(2) === Integer(21))
+        assert(Integer(4).lambda(3) === Integer(4))
+        assert(Integer(5).lambda(1) === Integer(5))
+        assert(Integer(40).lambda(30) === Integer(84740528))
+        assert(Integer(45).lambda(39) === Integer(8145060))
     }
 }
 
