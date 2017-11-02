@@ -8,6 +8,9 @@ case class Fractions[T <: RingElement[T]] (ring : Ring[T]) extends
     new Fraction(ring)(ring.one,  ring.one))
 
 class Fraction[T <: RingElement[T]] (val ring : Ring[T])(val numerator : T, val denominator : T = ring.one) extends RingElement[Fraction[T]]{
+    if (denominator == ring.zero) {
+        throw new AlgebraicException("Denominator may not be zero!")
+    }
     
 
     
