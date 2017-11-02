@@ -145,6 +145,10 @@ class IntegerTest extends FunSuite {
         
         assert(Integer(-4).lambda(3) === Integer(-20))
         assert(Integer(-2).lambda(3) === Integer(-4))
+        
+        assertThrows[AlgebraicException] {
+            Integer(1).lambda(-3)
+        }
     }
 }
 
