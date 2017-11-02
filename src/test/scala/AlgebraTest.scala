@@ -142,6 +142,9 @@ class IntegerTest extends FunSuite {
         assert(Integer(5).lambda(1) === Integer(5))
         assert(Integer(40).lambda(30) === Integer(847660528))
         assert(Integer(45).lambda(39) === Integer(8145060))
+        
+        assert(Integer(-4).lambda(3) === Integer(-20))
+        assert(Integer(-2).lambda(3) === Integer(-4))
     }
 }
 
