@@ -139,6 +139,12 @@ class RationalTest extends FunSuite {
     
     val (a, b, c, d) = (2, -3, 7, 4)
     
+    test ("divide by zero test") {
+        assertThrows[AlgebraicException] {
+            Rational(1, 0)
+        } 
+    }
+    
     
     
 }
