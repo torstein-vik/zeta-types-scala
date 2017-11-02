@@ -218,5 +218,15 @@ class RationalTest extends FunSuite {
         assert(Rational(b, c) + Rational(d, a) === Rational(b * a + c * d, c * a))
     }
     
+    test ("notation multiplication test") {
+        assert(Rational(a) * Rational(b) === Rational(a * b))
+        assert(Rational(b) * Rational(c) === Rational(b * c))
+        assert(Rational(c) * Rational(d) === Rational(c * d))
+        assert(Rational(d) * Rational(a) === Rational(d * a))
+        
+        assert(Rational(a, b) * Rational(c, d) === Rational(a * c, b * d))
+        assert(Rational(b, c) * Rational(d, a) === Rational(b * d, c * a))
+    }
+    
     
 }
