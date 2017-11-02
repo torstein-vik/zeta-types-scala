@@ -193,7 +193,7 @@ class TannakianSymbolTest extends FunSuite{
             assert((ms(2, 3)/Ø).lambda(0) === ms(1)/Ø)
             assert((ms(2, 3)/Ø).lambda(1) === ms(2, 3)/Ø)
             
-            assert((ms(3).lambda(2) === Ø/Ø)
+            assert((ms(3)/Ø).lambda(2) === Ø/Ø)
             assert((ms(2, 3)/Ø).lambda(3) === Ø/Ø)
             assert((ms(2, 3, 4)/Ø).lambda(4) === Ø/Ø)
             assert((ms(2, 3, 4, 5)/Ø).lambda(5) === Ø/Ø)
