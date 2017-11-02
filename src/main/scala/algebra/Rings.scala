@@ -5,6 +5,9 @@ trait RingElement[T <: RingElement[T]] extends GroupElement with Additive[T] wit
 trait Ring[E <: RingElement[E]] {
     val additive       : AdditiveGroup[E]
     val multiplicative : MultiplicativeMonoid[E]
+    
+    val zero : E
+    val one : E
 }
 
 // TODO: Fix name
