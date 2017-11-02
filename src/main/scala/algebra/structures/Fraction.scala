@@ -14,4 +14,7 @@ class Fraction[T <: RingElement[T]] (val ring : Ring[T])(val numerator : T, val 
     
 
     
+    override def toString : String = {
+        return numerator + "/" + denominator
+    } 
 }
