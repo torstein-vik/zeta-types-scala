@@ -186,6 +186,57 @@ class TannakianSymbolTest extends FunSuite{
             assert((ms(1, 1, 1)/Ø).partialQMult(Rational(12, 9)) === Some(ms(1, 1)/Ø))
             assert((ms(1, 1, 1, 1, 1, 1)/Ø).partialQMult(Rational(2, 3)) === Some(ms(1, 1, 1, 1)/Ø))
         }
+        
+        test ("TS lambda operation") {
+            assert((ms(2)/ms(1)).lambda(0) === ms(1)/Ø)
+            assert((ms(2)/ms(1)).lambda(1) === ms(2)/ms(1))
+            assert((ms(2, 3)/Ø).lambda(0) === ms(1)/Ø)
+            assert((ms(2, 3)/Ø).lambda(1) === ms(2, 3)/Ø)
+            
+            assert((ms(3).lambda(2) === Ø/Ø)
+            assert((ms(2, 3)/Ø).lambda(3) === Ø/Ø)
+            assert((ms(2, 3, 4)/Ø).lambda(4) === Ø/Ø)
+            assert((ms(2, 3, 4, 5)/Ø).lambda(5) === Ø/Ø)
+            
+            assert((ms(2, 3)/Ø).lambda(2) === ms(6)/Ø)
+            assert((ms(-1, 3, 5)/Ø).lambda(2) === ms(-3, -5, 15)/Ø)
+            assert((ms(2, 2, 3, 3)/Ø).lambda(2) === ms(4, 6, 6, 6, 6, 9)/Ø)
+            assert((ms(-1, -1, -1)/Ø).lambda(2) === ms(1, 1, 1)/Ø)
+            
+            assert((ms(-1, 3, 5)/Ø).lambda(3) === ms(-15)/Ø)
+            assert((ms(1, 2, 3)/Ø).lambda(3) === ms(6)/Ø)
+            assert((ms(2, 2, 3, 3)/Ø).lambda(3) === ms(12, 12, 18, 18)/Ø)
+            assert((ms(-1, -1, -1, -1)/Ø).lambda(3) === ms(-1, -1, -1, -1)/Ø)
+            
+            assert((ms(1, 2, 3, 4)/Ø).lambda(4) === ms(24)/Ø)
+            assert((ms(-1, 2, -2, 2)/Ø).lambda(4) === ms(8)/Ø)
+            assert((ms(1, 2, 3, 4, 5)/Ø).lambda(4) === ms(24, 30, 40, 60, 120)/Ø)
+            assert((ms(1, 2, 3, 4, -2)/Ø).lambda(4) === ms(24, -12, -16, -24, -48)/Ø)
+            
+            assert((ms(1)/ms(2)).lambda(2) === ms(4)/ms(2))
+            assert((ms(1)/ms(2)).lambda(3) === ms(4)/ms(8))
+            assert((ms(1)/ms(2)).lambda(4) === ms(16)/ms(8))
+            assert((ms(1)/ms(2)).lambda(5) === ms(16)/ms(32))
+            
+            assert((ms(1, 1)/ms(-1)).lambda(2) === ms(1, 1)/ms(-1, -1))
+            assert((ms(1, 1)/ms(-1)).lambda(3) === ms(1, 1)/ms(-1, -1))
+            assert((ms(1, 1)/ms(-1)).lambda(4) === ms(1, 1)/ms(-1, -1))
+            assert((ms(1, 1)/ms(-1)).lambda(5) === ms(1, 1)/ms(-1, -1))
+            
+            assert((ms(1, 2, 3)/ms(4, 5)).lambda(2) === ms(2, 3, 6, 16, 20, 25)/ms(4, 5, 8, 10, 12, 15))
+            assert((ms(1, 2, 3)/ms(4, 5)).lambda(3) === ms(32, 6, 75, 48, 40, 50, 20, 25, 60, 16)/ms(64, 100, 8, 80, 10, 12, 15, 24, 125, 30))
+            assert((ms(1, 2, 3)/ms(4, 5)).lambda(4) === ms(256, 320, 150, 32, 40, 48, 50, 60, 75, 96, 400, 625, 500, 120)/ms(128, 64, 24, 30, 300, 192, 160, 200, 80, 100, 240, 375, 250, 125))
+            assert((ms(1, 2, 3)/ms(4, 5)).lambda(5) === ms(256, 320, 150, 640, 768, 1200, 960, 800, 96, 1875, 1500, 400, 1250, 1000, 512, 625, 500, 120)/ms(128, 192, 384, 160, 1024, 300, 1280, 3125, 1600, 2500, 200, 2000, 600, 480, 750, 240, 375, 250))
+            
+            assert((Ø/ms(1, 2)).lambda(2) === ms(1, 2, 4)/Ø)
+            assert((Ø/ms(1, 2)).lambda(3) === Ø/ms(8, 1, 2, 4))
+            assert((Ø/ms(1, 2)).lambda(4) === ms(8, 1, 2, 4, 16)/Ø)
+            assert((Ø/ms(1, 2)).lambda(5) === Ø/ms(32, 1, 2, 4, 8, 16))
+            
+            assertThrows[AlgebraicException] {
+                assert(ms(1)/Ø).lambda(-1)
+            }
+        }
     }
 }
 
