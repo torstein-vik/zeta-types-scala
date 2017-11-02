@@ -183,7 +183,7 @@ class TannakianSymbolTest extends FunSuite{
             
             assert((ms(1, 1, 1)/Ø).partialQMult(Rational(2, 3)) === Some(ms(1, 1)/Ø))
             assert((ms(1, 1, 1)/Ø).partialQMult(Rational(4, 3)) === Some(ms(1, 1, 1, 1)/Ø))
-            assert((ms(1, 1, 1)/Ø).partialQMult(Rational(12, 9)) === Some(ms(1, 1)/Ø))
+            assert((ms(1, 1, 1)/Ø).partialQMult(Rational(12, 9)) === Some(ms(1, 1, 1, 1)/Ø))
             assert((ms(1, 1, 1, 1, 1, 1)/Ø).partialQMult(Rational(2, 3)) === Some(ms(1, 1, 1, 1)/Ø))
         }
         
