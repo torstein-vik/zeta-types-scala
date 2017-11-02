@@ -132,3 +132,13 @@ class IntegerTest extends FunSuite {
         }
     }
 }
+
+class RationalTest extends FunSuite {
+    
+    import org.zetatypes.algebra.structures.DSL._
+    
+    val (a, b, c, d) = (2, -3, 7, 4)
+    
+    
+    
+}
