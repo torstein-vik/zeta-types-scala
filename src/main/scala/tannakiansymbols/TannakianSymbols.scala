@@ -1,6 +1,9 @@
 package org.zetatypes.tannakiansymbols
 
 import org.zetatypes.algebra._
+import org.zetatypes.algebra.structures.{Rational, Integer}
+
+import scalaz.{Monoid => ScalazMonoid, _}, std.list._, std.option._, syntax.traverse._
 
 case class TS[E <: MonoidElement](monoid : Monoid[E]) extends 
     RingClass[TannakianSymbol[E]](
@@ -22,6 +25,11 @@ class TannakianSymbol[E <: MonoidElement] (val elements : Seq[(E, BigInt)])(impl
     override def negation() = new TannakianSymbol(elements.map({case (x, i) => (x, -i)}))
     
     override def psi(n : Int) = new TannakianSymbol(elements.map({case (x, i) => (monoid.repeated(x, n), i)})).cleanup
+    
+    override def partialQMult(n : Rational) = (cleanup.elements.map({case (x, i) => (x, Integer(i).partialQMult(n))}).map({
+        case (x, None) => None
+        case (x, Some(Integer(i))) => Some((x, i))
+    }).toList.sequence).map(new TannakianSymbol(_))
     
     override def equals(that : Any) : Boolean = {
         // Other choice: upstairs == other.upstairs && downstairs == other.downstairs. Unsure which is best... 
