@@ -2,8 +2,8 @@ package org.zetatypes.algebra
 
 import structures.Rational
 
-trait PartialQAlgebraElement extends GroupElement
+trait PartialQAlgebraElement[T <: PartialQAlgebraElement[T]] extends RingElement[T]
 
-trait PartialQAlgebra[T <: PartialQAlgebraElement] extends Group[T] {
+trait PartialQAlgebra[T <: PartialQAlgebraElement[T]] extends Ring[T] {
     def partialQAlgebraOp (x : T)(n : Rational) : Option[T]
 }
