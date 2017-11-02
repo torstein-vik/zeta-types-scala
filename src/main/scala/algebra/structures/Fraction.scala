@@ -6,8 +6,9 @@ case class Fractions[T <: RingElement[T]] (ring : Ring[T]) extends
     RingClass[Fraction[T]](
     new Fraction(ring)(ring.zero, ring.one), 
     new Fraction(ring)(ring.one,  ring.one))
+
+class Fraction[T <: RingElement[T]] (val ring : Ring[T])(val numerator : T, val denominator : T = ring.one) extends RingElement[Fraction[T]]{
     
 
-case class Fraction[T] (numerator : T, denominator : T) extends RingElement[Fraction[T]]{
     
 }
