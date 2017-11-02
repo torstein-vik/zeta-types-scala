@@ -234,7 +234,7 @@ class TannakianSymbolTest extends FunSuite{
             assert((Ø/ms(1, 2)).lambda(5) === Ø/ms(32, 1, 2, 4, 8, 16))
             
             assertThrows[AlgebraicException] {
-                assert(ms(1)/Ø).lambda(-1)
+                (ms(1)/Ø).lambda(-1)
             }
         }
     }
