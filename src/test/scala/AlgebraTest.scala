@@ -181,5 +181,12 @@ class RationalTest extends FunSuite {
         assert(Rationals.one  === Rational(1))
     }
     
+    test ("additive inverse test") {
+        assert(Rationals.additive.invert(Rational(a, b)) === Rational(-a, b))
+        assert(Rationals.additive.invert(Rational(b, c)) === Rational(-b, c))
+        assert(Rationals.additive.invert(Rational(c, d)) === Rational(-c, d))
+        assert(Rationals.additive.invert(Rational(d, a)) === Rational(-d, a))
+    }
+    
     
 }
