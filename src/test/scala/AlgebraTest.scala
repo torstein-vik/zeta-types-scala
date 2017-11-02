@@ -145,6 +145,13 @@ class RationalTest extends FunSuite {
         } 
     }
     
+    test ("rational toString") {
+        assert(Rational(a, b).toString === a.toString + "/" + b.toString)
+        assert(Rational(b, c).toString === b.toString + "/" + c.toString)
+        assert(Rational(c, d).toString === c.toString + "/" + d.toString)
+        assert(Rational(d, a).toString === d.toString + "/" + a.toString)
+    }
+    
     
     
 }
