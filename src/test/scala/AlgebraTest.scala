@@ -131,6 +131,18 @@ class IntegerTest extends FunSuite {
             Integer(1) ++ (-1)
         }
     }
+    
+    test ("Integer lambda operation") {
+        assert(Integer(4).lambda(2) === 6)
+        assert(Integer(3).lambda(3) === 6)
+        assert(Integer(0).lambda(3) === 6)
+        assert(Integer(1).lambda(7) === 6)
+        assert(Integer(7).lambda(2) === 6)
+        assert(Integer(4).lambda(3) === 6)
+        assert(Integer(5).lambda(1) === 6)
+        assert(Integer(40).lambda(30) === 6)
+        assert(Integer(45).lambda(39) === 6)
+    }
 }
 
 class RationalTest extends FunSuite {
