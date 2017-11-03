@@ -72,4 +72,6 @@ class TannakianSymbol[E <: MonoidElement] (val elements : Seq[(E, BigInt)])(impl
     def odddimension : BigInt = superdimension._2
     
     def islineelement = superdimension == (1, 0)
+    
+    def augmentation = superdimension match {case (even, odd) => even - odd}
 }
