@@ -268,6 +268,13 @@ class TannakianSymbolTest extends FunSuite{
             assert(!(Ø/ms(1)).islineelement)
             assert(!(ms(1)/ms(1)).islineelement)
         }
+        
+        test ("TS augmentation") {
+            assert((ms(1, 2)/Ø).augmentation === 2)
+            assert((ms(1)/ms(2)).augmentation === 0)
+            assert((ms(1)/ms(1)).augmentation === 0)
+            assert((Ø/ms(1, 2, 4, 4)).augmentation === -4)
+        }
     }
 }
 
