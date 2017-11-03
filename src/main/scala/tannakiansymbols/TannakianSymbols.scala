@@ -70,4 +70,6 @@ class TannakianSymbol[E <: MonoidElement] (val elements : Seq[(E, BigInt)])(impl
     def evendimension : BigInt = superdimension._1
     
     def odddimension : BigInt = superdimension._2
+    
+    def islineelement = superdimension == (1, 0)
 }
