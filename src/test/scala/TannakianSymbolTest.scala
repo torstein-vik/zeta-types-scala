@@ -255,7 +255,18 @@ class TannakianSymbolTest extends FunSuite{
             assert((ms(1)/ms(2)).odddimension === 1)
             assert((ms(1)/ms(1)).odddimension === 0)
             assert((Ø/ms(1, 2, 4, 4)).odddimension === 4)
+        }
+        
+        test ("TS islineelement") {
+            assert((ms(1)/Ø).islineelement)
+            assert((ms(3)/Ø).islineelement)
+            assert((ms(1, 2)/ms(2)).islineelement)
+            assert((ms(1, 2, 2)/ms(1, 2)).islineelement)
             
+            assert(!(Ø/Ø).islineelement)
+            assert(!(ms(2, 2)/Ø).islineelement)
+            assert(!(Ø/ms(1)).islineelement)
+            assert(!(ms(1)/ms(1)).islineelement)
         }
     }
 }
