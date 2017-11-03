@@ -61,4 +61,13 @@ class TannakianSymbol[E <: MonoidElement] (val elements : Seq[(E, BigInt)])(impl
         elements.foreach({case (x, i) => data += x -> (data.getOrElse(x, 0 : BigInt) + i)})
         return new TannakianSymbol(data.toSeq.filter({case (x, i) => i != 0}))
     }
+    
+    def superdimension : (BigInt, BigInt) = cleanup.elements.foldLeft((0 : BigInt, 0 : BigInt)) {
+        case ((aa, ab), (x, i)) if i > 0 => (aa + i, ab)
+        case ((aa, ab), (x, i)) if i < 0 => (aa, ab - i)
+    }
+    
+    def evendimension : BigInt = superdimension._1
+    
+    def odddimension : BigInt = superdimension._2
 }
