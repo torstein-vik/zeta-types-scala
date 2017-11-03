@@ -244,6 +244,19 @@ class TannakianSymbolTest extends FunSuite{
             assert((ms(1)/ms(1)).superdimension === (0, 0))
             assert((Ø/ms(1, 2, 4, 4)).superdimension === (0, 4))
         }
+        
+        test ("TS even & odd dimension") {
+            assert((ms(1, 2)/Ø).evendimension === 2)
+            assert((ms(1)/ms(2)).evendimension === 1)
+            assert((ms(1)/ms(1)).evendimension === 0)
+            assert((Ø/ms(1, 2, 4, 4)).evendimension === 0)
+            
+            assert((ms(1, 2)/Ø).odddimension === 0)
+            assert((ms(1)/ms(2)).odddimension === 1)
+            assert((ms(1)/ms(1)).odddimension === 0)
+            assert((Ø/ms(1, 2, 4, 4)).odddimension === 4)
+            
+        }
     }
 }
 
