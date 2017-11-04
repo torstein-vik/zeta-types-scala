@@ -164,34 +164,34 @@ class TannakianSymbolTest extends FunSuite{
         }
     }
     
-    {// Algebraic tests for integer tannakiansymbols
-        implicit val monoid : Monoid[Integer] = Integers.multiplicative
+    {// Algebraic tests for integral tannakiansymbols
+        implicit val monoidint : Monoid[Integer] = Integers.multiplicative
         
         import org.zetatypes.tannakiansymbols.DSL._
         import org.zetatypes.algebra.structures.DSL.{intToRational => _, intToComplex => _, _}
         
-        test ("TS Addition") {
+        test ("integral TS Addition") {
             assert(ms(1, 2) / Ø + ms(1, 2) / Ø === ms(1, 1, 2, 2) / Ø)
             assert(ms(1, 2) / Ø + Ø / ms(1, 2) === Ø / Ø)
             assert(ms(1) / Ø + Ø / ms(2) === ms(1) / ms(2))
             assert(ms(1, 2, 2, 2) / ms(3, 3) + ms(3, 4, 5) / ms(2, 7) === ms(1, 2, 2, 4, 5) / ms(3, 7))
         }
         
-        test ("TS Negation") {
+        test ("integral TS Negation") {
             assert(- (ms(1, 2) / Ø) === Ø / ms(1, 2))
             assert(- (ms(2, 3) / ms(5, 5)) === ms(5, 5) / ms(2, 3))
             assert(- (Ø / ms(5, 5)) === ms(5, 5) / Ø)
             assert(- (Ø / Ø) === Ø / Ø)
         }
         
-        test ("TS Subtraction") {
+        test ("integral TS Subtraction") {
             assert(ms(1, 2)/Ø - ms(2)/Ø === ms(1)/Ø)
             assert(ms(1, 2)/Ø - ms(3)/Ø === ms(1, 2)/ms(3))
             assert(ms(1, 2)/Ø - ms(1, 2)/ms(3) === ms(3)/Ø)
             assert(Ø/Ø - ms(1)/ms(3) === ms(3)/ms(1))
         }
         
-        test ("TS Multiplication") {
+        test ("integral TS Multiplication") {
             assert((ms(1)/Ø) * (ms(1)/Ø) === ms(1)/Ø)
             assert((ms(2)/Ø) * (ms(3)/Ø) === ms(6)/Ø)
             assert((ms(1, 2)/Ø) * (ms(1, 2)/Ø) === ms(1, 2, 2, 4)/Ø)
@@ -202,7 +202,7 @@ class TannakianSymbolTest extends FunSuite{
             assert((ms(-1)/ms(1, 2, 3)) * (ms(1, -1)/Ø) === Ø/ms(2, 3, -2, -3))
         }
         
-        test ("TS psi^k") {
+        test ("integral TS psi^k") {
             assert((ms(1) / Ø psi(10)) === ms(1) / Ø)
             assert((ms(2) / Ø psi(6)) === ms(64) / Ø)
             assert((ms(1, -1) / Ø psi(2)) === ms(1, 1) / Ø)
@@ -210,34 +210,34 @@ class TannakianSymbolTest extends FunSuite{
             assert((ms(1, -7) / ms(7, 2, 5) psi(2)) === ms(1) / ms(4, 25))
         }
         
-        test ("TS q algebra test") {            
-            assert((ms(1)/Ø).partialQMult(Rational(2)) === Some(ms(1, 1)/Ø))
-            assert((ms(1)/Ø).partialQMult(Rational(4, 2)) === Some(ms(1, 1)/Ø))
-            assert((ms(1)/Ø).partialQMult(Rational(2, 2)) === Some(ms(1)/Ø))
-            assert((ms(1)/ms(2)).partialQMult(Rational(3)) === Some(ms(1, 1, 1)/ms(2, 2, 2)))
+        test ("integral TS q algebra test") {            
+            assert((ms(1)/Ø).partialQMult(Rational(Integer(2))) === Some(ms(1, 1)/Ø))
+            assert((ms(1)/Ø).partialQMult(Rational(Integer(4), Integer(2))) === Some(ms(1, 1)/Ø))
+            assert((ms(1)/Ø).partialQMult(Rational(Integer(2), Integer(2))) === Some(ms(1)/Ø))
+            assert((ms(1)/ms(2)).partialQMult(Rational(Integer(3))) === Some(ms(1, 1, 1)/ms(2, 2, 2)))
             
-            assert((ms(1)/Ø).partialQMult(Rational(1, 2)) === None)
-            assert((ms(1, 1, 1)/Ø).partialQMult(Rational(1, 2)) === None)
-            assert((ms(1, 1)/Ø).partialQMult(Rational(1, 3)) === None)
-            assert((ms(1, 2)/Ø).partialQMult(Rational(1, 2)) === None)
+            assert((ms(1)/Ø).partialQMult(Rational(Integer(1), Integer(2))) === None)
+            assert((ms(1, 1, 1)/Ø).partialQMult(Rational(Integer(1), Integer(2))) === None)
+            assert((ms(1, 1)/Ø).partialQMult(Rational(Integer(1), Integer(3))) === None)
+            assert((ms(1, 2)/Ø).partialQMult(Rational(Integer(1), Integer(2))) === None)
             
-            assert((ms(1)/ms(2)).partialQMult(Rational(1, 2)) === None)
-            assert((ms(1)/ms(2, 2)).partialQMult(Rational(1, 2)) === None)
-            assert((ms(1, 1)/ms(2, 2)).partialQMult(Rational(1, 4)) === None)
-            assert((ms(1, 1, 1)/ms(2, 2, 2)).partialQMult(Rational(1, 6)) === None)
+            assert((ms(1)/ms(2)).partialQMult(Rational(Integer(1), Integer(2))) === None)
+            assert((ms(1)/ms(2, 2)).partialQMult(Rational(Integer(1), Integer(2))) === None)
+            assert((ms(1, 1)/ms(2, 2)).partialQMult(Rational(Integer(1), Integer(4))) === None)
+            assert((ms(1, 1, 1)/ms(2, 2, 2)).partialQMult(Rational(Integer(1), Integer(6))) === None)
             
-            assert((ms(1, 1, 1)/Ø).partialQMult(Rational(1, 3)) === Some(ms(1)/Ø))
-            assert((ms(1, 1, 1)/ms(2, 2, 2)).partialQMult(Rational(1, 3)) === Some(ms(1)/ms(2)))
-            assert((ms(1, 1, 1, 1, 1, 1)/Ø).partialQMult(Rational(1, 3)) === Some(ms(1, 1)/Ø))
-            assert((ms(1, 1, 1, 1)/Ø).partialQMult(Rational(1, 2)) === Some(ms(1, 1)/Ø))
+            assert((ms(1, 1, 1)/Ø).partialQMult(Rational(Integer(1), Integer(3))) === Some(ms(1)/Ø))
+            assert((ms(1, 1, 1)/ms(2, 2, 2)).partialQMult(Rational(Integer(1), Integer(3))) === Some(ms(1)/ms(2)))
+            assert((ms(1, 1, 1, 1, 1, 1)/Ø).partialQMult(Rational(Integer(1), Integer(3))) === Some(ms(1, 1)/Ø))
+            assert((ms(1, 1, 1, 1)/Ø).partialQMult(Rational(Integer(1), Integer(2))) === Some(ms(1, 1)/Ø))
             
-            assert((ms(1, 1, 1)/Ø).partialQMult(Rational(2, 3)) === Some(ms(1, 1)/Ø))
-            assert((ms(1, 1, 1)/Ø).partialQMult(Rational(4, 3)) === Some(ms(1, 1, 1, 1)/Ø))
-            assert((ms(1, 1, 1)/Ø).partialQMult(Rational(12, 9)) === Some(ms(1, 1, 1, 1)/Ø))
-            assert((ms(1, 1, 1, 1, 1, 1)/Ø).partialQMult(Rational(2, 3)) === Some(ms(1, 1, 1, 1)/Ø))
+            assert((ms(1, 1, 1)/Ø).partialQMult(Rational(Integer(2), Integer(3))) === Some(ms(1, 1)/Ø))
+            assert((ms(1, 1, 1)/Ø).partialQMult(Rational(Integer(4), Integer(3))) === Some(ms(1, 1, 1, 1)/Ø))
+            assert((ms(1, 1, 1)/Ø).partialQMult(Rational(Integer(12), Integer(9))) === Some(ms(1, 1, 1, 1)/Ø))
+            assert((ms(1, 1, 1, 1, 1, 1)/Ø).partialQMult(Rational(Integer(2), Integer(3))) === Some(ms(1, 1, 1, 1)/Ø))
         }
         
-        test ("TS lambda operation") {
+        test ("integral TS lambda operation") {
             assert((ms(2)/ms(1)).lambda(0) === ms(1)/Ø)
             assert((ms(2)/ms(1)).lambda(1) === ms(2)/ms(1))
             assert((ms(2, 3)/Ø).lambda(0) === ms(1)/Ø)
@@ -288,14 +288,14 @@ class TannakianSymbolTest extends FunSuite{
             }
         }
         
-        test ("TS superdimension") {
+        test ("integral TS superdimension") {
             assert((ms(1, 2)/Ø).superdimension === (2, 0))
             assert((ms(1)/ms(2)).superdimension === (1, 1))
             assert((ms(1)/ms(1)).superdimension === (0, 0))
             assert((Ø/ms(1, 2, 4, 4)).superdimension === (0, 4))
         }
         
-        test ("TS even & odd dimension") {
+        test ("integral TS even & odd dimension") {
             assert((ms(1, 2)/Ø).evendimension === 2)
             assert((ms(1)/ms(2)).evendimension === 1)
             assert((ms(1)/ms(1)).evendimension === 0)
@@ -307,7 +307,7 @@ class TannakianSymbolTest extends FunSuite{
             assert((Ø/ms(1, 2, 4, 4)).odddimension === 4)
         }
         
-        test ("TS islineelement") {
+        test ("integral TS islineelement") {
             assert((ms(1)/Ø).islineelement)
             assert((ms(3)/Ø).islineelement)
             assert((ms(1, 2)/ms(2)).islineelement)
@@ -319,7 +319,333 @@ class TannakianSymbolTest extends FunSuite{
             assert(!(ms(1)/ms(1)).islineelement)
         }
         
-        test ("TS augmentation") {
+        test ("integral TS augmentation") {
+            assert((ms(1, 2)/Ø).augmentation === 2)
+            assert((ms(1)/ms(2)).augmentation === 0)
+            assert((ms(1)/ms(1)).augmentation === 0)
+            assert((Ø/ms(1, 2, 4, 4)).augmentation === -4)
+        }
+    }
+    
+    {// Algebraic tests for rational tannakiansymbols
+        implicit val monoidrat : Monoid[Rational] = Rationals.multiplicative
+        
+        import org.zetatypes.tannakiansymbols.DSL._
+        import org.zetatypes.algebra.structures.DSL.{intToInteger => _, intToComplex => _, _}
+        
+        test ("rational TS Addition") {
+            assert(ms(1, 2) / Ø + ms(1, 2) / Ø === ms(1, 1, 2, 2) / Ø)
+            assert(ms(1, 2) / Ø + Ø / ms(1, 2) === Ø / Ø)
+            assert(ms(1) / Ø + Ø / ms(2) === ms(1) / ms(2))
+            assert(ms(1, 2, 2, 2) / ms(3, 3) + ms(3, 4, 5) / ms(2, 7) === ms(1, 2, 2, 4, 5) / ms(3, 7))
+        }
+        
+        test ("rational TS Negation") {
+            assert(- (ms(1, 2) / Ø) === Ø / ms(1, 2))
+            assert(- (ms(2, 3) / ms(5, 5)) === ms(5, 5) / ms(2, 3))
+            assert(- (Ø / ms(5, 5)) === ms(5, 5) / Ø)
+            assert(- (Ø / Ø) === Ø / Ø)
+        }
+        
+        test ("rational TS Subtraction") {
+            assert(ms(1, 2)/Ø - ms(2)/Ø === ms(1)/Ø)
+            assert(ms(1, 2)/Ø - ms(3)/Ø === ms(1, 2)/ms(3))
+            assert(ms(1, 2)/Ø - ms(1, 2)/ms(3) === ms(3)/Ø)
+            assert(Ø/Ø - ms(1)/ms(3) === ms(3)/ms(1))
+        }
+        
+        test ("rational TS Multiplication") {
+            assert((ms(1)/Ø) * (ms(1)/Ø) === ms(1)/Ø)
+            assert((ms(2)/Ø) * (ms(3)/Ø) === ms(6)/Ø)
+            assert((ms(1, 2)/Ø) * (ms(1, 2)/Ø) === ms(1, 2, 2, 4)/Ø)
+            assert((ms(1)/ms(2, 3)) * (ms(1)/Ø) === ms(1)/ms(2, 3))
+            assert((ms(1, 2)/ms(3, 3)) * (ms(2)/Ø) === ms(2, 4)/ms(6, 6))
+            assert((ms(1, 2)/ms(3, 3)) * (ms(1, 2)/ms(3, 3)) === ms(1, 2, 2, 4, 9, 9, 9, 9)/ms(3, 3, 3, 3, 6, 6, 6, 6))
+            assert((Ø/ms(2, 3)) * (ms(1, 2)/Ø) === Ø/ms(2, 3, 4, 6))
+            assert((ms(-1)/ms(1, 2, 3)) * (ms(1, -1)/Ø) === Ø/ms(2, 3, -2, -3))
+        }
+        
+        test ("rational TS psi^k") {
+            assert((ms(1) / Ø psi(10)) === ms(1) / Ø)
+            assert((ms(2) / Ø psi(6)) === ms(64) / Ø)
+            assert((ms(1, -1) / Ø psi(2)) === ms(1, 1) / Ø)
+            assert((ms(1, -1) / Ø psi(2000)) === ms(1, 1) / Ø)
+            assert((ms(1, -7) / ms(7, 2, 5) psi(2)) === ms(1) / ms(4, 25))
+        }
+        
+        test ("rational TS q algebra test") {            
+            assert((ms(1)/Ø).partialQMult(Rational(Integer(2))) === Some(ms(1, 1)/Ø))
+            assert((ms(1)/Ø).partialQMult(Rational(Integer(4), Integer(2))) === Some(ms(1, 1)/Ø))
+            assert((ms(1)/Ø).partialQMult(Rational(Integer(2), Integer(2))) === Some(ms(1)/Ø))
+            assert((ms(1)/ms(2)).partialQMult(Rational(Integer(3))) === Some(ms(1, 1, 1)/ms(2, 2, 2)))
+            
+            assert((ms(1)/Ø).partialQMult(Rational(Integer(1), Integer(2))) === None)
+            assert((ms(1, 1, 1)/Ø).partialQMult(Rational(Integer(1), Integer(2))) === None)
+            assert((ms(1, 1)/Ø).partialQMult(Rational(Integer(1), Integer(3))) === None)
+            assert((ms(1, 2)/Ø).partialQMult(Rational(Integer(1), Integer(2))) === None)
+            
+            assert((ms(1)/ms(2)).partialQMult(Rational(Integer(1), Integer(2))) === None)
+            assert((ms(1)/ms(2, 2)).partialQMult(Rational(Integer(1), Integer(2))) === None)
+            assert((ms(1, 1)/ms(2, 2)).partialQMult(Rational(Integer(1), Integer(4))) === None)
+            assert((ms(1, 1, 1)/ms(2, 2, 2)).partialQMult(Rational(Integer(1), Integer(6))) === None)
+            
+            assert((ms(1, 1, 1)/Ø).partialQMult(Rational(Integer(1), Integer(3))) === Some(ms(1)/Ø))
+            assert((ms(1, 1, 1)/ms(2, 2, 2)).partialQMult(Rational(Integer(1), Integer(3))) === Some(ms(1)/ms(2)))
+            assert((ms(1, 1, 1, 1, 1, 1)/Ø).partialQMult(Rational(Integer(1), Integer(3))) === Some(ms(1, 1)/Ø))
+            assert((ms(1, 1, 1, 1)/Ø).partialQMult(Rational(Integer(1), Integer(2))) === Some(ms(1, 1)/Ø))
+            
+            assert((ms(1, 1, 1)/Ø).partialQMult(Rational(Integer(2), Integer(3))) === Some(ms(1, 1)/Ø))
+            assert((ms(1, 1, 1)/Ø).partialQMult(Rational(Integer(4), Integer(3))) === Some(ms(1, 1, 1, 1)/Ø))
+            assert((ms(1, 1, 1)/Ø).partialQMult(Rational(Integer(12), Integer(9))) === Some(ms(1, 1, 1, 1)/Ø))
+            assert((ms(1, 1, 1, 1, 1, 1)/Ø).partialQMult(Rational(Integer(2), Integer(3))) === Some(ms(1, 1, 1, 1)/Ø))
+        }
+        
+        test ("rational TS lambda operation") {
+            assert((ms(2)/ms(1)).lambda(0) === ms(1)/Ø)
+            assert((ms(2)/ms(1)).lambda(1) === ms(2)/ms(1))
+            assert((ms(2, 3)/Ø).lambda(0) === ms(1)/Ø)
+            assert((ms(2, 3)/Ø).lambda(1) === ms(2, 3)/Ø)
+            
+            assert((ms(3)/Ø).lambda(2) === Ø/Ø)
+            assert((ms(2, 3)/Ø).lambda(3) === Ø/Ø)
+            assert((ms(2, 3, 4)/Ø).lambda(4) === Ø/Ø)
+            assert((ms(2, 3, 4, 5)/Ø).lambda(5) === Ø/Ø)
+            
+            assert((ms(2, 3)/Ø).lambda(2) === ms(6)/Ø)
+            assert((ms(-1, 3, 5)/Ø).lambda(2) === ms(-3, -5, 15)/Ø)
+            assert((ms(2, 2, 3, 3)/Ø).lambda(2) === ms(4, 6, 6, 6, 6, 9)/Ø)
+            assert((ms(-1, -1, -1)/Ø).lambda(2) === ms(1, 1, 1)/Ø)
+            
+            assert((ms(-1, 3, 5)/Ø).lambda(3) === ms(-15)/Ø)
+            assert((ms(1, 2, 3)/Ø).lambda(3) === ms(6)/Ø)
+            assert((ms(2, 2, 3, 3)/Ø).lambda(3) === ms(12, 12, 18, 18)/Ø)
+            assert((ms(-1, -1, -1, -1)/Ø).lambda(3) === ms(-1, -1, -1, -1)/Ø)
+            
+            assert((ms(1, 2, 3, 4)/Ø).lambda(4) === ms(24)/Ø)
+            assert((ms(-1, 2, -2, 2)/Ø).lambda(4) === ms(8)/Ø)
+            assert((ms(1, 2, 3, 4, 5)/Ø).lambda(4) === ms(24, 30, 40, 60, 120)/Ø)
+            assert((ms(1, 2, 3, 4, -2)/Ø).lambda(4) === ms(24, -12, -16, -24, -48)/Ø)
+            
+            assert((ms(1)/ms(2)).lambda(2) === ms(4)/ms(2))
+            assert((ms(1)/ms(2)).lambda(3) === ms(4)/ms(8))
+            assert((ms(1)/ms(2)).lambda(4) === ms(16)/ms(8))
+            assert((ms(1)/ms(2)).lambda(5) === ms(16)/ms(32))
+            
+            assert((ms(1, 1)/ms(-1)).lambda(2) === ms(1, 1)/ms(-1, -1))
+            assert((ms(1, 1)/ms(-1)).lambda(3) === ms(1, 1)/ms(-1, -1))
+            assert((ms(1, 1)/ms(-1)).lambda(4) === ms(1, 1)/ms(-1, -1))
+            assert((ms(1, 1)/ms(-1)).lambda(5) === ms(1, 1)/ms(-1, -1))
+            
+            assert((ms(1, 2, 3)/ms(4, 5)).lambda(2) === ms(2, 3, 6, 16, 20, 25)/ms(4, 5, 8, 10, 12, 15))
+            assert((ms(1, 2, 3)/ms(4, 5)).lambda(3) === ms(32, 6, 75, 48, 40, 50, 20, 25, 60, 16)/ms(64, 100, 8, 80, 10, 12, 15, 24, 125, 30))
+            assert((ms(1, 2, 3)/ms(4, 5)).lambda(4) === ms(256, 320, 150, 32, 40, 48, 50, 60, 75, 96, 400, 625, 500, 120)/ms(128, 64, 24, 30, 300, 192, 160, 200, 80, 100, 240, 375, 250, 125))
+            assert((ms(1, 2, 3)/ms(4, 5)).lambda(5) === ms(256, 320, 150, 640, 768, 1200, 960, 800, 96, 1875, 1500, 400, 1250, 1000, 512, 625, 500, 120)/ms(128, 192, 384, 160, 1024, 300, 1280, 3125, 1600, 2500, 200, 2000, 600, 480, 750, 240, 375, 250))
+            
+            assert((Ø/ms(1, 2)).lambda(2) === ms(1, 2, 4)/Ø)
+            assert((Ø/ms(1, 2)).lambda(3) === Ø/ms(8, 1, 2, 4))
+            assert((Ø/ms(1, 2)).lambda(4) === ms(8, 1, 2, 4, 16)/Ø)
+            assert((Ø/ms(1, 2)).lambda(5) === Ø/ms(32, 1, 2, 4, 8, 16))
+            
+            assertThrows[AlgebraicException] {
+                (ms(1)/Ø).lambda(-1)
+            }
+        }
+        
+        test ("rational TS superdimension") {
+            assert((ms(1, 2)/Ø).superdimension === (2, 0))
+            assert((ms(1)/ms(2)).superdimension === (1, 1))
+            assert((ms(1)/ms(1)).superdimension === (0, 0))
+            assert((Ø/ms(1, 2, 4, 4)).superdimension === (0, 4))
+        }
+        
+        test ("rational TS even & odd dimension") {
+            assert((ms(1, 2)/Ø).evendimension === 2)
+            assert((ms(1)/ms(2)).evendimension === 1)
+            assert((ms(1)/ms(1)).evendimension === 0)
+            assert((Ø/ms(1, 2, 4, 4)).evendimension === 0)
+            
+            assert((ms(1, 2)/Ø).odddimension === 0)
+            assert((ms(1)/ms(2)).odddimension === 1)
+            assert((ms(1)/ms(1)).odddimension === 0)
+            assert((Ø/ms(1, 2, 4, 4)).odddimension === 4)
+        }
+        
+        test ("rational TS islineelement") {
+            assert((ms(1)/Ø).islineelement)
+            assert((ms(3)/Ø).islineelement)
+            assert((ms(1, 2)/ms(2)).islineelement)
+            assert((ms(1, 2, 2)/ms(1, 2)).islineelement)
+            
+            assert(!(Ø/Ø).islineelement)
+            assert(!(ms(2, 2)/Ø).islineelement)
+            assert(!(Ø/ms(1)).islineelement)
+            assert(!(ms(1)/ms(1)).islineelement)
+        }
+        
+        test ("rational TS augmentation") {
+            assert((ms(1, 2)/Ø).augmentation === 2)
+            assert((ms(1)/ms(2)).augmentation === 0)
+            assert((ms(1)/ms(1)).augmentation === 0)
+            assert((Ø/ms(1, 2, 4, 4)).augmentation === -4)
+        }
+    }
+    
+    {// Algebraic tests for complex tannakiansymbols
+        implicit val monoidcom : Monoid[Complex] = Complex.multiplicative
+        
+        import org.zetatypes.tannakiansymbols.DSL._
+        import org.zetatypes.algebra.structures.DSL.{intToInteger => _, intToRational => _, _}
+        
+        test ("complex TS Addition") {
+            assert(ms(1, 2) / Ø + ms(1, 2) / Ø === ms(1, 1, 2, 2) / Ø)
+            assert(ms(1, 2) / Ø + Ø / ms(1, 2) === Ø / Ø)
+            assert(ms(1) / Ø + Ø / ms(2) === ms(1) / ms(2))
+            assert(ms(1, 2, 2, 2) / ms(3, 3) + ms(3, 4, 5) / ms(2, 7) === ms(1, 2, 2, 4, 5) / ms(3, 7))
+        }
+        
+        test ("complex TS Negation") {
+            assert(- (ms(1, 2) / Ø) === Ø / ms(1, 2))
+            assert(- (ms(2, 3) / ms(5, 5)) === ms(5, 5) / ms(2, 3))
+            assert(- (Ø / ms(5, 5)) === ms(5, 5) / Ø)
+            assert(- (Ø / Ø) === Ø / Ø)
+        }
+        
+        test ("complex TS Subtraction") {
+            assert(ms(1, 2)/Ø - ms(2)/Ø === ms(1)/Ø)
+            assert(ms(1, 2)/Ø - ms(3)/Ø === ms(1, 2)/ms(3))
+            assert(ms(1, 2)/Ø - ms(1, 2)/ms(3) === ms(3)/Ø)
+            assert(Ø/Ø - ms(1)/ms(3) === ms(3)/ms(1))
+        }
+        
+        test ("complex TS Multiplication") {
+            assert((ms(1)/Ø) * (ms(1)/Ø) === ms(1)/Ø)
+            assert((ms(2)/Ø) * (ms(3)/Ø) === ms(6)/Ø)
+            assert((ms(1, 2)/Ø) * (ms(1, 2)/Ø) === ms(1, 2, 2, 4)/Ø)
+            assert((ms(1)/ms(2, 3)) * (ms(1)/Ø) === ms(1)/ms(2, 3))
+            assert((ms(1, 2)/ms(3, 3)) * (ms(2)/Ø) === ms(2, 4)/ms(6, 6))
+            assert((ms(1, 2)/ms(3, 3)) * (ms(1, 2)/ms(3, 3)) === ms(1, 2, 2, 4, 9, 9, 9, 9)/ms(3, 3, 3, 3, 6, 6, 6, 6))
+            assert((Ø/ms(2, 3)) * (ms(1, 2)/Ø) === Ø/ms(2, 3, 4, 6))
+            assert((ms(-1)/ms(1, 2, 3)) * (ms(1, -1)/Ø) === Ø/ms(2, 3, -2, -3))
+        }
+        
+        test ("complex TS psi^k") {
+            assert((ms(1) / Ø psi(10)) === ms(1) / Ø)
+            assert((ms(2) / Ø psi(6)) === ms(64) / Ø)
+            assert((ms(1, -1) / Ø psi(2)) === ms(1, 1) / Ø)
+            assert((ms(1, -1) / Ø psi(2000)) === ms(1, 1) / Ø)
+            assert((ms(1, -7) / ms(7, 2, 5) psi(2)) === ms(1) / ms(4, 25))
+        }
+        
+        test ("complex TS q algebra test") {            
+            assert((ms(1)/Ø).partialQMult(Rational(Integer(2))) === Some(ms(1, 1)/Ø))
+            assert((ms(1)/Ø).partialQMult(Rational(Integer(4), Integer(2))) === Some(ms(1, 1)/Ø))
+            assert((ms(1)/Ø).partialQMult(Rational(Integer(2), Integer(2))) === Some(ms(1)/Ø))
+            assert((ms(1)/ms(2)).partialQMult(Rational(Integer(3))) === Some(ms(1, 1, 1)/ms(2, 2, 2)))
+            
+            assert((ms(1)/Ø).partialQMult(Rational(Integer(1), Integer(2))) === None)
+            assert((ms(1, 1, 1)/Ø).partialQMult(Rational(Integer(1), Integer(2))) === None)
+            assert((ms(1, 1)/Ø).partialQMult(Rational(Integer(1), Integer(3))) === None)
+            assert((ms(1, 2)/Ø).partialQMult(Rational(Integer(1), Integer(2))) === None)
+            
+            assert((ms(1)/ms(2)).partialQMult(Rational(Integer(1), Integer(2))) === None)
+            assert((ms(1)/ms(2, 2)).partialQMult(Rational(Integer(1), Integer(2))) === None)
+            assert((ms(1, 1)/ms(2, 2)).partialQMult(Rational(Integer(1), Integer(4))) === None)
+            assert((ms(1, 1, 1)/ms(2, 2, 2)).partialQMult(Rational(Integer(1), Integer(6))) === None)
+            
+            assert((ms(1, 1, 1)/Ø).partialQMult(Rational(Integer(1), Integer(3))) === Some(ms(1)/Ø))
+            assert((ms(1, 1, 1)/ms(2, 2, 2)).partialQMult(Rational(Integer(1), Integer(3))) === Some(ms(1)/ms(2)))
+            assert((ms(1, 1, 1, 1, 1, 1)/Ø).partialQMult(Rational(Integer(1), Integer(3))) === Some(ms(1, 1)/Ø))
+            assert((ms(1, 1, 1, 1)/Ø).partialQMult(Rational(Integer(1), Integer(2))) === Some(ms(1, 1)/Ø))
+            
+            assert((ms(1, 1, 1)/Ø).partialQMult(Rational(Integer(2), Integer(3))) === Some(ms(1, 1)/Ø))
+            assert((ms(1, 1, 1)/Ø).partialQMult(Rational(Integer(4), Integer(3))) === Some(ms(1, 1, 1, 1)/Ø))
+            assert((ms(1, 1, 1)/Ø).partialQMult(Rational(Integer(12), Integer(9))) === Some(ms(1, 1, 1, 1)/Ø))
+            assert((ms(1, 1, 1, 1, 1, 1)/Ø).partialQMult(Rational(Integer(2), Integer(3))) === Some(ms(1, 1, 1, 1)/Ø))
+        }
+        
+        test ("complex TS lambda operation") {
+            assert((ms(2)/ms(1)).lambda(0) === ms(1)/Ø)
+            assert((ms(2)/ms(1)).lambda(1) === ms(2)/ms(1))
+            assert((ms(2, 3)/Ø).lambda(0) === ms(1)/Ø)
+            assert((ms(2, 3)/Ø).lambda(1) === ms(2, 3)/Ø)
+            
+            assert((ms(3)/Ø).lambda(2) === Ø/Ø)
+            assert((ms(2, 3)/Ø).lambda(3) === Ø/Ø)
+            assert((ms(2, 3, 4)/Ø).lambda(4) === Ø/Ø)
+            assert((ms(2, 3, 4, 5)/Ø).lambda(5) === Ø/Ø)
+            
+            assert((ms(2, 3)/Ø).lambda(2) === ms(6)/Ø)
+            assert((ms(-1, 3, 5)/Ø).lambda(2) === ms(-3, -5, 15)/Ø)
+            assert((ms(2, 2, 3, 3)/Ø).lambda(2) === ms(4, 6, 6, 6, 6, 9)/Ø)
+            assert((ms(-1, -1, -1)/Ø).lambda(2) === ms(1, 1, 1)/Ø)
+            
+            assert((ms(-1, 3, 5)/Ø).lambda(3) === ms(-15)/Ø)
+            assert((ms(1, 2, 3)/Ø).lambda(3) === ms(6)/Ø)
+            assert((ms(2, 2, 3, 3)/Ø).lambda(3) === ms(12, 12, 18, 18)/Ø)
+            assert((ms(-1, -1, -1, -1)/Ø).lambda(3) === ms(-1, -1, -1, -1)/Ø)
+            
+            assert((ms(1, 2, 3, 4)/Ø).lambda(4) === ms(24)/Ø)
+            assert((ms(-1, 2, -2, 2)/Ø).lambda(4) === ms(8)/Ø)
+            assert((ms(1, 2, 3, 4, 5)/Ø).lambda(4) === ms(24, 30, 40, 60, 120)/Ø)
+            assert((ms(1, 2, 3, 4, -2)/Ø).lambda(4) === ms(24, -12, -16, -24, -48)/Ø)
+            
+            assert((ms(1)/ms(2)).lambda(2) === ms(4)/ms(2))
+            assert((ms(1)/ms(2)).lambda(3) === ms(4)/ms(8))
+            assert((ms(1)/ms(2)).lambda(4) === ms(16)/ms(8))
+            assert((ms(1)/ms(2)).lambda(5) === ms(16)/ms(32))
+            
+            assert((ms(1, 1)/ms(-1)).lambda(2) === ms(1, 1)/ms(-1, -1))
+            assert((ms(1, 1)/ms(-1)).lambda(3) === ms(1, 1)/ms(-1, -1))
+            assert((ms(1, 1)/ms(-1)).lambda(4) === ms(1, 1)/ms(-1, -1))
+            assert((ms(1, 1)/ms(-1)).lambda(5) === ms(1, 1)/ms(-1, -1))
+            
+            assert((ms(1, 2, 3)/ms(4, 5)).lambda(2) === ms(2, 3, 6, 16, 20, 25)/ms(4, 5, 8, 10, 12, 15))
+            assert((ms(1, 2, 3)/ms(4, 5)).lambda(3) === ms(32, 6, 75, 48, 40, 50, 20, 25, 60, 16)/ms(64, 100, 8, 80, 10, 12, 15, 24, 125, 30))
+            assert((ms(1, 2, 3)/ms(4, 5)).lambda(4) === ms(256, 320, 150, 32, 40, 48, 50, 60, 75, 96, 400, 625, 500, 120)/ms(128, 64, 24, 30, 300, 192, 160, 200, 80, 100, 240, 375, 250, 125))
+            assert((ms(1, 2, 3)/ms(4, 5)).lambda(5) === ms(256, 320, 150, 640, 768, 1200, 960, 800, 96, 1875, 1500, 400, 1250, 1000, 512, 625, 500, 120)/ms(128, 192, 384, 160, 1024, 300, 1280, 3125, 1600, 2500, 200, 2000, 600, 480, 750, 240, 375, 250))
+            
+            assert((Ø/ms(1, 2)).lambda(2) === ms(1, 2, 4)/Ø)
+            assert((Ø/ms(1, 2)).lambda(3) === Ø/ms(8, 1, 2, 4))
+            assert((Ø/ms(1, 2)).lambda(4) === ms(8, 1, 2, 4, 16)/Ø)
+            assert((Ø/ms(1, 2)).lambda(5) === Ø/ms(32, 1, 2, 4, 8, 16))
+            
+            assertThrows[AlgebraicException] {
+                (ms(1)/Ø).lambda(-1)
+            }
+        }
+        
+        test ("complex TS superdimension") {
+            assert((ms(1, 2)/Ø).superdimension === (2, 0))
+            assert((ms(1)/ms(2)).superdimension === (1, 1))
+            assert((ms(1)/ms(1)).superdimension === (0, 0))
+            assert((Ø/ms(1, 2, 4, 4)).superdimension === (0, 4))
+        }
+        
+        test ("complex TS even & odd dimension") {
+            assert((ms(1, 2)/Ø).evendimension === 2)
+            assert((ms(1)/ms(2)).evendimension === 1)
+            assert((ms(1)/ms(1)).evendimension === 0)
+            assert((Ø/ms(1, 2, 4, 4)).evendimension === 0)
+            
+            assert((ms(1, 2)/Ø).odddimension === 0)
+            assert((ms(1)/ms(2)).odddimension === 1)
+            assert((ms(1)/ms(1)).odddimension === 0)
+            assert((Ø/ms(1, 2, 4, 4)).odddimension === 4)
+        }
+        
+        test ("complex TS islineelement") {
+            assert((ms(1)/Ø).islineelement)
+            assert((ms(3)/Ø).islineelement)
+            assert((ms(1, 2)/ms(2)).islineelement)
+            assert((ms(1, 2, 2)/ms(1, 2)).islineelement)
+            
+            assert(!(Ø/Ø).islineelement)
+            assert(!(ms(2, 2)/Ø).islineelement)
+            assert(!(Ø/ms(1)).islineelement)
+            assert(!(ms(1)/ms(1)).islineelement)
+        }
+        
+        test ("complex TS augmentation") {
             assert((ms(1, 2)/Ø).augmentation === 2)
             assert((ms(1)/ms(2)).augmentation === 0)
             assert((ms(1)/ms(1)).augmentation === 0)
