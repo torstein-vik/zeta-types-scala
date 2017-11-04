@@ -27,5 +27,11 @@ package object DSL {
             override def hasInternalCache : Boolean = old.hasInternalCache && next.hasInternalCache
             override def length : Option[Int] = for {l1 <- old.length; l2 <- next.length} yield l1 + l2
         }
+        
+        def upTo (limit : Int) : SequenceFactory[T] = new SequenceFactory[T]{
+            def apply (seq : Sequence[T])(index : Int) : T = old.apply(seq)(limit)
+            override def hasInternalCache : Boolean = old.hasInternalCache
+            override def length : Option[Int] = Some(limit)
+        }
     }
 }
