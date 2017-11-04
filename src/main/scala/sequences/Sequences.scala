@@ -9,6 +9,7 @@ trait Sequence[E] {
     def length : Option[Int]
     
     def createSeq (start : Int, stop : Int) : Seq[E] = (start to stop).map(apply) 
+    def asSeq : Option[Seq[E]] = for {limit <- length} yield createSeq(0, limit - 1)
 }
 
 class CachedSequence[E] (private val factory : SequenceFactory[E]) extends Sequence[E] {
