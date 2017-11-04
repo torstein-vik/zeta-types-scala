@@ -13,7 +13,7 @@ class ComplexNumber[T <: RingElement[T]] (val ring : Ring[T])(val real : T, val 
     
     override def +(that : ComplexNumber[T]) = null
     
-    override def *(that : ComplexNumber[T]) = null
+    override def *(that : ComplexNumber[T]) = new ComplexNumber(ring)(real * that.real - imaginary * that.imaginary, real * that.imaginary + imaginary * that.real)
     
     override def negation() = new ComplexNumber(ring)(-real,-imaginary)
     
