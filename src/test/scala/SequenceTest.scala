@@ -57,6 +57,10 @@ class SequenceFactoryTest extends FunSuite {
                 assert(seq(1000000) === a)
             }
         }
+        
+        test ("ShortSequence factory") {
+            
+        }
     }
     
     }
