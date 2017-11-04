@@ -396,4 +396,11 @@ class ComplexTest extends FunSuite {
         assert(Complex.one  === Complex(Rational(1)))
     }
     
+    test ("additive inverse test") {
+        assert(Complex.additive.invert(Complex(a, b)) === Complex(-a, -b))
+        assert(Complex.additive.invert(Complex(b, c)) === Complex(-b, -c))
+        assert(Complex.additive.invert(Complex(c, d)) === Complex(-c, -d))
+        assert(Complex.additive.invert(Complex(d, a)) === Complex(-d, -a))
+    }
+    
 }
