@@ -1,6 +1,6 @@
 import org.scalatest.FunSuite
 
-import org.zetatypes.algebra.structures.DSL.{Rational}
+import org.zetatypes.algebra.structures.DSL.{Rational, Complex}
 
 class TannakianSymbolTest extends FunSuite{
     import org.zetatypes.tannakiansymbols._

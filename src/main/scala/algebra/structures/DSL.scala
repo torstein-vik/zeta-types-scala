@@ -6,6 +6,7 @@ import org.zetatypes.algebra._
 
 package object DSL {
     type Rational = Fraction[Integer]
+    type Complex  = ComplexNumber[Rational]
 
     implicit def intToInteger  (x : Int) : Integer  = Integer(x)
     implicit def intToRational (x : Int) : Rational = Rational(x)
