@@ -30,7 +30,11 @@ class Fraction[T <: RingElement[T]] (val numerator : T, val denominator : T)(imp
 
     
     override def toString : String = {
-        return numerator + "/" + denominator
+        if (denominator == ring.one){
+            return numerator.toString
+        } else {
+            return numerator + "/" + denominator
+        }
     } 
 }
 

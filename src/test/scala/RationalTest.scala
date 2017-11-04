@@ -20,6 +20,11 @@ class RationalTest extends FunSuite {
         assert(Rational(b, c).toString === b.toString + "/" + c.toString)
         assert(Rational(c, d).toString === c.toString + "/" + d.toString)
         assert(Rational(d, a).toString === d.toString + "/" + a.toString)
+        
+        assert(Rational(a).toString === a.toString)
+        assert(Rational(b).toString === b.toString)
+        assert(Rational(c).toString === c.toString)
+        assert(Rational(d).toString === d.toString)
     }
     
     test ("equality test") {
