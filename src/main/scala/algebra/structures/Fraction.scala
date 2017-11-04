@@ -34,7 +34,10 @@ class Fraction[T <: RingElement[T]] (val ring : Ring[T])(val numerator : T, val 
     } 
 }
 
-object Rationals extends Fractions[Integer] (Integers)
+object Rationals extends Fractions[Integer] (Integers) {    
+    override val zero = Rational(Integers.zero, Integers.one)
+    override val one  = Rational(Integers.one,  Integers.one)
+}
 
 case class Rational (override val numerator : Integer, override val denominator : Integer = Integers.one) extends 
     Fraction[Integer] (Integers)(numerator, denominator)
