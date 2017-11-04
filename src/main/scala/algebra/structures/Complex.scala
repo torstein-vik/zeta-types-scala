@@ -26,16 +26,11 @@ class ComplexNumber[T <: RingElement[T]] (val real : T, val imaginary : T)(impli
         case _ => false
     }
     
-    override def toString : String = {
-        if (imaginary == ring.zero) {
-            return real.toString
-        } else if (real == ring.zero && imaginary == ring.one) {
-            return "i"
-        } else if (real == ring.zero) {
-            return imaginary.toString + " i"
-        } else {
-            return real.toString + " + " + imaginary.toString + " i"
-        }
+    override def toString : String = (real, imaginary) match {
+        case (ring.zero, ring.one) => "i"
+        case (x, ring.zero) => x.toString
+        case (ring.zero, y) => y.toString + " i"
+        case (x, y) => x + " + " + y + " i"
     }
 }
 
