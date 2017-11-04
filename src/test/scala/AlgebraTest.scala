@@ -443,4 +443,11 @@ class ComplexTest extends FunSuite {
         assert(Complex(b, c) * Complex(d, a) === Complex(b * d - c * a, b * a + c * d))
     }
     
+    test ("notation negation test") {
+        assert(-Complex(a, b) === Complex(-a, -b))
+        assert(-Complex(b, c) === Complex(-b, -c))
+        assert(-Complex(c, d) === Complex(-c, -d))
+        assert(-Complex(d, a) === Complex(-d, -a))
+    }
+    
 }
