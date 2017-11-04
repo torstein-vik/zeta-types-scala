@@ -386,5 +386,10 @@ class ComplexTest extends FunSuite {
         assert(Complex(Fraction(10,2), Fraction(15,3)) === Complex(Fraction(5), Fraction(5)))
     }
     
+    test ("identities test") {
+        assert(Complex.additive.identity === Complex(0))
+        assert(Complex.multiplicative.identity === Complex(1))
+    }
+    
     
 }
