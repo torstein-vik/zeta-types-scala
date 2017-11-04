@@ -12,4 +12,8 @@ package object DSL {
     implicit def toComplex(q : ComplexNumber[Fraction[Integer]]) : Complex = Complex(q.real, q.imaginary)
         
     implicit def multiplicativeMonoid[E <: RingElement[E]] (ring : Ring[E]) : Monoid[E] = ring.multiplicative
+    
+    implicit class RationalWithToImaginary[T](x : T)(implicit conv: T => Rational) {
+        def i : Complex = Complex(Rationals.zero, conv(x))
+    }
 }
