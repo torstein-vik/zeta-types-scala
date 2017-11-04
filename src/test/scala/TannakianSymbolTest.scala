@@ -96,7 +96,7 @@ class TannakianSymbolTest extends FunSuite{
     
     {// Using ms(...) / ms(...) notation
         import org.zetatypes.tannakiansymbols.DSL._
-        import org.zetatypes.algebra.structures.DSL._
+        import org.zetatypes.algebra.structures.DSL.{intToRational => _, _}
         val X = new TannakianSymbol(Seq((Integer(1), 1 : BigInt), (Integer(2), -1 : BigInt), (Integer(3), 1 : BigInt)))
         val Y = new TannakianSymbol(Seq((Integer(10), 5 : BigInt), (Integer(11), -4 : BigInt), (Integer(2), -1 : BigInt)))
         val Z = new TannakianSymbol(Seq((Integer(2), 2 : BigInt), (Integer(3), -8 : BigInt), (Integer(4), 4 : BigInt)))
@@ -118,7 +118,7 @@ class TannakianSymbolTest extends FunSuite{
     
     {// Addition & Multication test
         import org.zetatypes.tannakiansymbols.DSL._
-        import org.zetatypes.algebra.structures.DSL._
+        import org.zetatypes.algebra.structures.DSL.{intToRational => _, _}
         
         test ("TS Addition") {
             assert(ms(1, 2) / Ø + ms(1, 2) / Ø === ms(1, 1, 2, 2) / Ø)

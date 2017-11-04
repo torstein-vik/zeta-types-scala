@@ -76,7 +76,7 @@ class IntegerTest extends FunSuite {
     
     test ("implicit integer test") {
         import scala.language.implicitConversions
-        import org.zetatypes.algebra.structures.DSL._
+        import org.zetatypes.algebra.structures.DSL.{intToRational => _, _}
         
         assert(a.negation == -Integer(a))
         assert(b.negation == -Integer(b))
