@@ -314,7 +314,7 @@ class RationalTest extends FunSuite {
     }
     
     
-    test ("Integer module multiplication") {
+    test ("Rational module multiplication") {
         assert((Rational(a, b) ++ 1) === Rational(a, b))
         assert((Rational(b, c) ++ 1) === Rational(b, c))
         assert((Rational(c, d) ++ 1) === Rational(c, d))
