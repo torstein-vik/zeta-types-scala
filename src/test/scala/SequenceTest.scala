@@ -62,6 +62,22 @@ class SequenceFactoryTest extends FunSuite {
             assert(seq(7) === 7)
             assert(seq(0) === 0)
         }
+        
+        test ("CachedSequence flush test") {
+            var x = 0
+            val seq = new CachedSequence((i : Int) => {x += 1; x})
+            
+            (0 to 50) foreach {i => 
+                assert(seq(1) == 1)
+            }
+            
+            seq.flush
+            
+            (0 to 50) foreach {i => 
+                assert(seq(1) == 2)
+            }
+            
+        }
     }
     
     {// Factory tests
