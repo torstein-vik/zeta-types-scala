@@ -46,6 +46,17 @@ class SequenceFactoryTest extends FunSuite {
     }
     
     {// Factory tests
+        test ("ConstantSequence factory") {
+            Seq[Any](12, .1, "test", Map()) foreach{a => 
+                val seq = new CachedSequence(new ConstantSequence(a))
+                
+                (0 to 100) foreach {i => 
+                    assert(seq(i) === a)
+                }
+                
+                assert(seq(1000000) === a)
+            }
+        }
     }
     
     }
