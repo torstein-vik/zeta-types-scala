@@ -403,4 +403,14 @@ class ComplexTest extends FunSuite {
         assert(Complex.additive.invert(Complex(d, a)) === Complex(-d, -a))
     }
     
+    test ("addition test") {
+        assert(Complex.additive.combine(Complex(a), Complex(b)) === Complex(a + b))
+        assert(Complex.additive.combine(Complex(b), Complex(c)) === Complex(b + c))
+        assert(Complex.additive.combine(Complex(c), Complex(d)) === Complex(c + d))
+        assert(Complex.additive.combine(Complex(d), Complex(a)) === Complex(d + a))
+        
+        assert(Complex.additive.combine(Complex(a, b), Complex(c, d)) === Complex(a + c, b + d))
+        assert(Complex.additive.combine(Complex(b, c), Complex(d, a)) === Complex(b + d, c + a))
+    }
+    
 }
