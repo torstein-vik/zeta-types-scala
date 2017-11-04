@@ -92,5 +92,18 @@ class SequenceFactoryTest extends FunSuite {
             assert(seq(6) === 13)
         }
         
+        test ("Sequence DSL test - 1 1 1 2 2 2") {
+            
+            val seq = new CachedSequence(1 upTo 2 followedBy 3)
+            
+            assert(seq(0) === 1)
+            assert(seq(1) === 1)
+            assert(seq(2) === 1)
+            assert(seq(3) === 3)
+            assert(seq(4) === 3)
+            assert(seq(5) === 3)
+            assert(seq(6) === 3)
+        }
+        
     }
 }
