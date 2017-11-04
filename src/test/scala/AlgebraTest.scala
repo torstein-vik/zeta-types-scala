@@ -365,35 +365,35 @@ class ComplexTest extends FunSuite {
         assert(Complex(c, d) === Complex(c, d))
         assert(Complex(c, d) === Complex(c, d))
         
-        assert(Complex(a, b) !== Complex(a + 1, b))
-        assert(Complex(a, b) !== Complex(a - 1, b))
-        assert(Complex(a, b) !== Complex(a + 3, b))
-        assert(Complex(a, b) !== Complex(a - 3, b))
+        assert(Complex(a, b) !== Complex(a + Rational(1), b))
+        assert(Complex(a, b) !== Complex(a - Rational(1), b))
+        assert(Complex(a, b) !== Complex(a + Rational(3), b))
+        assert(Complex(a, b) !== Complex(a - Rational(3), b))
         
-        assert(Complex(a, b) !== Complex(a, b + 1))
-        assert(Complex(a, b) !== Complex(a, b - 1))
-        assert(Complex(a, b) !== Complex(a, b + 3))
-        assert(Complex(a, b) !== Complex(a, b - 3))
+        assert(Complex(a, b) !== Complex(a, b + Rational(1)))
+        assert(Complex(a, b) !== Complex(a, b - Rational(1)))
+        assert(Complex(a, b) !== Complex(a, b + Rational(3)))
+        assert(Complex(a, b) !== Complex(a, b - Rational(3)))
         
         assert(Complex(a) === Complex(a, Rationals.zero))
         assert(Complex(a) === Complex(a, Rationals.zero))
         assert(Complex(a) === Complex(a, Rationals.zero))
         assert(Complex(a) === Complex(a, Rationals.zero))
         
-        assert(Complex(Fraction(2,2), Fraction(3,3)) === Complex(Fraction(1), Fraction(1)))
-        assert(Complex(Fraction(4,2), Fraction(3,6)) === Complex(Fraction(2), Fraction(1, 2)))
-        assert(Complex(Fraction(2,12), Fraction(9,3)) === Complex(Fraction(1, 6), Fraction(3)))
-        assert(Complex(Fraction(10,2), Fraction(15,3)) === Complex(Fraction(5), Fraction(5)))
+        assert(Complex(Rational(2,2), Rational(3,3)) === Complex(Rational(1), Rational(1)))
+        assert(Complex(Rational(4,2), Rational(3,6)) === Complex(Rational(2), Rational(1, 2)))
+        assert(Complex(Rational(2,12), Rational(9,3)) === Complex(Rational(1, 6), Rational(3)))
+        assert(Complex(Rational(10,2), Rational(15,3)) === Complex(Rational(5), Rational(5)))
     }
     
     test ("identities test") {
-        assert(Complex.additive.identity === Complex(0))
-        assert(Complex.multiplicative.identity === Complex(1))
+        assert(Complex.additive.identity === Complex(Rational(0)))
+        assert(Complex.multiplicative.identity === Complex(Rational(1)))
     }
     
     test ("zero and one test") {
-        assert(Complex.zero === Complex(0))
-        assert(Complex.one  === Complex(1))
+        assert(Complex.zero === Complex(Rational(0)))
+        assert(Complex.one  === Complex(Rational(1)))
     }
     
 }
