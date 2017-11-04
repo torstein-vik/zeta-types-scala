@@ -33,5 +33,13 @@ package object DSL {
             override def hasInternalCache : Boolean = old.hasInternalCache
             override def length : Option[Int] = Some(limit)
         }
+        
+        def repeat : SequenceFactory[T] = new SequenceFactory[T]{
+            def apply (seq : Sequence[T])(index : Int) : T = length match {
+                case None => old.apply(seq)(index)
+                case Some(limit) => old.apply(seq)(index % limit)
+            }
+            override def hasInternalCache : Boolean = old.hasInternalCache
+        } 
     }
 }
