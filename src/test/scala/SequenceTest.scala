@@ -28,5 +28,22 @@ class SequenceFactoryTest extends FunSuite {
             }
         }
         
+        test ("CachedSequence does not cache when factory has internal cache") {
+            var x = 0;
+            val seq = new CachedSequence(new SequenceFactory[Int]{
+                def apply(seq : Sequence[Int])(i : Int) = {x += 1; x}
+                override def hasInternalCache = true
+            })
+            
+            (1 to 50) foreach {i => 
+                assert(seq(1) == i)
+            }
+            
+            (1 to 50) foreach {i => 
+                assert(seq(1) == i + 50)
+            }
+        }
+    }
+    
     }
 }
