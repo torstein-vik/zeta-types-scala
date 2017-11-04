@@ -9,5 +9,6 @@ case class ComplexNumbers[T <: RingElement[T]] (ring : Ring[T]) extends
 
 class ComplexNumber[T <: RingElement[T]] (val ring : Ring[T])(val real : T, val imaginary : T = ring.zero) extends RingElement[ComplexNumber[T]]{
     
+    override lazy val canonicalRing = ComplexNumbers(ring)
     
 }
