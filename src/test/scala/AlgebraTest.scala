@@ -359,5 +359,32 @@ class ComplexTest extends FunSuite {
         assert(Complex(d, a).toString === d.toString + " + " + a.toString + " i")
     }
     
+    test ("equality test") {
+        assert(Complex(a, b) === Complex(a, b))
+        assert(Complex(b, c) === Complex(b, c))
+        assert(Complex(c, d) === Complex(c, d))
+        assert(Complex(c, d) === Complex(c, d))
+        
+        assert(Complex(a, b) !== Complex(a + 1, b))
+        assert(Complex(a, b) !== Complex(a - 1, b))
+        assert(Complex(a, b) !== Complex(a + 3, b))
+        assert(Complex(a, b) !== Complex(a - 3, b))
+        
+        assert(Complex(a, b) !== Complex(a, b + 1))
+        assert(Complex(a, b) !== Complex(a, b - 1))
+        assert(Complex(a, b) !== Complex(a, b + 3))
+        assert(Complex(a, b) !== Complex(a, b - 3))
+        
+        assert(Complex(a) === Complex(a, Rationals.zero))
+        assert(Complex(a) === Complex(a, Rationals.zero))
+        assert(Complex(a) === Complex(a, Rationals.zero))
+        assert(Complex(a) === Complex(a, Rationals.zero))
+        
+        assert(Complex(Fraction(2,2), Fraction(3,3)) === Complex(Fraction(1), Fraction(1)))
+        assert(Complex(Fraction(4,2), Fraction(3,6)) === Complex(Fraction(2), Fraction(1, 2)))
+        assert(Complex(Fraction(2,12), Fraction(9,3)) === Complex(Fraction(1, 6), Fraction(3)))
+        assert(Complex(Fraction(10,2), Fraction(15,3)) === Complex(Fraction(5), Fraction(5)))
+    }
+    
     
 }
