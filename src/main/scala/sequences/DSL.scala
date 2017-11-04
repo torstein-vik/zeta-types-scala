@@ -31,7 +31,7 @@ package object DSL {
         def upTo (limit : Int) : SequenceFactory[T] = new SequenceFactory[T]{
             def apply (seq : Sequence[T])(index : Int) : T = old.apply(seq)(index)
             override def hasInternalCache : Boolean = old.hasInternalCache
-            override def length : Option[Int] = Some(limit)
+            override def length : Option[Int] = Some(limit + 1)
         }
         
         def repeat : SequenceFactory[T] = new SequenceFactory[T]{
