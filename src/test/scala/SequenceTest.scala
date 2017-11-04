@@ -63,5 +63,20 @@ class SequenceFactoryTest extends FunSuite {
         }
     }
     
+    {// Various user-defined sequences
+        import org.zetatypes.sequences.DSL._
+        
+        test ("Sequence DSL test - Fibonacci sequence") {
+            
+            val seq = new CachedSequence(Seq(1, 1) followedBy ((seq : Sequence[Int]) => (i : Int) => seq(i - 1) + seq(i - 2)))
+            
+            assert(seq(0) === 1)
+            assert(seq(1) === 1)
+            assert(seq(2) === 2)
+            assert(seq(3) === 3)
+            assert(seq(4) === 5)
+            assert(seq(5) === 8)
+            assert(seq(6) === 13)
+        }
     }
 }
