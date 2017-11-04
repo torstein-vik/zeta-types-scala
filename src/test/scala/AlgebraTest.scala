@@ -498,4 +498,11 @@ class ComplexTest extends FunSuite {
             Complex(1, 2) ++ (-1)
         }
     }
+    
+    test ("Complex DSL") {
+        assert(1 * I === Complex(0, 1))
+        assert(1 + 1 * I === Complex(1, 1))
+        assert(1 + 3 * I === Complex(1, 3))
+        assert(Rational(2, 3) - 3 * I === Complex(Rational(2, 3), -3))
+    }
 }
