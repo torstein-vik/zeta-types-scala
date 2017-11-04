@@ -7,10 +7,10 @@ class TannakianSymbolTest extends FunSuite{
     import org.zetatypes.algebra.structures._
     import org.zetatypes.algebra._
     
-    implicit val monoid : Monoid[Integer] = Integers.multiplicative
     
     {// Most basic tests
-    
+        implicit val monoid : Monoid[Integer] = Integers.multiplicative
+        
         val X     = new TannakianSymbol(Seq((Integer(1), 1 : BigInt), (Integer(2), -1 : BigInt)))
         val Xcopy = new TannakianSymbol(Seq((Integer(1), 1 : BigInt), (Integer(2), -1 : BigInt)))
         val Y     = new TannakianSymbol(Seq((Integer(3), 2 : BigInt), (Integer(2), 1 : BigInt)))
@@ -40,6 +40,7 @@ class TannakianSymbolTest extends FunSuite{
     }
     
     {// Cancellation tests
+        implicit val monoid : Monoid[Integer] = Integers.multiplicative
         
         val X     = new TannakianSymbol(Seq((Integer(1), 1 : BigInt), (Integer(1), -1 : BigInt), (Integer(2), 1 : BigInt)))
         val Xsimp = new TannakianSymbol(Seq((Integer(2), 1 : BigInt)))
@@ -74,6 +75,8 @@ class TannakianSymbolTest extends FunSuite{
     }
     
     {// Upstairs & Downstairs
+        implicit val monoid : Monoid[Integer] = Integers.multiplicative
+        
         import org.zetatypes.tannakiansymbols.DSL._
         import org.zetatypes.algebra.structures.DSL._
         val X = new TannakianSymbol(Seq((Integer(1), 1 : BigInt), (Integer(1), -1 : BigInt), (Integer(2), 1 : BigInt)))
@@ -101,6 +104,8 @@ class TannakianSymbolTest extends FunSuite{
     }
     
     {// Using ms(...) / ms(...) notation
+        implicit val monoid : Monoid[Integer] = Integers.multiplicative
+    
         import org.zetatypes.tannakiansymbols.DSL._
         import org.zetatypes.algebra.structures.DSL.{intToRational => _, intToComplex => _, _}
         val X = new TannakianSymbol(Seq((Integer(1), 1 : BigInt), (Integer(2), -1 : BigInt), (Integer(3), 1 : BigInt)))
@@ -119,6 +124,8 @@ class TannakianSymbolTest extends FunSuite{
     }
     
     {// Addition & Multication test
+        implicit val monoid : Monoid[Integer] = Integers.multiplicative
+        
         import org.zetatypes.tannakiansymbols.DSL._
         import org.zetatypes.algebra.structures.DSL.{intToRational => _, intToComplex => _, _}
         
