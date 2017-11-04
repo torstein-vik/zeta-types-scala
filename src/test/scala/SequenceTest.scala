@@ -20,7 +20,7 @@ class SequenceFactoryTest extends FunSuite {
         }
         
         test ("CachedSequence caches") {
-            var x = 0;
+            var x = 0
             val seq = new CachedSequence((i : Int) => {x += 1; x})
             
             (0 to 50) foreach {i => 
@@ -29,7 +29,7 @@ class SequenceFactoryTest extends FunSuite {
         }
         
         test ("CachedSequence does not cache when factory has internal cache") {
-            var x = 0;
+            var x = 0
             val seq = new CachedSequence(new SequenceFactory[Int]{
                 def apply(seq : Sequence[Int])(i : Int) = {x += 1; x}
                 override def hasInternalCache = true
