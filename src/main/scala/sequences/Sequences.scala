@@ -8,7 +8,7 @@ trait Sequence[E] {
     def apply (index : Int) : E 
     def length : Option[Int]
     
-    def createSeq (length : Int) : Seq[E] = (0 to length).map(apply) 
+    def createSeq (start : Int, stop : Int) : Seq[E] = (start to stop).map(apply) 
 }
 
 class CachedSequence[E] (private val factory : SequenceFactory[E]) extends Sequence[E] {
