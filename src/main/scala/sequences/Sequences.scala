@@ -10,4 +10,6 @@ trait Sequence[E] {
     
     def createSeq (length : Int) : Seq[E] = (0 to length).map(apply) 
 }
+
+class CachedSequence[E] (private val factory : SequenceFactory[E]) extends Sequence[E] {
 }
