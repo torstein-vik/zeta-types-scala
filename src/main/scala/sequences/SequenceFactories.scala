@@ -6,11 +6,11 @@ trait SequenceFactory[E] {
     def length : Option[Int] = None
 }
 
-class ShortSequence[E] (seq : E*) extends SequenceFactory[E] {
-    def apply (seq : Sequence[E])(index : Int) = seq(index)
+class ShortSequence[E] (data : E*) extends SequenceFactory[E] {
+    def apply (seq : Sequence[E])(index : Int) = data(index)
     override def hasInternalCache = true
     
-    override def length = Some(seq.length)
+    override def length = Some(data.length)
 }
 
 class ConstantSequence[E] (value : E) extends SequenceFactory[E] {
