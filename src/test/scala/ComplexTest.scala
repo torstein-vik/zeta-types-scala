@@ -3,8 +3,9 @@ import org.scalatest.FunSuite
 import org.zetatypes.algebra._
 import org.zetatypes.algebra.structures._
 
+import org.zetatypes.algebra.structures.DSL._
+    
 class ComplexTest extends FunSuite {
-    import org.zetatypes.algebra.structures.DSL._
     
     val (a, b, c, d) = (Rational(2), Rational(-3, 2), Rational(7, 5), Rational(4, 3))
     
