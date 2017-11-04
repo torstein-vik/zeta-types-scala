@@ -29,7 +29,7 @@ class ComplexNumber[T <: RingElement[T]] (val real : T, val imaginary : T)(impli
     override def toString : String = real.toString + " + " + imaginary.toString + " i"
 }
 
-object Complex extends ComplexNumbers (Rationals)
-
-case class Complex (override val real : Rational, override val imaginary : Rational = Rationals.zero) extends 
-    ComplexNumber[Fraction[Integer]] (real, imaginary)(Rationals)
+object Complex extends ComplexNumbers (Rationals) {
+    def apply(real : Rational, imaginary : Rational = Rationals.zero) = new ComplexNumber(real, imaginary)(Rationals)
+    def unapply(z : ComplexNumber[Rational]) : Option[(Rational, Rational)] = Some(z.real, z.imaginary)
+}
