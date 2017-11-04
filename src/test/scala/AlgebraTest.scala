@@ -352,5 +352,12 @@ class ComplexTest extends FunSuite {
         assertCompiles("9 i")
     }
     
+    test ("Complex number toString") {
+        assert(Complex(a, b).toString === a.toString + " + " + b.toString + " i")
+        assert(Complex(b, c).toString === b.toString + " + " + c.toString + " i")
+        assert(Complex(c, d).toString === c.toString + " + " + d.toString + " i")
+        assert(Complex(d, a).toString === d.toString + " + " + a.toString + " i")
+    }
+    
     
 }
