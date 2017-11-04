@@ -78,5 +78,19 @@ class SequenceFactoryTest extends FunSuite {
             assert(seq(5) === 8)
             assert(seq(6) === 13)
         }
+        
+        test ("Sequence DSL test - Fibonacci sequence 2") {
+            
+            val seq = new CachedSequence(1 upTo 1 followedBy ((seq : Sequence[Int]) => (i : Int) => seq(i - 1) + seq(i - 2)))
+            
+            assert(seq(0) === 1)
+            assert(seq(1) === 1)
+            assert(seq(2) === 2)
+            assert(seq(3) === 3)
+            assert(seq(4) === 5)
+            assert(seq(5) === 8)
+            assert(seq(6) === 13)
+        }
+        
     }
 }
