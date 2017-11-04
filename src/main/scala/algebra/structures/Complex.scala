@@ -29,6 +29,7 @@ class ComplexNumber[T <: RingElement[T]] (val real : T, val imaginary : T)(impli
     override def toString : String = (real, imaginary) match {
         case (ring.zero, ring.one) => "i"
         case (x, ring.zero) => x.toString
+        case (x, ring.one)  => x.toString + " + i"
         case (ring.zero, y) => y.toString + " i"
         case (x, y) => x + " + " + y + " i"
     }
