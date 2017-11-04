@@ -14,6 +14,18 @@ class ComplexTest extends FunSuite {
         assert(Complex(b, c).toString === b.toString + " + " + c.toString + " i")
         assert(Complex(c, d).toString === c.toString + " + " + d.toString + " i")
         assert(Complex(d, a).toString === d.toString + " + " + a.toString + " i")
+        
+        assert(Complex(a).toString === a.toString)
+        assert(Complex(b).toString === b.toString)
+        assert(Complex(c).toString === c.toString)
+        assert(Complex(d).toString === d.toString)
+        
+        assert(Complex(0, a).toString === a.toString + " i")
+        assert(Complex(0, b).toString === b.toString + " i")
+        assert(Complex(0, c).toString === c.toString + " i")
+        assert(Complex(0, d).toString === d.toString + " i")
+        
+        assert(Complex(0, 1).toString === "i")
     }
     
     test ("equality test") {
