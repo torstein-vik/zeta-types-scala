@@ -339,3 +339,7 @@ class RationalTest extends FunSuite {
     
     
 }
+
+class ComplexTest extends FunSuite {
+    
+}
