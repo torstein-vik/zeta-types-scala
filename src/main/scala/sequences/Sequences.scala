@@ -39,3 +39,7 @@ class CachedSequence[E] (private val factory : SequenceFactory[E]) extends Seque
         case _ => throw new SequenceException("CachedSequence call out of bounds! " + index)
     }
 }
+
+object Sequence {
+    def apply[E](factory : SequenceFactory[E]) = new CachedSequence[E](factory)
+}

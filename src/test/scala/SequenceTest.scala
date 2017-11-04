@@ -8,7 +8,7 @@ class SequenceFactoryTest extends FunSuite {
         import org.zetatypes.sequences.DSL._
         
         test ("CachedSequence works") {
-            val seq = new CachedSequence((i : Int) => i)
+            val seq = Sequence((i : Int) => i)
             
             (0 to 100) foreach {i => 
                 assert(seq(i) == i)
@@ -21,7 +21,7 @@ class SequenceFactoryTest extends FunSuite {
         
         test ("CachedSequence caches") {
             var x = 0
-            val seq = new CachedSequence((i : Int) => {x += 1; x})
+            val seq = Sequence((i : Int) => {x += 1; x})
             
             (0 to 50) foreach {i => 
                 assert(seq(1) == 1)
@@ -30,7 +30,7 @@ class SequenceFactoryTest extends FunSuite {
         
         test ("CachedSequence does not cache when factory has internal cache") {
             var x = 0
-            val seq = new CachedSequence(new SequenceFactory[Int]{
+            val seq = Sequence(new SequenceFactory[Int]{
                 def apply(seq : Sequence[Int])(i : Int) = {x += 1; x}
                 override def hasInternalCache = true
             })
@@ -45,7 +45,7 @@ class SequenceFactoryTest extends FunSuite {
         }
         
         test ("CachedSequence does not allow out of bounds") {
-            val seq = new CachedSequence(((i : Int) => i).upTo(7))
+            val seq = Sequence(((i : Int) => i).upTo(7))
             
             assertThrows[SequenceException] {
                 seq(-1)
@@ -65,7 +65,7 @@ class SequenceFactoryTest extends FunSuite {
         
         test ("CachedSequence flush test") {
             var x = 0
-            val seq = new CachedSequence((i : Int) => {x += 1; x})
+            val seq = Sequence((i : Int) => {x += 1; x})
             
             (0 to 50) foreach {i => 
                 assert(seq(1) == 1)
@@ -83,7 +83,7 @@ class SequenceFactoryTest extends FunSuite {
     {// Factory tests
         test ("ConstantSequence factory") {
             Seq[Any](12, .1, "test", Map()) foreach{a => 
-                val seq = new CachedSequence(new ConstantSequence(a))
+                val seq = Sequence(new ConstantSequence(a))
                 
                 (0 to 100) foreach {i => 
                     assert(seq(i) === a)
@@ -94,7 +94,7 @@ class SequenceFactoryTest extends FunSuite {
         }
         
         test ("ShortSequence factory") {
-            val seq = new CachedSequence(new ShortSequence(1, 2, 4, 5))
+            val seq = Sequence(new ShortSequence(1, 2, 4, 5))
             
             assert(seq(0) == 1)
             assert(seq(1) == 2)
@@ -108,7 +108,7 @@ class SequenceFactoryTest extends FunSuite {
         
         test ("Sequence DSL test - Fibonacci sequence") {
             
-            val seq = new CachedSequence(Seq(1, 1) followedBy ((seq : Sequence[Int]) => (i : Int) => seq(i - 1) + seq(i - 2)))
+            val seq = Sequence(Seq(1, 1) followedBy ((seq : Sequence[Int]) => (i : Int) => seq(i - 1) + seq(i - 2)))
             
             assert(seq(0) === 1)
             assert(seq(1) === 1)
@@ -121,7 +121,7 @@ class SequenceFactoryTest extends FunSuite {
         
         test ("Sequence DSL test - Fibonacci sequence 2") {
             
-            val seq = new CachedSequence(1 upTo 1 followedBy ((seq : Sequence[Int]) => (i : Int) => seq(i - 1) + seq(i - 2)))
+            val seq = Sequence(1 upTo 1 followedBy ((seq : Sequence[Int]) => (i : Int) => seq(i - 1) + seq(i - 2)))
             
             assert(seq(0) === 1)
             assert(seq(1) === 1)
@@ -134,7 +134,7 @@ class SequenceFactoryTest extends FunSuite {
         
         test ("Sequence DSL test - 1 1 1 2 2 2") {
             
-            val seq = new CachedSequence(1 upTo 2 followedBy 3)
+            val seq = Sequence(1 upTo 2 followedBy 3)
             
             assert(seq(0) === 1)
             assert(seq(1) === 1)
@@ -147,7 +147,7 @@ class SequenceFactoryTest extends FunSuite {
         
         test ("Sequence DSL test - 1 2 1 2 1 2 3 3 3") {
             
-            val seq = new CachedSequence(Seq(1, 2).repeat.upTo(5) followedBy 3)
+            val seq = Sequence(Seq(1, 2).repeat.upTo(5) followedBy 3)
             
             assert(seq(0) === 1)
             assert(seq(1) === 2)
