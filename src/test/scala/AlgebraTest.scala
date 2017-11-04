@@ -343,7 +343,7 @@ class RationalTest extends FunSuite {
 class ComplexTest extends FunSuite {
     import org.zetatypes.algebra.structures.DSL._
     
-    val (a, b, c, d) = (Fraction(2), Fraction(-3, 2), Fraction(7, 5), Fraction(4, 3))
+    val (a, b, c, d) = (Rational(2), Rational(-3, 2), Rational(7, 5), Rational(4, 3))
     
     test ("Complex number DSL") {
         assertCompiles("1 + 9 i")
