@@ -504,5 +504,10 @@ class ComplexTest extends FunSuite {
         assert(1 + 1 * I === Complex(1, 1))
         assert(1 + 3 * I === Complex(1, 3))
         assert(Rational(2, 3) - 3 * I === Complex(Rational(2, 3), -3))
+        
+        assert(Complex(0, 1) === 1 * I)
+        assert(Complex(1, 1) === 1 + 1 * I)
+        assert(Complex(1, 3) === 1 + 3 * I)
+        assert(Complex(Rational(2, 3), -3) === Rational(2, 3) - 3 * I)
     }
 }
