@@ -7,4 +7,8 @@ package object DSL {
         def apply(seq : Sequence[T])(index : Int) = f(index)
     }
     
+    implicit def createRecursiveSequenceFactory[T] (f : Sequence[T] => Int => T) : SequenceFactory[T] = new SequenceFactory[T] {
+        def apply(seq : Sequence[T])(index : Int) = f(seq)(index)
+    }
+    
 }
