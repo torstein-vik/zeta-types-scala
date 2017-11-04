@@ -483,4 +483,26 @@ class ComplexTest extends FunSuite {
         }
     }
     
+    test ("Complex module multiplication") {
+        assert((Complex(a, b) ++ 1) === Complex(a, b))
+        assert((Complex(b, c) ++ 1) === Complex(b, c))
+        assert((Complex(c, d) ++ 1) === Complex(c, d))
+        assert((Complex(d, a) ++ 1) === Complex(d, a))
+        assert((Complex(a, b) ++ 2) === Complex(a + a, b + b))
+        assert((Complex(b, c) ++ 2) === Complex(b + b, c + c))
+        assert((Complex(c, d) ++ 2) === Complex(c + c, d + d))
+        assert((Complex(d, a) ++ 2) === Complex(d + d, a + a))
+        assert((Complex(a, b) ++ 3) === Complex(a + a + a, b + b + b))
+        assert((Complex(b, c) ++ 3) === Complex(b + b + b, c + c + c))
+        assert((Complex(c, d) ++ 3) === Complex(c + c + c, d + d + d))
+        assert((Complex(d, a) ++ 3) === Complex(d + d + d, a + a + a))
+        
+        assertThrows[AlgebraicException] {
+            Complex(1, 2) ++ 0
+        }
+        
+        assertThrows[AlgebraicException] {
+            Complex(1, 2) ++ (-1)
+        }
+    }
 }
