@@ -88,6 +88,23 @@ class SequenceFactoryTest extends FunSuite {
             assert(seq.createSeq(0, 2) === Seq(0, 1, 4))
             assert(seq.createSeq(2, 2) === Seq(4))
         }
+        
+        test ("CachedSequence asSeq test") {
+            val seq1 = Sequence(((i : Int) => i * i) upTo 2)
+            val seq2 = Sequence(((i : Int) => i * i) upTo 3)
+            val seq3 = Sequence(((i : Int) => i * i) upTo 4)
+            val seq4 = Sequence(((i : Int) => i * i) upTo 5)
+            
+            val seq = Sequence(((i : Int) => i * i))
+            
+            assert(seq1.asSeq === Some(Seq(0, 1, 4)))
+            assert(seq2.asSeq === Some(Seq(0, 1, 4, 9)))
+            assert(seq3.asSeq === Some(Seq(0, 1, 4, 9, 16)))
+            assert(seq4.asSeq === Some(Seq(0, 1, 4, 9, 16, 25)))
+            
+            assert(seq.asSeq === None)
+            
+        }
     }
     
     {// Factory tests
