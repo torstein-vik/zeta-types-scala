@@ -25,4 +25,15 @@ class CachedSequence[E] (private val factory : SequenceFactory[E]) extends Seque
         return res
     }
     
+    def apply (index : Int) : E = (doCache, index, length) match {
+        case (true,  _, _)           if cache.isDefinedAt(index)    => cache(index)
+        
+        case (true,  _, None)        if index >= 0                  => placeAndCache(index)
+        case (true,  _, Some(limit)) if index >= 0 && index < limit => placeAndCache(index)
+        
+        case (false, _, None)        if index >= 0                  => calculator(index) 
+        case (false, _, Some(limit)) if index >= 0 && index < limit => calculator(index) 
+        
+        case _ => throw new SequenceException("CachedSequence call out of bounds! " + index)
+    }
 }
