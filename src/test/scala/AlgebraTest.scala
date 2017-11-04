@@ -391,5 +391,9 @@ class ComplexTest extends FunSuite {
         assert(Complex.multiplicative.identity === Complex(1))
     }
     
+    test ("zero and one test") {
+        assert(Complex.zero === Complex(0))
+        assert(Complex.one  === Complex(1))
+    }
     
 }
