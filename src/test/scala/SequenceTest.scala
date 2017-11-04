@@ -43,6 +43,25 @@ class SequenceFactoryTest extends FunSuite {
                 assert(seq(1) == i + 50)
             }
         }
+        
+        test ("CachedSequence does not allow out of bounds") {
+            val seq = new CachedSequence(((i : Int) => i).upTo(7))
+            
+            assertThrows[SequenceException] {
+                seq(-1)
+            }
+            
+            assertThrows[SequenceException] {
+                seq(-4)
+            }
+            
+            assertThrows[SequenceException] {
+                seq(8)
+            }
+            
+            assert(seq(7) === 7)
+            assert(seq(0) === 0)
+        }
     }
     
     {// Factory tests
