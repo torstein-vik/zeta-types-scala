@@ -345,5 +345,12 @@ class ComplexTest extends FunSuite {
     
     val (a, b, c, d) = (Fraction(2), Fraction(-3, 2), Fraction(7, 5), Fraction(4, 3))
     
+    test ("Complex number DSL") {
+        assertCompiles("1 + 9 i")
+        assertCompiles("1 - 9 i")
+        assertCompiles("1 + 2 i")
+        assertCompiles("9 i")
+    }
+    
     
 }
