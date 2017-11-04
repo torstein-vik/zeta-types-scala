@@ -143,6 +143,27 @@ class TannakianSymbolTest extends FunSuite{
         }
     }
     
+    {// Using ms(...) / ms(...) notation complex
+        implicit val monoidcom : Monoid[Complex] = Complex.multiplicative
+    
+        import org.zetatypes.tannakiansymbols.DSL._
+        import org.zetatypes.algebra.structures.DSL.{intToInteger => _, intToRational => _, _}
+        val X = new TannakianSymbol(Seq((Complex(Rational(Integer(1))), 1 : BigInt), (Complex(Rational(Integer(2))), -1 : BigInt), (Complex(Rational(Integer(3))), 1 : BigInt)))
+        val Y = new TannakianSymbol(Seq((Complex(Rational(Integer(10))), 5 : BigInt), (Complex(Rational(Integer(11))), -4 : BigInt), (Complex(Rational(Integer(2))), -1 : BigInt)))
+        val Z = new TannakianSymbol(Seq((Complex(Rational(Integer(2))), 2 : BigInt), (Complex(Rational(Integer(3))), -8 : BigInt), (Complex(Rational(Integer(4))), 4 : BigInt)))
+        val W = new TannakianSymbol(Seq((Complex(Rational(Integer(-1))), 1 : BigInt), (Complex(Rational(Integer(10))), 0 : BigInt), (Complex(Rational(Integer(2))), 1 : BigInt)))
+        
+        
+        test ("TS DSL notation complex") {
+            assert(X === ms(1, 3) / ms(2))
+            assert(Y === ms(10, 10, 10, 10, 10) / ms(11, 11, 11, 11, 2))
+            assert(Z === ms(2, 2, 4, 4, 4, 4) / ms(3, 3, 3, 3, 3, 3, 3, 3))
+            assert(W === ms(-1, 2) / Ø)
+            assert(TS(Complex).one === ms(1) / Ø)
+            assert(TS(Complex).zero === Ø / Ø)
+        }
+    }
+    
     {// Addition & Multication test
         implicit val monoid : Monoid[Integer] = Integers.multiplicative
         
