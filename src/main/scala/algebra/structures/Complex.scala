@@ -4,18 +4,18 @@ import org.zetatypes.algebra._
 
 case class ComplexNumbers[T <: RingElement[T]] (ring : Ring[T]) extends 
     RingClass[ComplexNumber[T]](
-    new ComplexNumber(ring)(ring.zero, ring.zero), 
-    new ComplexNumber(ring)(ring.one,  ring.zero))
+    new ComplexNumber(ring.zero, ring.zero)(ring), 
+    new ComplexNumber(ring.one,  ring.zero)(ring))
 
-class ComplexNumber[T <: RingElement[T]] (val ring : Ring[T])(val real : T, val imaginary : T = ring.zero) extends RingElement[ComplexNumber[T]]{
+class ComplexNumber[T <: RingElement[T]] (val real : T, val imaginary : T)(implicit val ring : Ring[T]) extends RingElement[ComplexNumber[T]]{
     
     override lazy val canonicalRing = ComplexNumbers(ring)
     
-    override def +(that : ComplexNumber[T]) = new ComplexNumber(ring)(real + that.real, imaginary + that.imaginary)
+    override def +(that : ComplexNumber[T]) = new ComplexNumber(real + that.real, imaginary + that.imaginary)
     
-    override def *(that : ComplexNumber[T]) = new ComplexNumber(ring)(real * that.real - imaginary * that.imaginary, real * that.imaginary + imaginary * that.real)
+    override def *(that : ComplexNumber[T]) = new ComplexNumber(real * that.real - imaginary * that.imaginary, real * that.imaginary + imaginary * that.real)
     
-    override def negation() = new ComplexNumber(ring)(-real,-imaginary)
+    override def negation() = new ComplexNumber(-real,-imaginary)
     
     override def equals(that : Any) : Boolean = that match {
         case _ : ComplexNumber[T] => {
@@ -31,4 +31,4 @@ class ComplexNumber[T <: RingElement[T]] (val ring : Ring[T])(val real : T, val 
 object Complex extends ComplexNumbers (Rationals)
 
 case class Complex (override val real : Rational, override val imaginary : Rational = Rationals.zero) extends 
-    ComplexNumber (Rationals)(real, imaginary)
+    ComplexNumber[Fraction[Integer]] (real, imaginary)(Rationals)
