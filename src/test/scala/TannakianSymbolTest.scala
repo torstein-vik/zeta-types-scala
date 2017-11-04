@@ -164,7 +164,7 @@ class TannakianSymbolTest extends FunSuite{
         }
     }
     
-    {// Addition & Multication test
+    {// Algebraic tests for integer tannakiansymbols
         implicit val monoid : Monoid[Integer] = Integers.multiplicative
         
         import org.zetatypes.tannakiansymbols.DSL._
