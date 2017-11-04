@@ -45,5 +45,8 @@ class SequenceFactoryTest extends FunSuite {
         }
     }
     
+    {// Factory tests
+    }
+    
     }
 }
