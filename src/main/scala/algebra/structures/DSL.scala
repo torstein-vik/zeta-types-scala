@@ -5,6 +5,8 @@ import scala.language.implicitConversions
 import org.zetatypes.algebra._
 
 package object DSL {
+    type Rational = Fraction[Integer]
+
     implicit def intToInteger  (x : Int) : Integer  = Integer(x)
     implicit def intToRational (x : Int) : Rational = Rational(x)
     implicit def intToComplex  (x : Int) : Complex  = Complex(x)

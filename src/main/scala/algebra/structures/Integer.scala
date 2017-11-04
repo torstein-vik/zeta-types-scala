@@ -1,6 +1,7 @@
 package org.zetatypes.algebra.structures
 
 import org.zetatypes.algebra._
+import structures.DSL.{Rational}
 
 case class Integer (x : BigInt) extends StandardLambdaRingElement[Integer] with PartialQAlgebraElement[Integer]{
     override def +(that : Integer) = Integer(x + that.x) 

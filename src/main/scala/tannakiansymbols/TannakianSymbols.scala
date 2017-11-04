@@ -2,6 +2,7 @@ package org.zetatypes.tannakiansymbols
 
 import org.zetatypes.algebra._
 import org.zetatypes.algebra.structures.{Rational, Integer}
+import org.zetatypes.algebra.structures.DSL.{Rational}
 
 import scalaz.{Monoid => ScalazMonoid, _}, std.list._, std.option._, syntax.traverse._
 
