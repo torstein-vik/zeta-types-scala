@@ -341,5 +341,9 @@ class RationalTest extends FunSuite {
 }
 
 class ComplexTest extends FunSuite {
+    import org.zetatypes.algebra.structures.DSL._
+    
+    val (a, b, c, d) = (Fraction(2), Fraction(-3, 2), Fraction(7, 5), Fraction(4, 3))
+    
     
 }
