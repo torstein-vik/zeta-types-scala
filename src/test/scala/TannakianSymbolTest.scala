@@ -92,6 +92,10 @@ class TannakianSymbolTest extends FunSuite{
             assert(Z.downstairs === ms[Integer](3, 3))
             assert(W.downstairs === Ø[Integer])
         }
+        
+        test ("TS. upstairs / downstairs test") {
+            Seq(X, Y, Z, W).foreach(x => assert(x === x.upstairs / x.downstairs))
+        }
     }
     
     {// Using ms(...) / ms(...) notation
@@ -109,10 +113,6 @@ class TannakianSymbolTest extends FunSuite{
             assert(W === ms(-1, 2) / Ø)
             assert(TS(Integers).one === ms(1) / Ø)
             assert(TS(Integers).zero === Ø / Ø)
-        }
-        
-        test ("TS. upstairs / downstairs test") {
-            Seq(X, Y, Z, W).foreach(x => assert(x === x.upstairs / x.downstairs))
         }
     }
     
