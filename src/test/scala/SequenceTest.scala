@@ -19,5 +19,14 @@ class SequenceFactoryTest extends FunSuite {
             }
         }
         
+        test ("CachedSequence caches") {
+            var x = 0;
+            val seq = new CachedSequence((i : Int) => {x += 1; x})
+            
+            (0 to 50) foreach {i => 
+                assert(seq(1) == 1)
+            }
+        }
+        
     }
 }
