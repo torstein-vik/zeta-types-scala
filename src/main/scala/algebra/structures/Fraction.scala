@@ -7,7 +7,6 @@ case class Fractions[T <: RingElement[T]] (ring : Ring[T]) extends
     new Fraction(ring.zero, ring.one)(ring), 
     new Fraction(ring.one,  ring.one)(ring))
 
-// TODO: Make ring implicit and remove default value, let subclasses deal with that
 class Fraction[T <: RingElement[T]] (val numerator : T, val denominator : T)(implicit val ring : Ring[T]) extends RingElement[Fraction[T]]{
     if (denominator == ring.zero) {
         throw new AlgebraicException("Denominator may not be zero!")
