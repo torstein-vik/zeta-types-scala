@@ -25,6 +25,8 @@ class CachedSequence[E] (private val factory : SequenceFactory[E]) extends Seque
         return res
     }
     
+    def flush = {cache = IntMap()}
+    
     def apply (index : Int) : E = (doCache, index, length) match {
         case (true,  _, _)           if cache.isDefinedAt(index)    => cache(index)
         
