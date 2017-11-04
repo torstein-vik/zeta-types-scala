@@ -59,7 +59,12 @@ class SequenceFactoryTest extends FunSuite {
         }
         
         test ("ShortSequence factory") {
+            val seq = new CachedSequence(new ShortSequence(1, 2, 4, 5))
             
+            assert(seq(0) == 1)
+            assert(seq(1) == 2)
+            assert(seq(2) == 4)
+            assert(seq(3) == 5)
         }
     }
     
