@@ -34,10 +34,9 @@ class Fraction[T <: RingElement[T]] (val numerator : T, val denominator : T)(imp
     } 
 }
 
-object Rationals extends Fractions[Integer] (Integers) {    
-    override val zero = Rational(Integers.zero, Integers.one)
-    override val one  = Rational(Integers.one,  Integers.one)
-}
+object Rationals extends Fractions[Integer] (Integers)
 
-case class Rational (override val numerator : Integer, override val denominator : Integer = Integers.one) extends 
-    Fraction[Integer] (numerator, denominator)(Integers)
+object Rational {
+    def apply(numerator : Integer, denominator : Integer = Integers.one) = new Fraction(numerator, denominator)(Integers)
+    def unapply(q : Fraction[Integer]) : Option[(Integer, Integer)] = Some(q.numerator, q.denominator)
+}
