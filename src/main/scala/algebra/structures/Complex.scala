@@ -13,7 +13,7 @@ class ComplexNumber[T <: RingElement[T]] (val ring : Ring[T])(val real : T, val 
     
 }
 
-object Complex extends ComplexNumbers[Rational] (Rationals)
+object Complex extends ComplexNumbers (Rationals)
 
 case class Complex (override val real : Rational, override val imaginary : Rational = Rationals.zero) extends 
-    ComplexNumber[Rational] (Rationals)(real, imaginary)
+    ComplexNumber (Rationals)(real, imaginary)
