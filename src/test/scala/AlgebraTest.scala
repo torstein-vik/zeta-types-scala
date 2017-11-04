@@ -345,13 +345,6 @@ class ComplexTest extends FunSuite {
     
     val (a, b, c, d) = (Rational(2), Rational(-3, 2), Rational(7, 5), Rational(4, 3))
     
-    test ("Complex number DSL") {
-        assertCompiles("1 + 9 i")
-        assertCompiles("1 - 9 i")
-        assertCompiles("1 + 2 i")
-        assertCompiles("9 i")
-    }
-    
     test ("Complex number toString") {
         assert(Complex(a, b).toString === a.toString + " + " + b.toString + " i")
         assert(Complex(b, c).toString === b.toString + " + " + c.toString + " i")
