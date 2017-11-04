@@ -1,5 +1,7 @@
 package org.zetatypes.tannakiansymbols
 
+import scala.annotation.tailrec
+
 import org.zetatypes.algebra._
 import org.zetatypes.algebra.structures.{Rational, Integer}
 import org.zetatypes.algebra.structures.DSL.{Rational}
@@ -58,8 +60,25 @@ class TannakianSymbol[E <: MonoidElement] (val elements : Seq[(E, BigInt)])(impl
     }
     
     def cleanup : TannakianSymbol[E] = {
-        var data : Map[E, BigInt] = Map()
-        elements.foreach({case (x, i) => data += x -> (data.getOrElse(x, 0 : BigInt) + i)})
+        import scala.collection.mutable.{Seq => MSeq}
+        
+        var data : MSeq[(E, BigInt)] = MSeq()
+        
+        @tailrec
+        def add(x : E, i : BigInt, index : Int) : Unit = {
+            if (index >= data.length){
+                data = data ++ Seq((x, i))
+            } else {
+                val (y, j) = data(index) 
+                if (x == y) {
+                    data(index) = (y, i + j)
+                } else {
+                    add(x, i, index + 1)
+                }
+            }
+        }
+        
+        elements.foreach {case (x, i) => add(x, i, 0)}
         return new TannakianSymbol(data.toSeq.filter({case (x, i) => i != 0}))
     }
     
