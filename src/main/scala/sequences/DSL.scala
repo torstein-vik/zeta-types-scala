@@ -11,4 +11,5 @@ package object DSL {
         def apply(seq : Sequence[T])(index : Int) = f(seq)(index)
     }
     
+    implicit def createConstantSequence[T] (value : T) : ConstantSequence[T] = new ConstantSequence[T](value)
 }
