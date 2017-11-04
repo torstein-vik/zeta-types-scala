@@ -35,7 +35,7 @@ package object DSL {
         }
         
         def repeat : SequenceFactory[T] = new SequenceFactory[T]{
-            def apply (seq : Sequence[T])(index : Int) : T = length match {
+            def apply (seq : Sequence[T])(index : Int) : T = old.length match {
                 case None => old.apply(seq)(index)
                 case Some(limit) => old.apply(seq)(index % limit)
             }
