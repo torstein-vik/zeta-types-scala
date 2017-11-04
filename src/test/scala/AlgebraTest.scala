@@ -450,4 +450,14 @@ class ComplexTest extends FunSuite {
         assert(-Complex(d, a) === Complex(-d, -a))
     }
     
+    test ("subtraction test") {
+        assert(Complex(a) - Complex(b) === Complex(a - b))
+        assert(Complex(b) - Complex(c) === Complex(b - c))
+        assert(Complex(c) - Complex(d) === Complex(c - d))
+        assert(Complex(d) - Complex(a) === Complex(d - a))
+        
+        assert(Complex(a, b) - Complex(c, d) === Complex(a - c, b - d))
+        assert(Complex(b, c) - Complex(d, a) === Complex(b - d, c - a))
+    }
+    
 }
