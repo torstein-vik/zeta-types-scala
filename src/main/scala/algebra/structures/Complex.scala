@@ -19,7 +19,7 @@ class ComplexNumber[T <: RingElement[T]] (val ring : Ring[T])(val real : T, val 
     
     override def equals(that : Any) : Boolean = false
     
-    override def toString : String = null
+    override def toString : String = real.toString + " + " + imaginary.toString + " i"
 }
 
 object Complex extends ComplexNumbers (Rationals)
