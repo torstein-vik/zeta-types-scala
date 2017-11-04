@@ -103,7 +103,7 @@ class TannakianSymbolTest extends FunSuite{
         }
     }
     
-    {// Using ms(...) / ms(...) notation
+    {// Using ms(...) / ms(...) notation integer
         implicit val monoid : Monoid[Integer] = Integers.multiplicative
     
         import org.zetatypes.tannakiansymbols.DSL._
@@ -113,13 +113,33 @@ class TannakianSymbolTest extends FunSuite{
         val Z = new TannakianSymbol(Seq((Integer(2), 2 : BigInt), (Integer(3), -8 : BigInt), (Integer(4), 4 : BigInt)))
         val W = new TannakianSymbol(Seq((Integer(-1), 1 : BigInt), (Integer(10), 0 : BigInt), (Integer(2), 1 : BigInt)))
         
-        test ("TS DSL notaion") {
+        test ("TS DSL notation integral") {
             assert(X === ms(1, 3) / ms(2))
             assert(Y === ms(10, 10, 10, 10, 10) / ms(11, 11, 11, 11, 2))
             assert(Z === ms(2, 2, 4, 4, 4, 4) / ms(3, 3, 3, 3, 3, 3, 3, 3))
             assert(W === ms(-1, 2) / Ø)
             assert(TS(Integers).one === ms(1) / Ø)
             assert(TS(Integers).zero === Ø / Ø)
+        }
+    }
+    
+    {// Using ms(...) / ms(...) notation rational
+        implicit val monoidrat : Monoid[Rational] = Rationals.multiplicative
+        
+        import org.zetatypes.tannakiansymbols.DSL._
+        import org.zetatypes.algebra.structures.DSL.{intToInteger => _, intToComplex => _, _}
+        val X = new TannakianSymbol(Seq((Rational(Integer(1)), 1 : BigInt), (Rational(Integer(2)), -1 : BigInt), (Rational(Integer(3)), 1 : BigInt)))
+        val Y = new TannakianSymbol(Seq((Rational(Integer(10)), 5 : BigInt), (Rational(Integer(11)), -4 : BigInt), (Rational(Integer(2)), -1 : BigInt)))
+        val Z = new TannakianSymbol(Seq((Rational(Integer(2)), 2 : BigInt), (Rational(Integer(3)), -8 : BigInt), (Rational(Integer(4)), 4 : BigInt)))
+        val W = new TannakianSymbol(Seq((Rational(Integer(-1)), 1 : BigInt), (Rational(Integer(10)), 0 : BigInt), (Rational(Integer(2)), 1 : BigInt)))
+        
+        test ("TS DSL notation rational") {
+            assert(X === ms(1, 3) / ms(2))
+            assert(Y === ms(10, 10, 10, 10, 10) / ms(11, 11, 11, 11, 2))
+            assert(Z === ms(2, 2, 4, 4, 4, 4) / ms(3, 3, 3, 3, 3, 3, 3, 3))
+            assert(W === ms(-1, 2) / Ø)
+            assert(TS(Rationals).one === ms(1) / Ø)
+            assert(TS(Rationals).zero === Ø / Ø)
         }
     }
     
