@@ -12,4 +12,9 @@ trait Sequence[E] {
 }
 
 class CachedSequence[E] (private val factory : SequenceFactory[E]) extends Sequence[E] {
+    val length = factory.length
+    
+    private def calculator = factory(this)(_ : Int)
+    
+    private val doCache = !factory.hasInternalCache
 }
