@@ -3,10 +3,10 @@ import org.scalatest.FunSuite
 import org.zetatypes.algebra._
 import org.zetatypes.algebra.structures._
 
+import org.zetatypes.algebra.structures.DSL._
+
 class RationalTest extends FunSuite {
-    
-    import org.zetatypes.algebra.structures.DSL._
-    
+        
     val (a, b, c, d) = (2, -3, 7, 4)
     
     test ("divide by zero test") {
