@@ -61,6 +61,8 @@ class SequenceFactoryTest extends FunSuite {
             
             assert(seq(7) === 7)
             assert(seq(0) === 0)
+            
+            assert(seq.length === Some(8))
         }
         
         test ("CachedSequence flush test") {
