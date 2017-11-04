@@ -17,7 +17,13 @@ class ComplexNumber[T <: RingElement[T]] (val ring : Ring[T])(val real : T, val 
     
     override def negation() = null
     
-    override def equals(that : Any) : Boolean = false
+    override def equals(that : Any) : Boolean = that match {
+        case _ : ComplexNumber[T] => {
+            val other = that.asInstanceOf[ComplexNumber[T]]
+            this.real == other.real && this.imaginary == other.imaginary
+        }
+        case _ => false
+    }
     
     override def toString : String = real.toString + " + " + imaginary.toString + " i"
 }
