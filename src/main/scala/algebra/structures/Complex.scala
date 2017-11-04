@@ -15,7 +15,7 @@ class ComplexNumber[T <: RingElement[T]] (val ring : Ring[T])(val real : T, val 
     
     override def *(that : ComplexNumber[T]) = null
     
-    override def negation() = null
+    override def negation() = new ComplexNumber(ring)(-real,-imaginary)
     
     override def equals(that : Any) : Boolean = that match {
         case _ : ComplexNumber[T] => {
