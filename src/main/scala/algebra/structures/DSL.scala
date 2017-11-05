@@ -4,7 +4,9 @@ import scala.language.implicitConversions
 
 import org.torsteinv.zetatypes.algebra._
 
-package object DSL {
+package object DSL extends DSLTrait
+
+trait DSLTrait {
     type Rational = Fraction[Integer]
     type Complex  = ComplexNumber[Rational]
 
