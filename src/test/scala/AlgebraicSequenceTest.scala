@@ -53,5 +53,12 @@ class AlgebraicSequenceTest extends FunSuite {
             assert((-D).createSeq(0, 6) === Seq[Complex](-3, -5, -7, -9, -11, -13, -15))
         }
         
+        test ("notation addition test") {
+            assert((A + B).createSeq(0, 6) === Seq[Complex](0, 2, 6, 12, 20, 30, 42))
+            assert((B + C).createSeq(0, 6) === Seq[Complex](2, 6, 12, 20, 30, 42, 56))
+            assert((C + D).createSeq(0, 6) === Seq[Complex](5, 10, 15, 20, 25, 30, 35))
+            assert((D + A).createSeq(0, 6) === Seq[Complex](3, 6, 9, 12, 15, 18, 21))
+        }
+        
     }
 }
