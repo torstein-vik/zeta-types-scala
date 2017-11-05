@@ -56,7 +56,7 @@ class CachedSequence[E] (private val factory : SequenceFactory[E]) extends Seque
     override def toString : String = toString(20)
     
     def toString(upto : Int) : String = length match {
-        case Some(limit) if upto > limit => toString(Math.min(limit, upto))
+        case Some(limit) if upto >= limit => toString(Math.min(limit - 1, upto))
         case _ => (0 to upto).map(_.toString).mkString("", ", ", ", ...")
     }
     
