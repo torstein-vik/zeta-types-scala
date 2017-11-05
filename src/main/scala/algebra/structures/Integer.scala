@@ -25,7 +25,7 @@ trait IntegralPackage {
         
         override def toString() = x.toString()
         
-        override val canonicalRing = Integers
+        override lazy val canonicalRing = Integers
     }
 
     object Integers extends RingClass[Integer](Integer(0), Integer(1)) with StandardLambdaRing[Integer] with PartialQAlgebra[Integer]
