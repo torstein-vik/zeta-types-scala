@@ -13,7 +13,7 @@ class AlgebraicSequence[E <: RingElement[E]] (factory : SequenceFactory[E])(impl
     with RingElement[AlgebraicSequence[E]] {
     override lazy val canonicalRing = AlgebraicSequences(ring)
     
-    override def +(that : AlgebraicSequence[E]) = null
+    override def +(that : AlgebraicSequence[E]) = new AlgebraicSequence(new CombinedSequence(this, that)(_ + _)(true))
     
     override def *(that : AlgebraicSequence[E]) = null
     
