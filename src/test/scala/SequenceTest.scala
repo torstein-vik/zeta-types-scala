@@ -2,7 +2,7 @@ import org.scalatest.FunSuite
 
 import org.zetatypes.sequences._
 
-class SequenceFactoryTest extends FunSuite {
+class SequenceTest extends FunSuite {
     
     {// CachedSequence test
         import org.zetatypes.sequences.DSL._
