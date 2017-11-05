@@ -57,7 +57,7 @@ class CachedSequence[E] (private val factory : SequenceFactory[E]) extends Seque
     
     def toString(upto : Int) : String = length match {
         case Some(limit) if upto >= limit => toString(Math.min(limit - 1, upto))
-        case _ => (0 to upto).map(_.toString).mkString("", ", ", ", ...")
+        case _ => (0 to upto).map(this(_).toString).mkString("", ", ", ", ...")
     }
     
     override def equals(that : Any) : Boolean = that.isInstanceOf[Sequence[E]] && {(that.asInstanceOf[Sequence[E]].length, length) match {
