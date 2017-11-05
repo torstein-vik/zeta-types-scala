@@ -20,6 +20,7 @@ class SpecialAlgebraicSequence[E <: RingElement[E]] (factory : SequenceFactory[E
     
     override def negation() = new SpecialAlgebraicSequence(new MappedSequence(this)(_.negation)(true))
     
+    override def apply(index : Int) = if (index == 0) {ring.one} else {super.apply(index)}
 }
 
 object SpecialComplexSequences extends SpecialAlgebraicSequences(Complex)
