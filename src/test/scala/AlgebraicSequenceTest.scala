@@ -45,5 +45,13 @@ class AlgebraicSequenceTest extends FunSuite {
             assert(ComplexSequences.multiplicative.combine(C, D).createSeq(0, 6) === Seq[Complex](6, 25, 56, 99, 154, 221, 300))
             assert(ComplexSequences.multiplicative.combine(D, A).createSeq(0, 6) === Seq[Complex](0, 5, 14, 27, 44, 65, 90))
         }
+        
+        test ("notation additive inverse test") {
+            assert((-A).createSeq(0, 6) === Seq[Complex](0, -1, -2, -3, -4, -5, -6))
+            assert((-B).createSeq(0, 6) === Seq[Complex](0, -1, -4, -9, -16, -25, -36))
+            assert((-C).createSeq(0, 6) === Seq[Complex](-2, -5, -8, -11, -14, -17, -20))
+            assert((-D).createSeq(0, 6) === Seq[Complex](-3, -5, -7, -9, -11, -13, -15))
+        }
+        
     }
 }
