@@ -6,3 +6,4 @@ package object algebra
     with GrouplikePackage
     with RinglikePackage
     with QAlgebraicPackage
+    with LambdaRinglikePackage
