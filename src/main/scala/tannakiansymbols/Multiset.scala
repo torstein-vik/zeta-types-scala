@@ -2,9 +2,9 @@ package org.torsteinv.zetatypes.tannakiansymbols
 
 import org.torsteinv.zetatypes.algebra._
 
-package object Multisetlike extends MultisetlikePackage
+package object MultisetPackage extends MultisetPackaging
 
-trait MultisetlikePackage {
+trait MultisetPackaging {
 
     class Multiset[T](val elements : T*) {
         

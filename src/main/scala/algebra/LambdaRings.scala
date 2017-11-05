@@ -2,9 +2,9 @@ package org.torsteinv.zetatypes.algebra
 
 import structures.{Integer, Rational}
 
-package object LambdaRinglike extends LambdaRinglikePackage
+package object LambdaRingPackage extends LambdaRingPackaging
 
-trait LambdaRinglikePackage {
+trait LambdaRingPackaging {
 
     trait LambdaRingElement[T <: LambdaRingElement[T]] extends RingElement[T]
 

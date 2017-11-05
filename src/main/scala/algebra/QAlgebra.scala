@@ -3,9 +3,9 @@ package org.torsteinv.zetatypes.algebra
 import structures.Rational
 import structures.DSL.{Rational}
 
-package object QAlgebraic extends QAlgebraicPackage
+package object QAlgebraPackage extends QAlgebraPackaging
 
-trait QAlgebraicPackage {
+trait QAlgebraPackaging {
 
     trait PartialQAlgebraElement[T <: PartialQAlgebraElement[T]] extends RingElement[T]{
         def partialQMult (n : Rational) : Option[T]

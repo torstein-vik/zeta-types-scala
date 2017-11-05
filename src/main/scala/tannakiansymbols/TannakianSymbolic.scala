@@ -2,8 +2,8 @@ package org.torsteinv.zetatypes
 
 import tannakiansymbols._
 
-trait tannakiansymbolic
-    extends MultisetlikePackage
-    with TannakianSymbolicPackage
+trait tannakiansymbolsPackage
+    extends MultisetPackaging
+    with TannakianSymbolsPackaging
 
-package object tannakiansymbols extends tannakiansymbolic
+package object tannakiansymbols extends tannakiansymbolsPackage

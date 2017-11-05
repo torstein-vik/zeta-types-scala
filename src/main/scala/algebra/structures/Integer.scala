@@ -2,9 +2,9 @@ package org.torsteinv.zetatypes.algebra.structures
 
 import org.torsteinv.zetatypes.algebra._
 
-package object Integral extends IntegralPackage
+package object IntegerPackage extends IntegerPackaging
 
-trait IntegralPackage {
+trait IntegerPackaging {
     case class Integer (x : BigInt) extends StandardLambdaRingElement[Integer] with PartialQAlgebraElement[Integer]{
         
         override def +(that : Integer) = Integer(x + that.x) 

@@ -1,8 +1,8 @@
 package org.torsteinv.zetatypes.algebra
 
-package object Monoidal extends MonoidalPackage
+package object MonoidPackage extends MonoidPackaging
 
-trait MonoidalPackage{
+trait MonoidPackaging{
     trait MonoidElement extends AlgebraicElement
 
     trait Monoid[T <: MonoidElement] extends Magma[T]{

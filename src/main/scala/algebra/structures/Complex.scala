@@ -2,9 +2,9 @@ package org.torsteinv.zetatypes.algebra.structures
 
 import org.torsteinv.zetatypes.algebra._
 
-package object Complexlike extends ComplexlikePackage
+package object ComplexPackage extends ComplexPackaging
 
-trait ComplexlikePackage {
+trait ComplexPackaging {
 
     case class ComplexNumbers[T <: RingElement[T]] (ring : Ring[T]) extends 
         RingClass[ComplexNumber[T]](

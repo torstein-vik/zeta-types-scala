@@ -2,9 +2,9 @@ package org.torsteinv.zetatypes.algebra.structures
 
 import org.torsteinv.zetatypes.algebra._
 
-package object Rationallike extends RationallikePackage
+package object RationalPackage extends RationalPackaging
 
-trait RationallikePackage {
+trait RationalPackaging {
 
     case class Fractions[T <: RingElement[T]] (ring : Ring[T]) extends 
         RingClass[Fraction[T]](

@@ -2,9 +2,9 @@ package org.torsteinv.zetatypes.algebra
 
 import scala.annotation.tailrec
 
-package object Magmatic extends MagmaticPackage
+package object MagmaPackage extends MagmaPackaging
 
-trait MagmaticPackage {
+trait MagmaPackaging {
 
     trait AlgebraicElement
 

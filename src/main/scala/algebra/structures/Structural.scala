@@ -2,10 +2,10 @@ package org.torsteinv.zetatypes.algebra
 
 import structures._
 
-trait structural
-    extends IntegralPackage
-    with RationallikePackage
-    with ComplexlikePackage
-    with DSLPackageCommon
+trait structuresPackage
+    extends IntegerPackaging
+    with RationalPackaging
+    with ComplexPackaging
+    with DSLPackagingCommon
 
-package object structures extends structural
+package object structures extends structuresPackage

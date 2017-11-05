@@ -1,8 +1,8 @@
 package org.torsteinv.zetatypes.algebra
 
-package object Grouplike extends GrouplikePackage
+package object GroupPackage extends GroupPackaging
 
-trait GrouplikePackage {
+trait GroupPackaging {
 
     trait PartialGroupElement extends MonoidElement
     trait GroupElement extends PartialGroupElement

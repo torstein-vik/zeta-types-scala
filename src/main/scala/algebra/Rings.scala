@@ -1,8 +1,8 @@
 package org.torsteinv.zetatypes.algebra
 
-package object Ringlike extends RinglikePackage
+package object RingPackage extends RingPackaging
 
-trait RinglikePackage {
+trait RingPackaging {
 
     trait RingElement[T <: RingElement[T]] extends GroupElement with Additive[T] with Subtractive[T] with Multiplicative[T] {
         val canonicalRing : Ring[T]

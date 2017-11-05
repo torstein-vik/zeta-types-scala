@@ -8,9 +8,9 @@ import org.torsteinv.zetatypes.algebra.structures.DSL.{Rational}
 
 import scalaz.{Monoid => ScalazMonoid, _}, std.list._, std.option._, syntax.traverse._
 
-package object TannakianSymbollike extends TannakianSymbolicPackage
+package object TannakianSymbolPackage extends TannakianSymbolsPackaging
 
-trait TannakianSymbolicPackage {
+trait TannakianSymbolsPackaging {
 
     case class TS[E <: MonoidElement](monoid : Monoid[E]) extends 
         RingClass[TannakianSymbol[E]](

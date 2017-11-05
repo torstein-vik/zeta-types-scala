@@ -2,12 +2,12 @@ package org.torsteinv.zetatypes
 
 import algebra._
 
-trait algebraic 
-    extends MagmaticPackage
-    with MonoidalPackage
-    with GrouplikePackage
-    with RinglikePackage
-    with QAlgebraicPackage
-    with LambdaRinglikePackage
+trait algebraPackage 
+    extends MagmaPackaging
+    with MonoidPackaging
+    with GroupPackaging
+    with RingPackaging
+    with QAlgebraPackaging
+    with LambdaRingPackaging
     
-package object algebra extends algebraic
+package object algebra extends algebraPackage
