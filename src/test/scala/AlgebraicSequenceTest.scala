@@ -73,5 +73,31 @@ class AlgebraicSequenceTest extends FunSuite {
             assert((C - D).createSeq(0, 6) === Seq[Complex](-1, 0, 1, 2, 3, 4, 5))
             assert((D - A).createSeq(0, 6) === Seq[Complex](3, 4, 5, 6, 7, 8, 9))
         }
+        
+        test ("Sequence exponentiation") {
+            assert((A ** 1).createSeq(0, 6) === Seq[Complex](0, 1, 2, 3, 4, 5, 6))
+            assert((B ** 1).createSeq(0, 6) === Seq[Complex](0, 1, 4, 9, 16, 25, 36))
+            assert((C ** 1).createSeq(0, 6) === Seq[Complex](2, 5, 8, 11, 14, 17, 20))
+            assert((D ** 1).createSeq(0, 6) === Seq[Complex](3, 5, 7, 9, 11, 13, 15))
+            
+            assert((A ** 2).createSeq(0, 6) === Seq[Complex](0, 1, 4, 9, 16, 25, 36))
+            assert((B ** 2).createSeq(0, 6) === Seq[Complex](0, 1, 16, 81, 256, 625, 1296))
+            assert((C ** 2).createSeq(0, 6) === Seq[Complex](4, 25, 64, 121, 196, 289, 400))
+            assert((D ** 2).createSeq(0, 6) === Seq[Complex](9, 25, 49, 81, 121, 169, 225))
+            
+            assert((A ** 3).createSeq(0, 6) === Seq[Complex](0, 1, 8, 27, 64, 125, 216))
+            assert((B ** 3).createSeq(0, 6) === Seq[Complex](0, 1, 64, 729, 4096, 15625, 46656))
+            assert((C ** 3).createSeq(0, 6) === Seq[Complex](8, 125, 512, 1331, 2744, 4913, 8000))
+            assert((D ** 3).createSeq(0, 6) === Seq[Complex](27, 125, 343, 729, 1331, 2197, 3375))
+            
+            assertThrows[AlgebraicException] {
+                A ** 0
+            }
+            
+            assertThrows[AlgebraicException] {
+                A ** (-1)
+            }
+        }
+        
     }
 }
