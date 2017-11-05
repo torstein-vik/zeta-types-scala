@@ -99,5 +99,29 @@ class AlgebraicSequenceTest extends FunSuite {
             }
         }
         
+        test ("Sequence module multiplication") {
+            assert((A ++ 1).createSeq(0, 6) === Seq[Complex](0, 1, 2, 3, 4, 5, 6))
+            assert((B ++ 1).createSeq(0, 6) === Seq[Complex](0, 1, 4, 9, 16, 25, 36))
+            assert((C ++ 1).createSeq(0, 6) === Seq[Complex](2, 5, 8, 11, 14, 17, 20))
+            assert((D ++ 1).createSeq(0, 6) === Seq[Complex](3, 5, 7, 9, 11, 13, 15))
+            
+            assert((A ++ 2).createSeq(0, 6) === Seq[Complex](0, 2, 4, 6, 8, 10, 12))
+            assert((B ++ 2).createSeq(0, 6) === Seq[Complex](0, 2, 8, 18, 32, 50, 72))
+            assert((C ++ 2).createSeq(0, 6) === Seq[Complex](4, 10, 16, 22, 28, 34, 40))
+            assert((D ++ 2).createSeq(0, 6) === Seq[Complex](6, 10, 14, 18, 22, 26, 30))
+            
+            assert((A ++ 3).createSeq(0, 6) === Seq[Complex](0, 3, 6, 9, 12, 15, 18))
+            assert((B ++ 3).createSeq(0, 6) === Seq[Complex](0, 3, 12, 27, 48, 75, 108))
+            assert((C ++ 3).createSeq(0, 6) === Seq[Complex](6, 15, 24, 33, 42, 51, 60))
+            assert((D ++ 3).createSeq(0, 6) === Seq[Complex](9, 15, 21, 27, 33, 39, 45))
+            
+            assertThrows[AlgebraicException] {
+                A ++ 0
+            }
+            
+            assertThrows[AlgebraicException] {
+                A ++ (-1)
+            }
+        }
     }
 }
