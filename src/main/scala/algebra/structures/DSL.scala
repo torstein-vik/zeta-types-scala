@@ -4,10 +4,14 @@ import scala.language.implicitConversions
 
 import org.torsteinv.zetatypes.algebra._
 
-package object DSL {
+package object DSL extends DSLPackagingCommon with DSLPackaging
+
+trait DSLPackagingCommon {
     type Rational = Fraction[Integer]
     type Complex  = ComplexNumber[Rational]
+}
 
+trait DSLPackaging {
     implicit def intToInteger  (x : Int) : Integer  = Integer(x)
     implicit def intToRational (x : Int) : Rational = Rational(x)
     implicit def intToComplex  (x : Int) : Complex  = Complex(x)

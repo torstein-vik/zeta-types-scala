@@ -2,10 +2,15 @@ package org.torsteinv.zetatypes.sequences
 
 import scala.language.implicitConversions
 
-package object DSL {
-    import org.torsteinv.zetatypes.algebra.structures.DSL.{Complex}
+package object DSL extends DSLPackagingCommon with DSLPackaging
+
+trait DSLPackagingCommon{
+    import org.torsteinv.zetatypes.algebra.structures.Complex
     type ComplexSequence = AlgebraicSequence[Complex]
     type SpecialComplexSequence = SpecialAlgebraicSequence[Complex]
+}
+
+trait DSLPackaging {
     
     implicit def getFactory[T] (seq : Sequence[T]) = seq.asFactory
     
