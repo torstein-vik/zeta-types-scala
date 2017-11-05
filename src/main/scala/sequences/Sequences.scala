@@ -11,7 +11,7 @@ trait Sequence[E] extends Iterable[E] { outer =>
     def createSeq (start : Int, stop : Int) : Seq[E] = (start to stop).map(apply) 
     def asSeq : Option[Seq[E]] = for {limit <- length} yield createSeq(0, limit - 1)
     
-    def factory : SequenceFactory[E]
+    def asFactory : SequenceFactory[E]
     
     def iterator = new Iterator[E] {
         var index = 0
@@ -24,8 +24,9 @@ trait Sequence[E] extends Iterable[E] { outer =>
     }
 }
 
-class CachedSequence[E] (val factory : SequenceFactory[E]) extends Sequence[E] {    
+class CachedSequence[E] (private val factory : SequenceFactory[E]) extends Sequence[E] {    
     val length = factory.length
+    def asFactory = new WrappedSequence(this)
     
     private def calculator = factory(this)(_ : Int)
     
