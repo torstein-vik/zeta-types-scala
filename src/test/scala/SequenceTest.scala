@@ -105,6 +105,18 @@ class SequenceTest extends FunSuite {
             assert(seq.asSeq === None)
             
         }
+        
+        test ("CachedSequence iteration works") {
+            val seq = Sequence(((i : Int) => i) upTo 100)
+            
+            var x = 0
+            for {y <- seq} {
+                assert(y === x)
+                x += 1
+            }
+            
+            assert(x === 101)
+        }
     }
     
     {// Factory tests
