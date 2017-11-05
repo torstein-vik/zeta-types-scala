@@ -52,6 +52,13 @@ class CachedSequence[E] (val factory : SequenceFactory[E]) extends Sequence[E] {
         case _ => throw new SequenceException("CachedSequence call out of bounds! " + index)
     }
     
+    override def toString : String = toString(20)
+    
+    def toString(upto : Int) : String = length match {
+        case Some(limit) if upto > limit => toString(Math.min(limit, upto))
+        case _ => (0 to upto).map(_.toString).mkString("", ", ", ", ...")
+    }
+    
 }
 
 object Sequence {
