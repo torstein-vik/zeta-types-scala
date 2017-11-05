@@ -11,5 +11,8 @@ case class SpecialAlgebraicSequences[E <: RingElement[E]] (ring : Ring[E]) exten
 
 class SpecialAlgebraicSequence[E <: RingElement[E]] (factory : SequenceFactory[E])(implicit ring : Ring[E]) extends CachedSequence[E](factory) 
     with RingElement[SpecialAlgebraicSequence[E]] {
+    
+    override lazy val canonicalRing = SpecialAlgebraicSequences(ring)
+    
 }
 
