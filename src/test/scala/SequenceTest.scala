@@ -134,7 +134,7 @@ class SequenceTest extends FunSuite {
             
             val seq3 = Sequence(7)
             
-            assert(seq3.toString(3) === "7, 7, 7, 7")
+            assert(seq3.toString(3) === "7, 7, 7, 7, ...")
         }
         
         test ("CachedSequence equals works") {
