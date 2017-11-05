@@ -132,6 +132,43 @@ class SequenceTest extends FunSuite {
             assert(seq2.toString(7) === "0, 1, 2, 3, 4, 5, 6, 7, ...")
             assert(seq2.toString(8) === "0, 1, 2, 3, 4, 5, 6, 7, ...")
         }
+        
+        test ("CachedSequence equals works") {
+            val seq1  = Sequence(((i : Int) => i) upTo 30)
+            val seq2  = Sequence(((i : Int) => i) upTo 30)
+            val seq3  = Sequence(((i : Int) => i) upTo 30 followedBy 1 upTo 0)
+            val seq4  = Sequence(((i : Int) => i) upTo 31)
+            val seq5  = Sequence(((i : Int) => i))
+            val seq6  = Sequence(((i : Int) => i))
+            val seq7  = Sequence(((i : Int) => i + 1) upTo 30)
+            val seq8  = Sequence(((i : Int) => i + 1) upTo 30)
+            val seq9  = Sequence(((i : Int) => i + 1) upTo 30 followedBy 1 upTo 0)
+            val seq10 = Sequence(((i : Int) => i + 1) upTo 31)
+            val seq11 = Sequence(((i : Int) => i + 1))
+            val seq12 = Sequence(((i : Int) => i + 1))
+            
+            assert(seq1 === seq2)
+            assert(seq7 === seq8)
+            
+            assert(seq1 !== seq3)
+            assert(seq1 !== seq4)
+            assert(seq7 !== seq9)
+            assert(seq7 !== seq10)
+            
+            assert(seq3 !== seq4)
+            assert(seq9 !== seq10)
+            
+            assert(seq5 !== seq11)
+            
+            assertThrows[SequenceException] {
+                seq5 == seq6
+            }
+            
+            assertThrows[SequenceException] {
+                seq11 == seq12
+            }
+            
+        }
     }
     
     {// Factory tests
