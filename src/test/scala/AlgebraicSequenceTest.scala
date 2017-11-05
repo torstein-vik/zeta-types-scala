@@ -60,5 +60,11 @@ class AlgebraicSequenceTest extends FunSuite {
             assert((D + A).createSeq(0, 6) === Seq[Complex](3, 6, 9, 12, 15, 18, 21))
         }
         
+        test ("notation multiplication test") {
+            assert((A * B).createSeq(0, 6) === Seq[Complex](0, 1, 8, 27, 64, 125, 216))
+            assert((B * C).createSeq(0, 6) === Seq[Complex](0, 5, 32, 99, 224, 425, 720))
+            assert((C * D).createSeq(0, 6) === Seq[Complex](6, 25, 56, 99, 154, 221, 300))
+            assert((D * A).createSeq(0, 6) === Seq[Complex](0, 5, 14, 27, 44, 65, 90))
+        }
     }
 }
