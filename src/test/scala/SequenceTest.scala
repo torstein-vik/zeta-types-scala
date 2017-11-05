@@ -117,6 +117,14 @@ class SequenceTest extends FunSuite {
             
             assert(x === 101)
         }
+        
+        test ("CachedSequence toString works") {
+            val seq = Sequence(((i : Int) => i))
+            
+            assert(seq.toString === "0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, ...")
+            
+            assert(seq.toString(5) === "0, 1, 2, 3, 4, 5, ...")
+        }
     }
     
     {// Factory tests
