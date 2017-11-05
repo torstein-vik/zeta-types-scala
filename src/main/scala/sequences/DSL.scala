@@ -2,9 +2,9 @@ package org.torsteinv.zetatypes.sequences
 
 import scala.language.implicitConversions
 
-package object DSL extends DSLTrait
+package object DSL extends DSLPackaging
 
-trait DSLTrait {
+trait DSLPackaging {
     import org.torsteinv.zetatypes.algebra.structures.DSL.{Complex}
     type ComplexSequence = AlgebraicSequence[Complex]
     type SpecialComplexSequence = SpecialAlgebraicSequence[Complex]
