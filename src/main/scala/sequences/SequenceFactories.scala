@@ -62,3 +62,10 @@ class CombinedSequence[T, S, U] (seq1 : Sequence[T], seq2 : Sequence[S])(f : (T,
         case (None,     None)     => None
     } 
 }
+
+class MappedSequence[T, S] (data : Sequence[T])(f : (T) => S)(isFSimple : Boolean = false) extends SequenceFactory[S] {
+    def apply (seq : Sequence[S])(index : Int) : S = f(data(index))
+    
+    override def hasInternalCache : Boolean = isFSimple && data.isInstanceOf[CachedSequence[T]]
+    override def length : Option[Int] = data.length
+}
