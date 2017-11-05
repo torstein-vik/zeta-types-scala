@@ -14,5 +14,7 @@ class SpecialAlgebraicSequence[E <: RingElement[E]] (factory : SequenceFactory[E
     
     override lazy val canonicalRing = SpecialAlgebraicSequences(ring)
     
+    override def +(that : SpecialAlgebraicSequence[E]) = new SpecialAlgebraicSequence(new CombinedSequence(this, that)(_ + _)(true))
+    
 }
 
