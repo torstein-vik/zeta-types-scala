@@ -60,6 +60,19 @@ class CachedSequence[E] (private val factory : SequenceFactory[E]) extends Seque
         case _ => (0 to upto).map(_.toString).mkString("", ", ", ", ...")
     }
     
+    override def equals(that : Any) : Boolean = that.isInstanceOf[Sequence[E]] && {(that.asInstanceOf[Sequence[E]].length, length) match {
+        case (Some(length1 : Int), Some(length2 : Int)) if length1 == length2 => 
+            (0 to length1 - 1).forall(i => this(i) == that.asInstanceOf[Sequence[E]](i))
+        case (Some(_), Some(_)) => false
+        case (None   , Some(_)) => false
+        case (Some(_), None   ) => false
+        case _ => if ((0 to 10).forall(i => this(i) == that.asInstanceOf[Sequence[E]](i))){
+            throw new SequenceException("Can't determine equality of infinite sequences! The first 10 terms are equal")
+        } else {
+            return false
+        }
+    }}
+    
 }
 
 object Sequence {
