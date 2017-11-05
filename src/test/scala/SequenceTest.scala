@@ -148,6 +148,19 @@ class SequenceTest extends FunSuite {
             assert(seq(2) == 4)
             assert(seq(3) == 5)
         }
+        
+        test ("WrappedSequence factory") {
+            import org.zetatypes.sequences.DSL._
+            
+            val seq = Sequence((i : Int) => i)
+            val seq2 = Sequence(new WrappedSequence(seq))
+            
+            assert(seq2(0) === 0)
+            assert(seq2(1) === 1)
+            assert(seq2(2) === 2)
+            assert(seq2(3) === 3)
+            assert(seq2(4) === 4)
+        }
     }
     
     {// Various user-defined sequences

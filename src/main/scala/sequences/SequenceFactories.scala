@@ -18,6 +18,13 @@ class ConstantSequence[E] (value : E) extends SequenceFactory[E] {
     override def hasInternalCache = true
 }
 
+class WrappedSequence[E] (data : Sequence[E]) extends SequenceFactory[E] {
+    def apply (seq : Sequence[E])(index : Int) = data(index)
+    override def hasInternalCache = data.isInstanceOf[CachedSequence[E]]
+    
+    override def length = data.length
+}
+
 class SequenceLimited[E] (old : SequenceFactory[E], limit : Int) extends SequenceFactory[E] {
     def apply(seq : Sequence[E])(index : Int) = old.apply(seq)(index)
     override def hasInternalCache : Boolean = old.hasInternalCache
