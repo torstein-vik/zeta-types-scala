@@ -1,7 +1,6 @@
 package org.zetatypes.sequences
 
 import org.zetatypes.algebra._
-import org.zetatypes.algebra.structures.DSL.{Rational}
 
 
 case class AlgebraicSequences[E <: RingElement[E]] (ring : Ring[E]) extends 
@@ -18,4 +17,10 @@ class AlgebraicSequence[E <: RingElement[E]] (factory : SequenceFactory[E])(impl
     override def *(that : AlgebraicSequence[E]) = null
     
     override def negation() = null
+}
+
+object ComplexSequence {
+    import org.zetatypes.algebra.structures.DSL.{Complex}
+    import org.zetatypes.algebra.structures.{Complex}
+    def apply (factory : SequenceFactory[Complex]) = new AlgebraicSequence(factory)(Complex)
 }
