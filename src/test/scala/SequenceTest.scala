@@ -124,6 +124,13 @@ class SequenceTest extends FunSuite {
             assert(seq.toString === "0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, ...")
             
             assert(seq.toString(5) === "0, 1, 2, 3, 4, 5, ...")
+            
+            val seq2 = Sequence(((i : Int) => i) upTo 7)
+            
+            assert(seq2.toString     === "0, 1, 2, 3, 4, 5, 6, 7, ...")
+            assert(seq2.toString(10) === "0, 1, 2, 3, 4, 5, 6, 7, ...")
+            assert(seq2.toString(7) === "0, 1, 2, 3, 4, 5, 6, 7, ...")
+            assert(seq2.toString(8) === "0, 1, 2, 3, 4, 5, 6, 7, ...")
         }
     }
     
