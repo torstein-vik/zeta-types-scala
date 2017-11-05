@@ -22,3 +22,9 @@ class SpecialAlgebraicSequence[E <: RingElement[E]] (factory : SequenceFactory[E
     
 }
 
+object SpecialComplexSequences extends SpecialAlgebraicSequences(Complex)
+
+object SpecialComplexSequence {
+    import org.zetatypes.algebra.structures.DSL.{Complex}
+    def apply (factory : SequenceFactory[Complex]) = new SpecialAlgebraicSequence(factory)(Complex)
+}
