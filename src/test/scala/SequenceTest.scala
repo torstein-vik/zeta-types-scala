@@ -131,6 +131,10 @@ class SequenceTest extends FunSuite {
             assert(seq2.toString(10) === "0, 1, 2, 3, 4, 5, 6, 7, ...")
             assert(seq2.toString(7) === "0, 1, 2, 3, 4, 5, 6, 7, ...")
             assert(seq2.toString(8) === "0, 1, 2, 3, 4, 5, 6, 7, ...")
+            
+            val seq3 = Sequence(7)
+            
+            assert(seq3.toString(3) === "7, 7, 7, 7")
         }
         
         test ("CachedSequence equals works") {
