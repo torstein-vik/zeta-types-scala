@@ -2,6 +2,8 @@ package org.torsteinv.zetatypes.sequences
 
 import scala.collection.immutable.IntMap
 
+package object SequencesPackage extends SequencesPackaging
+
 trait SequencesPackaging {
 
     class SequenceException(msg : String) extends Exception(msg)

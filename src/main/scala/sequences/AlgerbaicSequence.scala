@@ -3,6 +3,8 @@ package org.torsteinv.zetatypes.sequences
 import org.torsteinv.zetatypes.algebra._
 import org.torsteinv.zetatypes.algebra.structures.{Complex}
 
+package object AlgebraicSequencePackage extends AlgebraicSequencePackaging
+
 trait AlgebraicSequencePackaging {
 
     case class AlgebraicSequences[E <: RingElement[E]] (ring : Ring[E]) extends 
