@@ -66,5 +66,12 @@ class AlgebraicSequenceTest extends FunSuite {
             assert((C * D).createSeq(0, 6) === Seq[Complex](6, 25, 56, 99, 154, 221, 300))
             assert((D * A).createSeq(0, 6) === Seq[Complex](0, 5, 14, 27, 44, 65, 90))
         }
+                
+        test ("subtraction test") {
+            assert((A - B).createSeq(0, 6) === Seq[Complex](0, 0, -2, -6, -12, -20, -30))
+            assert((B - C).createSeq(0, 6) === Seq[Complex](-2, -4, -4, -2, 2, 8, 16))
+            assert((C - D).createSeq(0, 6) === Seq[Complex](-1, 0, 1, 2, 3, 4, 5))
+            assert((D - A).createSeq(0, 6) === Seq[Complex](3, 4, 5, 6, 7, 8, 9))
+        }
     }
 }
