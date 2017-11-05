@@ -4,7 +4,7 @@ import scala.collection.immutable.IntMap
 
 class SequenceException(msg : String) extends Exception(msg)
 
-trait Sequence[E] {
+trait Sequence[E] extends Iterable[E] { outer => 
     def apply (index : Int) : E 
     def length : Option[Int]
     
@@ -12,6 +12,16 @@ trait Sequence[E] {
     def asSeq : Option[Seq[E]] = for {limit <- length} yield createSeq(0, limit - 1)
     
     def factory : SequenceFactory[E]
+    
+    def iterator = new Iterator[E] {
+        var index = 0
+        def hasNext = outer.length match {
+            case None => true
+            case Some(limit) => index < limit
+        }
+        
+        def next = {index += 1; apply(index - 1)}
+    }
 }
 
 class CachedSequence[E] (val factory : SequenceFactory[E]) extends Sequence[E] {    
@@ -41,6 +51,7 @@ class CachedSequence[E] (val factory : SequenceFactory[E]) extends Sequence[E] {
         
         case _ => throw new SequenceException("CachedSequence call out of bounds! " + index)
     }
+    
 }
 
 object Sequence {
