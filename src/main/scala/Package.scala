@@ -1,5 +1,5 @@
-package org.torsteinv.zetatypes
+package org.torsteinv
 
-package object All {
+package object Zetatypes {
     
 }
