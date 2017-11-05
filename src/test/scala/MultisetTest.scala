@@ -1,3 +1,5 @@
+package org.torsteinv.zetatypes.test
+
 import org.scalatest.FunSuite
 
 class MultisetTest extends FunSuite {
