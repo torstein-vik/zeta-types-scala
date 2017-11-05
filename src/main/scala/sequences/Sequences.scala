@@ -1,4 +1,4 @@
-package org.zetatypes.sequences
+package org.torsteinv.zetatypes.sequences
 
 import scala.collection.immutable.IntMap
 

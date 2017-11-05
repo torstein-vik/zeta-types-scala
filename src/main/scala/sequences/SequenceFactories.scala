@@ -1,4 +1,4 @@
-package org.zetatypes.sequences
+package org.torsteinv.zetatypes.sequences
 
 trait SequenceFactory[E] {
     def apply (seq : Sequence[E])(index : Int) : E

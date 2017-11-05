@@ -1,6 +1,6 @@
-package org.zetatypes.tannakiansymbols
+package org.torsteinv.zetatypes.tannakiansymbols
 
-import org.zetatypes.algebra._
+import org.torsteinv.zetatypes.algebra._
 
 class Multiset[T](val elements : T*) {
     

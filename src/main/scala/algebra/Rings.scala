@@ -1,4 +1,4 @@
-package org.zetatypes.algebra
+package org.torsteinv.zetatypes.algebra
 
 trait RingElement[T <: RingElement[T]] extends GroupElement with Additive[T] with Subtractive[T] with Multiplicative[T] {
     val canonicalRing : Ring[T]

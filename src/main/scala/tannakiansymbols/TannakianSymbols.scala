@@ -1,10 +1,10 @@
-package org.zetatypes.tannakiansymbols
+package org.torsteinv.zetatypes.tannakiansymbols
 
 import scala.annotation.tailrec
 
-import org.zetatypes.algebra._
-import org.zetatypes.algebra.structures.{Rational, Integer}
-import org.zetatypes.algebra.structures.DSL.{Rational}
+import org.torsteinv.zetatypes.algebra._
+import org.torsteinv.zetatypes.algebra.structures.{Rational, Integer}
+import org.torsteinv.zetatypes.algebra.structures.DSL.{Rational}
 
 import scalaz.{Monoid => ScalazMonoid, _}, std.list._, std.option._, syntax.traverse._
 

@@ -1,9 +1,9 @@
-package org.zetatypes.sequences
+package org.torsteinv.zetatypes.sequences
 
 import scala.language.implicitConversions
 
 package object DSL {
-    import org.zetatypes.algebra.structures.DSL.{Complex}
+    import org.torsteinv.zetatypes.algebra.structures.DSL.{Complex}
     type ComplexSequence = AlgebraicSequence[Complex]
     type SpecialComplexSequence = SpecialAlgebraicSequence[Complex]
     

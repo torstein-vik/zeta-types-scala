@@ -3,7 +3,7 @@ import org.scalatest.FunSuite
 class MultisetTest extends FunSuite {
     
     {// With DSL
-        import org.zetatypes.tannakiansymbols.DSL._
+        import org.torsteinv.zetatypes.tannakiansymbols.DSL._
         
         test ("Multiset equality") {
             assert(Ø[Int] === ms())

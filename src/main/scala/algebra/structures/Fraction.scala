@@ -1,6 +1,6 @@
-package org.zetatypes.algebra.structures
+package org.torsteinv.zetatypes.algebra.structures
 
-import org.zetatypes.algebra._
+import org.torsteinv.zetatypes.algebra._
 
 case class Fractions[T <: RingElement[T]] (ring : Ring[T]) extends 
     RingClass[Fraction[T]](

@@ -1,8 +1,8 @@
-package org.zetatypes.algebra.structures
+package org.torsteinv.zetatypes.algebra.structures
 
 import scala.language.implicitConversions
 
-import org.zetatypes.algebra._
+import org.torsteinv.zetatypes.algebra._
 
 package object DSL {
     type Rational = Fraction[Integer]

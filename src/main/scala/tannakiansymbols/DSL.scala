@@ -1,4 +1,4 @@
-package org.zetatypes.tannakiansymbols
+package org.torsteinv.zetatypes.tannakiansymbols
 
 import scala.language.implicitConversions
 

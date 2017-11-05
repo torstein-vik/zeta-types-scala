@@ -1,4 +1,4 @@
-package org.zetatypes
+package org.torsteinv.zetatypes
 
 package object All {
     

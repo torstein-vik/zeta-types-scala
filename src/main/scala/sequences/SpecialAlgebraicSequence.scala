@@ -1,7 +1,7 @@
-package org.zetatypes.sequences
+package org.torsteinv.zetatypes.sequences
 
-import org.zetatypes.algebra._
-import org.zetatypes.algebra.structures.{Complex}
+import org.torsteinv.zetatypes.algebra._
+import org.torsteinv.zetatypes.algebra.structures.{Complex}
 
 
 case class SpecialAlgebraicSequences[E <: RingElement[E]] (ring : Ring[E]) extends 
@@ -26,6 +26,6 @@ class SpecialAlgebraicSequence[E <: RingElement[E]] (factory : SequenceFactory[E
 object SpecialComplexSequences extends SpecialAlgebraicSequences(Complex)
 
 object SpecialComplexSequence {
-    import org.zetatypes.algebra.structures.DSL.{Complex}
+    import org.torsteinv.zetatypes.algebra.structures.DSL.{Complex}
     def apply (factory : SequenceFactory[Complex]) = new SpecialAlgebraicSequence(factory)(Complex)
 }
