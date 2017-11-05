@@ -1,8 +1,9 @@
 package org.torsteinv.zetatypes.algebra
 
-trait AlgebraicElement
-
 import scala.annotation.tailrec
+
+
+trait AlgebraicElement
 
 class AlgebraicException(msg : String) extends Exception(msg)
 
