@@ -17,7 +17,7 @@ class AlgebraicSequence[E <: RingElement[E]] (factory : SequenceFactory[E])(impl
     
     override def *(that : AlgebraicSequence[E]) = null
     
-    override def negation() = null
+    override def negation() = new AlgebraicSequence(new MappedSequence(this)(_.negation)(true))
 }
 
 object ComplexSequences extends AlgebraicSequences(Complex)
