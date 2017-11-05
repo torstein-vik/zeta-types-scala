@@ -19,7 +19,6 @@ class AlgebraicSequenceTest extends FunSuite {
         assert(ComplexSequences.one.createSeq(0, 10)  === Seq[Complex](1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1))
     }
     
-}
     {
         val A = ComplexSequence((i : Int) => Complex(i))
         val B = ComplexSequence((i : Int) => Complex(i * i))
@@ -27,3 +26,4 @@ class AlgebraicSequenceTest extends FunSuite {
         val D = ComplexSequence((i : Int) => Complex(3 + 2 * i))
         
     }
+}
