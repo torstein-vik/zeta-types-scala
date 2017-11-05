@@ -220,6 +220,20 @@ class SequenceTest extends FunSuite {
             assert(seq(3) === 12)
             assert(seq(4) === 20)
         }
+        
+        test ("MappedSequence factory") {
+            import org.zetatypes.sequences.DSL._
+            
+            val seq1 = Sequence((i : Int) => i)
+            
+            val seq = Sequence(new MappedSequence(seq1)(_ + 7)(true))
+            
+            assert(seq(0) === 7)
+            assert(seq(1) === 8)
+            assert(seq(2) === 9)
+            assert(seq(3) === 10)
+            assert(seq(4) === 11)
+        }
     }
     
     {// Various user-defined sequences
