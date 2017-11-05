@@ -32,5 +32,12 @@ class AlgebraicSequenceTest extends FunSuite {
             assert(ComplexSequences.additive.invert(D).createSeq(0, 6) === Seq[Complex](-3, -5, -7, -9, -11, -13, -15))
         }
         
+        test ("addition test") {
+            assert(ComplexSequences.additive.combine(A, B).createSeq(0, 6) === Seq[Complex](0, 2, 6, 12, 20, 30, 42))
+            assert(ComplexSequences.additive.combine(B, C).createSeq(0, 6) === Seq[Complex](2, 6, 12, 20, 30, 42, 56))
+            assert(ComplexSequences.additive.combine(C, D).createSeq(0, 6) === Seq[Complex](5, 10, 15, 20, 25, 30, 35))
+            assert(ComplexSequences.additive.combine(D, A).createSeq(0, 6) === Seq[Complex](3, 6, 9, 12, 15, 18, 21))
+        }
+        
     }
 }
