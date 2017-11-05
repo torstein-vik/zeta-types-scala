@@ -18,5 +18,7 @@ class SpecialAlgebraicSequence[E <: RingElement[E]] (factory : SequenceFactory[E
     
     override def *(that : SpecialAlgebraicSequence[E]) = new SpecialAlgebraicSequence(new CombinedSequence(this, that)(_ * _)(true))
     
+    override def negation() = new SpecialAlgebraicSequence(new MappedSequence(this)(_.negation)(true))
+    
 }
 
