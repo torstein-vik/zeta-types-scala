@@ -5,4 +5,4 @@ import structures._
 trait structural
     extends IntegralPackage
     
-package object structure extends structural
+package object structures extends structural
