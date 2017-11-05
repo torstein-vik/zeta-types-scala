@@ -5,3 +5,4 @@ package object algebra
     with MonoidalPackage
     with GrouplikePackage
     with RinglikePackage
+    with QAlgebraicPackage
