@@ -28,7 +28,7 @@ trait SequencesPackaging {
         }
     }
 
-    class CachedSequence[E] (private val factory : SequenceFactory[E]) extends Sequence[E] {    
+    class CachedSequence[E] (private val factory : SequenceFactory[E]) extends org.torsteinv.zetatypes.sequences.Sequence[E] {    
         val length = factory.length
         def asFactory = new WrappedSequence(this)
         
