@@ -20,3 +20,10 @@ class AlgebraicSequenceTest extends FunSuite {
     }
     
 }
+    {
+        val A = ComplexSequence((i : Int) => Complex(i))
+        val B = ComplexSequence((i : Int) => Complex(i * i))
+        val C = ComplexSequence((i : Int) => Complex(2 + 3 * i))
+        val D = ComplexSequence((i : Int) => Complex(3 + 2 * i))
+        
+    }
