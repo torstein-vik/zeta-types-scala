@@ -1,17 +1,21 @@
 package org.torsteinv.zetatypes.algebra
 
-trait MonoidElement extends AlgebraicElement
+package object Monoidal extends MonoidalPackage
 
-trait Monoid[T <: MonoidElement] extends Magma[T]{
-    def identity : T
-}
+trait MonoidalPackage{
+    trait MonoidElement extends AlgebraicElement
 
-trait AdditiveMonoid[T <: MonoidElement with Additive[T]] extends Monoid[T] {
-    def zero : T = identity
-    override def combine (x : T, y : T) : T = x + y
-}
+    trait Monoid[T <: MonoidElement] extends Magma[T]{
+        def identity : T
+    }
 
-trait MultiplicativeMonoid[T <: MonoidElement with Multiplicative[T]] extends Monoid[T] {
-    def one : T = identity
-    override def combine (x : T, y : T) : T = x * y
+    trait AdditiveMonoid[T <: MonoidElement with Additive[T]] extends Monoid[T] {
+        def zero : T = identity
+        override def combine (x : T, y : T) : T = x + y
+    }
+
+    trait MultiplicativeMonoid[T <: MonoidElement with Multiplicative[T]] extends Monoid[T] {
+        def one : T = identity
+        override def combine (x : T, y : T) : T = x * y
+    }
 }
