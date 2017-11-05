@@ -3,6 +3,9 @@ package org.zetatypes.sequences
 import scala.language.implicitConversions
 
 package object DSL {
+    import org.zetatypes.algebra.structures.DSL.{Complex}
+    type ComplexSequence = AlgebraicSequence[Complex]
+    
     implicit def getFactory[T] (seq : Sequence[T]) = seq.asFactory
     
     implicit def createSequenceFactory[T] (f : Int => T) : SequenceFactory[T] = new SequenceFactory[T] {
