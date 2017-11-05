@@ -50,3 +50,15 @@ class JuxtapositionedSequence[E] (first : SequenceFactory[E], second : SequenceF
     override def hasInternalCache : Boolean = first.hasInternalCache && second.hasInternalCache
     override def length : Option[Int] = for {l1 <- first.length; l2 <- second.length} yield l1 + l2
 }
+
+class CombinedSequence[T, S, U] (seq1 : Sequence[T], seq2 : Sequence[S])(f : (T, S) => U)(isFSimple : Boolean = false) extends SequenceFactory[U] {
+    def apply (seq : Sequence[U])(index : Int) : U = f(seq1(index), seq2(index))
+    
+    override def hasInternalCache : Boolean = isFSimple && seq1.isInstanceOf[CachedSequence[T]] && seq2.isInstanceOf[CachedSequence[S]]
+    override def length : Option[Int] = (seq1.length, seq2.length) match {
+        case (Some(l1), Some(l2)) => Some(Math.min(l1, l2))
+        case (Some(l),  None)     => Some(l)
+        case (None,     Some(l))  => Some(l)
+        case (None,     None)     => None
+    } 
+}
