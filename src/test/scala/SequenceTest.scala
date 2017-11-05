@@ -205,6 +205,21 @@ class SequenceTest extends FunSuite {
             assert(seq2(3) === 3)
             assert(seq2(4) === 4)
         }
+        
+        test ("CombinedSequence factory") {
+            import org.zetatypes.sequences.DSL._
+            
+            val seq1 = Sequence((i : Int) => i)
+            val seq2 = Sequence((i : Int) => i * i)
+            
+            val seq = Sequence(new CombinedSequence(seq1, seq2)(_ + _)(true))
+            
+            assert(seq(0) === 0)
+            assert(seq(1) === 2)
+            assert(seq(2) === 6)
+            assert(seq(3) === 12)
+            assert(seq(4) === 20)
+        }
     }
     
     {// Various user-defined sequences
