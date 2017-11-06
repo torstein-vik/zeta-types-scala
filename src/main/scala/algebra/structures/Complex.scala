@@ -40,5 +40,3 @@ object Complex extends ComplexNumbers (Rationals) {
     def apply(real : Rational, imaginary : Rational = Rationals.zero) = new ComplexNumber(real, imaginary)(Rationals)
     def unapply(z : ComplexNumber[Rational]) : Option[(Rational, Rational)] = Some(z.real, z.imaginary)
 }
-
-
