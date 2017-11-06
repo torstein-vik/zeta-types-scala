@@ -32,7 +32,7 @@ trait MultisetPackaging {
             return el
         }
         
-        def /[S <: MonoidElement](downstairs : Multiset[T])(implicit conv: T => S, monoid : Monoid[S]) : TannakianSymbol[S] = {
+        def /[S <: MonoidElement](downstairs : Multiset[T])(implicit monoid : Monoid[S], conv: T => S) : TannakianSymbol[S] = {
             var el : Map[S, BigInt] = Map()
                        elements.foreach(x => el += conv(x) -> (el.getOrElse(conv(x), 0 : BigInt) + 1))
             downstairs.elements.foreach(x => el += conv(x) -> (el.getOrElse(conv(x), 0 : BigInt) - 1))
