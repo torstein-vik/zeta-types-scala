@@ -1,5 +1,5 @@
 # Zeta Types (Scala)
-***Implementation of Zeta Types / Tannakian Symbols in scala*** \n
+***Implementation of Zeta Types / Tannakian Symbols in scala*** <p>
 [![Build Status](https://travis-ci.org/torstein-vik/zeta-types-scala.svg?branch=master)](https://travis-ci.org/torstein-vik/zeta-types-scala)
 ## Installation
 
