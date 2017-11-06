@@ -2,7 +2,7 @@ package org.torsteinv.zetatypes.sequences
 
 import scala.collection.immutable.IntMap
 
-package object SequencesPackage extends SequencesPackaging
+
 
 trait SequencesPackaging {
 

@@ -2,7 +2,7 @@ package org.torsteinv.zetatypes.algebra.structures
 
 import org.torsteinv.zetatypes.algebra._
 
-package object RationalPackage extends RationalPackaging
+
 
 trait RationalPackaging {
 

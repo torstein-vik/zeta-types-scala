@@ -2,7 +2,7 @@ package org.torsteinv.zetatypes.tannakiansymbols
 
 import org.torsteinv.zetatypes.algebra._
 
-package object MultisetPackage extends MultisetPackaging
+
 
 trait MultisetPackaging {
 

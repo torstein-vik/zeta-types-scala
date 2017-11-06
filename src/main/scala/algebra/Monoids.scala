@@ -1,6 +1,6 @@
 package org.torsteinv.zetatypes.algebra
 
-package object MonoidPackage extends MonoidPackaging
+
 
 trait MonoidPackaging{
     trait MonoidElement extends AlgebraicElement

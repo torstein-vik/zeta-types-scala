@@ -8,7 +8,6 @@ import org.torsteinv.zetatypes.algebra.structures.DSL.{Rational}
 
 import scalaz.{Monoid => ScalazMonoid, _}, std.list._, std.option._, syntax.traverse._
 
-package object TannakianSymbolPackage extends TannakianSymbolsPackaging
 
 trait TannakianSymbolsPackaging {
 

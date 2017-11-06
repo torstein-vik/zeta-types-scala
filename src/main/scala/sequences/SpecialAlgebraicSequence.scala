@@ -3,7 +3,7 @@ package org.torsteinv.zetatypes.sequences
 import org.torsteinv.zetatypes.algebra._
 import org.torsteinv.zetatypes.algebra.structures.{Complex}
 
-package object SpecialAlgebraicSequencesPackage extends SpecialAlgebraicSequencesPackaging
+
 
 trait SpecialAlgebraicSequencesPackaging {
 

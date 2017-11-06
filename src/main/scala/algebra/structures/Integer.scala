@@ -2,8 +2,6 @@ package org.torsteinv.zetatypes.algebra.structures
 
 import org.torsteinv.zetatypes.algebra._
 
-package object IntegerPackage extends IntegerPackaging
-
 trait IntegerPackaging {
     case class Integer (x : BigInt) extends StandardLambdaRingElement[Integer] with PartialQAlgebraElement[Integer]{
         

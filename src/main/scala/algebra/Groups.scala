@@ -1,6 +1,6 @@
 package org.torsteinv.zetatypes.algebra
 
-package object GroupPackage extends GroupPackaging
+
 
 trait GroupPackaging {
 

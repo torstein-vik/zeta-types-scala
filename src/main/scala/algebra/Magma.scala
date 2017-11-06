@@ -2,7 +2,7 @@ package org.torsteinv.zetatypes.algebra
 
 import scala.annotation.tailrec
 
-package object MagmaPackage extends MagmaPackaging
+
 
 trait MagmaPackaging {
 

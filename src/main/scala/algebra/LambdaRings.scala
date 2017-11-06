@@ -2,7 +2,7 @@ package org.torsteinv.zetatypes.algebra
 
 import structures.{Integer, Rational}
 
-package object LambdaRingPackage extends LambdaRingPackaging
+
 
 trait LambdaRingPackaging {
 

@@ -1,6 +1,6 @@
 package org.torsteinv.zetatypes.sequences
 
-package object SequenceFactoriesPackage extends SequenceFactoriesPackaging
+
 
 trait SequenceFactoriesPackaging {
 

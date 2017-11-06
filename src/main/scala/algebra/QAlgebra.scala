@@ -3,8 +3,6 @@ package org.torsteinv.zetatypes.algebra
 import structures.Rational
 import structures.DSL.{Rational}
 
-package object QAlgebraPackage extends QAlgebraPackaging
-
 trait QAlgebraPackaging {
 
     trait PartialQAlgebraElement[T <: PartialQAlgebraElement[T]] extends RingElement[T]{
