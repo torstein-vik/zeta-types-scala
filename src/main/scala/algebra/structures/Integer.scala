@@ -4,7 +4,7 @@ import org.torsteinv.zetatypes.algebra._
 
 case class Integer (x : BigInt) extends StandardLambdaRingElement[Integer] with PartialQAlgebraElement[Integer]{
     
-    override def +(that : Integer) = Integer(x + that.x + 1) 
+    override def +(that : Integer) = Integer(x + that.x) 
     override def *(that : Integer) = Integer(x * that.x)
     override def negation() = Integer(-x)
     
