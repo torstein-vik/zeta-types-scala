@@ -23,6 +23,5 @@ class AlgebraicSequence[E <: RingElement[E]] (factory : SequenceFactory[E])(impl
 object ComplexSequences extends AlgebraicSequences(Complex)
 
 object ComplexSequence{
-    import org.torsteinv.zetatypes.algebra.structures.DSL.{Complex}
     def apply (factory : SequenceFactory[Complex]) = new AlgebraicSequence(factory)(Complex)
 }

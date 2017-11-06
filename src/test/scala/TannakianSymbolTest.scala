@@ -2,7 +2,7 @@ package org.torsteinv.zetatypes.test
 
 import org.scalatest.FunSuite
 
-import org.torsteinv.zetatypes.algebra.structures.DSL.{Rational, Complex}
+import org.torsteinv.zetatypes.algebra.structures.{Rational, Complex}
 
 class TannakianSymbolTest extends FunSuite{
     import org.torsteinv.zetatypes.tannakiansymbols._

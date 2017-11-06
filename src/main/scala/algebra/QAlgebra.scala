@@ -1,7 +1,6 @@
 package org.torsteinv.zetatypes.algebra
 
-import structures.Rational
-import structures.DSL.{Rational}
+import structures.{Rational}
 
 
 trait PartialQAlgebraElement[T <: PartialQAlgebraElement[T]] extends RingElement[T]{

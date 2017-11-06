@@ -4,7 +4,6 @@ import scala.annotation.tailrec
 
 import org.torsteinv.zetatypes.algebra._
 import org.torsteinv.zetatypes.algebra.structures.{Rational, Integer}
-import org.torsteinv.zetatypes.algebra.structures.DSL.{Rational}
 
 import scalaz.{Monoid => ScalazMonoid, _}, std.list._, std.option._, syntax.traverse._
 
