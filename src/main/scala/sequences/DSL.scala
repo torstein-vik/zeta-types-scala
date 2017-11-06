@@ -5,7 +5,6 @@ import scala.language.implicitConversions
 package object DSL extends DSLPackagingCommon with DSLPackaging
 
 trait DSLPackagingCommon{
-    import org.torsteinv.zetatypes.algebra.structures.Complex
     type ComplexSequence = AlgebraicSequence[Complex]
     type SpecialComplexSequence = SpecialAlgebraicSequence[Complex]
 }
