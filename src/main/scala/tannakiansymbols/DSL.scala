@@ -2,9 +2,7 @@ package org.torsteinv.zetatypes.tannakiansymbols
 
 import scala.language.implicitConversions
 
-package object DSL extends DSLPackaging
-
-trait DSLPackaging {
+package object DSL {
     implicit def toMS[T] (x : T) : Multiset[T] = new Multiset(x)
     
     def ms[T] (x : T*) : Multiset[T] = new Multiset(x : _*)
