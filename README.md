@@ -11,7 +11,6 @@
 3. Run 'sbt' in the main directory to start SBT
 4. Inside SBT, run 'test' to test the codebase 
 5. Run 'test:console' to get an interactive console
-6. Run 'import org.torsteinv.ZetaTypeDSL.\_' to load everything
 
 Please tell us if this doesn't work, because that means something is wrong with our instructions.
 
