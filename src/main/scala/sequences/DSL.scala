@@ -24,4 +24,7 @@ package object DSL {
         def upTo (limit : Int) : SequenceFactory[T] = new SequenceLimited(old, limit)
         def repeat : SequenceFactory[T] = new RepeatedSequence[T](old)
     }
+    
+    /** Dummy class so that scaladoc shows DSL */
+    protected class DummyClass
 }

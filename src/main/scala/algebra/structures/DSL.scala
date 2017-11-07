@@ -22,4 +22,6 @@ package object DSL {
     
     implicit def multiplicativeMonoid[E <: RingElement[E]] (ring : Ring[E]) : Monoid[E] = ring.multiplicative
     
+    /** Dummy class so that scaladoc shows DSL */
+    protected class DummyClass
 }

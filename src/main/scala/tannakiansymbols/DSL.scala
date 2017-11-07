@@ -8,4 +8,7 @@ package object DSL {
     def ms[T] (x : T*) : Multiset[T] = new Multiset(x : _*)
     
     def Ø[T] = new Multiset[T]()
+    
+    /** Dummy class so that scaladoc shows DSL */
+    protected class DummyClass
 }
