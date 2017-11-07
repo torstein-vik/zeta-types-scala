@@ -1,3 +1,3 @@
 package org.torsteinv.zetatypes
 
-package sequences {}
+package object sequences {}

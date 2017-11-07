@@ -1,3 +1,3 @@
 package org.torsteinv.zetatypes.algebra
 
-package structures {}
+package object structures {}
