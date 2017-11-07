@@ -1,6 +1,9 @@
 # Zeta Types (Scala)
 ***Implementation of Zeta Types / Tannakian Symbols in scala*** <p>
 [![Build Status](https://travis-ci.org/torstein-vik/zeta-types-scala.svg?branch=master)](https://travis-ci.org/torstein-vik/zeta-types-scala)
+[![License: GPL v3](https://img.shields.io/badge/License-GPL%20v3-blue.svg)](https://www.gnu.org/licenses/gpl-3.0)
+
+
 ## Installation
 
 1. Clone this repo to your computer
