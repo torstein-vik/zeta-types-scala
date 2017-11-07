@@ -4,6 +4,10 @@ import scala.language.implicitConversions
 
 import org.torsteinv.zetatypes.algebra._
 
+/** Provides various methods for simplifying the syntax of working with algebra,
+ *  such as converters between the main structures, the value [[DSL.I]], which 
+ *  is the imaginary unit, and the implicit [[DSL.multiplicativeMonoid]]
+ */
 package object DSL {
     implicit def intToInteger  (x : Int) : Integer  = Integer(x)
     implicit def intToRational (x : Int) : Rational = Rational(x)
