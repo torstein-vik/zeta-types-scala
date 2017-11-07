@@ -10,7 +10,7 @@ trait LambdaRing[E <: LambdaRingElement[E]] extends Ring[E] {
     def lambda[S <: PartialQAlgebraElement[S]] (x : E)(n : Int)(implicit ev: E => S, ev2: S => E) : E
 }
 
-trait StandardLambdaRingElement[T <: StandardLambdaRingElement[T]] extends LambdaRingElement[T] {
+trait STDLambdaRingElement[T <: STDLambdaRingElement[T]] extends LambdaRingElement[T] {
     def psi (n : Int) : T
     
     private var lambdacache : Map[Int, T] = Map()
@@ -37,7 +37,7 @@ trait StandardLambdaRingElement[T <: StandardLambdaRingElement[T]] extends Lambd
     }
 }
 
-trait StandardLambdaRing[E <: StandardLambdaRingElement[E]] extends LambdaRing[E]{
+trait STDLambdaRing[E <: STDLambdaRingElement[E]] extends LambdaRing[E]{
     override def psi (x : E)(n : Int) : E = x.psi(n)
     override def lambda[S <: PartialQAlgebraElement[S]] (x : E)(n : Int)(implicit ev: E => S, ev2: S => E) : E = x.lambda(n)(ev, ev2)
 }
