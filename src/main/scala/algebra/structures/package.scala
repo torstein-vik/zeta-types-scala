@@ -7,6 +7,9 @@ package org.torsteinv.zetatypes.algebra
  *  and [[Complex]] = [[ComplexNumber]] of [[Rational]]
  */
 package object structures {
+    /** Type synonym for rational numbers */
     type Rational = Fraction[Integer]
+    
+    /** Type synonym for Complex numbers with rational coefficients */
     type Complex  = ComplexNumber[Rational]
 }
