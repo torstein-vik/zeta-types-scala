@@ -24,6 +24,7 @@ package object DSL {
     /** implicitly converts a Rational number to a Complex number */
     implicit def RationalToComplex  (x : Rational) : Complex  = Complex(x)
     
+    /** The imaginary unit, so that a complex number can be specified like 1 + 2*I */
     def I = Complex(0, 1)
     
     implicit def multiplicativeMonoid[E <: RingElement[E]] (ring : Ring[E]) : Monoid[E] = ring.multiplicative
