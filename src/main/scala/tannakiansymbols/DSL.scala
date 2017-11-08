@@ -9,10 +9,13 @@ import scala.language.implicitConversions
  *  This is explained further in [[Multiset./]]
  */
 package object DSL {
+    /** Returns a singleton multiset from any element */
     implicit def toMS[T] (x : T) : Multiset[T] = new Multiset(x)
     
+    /** Shorthand for [[Multiset]]*/
     def ms[T] (x : T*) : Multiset[T] = new Multiset(x : _*)
     
+    /** Shorthand for empty [[Multiset]]*/
     def Ø[T] = new Multiset[T]()
     
     /** Dummy class so that scaladoc shows DSL */
