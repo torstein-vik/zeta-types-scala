@@ -2,6 +2,10 @@ package org.torsteinv.zetatypes.sequences
 
 import scala.language.implicitConversions
 
+/** Provides implicit methods for creating sequence factories. Provides the 
+ *  implicit [[SequenceFactoryDSL]] class, which has methods to alter factories.
+ *  
+ */
 package object DSL {
     
     implicit def getFactory[T] (seq : Sequence[T]) = seq.asFactory
