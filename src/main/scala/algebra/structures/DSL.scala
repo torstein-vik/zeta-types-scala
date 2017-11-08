@@ -9,22 +9,22 @@ import org.torsteinv.zetatypes.algebra._
  *  is the imaginary unit, and the implicit [[DSL.multiplicativeMonoid]]
  */
 package object DSL {
-    /** implicitly converts an int in standard syntax to an Integer */
+    /** implicitly converts an int in standard syntax to an [[Integer]] */
     implicit def intToInteger  (x : Int) : Integer  = Integer(x)
-    /** implicitly converts an int in standard syntax to a Rational number */
+    /** implicitly converts an int in standard syntax to a [[Rational]] number */
     implicit def intToRational (x : Int) : Rational = Rational(x)
-    /** implicitly converts an int in standard syntax to a Complex number */
+    /** implicitly converts an int in standard syntax to a [[Complex]] number */
     implicit def intToComplex  (x : Int) : Complex  = Complex(x)
     
-    /** implicitly converts an Integer to a Rational */
+    /** implicitly converts an [[Integer]] to a [[Rational]] */
     implicit def IntegerToRational (x : Integer) : Rational = Rational(x)
-    /** implicitly converts an Integer to a Complex number */
+    /** implicitly converts an [[Integer]] to a [[Complex]] number */
     implicit def IntegerToComplex  (x : Integer) : Complex  = Complex(x)
     
-    /** implicitly converts a Rational number to a Complex number */
+    /** implicitly converts a [[Rational]] number to a [[Complex]] number */
     implicit def RationalToComplex  (x : Rational) : Complex  = Complex(x)
     
-    /** The imaginary unit, so that a complex number can be specified like 1 + 2*I */
+    /** The imaginary unit, so that a [[Complex]] number can be specified like 1 + 2*I */
     def I = Complex(0, 1)
     
     /** implicitly converts a [[Ring]] into its [[Ring.multiplicative]] [[Monoid]] */
