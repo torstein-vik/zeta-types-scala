@@ -27,6 +27,7 @@ package object DSL {
     /** The imaginary unit, so that a complex number can be specified like 1 + 2*I */
     def I = Complex(0, 1)
     
+    /** implicitly converts a [[Ring]] into its [[Ring.multiplicative]] [[Monoid]] */
     implicit def multiplicativeMonoid[E <: RingElement[E]] (ring : Ring[E]) : Monoid[E] = ring.multiplicative
     
     /** Dummy class so that scaladoc shows DSL */
