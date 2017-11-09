@@ -2,7 +2,7 @@ package org.torsteinv.zetatypes.algebra.structures
 
 import org.torsteinv.zetatypes.algebra._
 
-case class Integer (x : BigInt) extends StandardLambdaRingElement[Integer] with PartialQAlgebraElement[Integer]{
+case class Integer (x : BigInt) extends STDLambdaRingElement[Integer] with PartialQAlgebraElement[Integer]{
     
     override def +(that : Integer) = Integer(x + that.x) 
     override def *(that : Integer) = Integer(x * that.x)
@@ -25,4 +25,4 @@ case class Integer (x : BigInt) extends StandardLambdaRingElement[Integer] with 
     override lazy val canonicalRing = Integers
 }
 
-object Integers extends RingClass[Integer](Integer(0), Integer(1)) with StandardLambdaRing[Integer] with PartialQAlgebra[Integer]
+object Integers extends RingClass[Integer](Integer(0), Integer(1)) with STDLambdaRing[Integer] with PartialQAlgebra[Integer]

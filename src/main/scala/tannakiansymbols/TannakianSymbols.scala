@@ -11,12 +11,12 @@ case class TS[E <: MonoidElement](monoid : Monoid[E]) extends
     RingClass[TannakianSymbol[E]](
     new TannakianSymbol(Seq.empty)(monoid), 
     new TannakianSymbol(Seq((monoid.identity, 1 : BigInt)))(monoid))
-    with StandardLambdaRing[TannakianSymbol[E]]
+    with STDLambdaRing[TannakianSymbol[E]]
     with PartialQAlgebra[TannakianSymbol[E]]
 
 class TannakianSymbol[E <: MonoidElement] (val elements : Seq[(E, BigInt)])(implicit monoid : Monoid[E]) extends 
     RingElement[TannakianSymbol[E]] 
-    with StandardLambdaRingElement[TannakianSymbol[E]]
+    with STDLambdaRingElement[TannakianSymbol[E]]
     with PartialQAlgebraElement[TannakianSymbol[E]]{
     override lazy val canonicalRing = TS(monoid)
         
