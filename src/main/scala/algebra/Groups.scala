@@ -24,12 +24,12 @@ trait Group[T <: GroupElement] extends PartialGroup[T] {
 }
 
 /** A [[Group]] where the elements are [[Additive]]. This allows [[invert]] to be inferred. */
-trait AdditiveGroup[T <: GroupElement with Additive[T] with Subtractive[T]] extends AdditiveMonoid[T] {
+trait AdditiveGroup[T <: GroupElement with Additive[T] with Subtractive[T]] extends Group[T] with AdditiveMonoid[T] {
     def invert (x : T) = -x
 }
 
 /** A [[Group]] where the elements are [[Multiplicative]]. This allows [[invert]] to be inferred. */
-trait MultiplicativeGroup[T <: GroupElement with Multiplicative[T] with Divisible[T]] extends MultiplicativeMonoid[T] {
+trait MultiplicativeGroup[T <: GroupElement with Multiplicative[T] with Divisible[T]] extends Group[T] with MultiplicativeMonoid[T] {
     def invert (x : T) = x.inverse()
 }
 
