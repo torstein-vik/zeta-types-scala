@@ -29,7 +29,7 @@ trait Magma[T <: AlgebraicElement] {
         return expTailRec(n - 1, x, combine(x, acc))
     }  
 }
-/** An algebraic element with an addition defined on it
+/** An [[AlgebraicElement]] with an addition defined on it
  *  @tparam that The type that this element may combined with and yield. that must be a subtype of Additive[that]
  */
 trait Additive[that <: Additive[that]] extends AlgebraicElement{
@@ -47,7 +47,7 @@ trait Additive[that <: Additive[that]] extends AlgebraicElement{
         return expTailRec(n - 1, this + acc)
     } 
 }
-/** An algebraic element with a multiplication defined on it
+/** An [[AlgebraicElement]] with a multiplication defined on it
  *  @tparam that The type that this element may combined with and yield. that must be a subtype of Multiplicative[that]
  */
 trait Multiplicative[that <: Multiplicative[that]] extends AlgebraicElement {
