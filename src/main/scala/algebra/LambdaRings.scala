@@ -2,18 +2,30 @@ package org.torsteinv.zetatypes.algebra
 
 import structures.{Integer, Rational}
 
-
+/** An element of some [[LambdaRing]] */
 trait LambdaRingElement[T <: LambdaRingElement[T]] extends RingElement[T]
 
+/** A type of ring with a [[lambda]] operation and [[psi]] operations, from the algebraic theory of lambda rings.
+ *  @tparam E The type of [[LambdaRingElement]] that is passed through the [[psi]]- and [[lambda]]-operations, and the underlying [[Ring]] structure.
+ */
 trait LambdaRing[E <: LambdaRingElement[E]] extends Ring[E] {
+    /** The n-th Adams/psi operation applied to some element x */
     def psi (x : E)(n : Int) : E
+    /** The n-th lambda operation applied to some element x.
+     *  Also takes some implicit evidence that E can be converted to and from some other type S, which is a PartialQAlgebraElement
+     */
     def lambda[S <: PartialQAlgebraElement[S]] (x : E)(n : Int)(implicit ev: E => S, ev2: S => E) : E
 }
 
+/** Standard implementation of [[LambdaRingElement]] */
 trait STDLambdaRingElement[T <: STDLambdaRingElement[T]] extends LambdaRingElement[T] {
+    /** The n-th Adams/psi operation applied to this element */
     def psi (n : Int) : T
     
     private var lambdacache : Map[Int, T] = Map()
+    /** The n-th lambda operation applied to this element.
+     *  Also takes some implicit evidence that E can be converted to and from some other type S, which is a PartialQAlgebraElement
+     */
     def lambda[S <: PartialQAlgebraElement[S]] (n : Int)(implicit ev: T => S, ev2: S => T) : T = n match {
         case 0 => canonicalRing.one
         case 1 => this * canonicalRing.one
@@ -37,6 +49,7 @@ trait STDLambdaRingElement[T <: STDLambdaRingElement[T]] extends LambdaRingEleme
     }
 }
 
+/** Standard implementation of [[LambdaRing]], using [[STDLambdaRingElement]] */
 trait STDLambdaRing[E <: STDLambdaRingElement[E]] extends LambdaRing[E]{
     override def psi (x : E)(n : Int) : E = x.psi(n)
     override def lambda[S <: PartialQAlgebraElement[S]] (x : E)(n : Int)(implicit ev: E => S, ev2: S => E) : E = x.lambda(n)(ev, ev2)
