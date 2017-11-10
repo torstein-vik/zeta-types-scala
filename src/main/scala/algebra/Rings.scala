@@ -30,7 +30,7 @@ trait Ring[E <: RingElement[E]] {
  *  @param zero The additive identity of the [[Ring]]
  *  @param one The multiplicative identity of the [[Ring]]
  */
-abstract class RingClass[E <: RingElement[E]] (val zero : E, val one : E) extends Ring[E]{ outer =>
+abstract class RingClass[E <: RingElement[E]] (override val zero : E, override val one : E) extends Ring[E]{ outer =>
     override object additive extends AdditiveGroup[E] {
         def identity = outer.zero
     }
