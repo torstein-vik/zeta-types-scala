@@ -2,7 +2,7 @@ scalaVersion := "2.12.3"
 
 name := "zeta-types"
 
-parallelExecution in Test := true
+parallelExecution in Test := false
 
 // Show warnings
 scalacOptions ++= Seq("-unchecked", "-deprecation", "-feature")

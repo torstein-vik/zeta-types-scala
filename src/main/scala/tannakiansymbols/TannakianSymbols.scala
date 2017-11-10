@@ -7,6 +7,11 @@ import org.torsteinv.zetatypes.algebra.structures.{Rational, Integer}
 
 import scalaz.{Monoid => ScalazMonoid, _}, std.list._, std.option._, syntax.traverse._
 
+/** A ring where the elements are [[TannakianSymbol]]s with elements in some given [[org.torsteinv.zetatypes.algebra.Monoid]] 
+ *  @tparam T the type of [[org.torsteinv.zetatypes.algebra.MonoidElement]] that the [[TannakianSymbol]]s consist of
+ *  @constructor Creates a new ring of [[TannakianSymbol]]s with elements in a given [[org.torsteinv.zetatypes.algebra.Monoid]] 
+ *  @param monoid The [[org.torsteinv.zetatypes.algebra.Monoid]] that the [[TannakianSymbol]] elements belong to
+ */
 case class TS[E <: MonoidElement](monoid : Monoid[E]) extends 
     RingClass[TannakianSymbol[E]](
     new TannakianSymbol(Seq.empty)(monoid), 
@@ -14,6 +19,12 @@ case class TS[E <: MonoidElement](monoid : Monoid[E]) extends
     with STDLambdaRing[TannakianSymbol[E]]
     with PartialQAlgebra[TannakianSymbol[E]]
 
+/** An element of [[TS]]
+ *  @tparam T the type of [[org.torsteinv.zetatypes.algebra.MonoidElement]] that the elements of this symbol belong to
+ *  @constructor Creates a new Tannakian symbol from a list of elements
+ *  @param elements The element-multiplicity pairs of this Tannakian symbol
+ *  @param monoid The [[org.torsteinv.zetatypes.algebra.Monoid]] that the elements belong to
+ */
 class TannakianSymbol[E <: MonoidElement] (val elements : Seq[(E, BigInt)])(implicit monoid : Monoid[E]) extends 
     RingElement[TannakianSymbol[E]] 
     with STDLambdaRingElement[TannakianSymbol[E]]
@@ -50,14 +61,19 @@ class TannakianSymbol[E <: MonoidElement] (val elements : Seq[(E, BigInt)])(impl
         return upstairs + "/" + downstairs
     } 
     
+    /** Returns the upstairs [[Multiset]] of this [[TannakianSymbol]] */
     def upstairs : Multiset[E] = {
         return new Multiset(this.cleanup.elements.filter({case (x, i) => i > 0}).flatMap({case (x, i) => ((1 : BigInt) to i).map( _ => x)}) : _*)
     }
     
+    /** Returns the downstairs [[Multiset]] of this [[TannakianSymbol]] */
     def downstairs : Multiset[E] = {
         return this.negation.upstairs
     }
     
+    /** Returns a cleaned-up version of this [[TannakianSymbol]], where element-multiplicity pairs have been combined as much as possible,
+     *  and those pairs where the multiplicity is zero, have been removed
+     */
     def cleanup : TannakianSymbol[E] = {
         import scala.collection.mutable.{Seq => MSeq}
         
@@ -81,16 +97,21 @@ class TannakianSymbol[E <: MonoidElement] (val elements : Seq[(E, BigInt)])(impl
         return new TannakianSymbol(data.toSeq.filter({case (x, i) => i != 0}))
     }
     
+    /** Returns the superdimension of this symbol, that is a tuple of ([[evendimension]], [[odddimension]]) */
     def superdimension : (BigInt, BigInt) = cleanup.elements.foldLeft((0 : BigInt, 0 : BigInt)) {
         case ((aa, ab), (x, i)) if i > 0 => (aa + i, ab)
         case ((aa, ab), (x, i)) if i < 0 => (aa, ab - i)
     }
     
+    /** Returns the even dimension of this symbol, that is the number of elements [[upstairs]] (although calculated in an efficient way) */
     def evendimension : BigInt = superdimension._1
     
+    /** Returns the odd dimension of this symbol, that is the number of elements [[downstairs]] (although calculated in an efficient way) */
     def odddimension : BigInt = superdimension._2
     
+    /** Returns whether or not this symbol is a line-element, that is a symbol with one element [[upstairs]], and none [[downstairs]] */
     def islineelement = superdimension == (1, 0)
     
+    /** Returns the augmentation of this symbol, that is the [[evendimension]] minus the [[odddimension]] */
     def augmentation = superdimension match {case (even, odd) => even - odd}
 }

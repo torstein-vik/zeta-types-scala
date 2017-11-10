@@ -3,6 +3,11 @@ package org.torsteinv.zetatypes.tannakiansymbols
 import org.torsteinv.zetatypes.algebra._
 
 
+/** A set where the same element may appear multiple times. Used for defining [[TannakianSymbol]]
+ *  @tparam T the type of element this Multiset contains
+ *  @constructor Creates a new Multiset from a list of elements
+ *  @param elements The list of elements building up the Multiset
+ */
 class Multiset[T](val elements : T*) {
     
     override def toString : String = {
@@ -23,12 +28,20 @@ class Multiset[T](val elements : T*) {
         case _ => false
     }
     
+    /** Return the multiplicity map of this Multiset */
     def toMap : Map[T, Int] = {
         var el : Map[T, Int] = Map()
         elements.foreach(x => el += x -> (el.getOrElse(x, 0) + 1))
         return el
     }
     
+    /** Create a [[TannakianSymbol]] with this [[Multiset]] as upstairs, and some other [[Multiset]] as downstairs. 
+     *  Requires some implicit evidence to make all types compatible, along with a [[org.torsteinv.zetatypes.algebra.Monoid]].
+     *  @tparam S the type of the elements of the created [[TannakianSymbol]].
+     *  @param downstairs the downstairs [[Multiset]] to create the [[TannakianSymbol]]
+     *  @param monoid the [[org.torsteinv.zetatypes.algebra.Monoid]] that the [[TannakianSymbol]] is to compute using
+     *  @param conv implicit evidence that converts the type of the upstairs and downstairs elements into the elements of the [[TannakianSymbol]]
+     */
     def /[S <: MonoidElement](downstairs : Multiset[T])(implicit monoid : Monoid[S], conv: T => S) : TannakianSymbol[S] = {
         var el : Map[S, BigInt] = Map()
                    elements.foreach(x => el += conv(x) -> (el.getOrElse(conv(x), 0 : BigInt) + 1))

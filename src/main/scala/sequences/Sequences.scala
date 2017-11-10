@@ -3,18 +3,32 @@ package org.torsteinv.zetatypes.sequences
 import scala.collection.immutable.IntMap
 
 
+/** An exception coming from some sequence functionallity 
+ *  @constructor Create a sequence exception
+ *  @param msg The message to be displayed alongside the exception
+ */
 class SequenceException(msg : String) extends Exception(msg)
 
+/** A sequence of some elements that is lazily computed, and may be infinitely long.
+ *  [[CachedSequence]] is the main type of [[Sequence]] that is used, but in principle others could be implemented.
+ *  @tparam E the element type of this [[Sequence]]
+ */
 trait Sequence[E] extends Iterable[E] { outer => 
+    /** Return the value of this sequence at a specific index */
     def apply (index : Int) : E 
+    /** Return Some(length) of this [[Sequence]] if it is finite, None if it is not */
     def length : Option[Int]
     
+    /** Create a Seq from this sequence given a certain index range. Includes both the start and stop index. */
     def createSeq (start : Int, stop : Int) : Seq[E] = (start to stop).map(apply) 
+    /** If this sequence is finite, return Some(sequence upto length), if not, return None*/
     def asSeq : Option[Seq[E]] = for {limit <- length} yield createSeq(0, limit - 1)
     
+    /** Return this [[Sequence]] as a [[SequenceFactory]] */
     def asFactory : SequenceFactory[E]
     
-    def iterator = new Iterator[E] {
+    /** Return an iterator that iterates through all the elements of this [[Sequence]], whether it is infinite or not */
+    override def iterator = new Iterator[E] {
         var index = 0
         def hasNext = outer.length match {
             case None => true
@@ -25,6 +39,12 @@ trait Sequence[E] extends Iterable[E] { outer =>
     }
 }
 
+/** A [[Sequence]] created by a [[SequenceFactory]], where the elements are cached, unless the factory specifies that the values are cheap to compute, 
+ *  using [[SequenceFactory.hasInternalCache]]
+ *  @tparam E the element type of this [[Sequence]]
+ *  @constructor Create a new [[Sequence]] from a [[SequenceFactory]]
+ *  @param factory the [[SequenceFactory]] that builds this [[Sequence]]
+ */
 class CachedSequence[E] (private val factory : SequenceFactory[E]) extends org.torsteinv.zetatypes.sequences.Sequence[E] {    
     val length = factory.length
     def asFactory = new WrappedSequence(this)
@@ -40,6 +60,7 @@ class CachedSequence[E] (private val factory : SequenceFactory[E]) extends org.t
         return res
     }
     
+    /** Empty the cache of this [[CachedSequence]]*/
     def flush = {cache = IntMap()}
     
     def apply (index : Int) : E = (doCache, index, length) match {
@@ -76,6 +97,10 @@ class CachedSequence[E] (private val factory : SequenceFactory[E]) extends org.t
     
 }
 
+/** Object used to create new [[CachedSequence]]s with nicer syntax*/
 object Sequence {
+    /** Create a new [[CachedSequence]] using some [[SequenceFactory]] 
+     *  @tparam E the type of element the [[Sequence]] consists of
+     */
     def apply[E](factory : SequenceFactory[E]) = new CachedSequence[E](factory)
 }
