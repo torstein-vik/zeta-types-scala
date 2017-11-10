@@ -2,6 +2,10 @@ package org.torsteinv.zetatypes.algebra.structures
 
 import org.torsteinv.zetatypes.algebra._
 
+/** An int with algebraic semantics.
+ *  @constructor Create a new Integer from a BigInt
+ *  @param x the number that this Integer is created from
+ */
 case class Integer (x : BigInt) extends STDLambdaRingElement[Integer] with PartialQAlgebraElement[Integer]{
     
     override def +(that : Integer) = Integer(x + that.x) 
@@ -25,4 +29,5 @@ case class Integer (x : BigInt) extends STDLambdaRingElement[Integer] with Parti
     override lazy val canonicalRing = Integers
 }
 
+/** The ring of [[Integer]]s */
 object Integers extends RingClass[Integer](Integer(0), Integer(1)) with STDLambdaRing[Integer] with PartialQAlgebra[Integer]
