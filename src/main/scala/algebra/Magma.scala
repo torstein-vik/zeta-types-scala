@@ -35,7 +35,7 @@ trait Magma[T <: AlgebraicElement] {
 trait Additive[that <: Additive[that]] extends AlgebraicElement{
     /** Add some other element to this */
     def +(y : that) : that
-    /** Multiply this Multiplicative element with itself n times. Requires some implicit evidence that the type of this is a subtype of that*/
+    /** Add this Additive element to itself n times. Requires some implicit evidence that the type of this is a subtype of that*/
     def ++(n : Int)(implicit ev: this.type <:< that) : that = n match {
         case n if n > 0 => expTailRec(n, ev(this))
         case _ => throw new AlgebraicException("Magmatic repeated addition requires n > 0")
