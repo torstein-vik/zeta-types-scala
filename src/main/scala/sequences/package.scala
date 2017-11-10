@@ -7,6 +7,9 @@ import org.torsteinv.zetatypes.algebra.structures.{Complex}
  *  Also provides some implicit methods for simplifying syntax.
  */
 package object sequences {
+    /** Type synonym for [[AlgebraicSequence]] with [[org.torsteinv.zetatypes.algebra.structures.Complex]] elements */
     type ComplexSequence = AlgebraicSequence[Complex]
+    
+    /** Type synonym for [[SpecialAlgebraicSequence]] with [[org.torsteinv.zetatypes.algebra.structures.Complex]] elements */
     type SpecialComplexSequence = SpecialAlgebraicSequence[Complex]
 }
