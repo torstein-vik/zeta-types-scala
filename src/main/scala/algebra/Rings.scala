@@ -18,9 +18,9 @@ trait Ring[E <: RingElement[E]] {
     /** The multiplicative [[Monoid]] structure of this ring */
     val multiplicative : MultiplicativeMonoid[E]
     
-    /** Synonym for [[additive.zero]] */
+    /** Synonym for the additive identity */
     val zero : E
-    /** Synonym for [[additive.one]] */
+    /** Synonym for the multiplicative identity */
     val one : E
 }
 
