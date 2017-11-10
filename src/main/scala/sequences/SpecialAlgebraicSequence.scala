@@ -34,11 +34,11 @@ class SpecialAlgebraicSequence[E <: RingElement[E]] (factory : SequenceFactory[E
     override def apply(index : Int) = if (index == 0) {ring.one} else {super.apply(index)}
 }
 
-/** A ring of [[SpecialAlgebraicSequence]]s with elements in the [[org.torsteinv.zetatypes.structures.Complex]] numbers
+/** A ring of [[SpecialAlgebraicSequence]]s with elements in the [[org.torsteinv.zetatypes.algebra.structures.Complex]] numbers
  */
 object SpecialComplexSequences extends SpecialAlgebraicSequences(Complex)
 
-/** An object to create a [[SpecialAlgebraicSequence]] with [[org.torsteinv.zetatypes.structures.Complex]] elements.
+/** An object to create a [[SpecialAlgebraicSequence]] with [[org.torsteinv.zetatypes.algebra.structures.Complex]] elements.
  */
 object SpecialComplexSequence {
     def apply (factory : SequenceFactory[Complex]) = new SpecialAlgebraicSequence(factory)(Complex)

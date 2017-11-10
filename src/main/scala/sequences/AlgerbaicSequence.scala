@@ -31,11 +31,11 @@ class AlgebraicSequence[E <: RingElement[E]] (factory : SequenceFactory[E])(impl
     override def negation() = new AlgebraicSequence(new MappedSequence(this)(_.negation)(true))
 }
 
-/** A ring of [[AlgebraicSequence]]s with elements in the [[org.torsteinv.zetatypes.structures.Complex]] numbers
+/** A ring of [[AlgebraicSequence]]s with elements in the [[org.torsteinv.zetatypes.algebra.structures.Complex]] numbers
  */
 object ComplexSequences extends AlgebraicSequences(Complex)
 
-/** An object to create an [[AlgebraicSequence]] with [[org.torsteinv.zetatypes.structures.Complex]] elements.
+/** An object to create an [[AlgebraicSequence]] with [[org.torsteinv.zetatypes.algebra.structures.Complex]] elements.
  */
 object ComplexSequence{
     def apply (factory : SequenceFactory[Complex]) = new AlgebraicSequence(factory)(Complex)
