@@ -49,6 +49,7 @@ class ComplexNumber[T <: RingElement[T]] (val real : T, val imaginary : T)(impli
 
 /** An object to create a [[ComplexNumber]] with [[Rational]] coefficients.
  *  Also provides unapply, so that ComplexNumbers can be pattern matched.
+ *  Also is the ring that [[ComplexNumber]]s with [[Rational]] coefficients belong to.
  */
 object Complex extends ComplexNumbers (Rationals) {
     /** Creates a new [[Rational]] [[ComplexNumber]] using a real and imaginary part as parameters */
