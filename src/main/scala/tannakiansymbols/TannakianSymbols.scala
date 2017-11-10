@@ -23,7 +23,7 @@ case class TS[E <: MonoidElement](monoid : Monoid[E]) extends
  *  @tparam T the type of [[org.torsteinv.zetatypes.algebra.MonoidElement]] that the elements of this symbol belong to
  *  @constructor Creates a new Tannakian symbol from a list of elements
  *  @param elements The element-multiplicity pairs of this Tannakian symbol
- *  @param monoid The monoid that the elements belong to
+ *  @param monoid The [[org.torsteinv.zetatypes.algebra.Monoid]] that the elements belong to
  */
 class TannakianSymbol[E <: MonoidElement] (val elements : Seq[(E, BigInt)])(implicit monoid : Monoid[E]) extends 
     RingElement[TannakianSymbol[E]] 
