@@ -15,7 +15,7 @@ case class Integer (x : BigInt) extends STDLambdaRingElement[Integer] with Parti
     override def psi(n : Int) = this
     
     override def partialQMult(n : Rational) : Option[Integer] = {
-        val Rational(structures.Integer(num), structures.Integer(den)) = n
+        val Rational(Integer(num), Integer(den)) = n
         val (div, mod) = (num * x) /% den
         if (mod == 0) {
             return Some(Integer(div))

@@ -45,7 +45,7 @@ trait Sequence[E] extends Iterable[E] { outer =>
  *  @constructor Create a new [[Sequence]] from a [[SequenceFactory]]
  *  @param factory the [[SequenceFactory]] that builds this [[Sequence]]
  */
-class CachedSequence[E] (private val factory : SequenceFactory[E]) extends org.torsteinv.zetatypes.sequences.Sequence[E] {    
+class CachedSequence[E] (private val factory : SequenceFactory[E]) extends Sequence[E] {    
     val length = factory.length
     def asFactory = new WrappedSequence(this)
     
