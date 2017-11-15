@@ -27,6 +27,13 @@ package object DSL {
     /** The imaginary unit, so that a [[Complex]] number can be specified like 1 + 2*I */
     def I = Complex(0, 1)
     
+    /** implicitly embeds something into a [[Polynomial]] term with exponent 0
+     *  @tparam S the type of [[x]] which is embedded into the [[Polynomial]]
+     *  @tparam E the type of [[RingElement]] the coefficients of the [[Polynomial]] belong to
+     *  @param x the 'something' which is embedded into the [[Polynomial]]
+     *  @param ring the [[Ring]] the polynomial unit has coefficients in
+     *  @param ev a conversion which embeds [[x]] into a [[Ring]] which is then embedded into [[Polynomials]]
+     */
     implicit def intoPolynomial[S, E <: RingElement[E]](x : S)(implicit ring : Ring[E], ev : S => E) : Polynomial[E] = new Polynomial(Seq((ev(x), 0)))
     
     def x[E <: RingElement[E]](implicit ring : Ring[E]) = new Polynomial[E](Seq((ring.one, 1)))
