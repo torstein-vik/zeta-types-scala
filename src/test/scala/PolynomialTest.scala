@@ -75,4 +75,25 @@ class PolynomialTest extends FunSuite{
         
     }
     
+        
+    {// Using polynomial notation integer
+        implicit val ring : Ring[Integer] = Integers
+    
+        import org.torsteinv.zetatypes.algebra.structures.DSL._
+        
+        val X = new Polynomial(Seq((Integer(1), 1), (Integer(2), 2), (Integer(3), 4)))
+        val Y = new Polynomial(Seq((Integer(10), 0), (Integer(11), 5), (Integer(2), 400)))
+        val Z = new Polynomial(Seq((Integer(-1), 0), (Integer(-3), 8), (Integer(4), 4)))
+        val W = new Polynomial(Seq((Integer(-1), 1), (Integer(10), 0), (Integer(2), 2)))
+        
+        test ("Polynomial DSL notation integral") {
+            assert(X === x + 2 * x~^2 + 3 * x~^4)
+            assert(Y === 10 + 11 * x~^5 + 2 * x~^400)
+            assert(Z === -1 - 3 * x ~^ 8 + 4 * x~^4)
+            assert(W === -x + 10 + 2 * x~^2)
+            assert(Polynomials(Integers).one  === intoPolynomial(1))
+            assert(Polynomials(Integers).zero === intoPolynomial(0))
+        }
+    }
+    
 }
