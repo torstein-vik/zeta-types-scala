@@ -19,7 +19,7 @@ case class Polynomials[E <: RingElement](ring : Ring[E]) extends
  *  @param elements The coefficient-exponent pairs that build up the terms of this polynomial
  *  @param ring The [[org.torsteinv.zetatypes.algebra.Ring]] that the coefficients belong to
  */
-class Polynomial[E <: RingElement] (val elements : Seq[(E, BigInt)])(implicit ring : Ring[E]) extends 
+class Polynomial[E <: RingElement] (val elements : Seq[(E, Int)])(implicit ring : Ring[E]) extends 
     RingElement[Polynomial[E]] {
     override lazy val canonicalRing = Polynomials(ring)
         
