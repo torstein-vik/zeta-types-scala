@@ -142,6 +142,13 @@ class PolynomialTest extends FunSuite{
         import org.torsteinv.zetatypes.tannakiansymbols.DSL._
         import org.torsteinv.zetatypes.algebra.structures.DSL._
         
+        test ("integral Polynomial Addition") {
+            assert((1 + x) + (2 + 3 * x) === 3 + 4 * x)
+            assert((x~^2 + 4 * x - 1) + (x~^2) === 2 * x~^2 + 4 * x - 1)
+            assert((x~^3 + 3 * x + 4 * x) + (2 + x~^2) === x~^3 + x~^2 + 7 * x + 2)
+            assert((x~^5000 + 3) + (-(x~^5000) + 3 * x) === 3 + 3 * x)
+        }
+        
         
     }
 }
