@@ -41,4 +41,31 @@ class Polynomial[E <: RingElement] (val elements : Seq[(E, BigInt)])(implicit ri
         case (c, n) => c.toString + "x^" + n
     }.mkString(" + ")
     
+    // TODO: Optimize by combining sorting and combination
+    /** Returns a cleaned-up version of this [[Polynomial]], where coefficient-exponent pairs have been combined as much as possible,
+     *  and those pairs where the coefficient is zero, have been removed. It is also sorted according to the coefficient
+     */
+    def cleanup : Polynomial[E] = {
+        import scala.collection.mutable.{Seq => MSeq}
+        
+        var data : MSeq[(E, Int)] = MSeq()
+        
+        @tailrec
+        def add(c : E, e : Int, index : Int) : Unit = {
+            if (index >= data.length){
+                data = data ++ Seq((c, e))
+            } else {
+                val (d, f) = data(index) 
+                if (e == f) {
+                    data(index) = (c + d, e)
+                } else {
+                    add(x, i, index + 1)
+                }
+            }
+        }
+        
+        elements.foreach {case (x, i) => add(x, i, 0)}
+        return new Polynomial(data.toSeq.filter({case (c, n) => c != ring.zero}).sortWith(_._2 < _._2))
+    }
+    
 }
