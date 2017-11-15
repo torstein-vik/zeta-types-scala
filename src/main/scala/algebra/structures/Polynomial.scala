@@ -25,6 +25,8 @@ class Polynomial[E <: RingElement] (val elements : Seq[(E, BigInt)])(implicit ri
         
     override def +(that : Polynomial[E]) = new Polynomial(elements ++ that.elements).cleanup 
     
+    override def *(that : Polynomial[E]) = new Polynomial(for ((c, e) <- elements; (d, f) <- that.elements) yield (ring.multiplicative.combine(x, y), i + j)).cleanup
+    
     
     override def equals(that : Any) : Boolean = that match {
         case _ : Polynomial[E] => {
