@@ -163,6 +163,13 @@ class PolynomialTest extends FunSuite{
             assert((x~^5000 + 3) - (-(x~^5000) + 3 * x) === 2 * x~^5000 - 3 * x + 3)
         }
         
+        test ("integral Polynomial Multiplication") {
+            assert((1 + x)~^2 === 1 + 2 * x + x~^2)
+            assert((1 + x) * (1 - x) === 1 - x~^2)
+            assert((x + x~^2) * (x + 1) === x + 2 * x~^2 + x~^3)
+            assert((2 * x + 3) * (2 * x~^2 + x + 4) === 4 * x~^3 + 8 * x~^2 + 11 * x + 12)
+        }
+        
         
     }
 }
