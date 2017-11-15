@@ -149,6 +149,13 @@ class PolynomialTest extends FunSuite{
             assert((x~^5000 + 3) + (-(x~^5000) + 3 * x) === 3 + 3 * x)
         }
         
+        test ("integral Polynomial Negation") {
+            assert(- (1 + x) === -1 - x)
+            assert(- (-x + 3 + 4 * x~^3) === -4 * x~^3 + x - 3)
+            assert(- (2 + 4 * x~^2) === -4 * x~^2 - 2)
+            assert(- (7 + 2 * x + x~^30) === -(x~^30) - 2 * x - 7)
+        }
+        
         
     }
 }
