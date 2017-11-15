@@ -40,7 +40,7 @@ class Polynomial[E <: RingElement[E]] (val elements : Seq[(E, Int)])(implicit ri
     }
     
     
-    override def toString : String = (for {x <- cleanup.elements} yield x match {
+    override def toString : String = if (elements.length == 0) ring.zero.toString else (for {x <- cleanup.elements} yield x match {
         case (c, 0) => c.toString
         case (ring.one, 1) => "x"
         case (c, 1) => c.toString + "x"
