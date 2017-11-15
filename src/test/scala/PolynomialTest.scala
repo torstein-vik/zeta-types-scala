@@ -10,7 +10,7 @@ class PolynomialTest extends FunSuite{
     
     
     {// Most basic tests
-        implicit val monoid : Monoid[Integer] = Integers.multiplicative
+        implicit val ring : Ring[Integer] = Integers
         
         val X     = new Polynomial(Seq((Integer(1), 1), (Integer(2), 2)))
         val Xcopy = new Polynomial(Seq((Integer(1), 1), (Integer(2), 2)))
