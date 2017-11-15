@@ -40,4 +40,39 @@ class PolynomialTest extends FunSuite{
         }
     }
     
+    {// Cancellation tests
+        implicit val ring : Ring[Integer] = Integers
+        
+        val X     = new Polynomial(Seq((Integer(2), 1), (Integer(1), 1), (Integer(3), 1)))
+        val Xsimp = new Polynomial(Seq((Integer(6), 1)))
+        val Y     = new Polynomial(Seq((Integer(0), 5), (Integer(10), 1), (Integer(2), 0)))
+        val Ysimp = new Polynomial(Seq((Integer(2), 0), (Integer(10), 1)))
+        val Z     = new Polynomial(Seq((Integer(3), 2), (Integer(3), 44), (Integer(3), 44)))
+        val Zsimp = new Polynomial(Seq((Integer(3), 2), (Integer(6), 44)))
+        val W     = new Polynomial(Seq((Integer(-3), 1), (Integer(1), 1), (Integer(2), 1), (Integer(3), 3)))
+        val Wsimp = new Polynomial(Seq((Integer(3), 3)))
+        
+        test ("Cleanup works") {
+            assert(X.cleanup.elements === Xsimp.elements)
+            assert(Y.cleanup.elements === Ysimp.elements)
+            assert(Z.cleanup.elements === Zsimp.elements)
+            assert(W.cleanup.elements === Wsimp.elements)
+        }
+        
+        test ("Equality works") {
+            assert(X === Xsimp)
+            assert(Y === Ysimp)
+            assert(Z === Zsimp)
+            assert(W === Wsimp)
+            
+            assert(X + Ysimp === Xsimp + Y)
+            assert(Y + Zsimp === Ysimp + Z)
+            assert(Z + Wsimp === Zsimp + W)
+            assert(W + Xsimp === Wsimp + X)
+            
+            assert(X + Y + Z + W + Y + Y === Xsimp + Y + Z + Wsimp + Ysimp + Y)
+        }
+        
+    }
+    
 }
