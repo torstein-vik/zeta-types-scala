@@ -170,6 +170,44 @@ class PolynomialTest extends FunSuite{
             assert((2 * x + 3) * (2 * x~^2 + x + 4) === 4 * x~^3 + 8 * x~^2 + 11 * x + 12)
         }
         
+    }
+    
+    {// Algebraic tests for rational polynomials
+        implicit val ring : Ring[Rational] = Rationals
+        
+        import org.torsteinv.zetatypes.tannakiansymbols.DSL._
+        import org.torsteinv.zetatypes.algebra.structures.DSL._
+        
+        test ("rational Polynomial Addition") {
+            assert((1 + x) + (2 + 3 * x) === 3 + 4 * x)
+            assert((x~^2 + 4 * x - 1) + (x~^2) === 2 * x~^2 + 4 * x - 1)
+            assert((x~^3 + 3 * x + 4 * x) + (2 + x~^2) === x~^3 + x~^2 + 7 * x + 2)
+            assert((x~^5000 + 3) + (-(x~^5000) + 3 * x) === 3 + 3 * x)
+        }
+        
+        test ("rational Polynomial Negation") {
+            assert(- (1 + x) === -1 - x)
+            assert(- (-x + 3 + 4 * x~^3) === -4 * x~^3 + x - 3)
+            assert(- (2 + 4 * x~^2) === -4 * x~^2 - 2)
+            assert(- (7 + 2 * x + x~^30) === -(x~^30) - 2 * x - 7)
+        }
+        
+        test ("rational Polynomial Subtraction") {
+            assert((1 + x) - (2 + 3 * x) === -1 - 2 * x)
+            assert((x~^2 + 4 * x - 1) - (x~^2) === 4 * x - 1)
+            assert((x~^3 + 3 * x + 4 * x) - (2 + x~^2) === x~^3 - x~^2 + 7 * x - 2)
+            assert((x~^5000 + 3) - (-(x~^5000) + 3 * x) === 2 * x~^5000 - 3 * x + 3)
+        }
+        
+        test ("rational Polynomial Multiplication") {
+            assert((1 + x)~^2 === 1 + 2 * x + x~^2)
+            assert((1 + x) * (1 - x) === 1 - x~^2)
+            assert((x + x~^2) * (x + 1) === x + 2 * x~^2 + x~^3)
+            assert((2 * x + 3) * (2 * x~^2 + x + 4) === 4 * x~^3 + 8 * x~^2 + 11 * x + 12)
+        }
+        
+    }
+    
         
     }
 }
