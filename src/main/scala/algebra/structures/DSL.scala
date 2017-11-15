@@ -27,6 +27,8 @@ package object DSL {
     /** The imaginary unit, so that a [[Complex]] number can be specified like 1 + 2*I */
     def I = Complex(0, 1)
     
+    implicit def intoPolynomial[S, E <: RingElement[E]](x : S)(implicit ring : Ring[E], ev : S => E) : Polynomial[E] = new Polynomial(Seq((ev(x), 0)))
+    
     /** implicitly converts a [[Ring]] into its [[Ring.multiplicative]] [[Monoid]] */
     implicit def multiplicativeMonoid[E <: RingElement[E]] (ring : Ring[E]) : Monoid[E] = ring.multiplicative
     
