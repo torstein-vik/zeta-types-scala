@@ -71,7 +71,7 @@ class Polynomial[E <: RingElement[E]] (val elements : Seq[(E, Int)])(implicit ri
             }
         }
         
-        elements.foreach {case (x, i) => add(x, i, 0)}
+        elements.foreach {case (c, e) => add(c, e, 0)}
         return new Polynomial(data.toSeq.filter({case (c, n) => c != ring.zero}).sortWith(_._2 < _._2))
     }
     
