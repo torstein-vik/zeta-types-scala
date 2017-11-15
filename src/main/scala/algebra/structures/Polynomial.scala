@@ -23,4 +23,13 @@ class Polynomial[E <: RingElement] (val elements : Seq[(E, BigInt)])(implicit ri
     RingElement[Polynomial[E]] {
     override lazy val canonicalRing = Polynomials(ring)
         
+    
+    override def equals(that : Any) : Boolean = that match {
+        case _ : Polynomial[E] => {
+            (this - that.asInstanceOf[Polynomial[E]]).elements.length == 0
+        }
+        
+        case _ => false
+    }
+    
 }
