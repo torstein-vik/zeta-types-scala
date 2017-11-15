@@ -59,6 +59,8 @@ trait Multiplicative[that <: Multiplicative[that]] extends AlgebraicElement {
         case _ => throw new AlgebraicException("Magmatic repeated multiplication requires n > 0")
     }
     
+    def ~^(n : Int)(implicit ev: this.type <:< that) : that = this.**(n)(ev)
+    
     @tailrec
     private def expTailRec(n : Int, acc : that) : that = {
         if (n <= 1) return acc
