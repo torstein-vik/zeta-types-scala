@@ -12,6 +12,13 @@ case class Polynomials[E <: RingElement](ring : Ring[E]) extends
     new Polynomial(Seq.empty)(monoid), 
     new Polynomial(Seq((ring.one, 0)))(monoid))
 
+
+/** An element of [[Polynomials]]
+ *  @tparam E the type of [[org.torsteinv.zetatypes.algebra.RingElement]] that the coefficients of this polynomial belong to
+ *  @constructor Creates a new Polynomial from a list of terms (coefficient and exponent)
+ *  @param elements The coefficient-exponent pairs that build up the terms of this polynomial
+ *  @param ring The [[org.torsteinv.zetatypes.algebra.Ring]] that the coefficients belong to
+ */
 class Polynomial[E <: RingElement] (val elements : Seq[(E, BigInt)])(implicit ring : Ring[E]) extends 
     RingElement[Polynomial[E]] {
 }
