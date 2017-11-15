@@ -62,7 +62,7 @@ class Polynomial[E <: RingElement] (val elements : Seq[(E, BigInt)])(implicit ri
             } else {
                 val (d, f) = data(index) 
                 if (e == f) {
-                    data(index) = (c + d, e)
+                    data(index) = (ring.additive.combine(c, d), e)
                 } else {
                     add(x, i, index + 1)
                 }
