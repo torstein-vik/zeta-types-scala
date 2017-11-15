@@ -116,4 +116,24 @@ class PolynomialTest extends FunSuite{
         }
     }
     
+    {// Using polynomial notation complex
+        implicit val ring : Ring[Complex] = Complex
+    
+        import org.torsteinv.zetatypes.algebra.structures.DSL._
+        
+        val X = new Polynomial(Seq((Complex(Rational(Integer(1))), 1), (Complex(Rational(Integer(2))), 2), (Complex(Rational(Integer(3))), 4)))
+        val Y = new Polynomial(Seq((Complex(Rational(Integer(10))), 0), (Complex(Rational(Integer(11))), 5), (Complex(Rational(Integer(2))), 400)))
+        val Z = new Polynomial(Seq((Complex(Rational(Integer(-1))), 0), (Complex(Rational(Integer(-3))), 8), (Complex(Rational(Integer(4))), 4)))
+        val W = new Polynomial(Seq((Complex(Rational(Integer(-1))), 1), (Complex(Rational(Integer(10))), 0), (Complex(Rational(Integer(2))), 2)))
+        
+        test ("Polynomial DSL notation complex") {
+            assert(X === x + 2 * x~^2 + 3 * x~^4)
+            assert(Y === 10 + 11 * x~^5 + 2 * x~^400)
+            assert(Z === -1 - 3 * x ~^ 8 + 4 * x~^4)
+            assert(W === -x + 10 + 2 * x~^2)
+            assert(Polynomials(Complex).one  === intoPolynomial(1))
+            assert(Polynomials(Complex).zero === intoPolynomial(0))
+        }
+    }
+    
 }
