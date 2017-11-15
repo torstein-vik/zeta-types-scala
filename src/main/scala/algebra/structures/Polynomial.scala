@@ -11,3 +11,7 @@ case class Polynomials[E <: RingElement](ring : Ring[E]) extends
     RingClass[Polynomials[E]](
     new Polynomial(Seq.empty)(monoid), 
     new Polynomial(Seq((ring.one, 0)))(monoid))
+
+class Polynomial[E <: RingElement] (val elements : Seq[(E, BigInt)])(implicit ring : Ring[E]) extends 
+    RingElement[Polynomial[E]] {
+}
