@@ -32,4 +32,13 @@ class Polynomial[E <: RingElement] (val elements : Seq[(E, BigInt)])(implicit ri
         case _ => false
     }
     
+    
+    override def toString : String = for {x <- cleanup.elements} yield x match {
+        case (c, 0) => c.toString
+        case (ring.one, 1) => "x"
+        case (c, 1) => c.toString + "x"
+        case (ring.one, n) => "x^" + n
+        case (c, n) => c.toString + "x^" + n
+    }.mkString(" + ")
+    
 }
