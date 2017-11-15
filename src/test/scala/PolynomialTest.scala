@@ -136,4 +136,12 @@ class PolynomialTest extends FunSuite{
         }
     }
     
+    {// Algebraic tests for integral polynomials
+        implicit val ring : Ring[Integer] = Integers
+        
+        import org.torsteinv.zetatypes.tannakiansymbols.DSL._
+        import org.torsteinv.zetatypes.algebra.structures.DSL._
+        
+        
+    }
 }
