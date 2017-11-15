@@ -23,7 +23,7 @@ class Polynomial[E <: RingElement] (val elements : Seq[(E, BigInt)])(implicit ri
     RingElement[Polynomial[E]] {
     override lazy val canonicalRing = Polynomials(ring)
         
-    override def +(that : TannakianSymbol[E]) = new Polynomial(elements ++ that.elements).cleanup 
+    override def +(that : Polynomial[E]) = new Polynomial(elements ++ that.elements).cleanup 
     
     
     override def equals(that : Any) : Boolean = that match {
