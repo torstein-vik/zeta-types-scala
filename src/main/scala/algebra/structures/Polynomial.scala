@@ -9,8 +9,8 @@ import org.torsteinv.zetatypes.algebra._
  */
 case class Polynomials[E <: RingElement[E]](ring : Ring[E]) extends 
     RingClass[Polynomials[E]](
-    new Polynomial(Seq.empty)(monoid), 
-    new Polynomial(Seq((ring.one, 0)))(monoid))
+    new Polynomial(Seq.empty)(ring), 
+    new Polynomial(Seq((ring.one, 0)))(ring))
 
 
 /** An element of [[Polynomials]]
