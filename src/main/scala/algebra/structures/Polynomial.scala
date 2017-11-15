@@ -27,7 +27,7 @@ class Polynomial[E <: RingElement[E]] (val elements : Seq[(E, Int)])(implicit ri
         
     override def +(that : Polynomial[E]) = new Polynomial(elements ++ that.elements).cleanup 
     
-    override def *(that : Polynomial[E]) = new Polynomial(for ((c, e) <- elements; (d, f) <- that.elements) yield (ring.multiplicative.combine(x, y), i + j)).cleanup
+    override def *(that : Polynomial[E]) = new Polynomial(for ((c, e) <- elements; (d, f) <- that.elements) yield (ring.multiplicative.combine(c, d), e + f)).cleanup
     
     override def negation() = new Polynomial(elements.map({case (c, e) => (-c, e)}))
     
@@ -66,7 +66,7 @@ class Polynomial[E <: RingElement[E]] (val elements : Seq[(E, Int)])(implicit ri
                 if (e == f) {
                     data(index) = (ring.additive.combine(c, d), e)
                 } else {
-                    add(x, i, index + 1)
+                    add(c, e, index + 1)
                 }
             }
         }
