@@ -21,4 +21,6 @@ case class Polynomials[E <: RingElement](ring : Ring[E]) extends
  */
 class Polynomial[E <: RingElement] (val elements : Seq[(E, BigInt)])(implicit ring : Ring[E]) extends 
     RingElement[Polynomial[E]] {
+    override lazy val canonicalRing = Polynomials(ring)
+        
 }
