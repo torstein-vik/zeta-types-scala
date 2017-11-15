@@ -10,7 +10,7 @@ import org.torsteinv.zetatypes.algebra._
  *  @param ring The [[org.torsteinv.zetatypes.algebra.Ring]] that the [[Polynomial]] coefficients belong to
  */
 case class Polynomials[E <: RingElement[E]](ring : Ring[E]) extends 
-    RingClass[Polynomials[E]](
+    RingClass[Polynomial[E]](
     new Polynomial(Seq.empty)(ring), 
     new Polynomial(Seq((ring.one, 0)))(ring))
 
