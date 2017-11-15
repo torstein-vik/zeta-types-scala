@@ -1,5 +1,7 @@
 package org.torsteinv.zetatypes.algebra.structures
 
+import scala.annotation.tailrec
+
 import org.torsteinv.zetatypes.algebra._
 
 /** A ring where the elements are [[Polynomial]]s with elements in some given [[org.torsteinv.zetatypes.algebra.Ring]] 
