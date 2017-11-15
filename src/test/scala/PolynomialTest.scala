@@ -156,6 +156,13 @@ class PolynomialTest extends FunSuite{
             assert(- (7 + 2 * x + x~^30) === -(x~^30) - 2 * x - 7)
         }
         
+        test ("integral Polynomial Subtraction") {
+            assert((1 + x) - (2 + 3 * x) === -1 - 2 * x)
+            assert((x~^2 + 4 * x - 1) - (x~^2) === 4 * x - 1)
+            assert((x~^3 + 3 * x + 4 * x) - (2 + x~^2) === x~^3 - x~^2 + 7 * x - 2)
+            assert((x~^5000 + 3) - (-(x~^5000) + 3 * x) === 2 * x~^5000 - 3 * x + 3)
+        }
+        
         
     }
 }
