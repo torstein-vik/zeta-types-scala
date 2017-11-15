@@ -7,7 +7,7 @@ import org.torsteinv.zetatypes.algebra._
  *  @constructor Creates a new ring of [[Polynomial]]s with coefficients in a given [[org.torsteinv.zetatypes.algebra.Ring]] 
  *  @param ring The [[org.torsteinv.zetatypes.algebra.Ring]] that the [[Polynomial]] coefficients belong to
  */
-case class Polynomials[E <: RingElement](ring : Ring[E]) extends 
+case class Polynomials[E <: RingElement[E]](ring : Ring[E]) extends 
     RingClass[Polynomials[E]](
     new Polynomial(Seq.empty)(monoid), 
     new Polynomial(Seq((ring.one, 0)))(monoid))
@@ -19,7 +19,7 @@ case class Polynomials[E <: RingElement](ring : Ring[E]) extends
  *  @param elements The coefficient-exponent pairs that build up the terms of this polynomial
  *  @param ring The [[org.torsteinv.zetatypes.algebra.Ring]] that the coefficients belong to
  */
-class Polynomial[E <: RingElement] (val elements : Seq[(E, Int)])(implicit ring : Ring[E]) extends 
+class Polynomial[E <: RingElement[E]] (val elements : Seq[(E, Int)])(implicit ring : Ring[E]) extends 
     RingElement[Polynomial[E]] {
     override lazy val canonicalRing = Polynomials(ring)
         
