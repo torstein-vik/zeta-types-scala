@@ -32,7 +32,7 @@ class PolynomialTest extends FunSuite{
         // TODO: more comprehensive toString test
         test ("Polynomial basic toString") {
             assert(X.toString() === "x + 2x^2")
-            assert(Y.toString() === "3x^3 + 2x^4")
+            assert(Y.toString() === "3x^2 + 2x^4")
             assert(Z.toString() === "2 + 2x + 3x^2")
             
             assert(Polynomials(Integers).one.toString() === "1")
