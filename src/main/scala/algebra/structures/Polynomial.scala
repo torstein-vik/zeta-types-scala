@@ -38,13 +38,13 @@ class Polynomial[E <: RingElement] (val elements : Seq[(E, BigInt)])(implicit ri
     }
     
     
-    override def toString : String = for {x <- cleanup.elements} yield x match {
+    override def toString : String = (for {x <- cleanup.elements} yield x match {
         case (c, 0) => c.toString
         case (ring.one, 1) => "x"
         case (c, 1) => c.toString + "x"
         case (ring.one, n) => "x^" + n
         case (c, n) => c.toString + "x^" + n
-    }.mkString(" + ")
+    }).mkString(" + ")
     
     // TODO: Optimize by combining sorting and combination
     /** Returns a cleaned-up version of this [[Polynomial]], where coefficient-exponent pairs have been combined as much as possible,
