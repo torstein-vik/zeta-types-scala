@@ -36,6 +36,10 @@ package object DSL {
      */
     implicit def intoPolynomial[S, E <: RingElement[E]](x : S)(implicit ring : Ring[E], ev : S => E) : Polynomial[E] = new Polynomial(Seq((ev(x), 0)))
     
+    /** The polynomial unit, so that a [[Polynomial]] can be specified like 1 + x 
+     *  @tparam E the type of [[RingElement]] the coefficients of the [[Polynomial]] belong to
+     *  @param ring the [[Ring]] the polynomial unit has coefficients in
+     */
     def x[E <: RingElement[E]](implicit ring : Ring[E]) = new Polynomial[E](Seq((ring.one, 1)))
     
     /** implicitly converts a [[Ring]] into its [[Ring.multiplicative]] [[Monoid]] */
