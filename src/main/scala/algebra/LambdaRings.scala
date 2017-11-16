@@ -13,6 +13,11 @@ trait LambdaRing[E <: LambdaRingElement[E]] extends Ring[E] {
     def psi (x : E)(n : Int) : E
     /** The n-th lambda operation applied to some element x.
      *  Also takes some implicit evidence that E can be converted to and from some other type S, which is a PartialQAlgebraElement
+     *  @tparam S the PartialQAlgebraElement the elements of this lambda ring visit in order to divide by integers
+     *  @param x the [[LambdaRingElement]] that has the lambda opertion applied
+     *  @param n specifies which n-th lambda operation to use
+     *  @param ev evidence that allows [[LambdaRingElement]] to convert into a [[PartialQAlgebraElement]], allowing division by integers
+     *  @param ev2 evidence that allows [[PartialQAlgebraElement]] to be re-embedded in this [[LambdaRing]], after division
      */
     def lambda[S <: PartialQAlgebraElement[S]] (x : E)(n : Int)(implicit ev: E => S, ev2: S => E) : E
 }
@@ -25,6 +30,10 @@ trait STDLambdaRingElement[T <: STDLambdaRingElement[T]] extends LambdaRingEleme
     private var lambdacache : Map[Int, T] = Map()
     /** The n-th lambda operation applied to this element.
      *  Also takes some implicit evidence that E can be converted to and from some other type S, which is a PartialQAlgebraElement
+     *  @tparam S the PartialQAlgebraElement the elements of this lambda ring visit in order to divide by integers
+     *  @param n specifies which n-th lambda operation to use
+     *  @param ev evidence that allows this to be converted into a [[PartialQAlgebraElement]], allowing division by integers
+     *  @param ev2 evidence that allows [[PartialQAlgebraElement]] to be re-embedded into this type, after division
      */
     def lambda[S <: PartialQAlgebraElement[S]] (n : Int)(implicit ev: T => S, ev2: S => T) : T = n match {
         case 0 => canonicalRing.one
