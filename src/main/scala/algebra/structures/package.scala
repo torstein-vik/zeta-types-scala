@@ -5,6 +5,7 @@ package org.torsteinv.zetatypes.algebra
  *  subpackage [[DSL]], which houses various implicit converters for simplifying
  *  syntax. Also provides type synonyms [[Rational]] = [[Fraction]] of [[Integer]],
  *  and [[Complex]] = [[ComplexNumber]] of [[Rational]]
+ *  @author Torstein Vik
  */
 package object structures {
     /** Type synonym for rational numbers */

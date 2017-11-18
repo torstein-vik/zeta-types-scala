@@ -4,5 +4,6 @@ package org.torsteinv.zetatypes
  *  doing this with a nice syntax. Most importantly, the [[TannakianSymbol]]
  *  class implements all computational behaviour. Multisets are mostly used to
  *  to instaniate Tannakian Symbols.
+ *  @author Torstein Vik
  */
 package object tannakiansymbols {}
