@@ -42,7 +42,7 @@ This framework is and will remain completely open source, under the GNU General 
 
 ## Languages/Frameworks
 
-* Implentation: Scala
+* Implementation: Scala
 * Build tool: SBT
 
 ## Folder structure
