@@ -1,4 +1,4 @@
-package org.torsteinv.zetatypes.sequences
+package io.github.torsteinvik.zetatypes.sequences
 
 
 /** A factory that builds some [[Sequence]] 

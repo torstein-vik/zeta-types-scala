@@ -1,6 +1,6 @@
-package org.torsteinv.zetatypes.algebra.structures
+package io.github.torsteinvik.zetatypes.algebra.structures
 
-import org.torsteinv.zetatypes.algebra._
+import io.github.torsteinvik.zetatypes.algebra._
 
 /** An int with algebraic semantics.
  *  @constructor Create a new Integer from a BigInt

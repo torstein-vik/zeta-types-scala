@@ -1,8 +1,8 @@
-package org.torsteinv.zetatypes.algebra.structures
+package io.github.torsteinvik.zetatypes.algebra.structures
 
 import scala.language.implicitConversions
 
-import org.torsteinv.zetatypes.algebra._
+import io.github.torsteinvik.zetatypes.algebra._
 
 /** Provides various methods for simplifying the syntax of working with algebra,
  *  such as converters between the main structures, the value [[DSL.I]], which 

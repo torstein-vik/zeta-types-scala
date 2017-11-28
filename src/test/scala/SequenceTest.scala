@@ -1,13 +1,13 @@
-package org.torsteinv.zetatypes.test
+package io.github.torsteinvik.zetatypes.test
 
 import org.scalatest.FunSuite
 
-import org.torsteinv.zetatypes.sequences._
+import io.github.torsteinvik.zetatypes.sequences._
 
 class SequenceTest extends FunSuite {
     
     {// CachedSequence test
-        import org.torsteinv.zetatypes.sequences.DSL._
+        import io.github.torsteinvik.zetatypes.sequences.DSL._
         
         test ("CachedSequence works") {
             val seq = Sequence((i : Int) => i)
@@ -200,7 +200,7 @@ class SequenceTest extends FunSuite {
         }
         
         test ("WrappedSequence factory") {
-            import org.torsteinv.zetatypes.sequences.DSL._
+            import io.github.torsteinvik.zetatypes.sequences.DSL._
             
             val seq = Sequence((i : Int) => i)
             val seq2 = Sequence(new WrappedSequence(seq))
@@ -213,7 +213,7 @@ class SequenceTest extends FunSuite {
         }
         
         test ("CombinedSequence factory") {
-            import org.torsteinv.zetatypes.sequences.DSL._
+            import io.github.torsteinvik.zetatypes.sequences.DSL._
             
             val seq1 = Sequence((i : Int) => i)
             val seq2 = Sequence((i : Int) => i * i)
@@ -228,7 +228,7 @@ class SequenceTest extends FunSuite {
         }
         
         test ("MappedSequence factory") {
-            import org.torsteinv.zetatypes.sequences.DSL._
+            import io.github.torsteinvik.zetatypes.sequences.DSL._
             
             val seq1 = Sequence((i : Int) => i)
             
@@ -243,7 +243,7 @@ class SequenceTest extends FunSuite {
     }
     
     {// Various user-defined sequences
-        import org.torsteinv.zetatypes.sequences.DSL._
+        import io.github.torsteinvik.zetatypes.sequences.DSL._
         
         test ("Sequence DSL test - Fibonacci sequence") {
             

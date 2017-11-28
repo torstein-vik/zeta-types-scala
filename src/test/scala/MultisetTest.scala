@@ -1,11 +1,11 @@
-package org.torsteinv.zetatypes.test
+package io.github.torsteinvik.zetatypes.test
 
 import org.scalatest.FunSuite
 
 class MultisetTest extends FunSuite {
     
     {// With DSL
-        import org.torsteinv.zetatypes.tannakiansymbols.DSL._
+        import io.github.torsteinvik.zetatypes.tannakiansymbols.DSL._
         
         test ("Multiset equality") {
             assert(Ø[Int] === ms())

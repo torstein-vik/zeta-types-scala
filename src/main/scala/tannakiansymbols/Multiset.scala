@@ -1,6 +1,6 @@
-package org.torsteinv.zetatypes.tannakiansymbols
+package io.github.torsteinvik.zetatypes.tannakiansymbols
 
-import org.torsteinv.zetatypes.algebra._
+import io.github.torsteinvik.zetatypes.algebra._
 
 
 /** A set where the same element may appear multiple times. Used for defining [[TannakianSymbol]]
@@ -36,10 +36,10 @@ class Multiset[T](val elements : T*) {
     }
     
     /** Create a [[TannakianSymbol]] with this [[Multiset]] as upstairs, and some other [[Multiset]] as downstairs. 
-     *  Requires some implicit evidence to make all types compatible, along with a [[org.torsteinv.zetatypes.algebra.Monoid]].
+     *  Requires some implicit evidence to make all types compatible, along with a [[io.github.torsteinvik.zetatypes.algebra.Monoid]].
      *  @tparam S the type of the elements of the created [[TannakianSymbol]].
      *  @param downstairs the downstairs [[Multiset]] to create the [[TannakianSymbol]]
-     *  @param monoid the [[org.torsteinv.zetatypes.algebra.Monoid]] that the [[TannakianSymbol]] is to compute using
+     *  @param monoid the [[io.github.torsteinvik.zetatypes.algebra.Monoid]] that the [[TannakianSymbol]] is to compute using
      *  @param conv implicit evidence that converts the type of the upstairs and downstairs elements into the elements of the [[TannakianSymbol]]
      */
     def /[S <: MonoidElement](downstairs : Multiset[T])(implicit monoid : Monoid[S], conv: T => S) : TannakianSymbol[S] = {

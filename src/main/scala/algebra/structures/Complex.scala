@@ -1,6 +1,6 @@
-package org.torsteinv.zetatypes.algebra.structures
+package io.github.torsteinvik.zetatypes.algebra.structures
 
-import org.torsteinv.zetatypes.algebra._
+import io.github.torsteinvik.zetatypes.algebra._
 
 
 /** A ring where the elements are x + y*i where x and y are in some ring. An important special case is [[Complex]] = ComplexNumbers([[Rationals]])

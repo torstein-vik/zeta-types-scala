@@ -1,9 +1,9 @@
-package org.torsteinv.zetatypes.test
+package io.github.torsteinvik.zetatypes.test
 
 import org.scalatest.FunSuite
 
-import org.torsteinv.zetatypes.algebra._
-import org.torsteinv.zetatypes.algebra.structures._
+import io.github.torsteinvik.zetatypes.algebra._
+import io.github.torsteinvik.zetatypes.algebra.structures._
 
 class IntegerTest extends FunSuite {
     
@@ -78,7 +78,7 @@ class IntegerTest extends FunSuite {
     
     test ("implicit integer test") {
         import scala.language.implicitConversions
-        import org.torsteinv.zetatypes.algebra.structures.DSL.{intToRational => _, intToComplex => _, _}
+        import io.github.torsteinvik.zetatypes.algebra.structures.DSL.{intToRational => _, intToComplex => _, _}
         
         assert(a.negation == -Integer(a))
         assert(b.negation == -Integer(b))
@@ -136,7 +136,7 @@ class IntegerTest extends FunSuite {
     
     test ("Integer q algebra test") {
         import scala.language.implicitConversions
-        import org.torsteinv.zetatypes.algebra.structures.DSL._
+        import io.github.torsteinvik.zetatypes.algebra.structures.DSL._
         
         assert(Integer(4).partialQMult(Rational(2)) === Some(Integer(8)))
         assert(Integer(2).partialQMult(Rational(2)) === Some(Integer(4)))

@@ -1,4 +1,4 @@
-package org.torsteinv.zetatypes.algebra
+package io.github.torsteinvik.zetatypes.algebra
 
 /** Provides instances of various algerbraic structures, such as [[ComplexNumber]]
  *  , [[Fractions]] (for any ring), and the [[Integers]]. Also has the 

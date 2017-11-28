@@ -1,12 +1,12 @@
-package org.torsteinv.zetatypes.test
+package io.github.torsteinvik.zetatypes.test
 
 import org.scalatest.FunSuite
 
-import org.torsteinv.zetatypes.sequences._
-import org.torsteinv.zetatypes.sequences.DSL._
-import org.torsteinv.zetatypes.algebra._
-import org.torsteinv.zetatypes.algebra.structures._
-import org.torsteinv.zetatypes.algebra.structures.DSL._
+import io.github.torsteinvik.zetatypes.sequences._
+import io.github.torsteinvik.zetatypes.sequences.DSL._
+import io.github.torsteinvik.zetatypes.algebra._
+import io.github.torsteinvik.zetatypes.algebra.structures._
+import io.github.torsteinvik.zetatypes.algebra.structures.DSL._
 
 class SpecialAlgebraicSequenceTest extends FunSuite {
     

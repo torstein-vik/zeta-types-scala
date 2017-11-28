@@ -1,4 +1,4 @@
-package org.torsteinv.zetatypes.sequences
+package io.github.torsteinvik.zetatypes.sequences
 
 import scala.language.implicitConversions
 

@@ -1,11 +1,11 @@
-package org.torsteinv.zetatypes.test
+package io.github.torsteinvik.zetatypes.test
 
 import org.scalatest.FunSuite
 
-import org.torsteinv.zetatypes.algebra._
-import org.torsteinv.zetatypes.algebra.structures._
+import io.github.torsteinvik.zetatypes.algebra._
+import io.github.torsteinvik.zetatypes.algebra.structures._
 
-import org.torsteinv.zetatypes.algebra.structures.DSL._
+import io.github.torsteinvik.zetatypes.algebra.structures.DSL._
     
 class ComplexTest extends FunSuite {
     

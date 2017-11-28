@@ -1,6 +1,6 @@
-package org.torsteinv.zetatypes.algebra.structures
+package io.github.torsteinvik.zetatypes.algebra.structures
 
-import org.torsteinv.zetatypes.algebra._
+import io.github.torsteinvik.zetatypes.algebra._
 
 /** A ring where the elements are x / y where x and y are in some ring and y is not zero. 
  *  An important special case is [[Rationals]] = Fractions([[Integers]])

@@ -1,16 +1,16 @@
-package org.torsteinv.zetatypes.tannakiansymbols
+package io.github.torsteinvik.zetatypes.tannakiansymbols
 
 import scala.annotation.tailrec
 
-import org.torsteinv.zetatypes.algebra._
-import org.torsteinv.zetatypes.algebra.structures.{Rational, Integer}
+import io.github.torsteinvik.zetatypes.algebra._
+import io.github.torsteinvik.zetatypes.algebra.structures.{Rational, Integer}
 
 import scalaz.{Monoid => ScalazMonoid, _}, std.list._, std.option._, syntax.traverse._
 
-/** A ring where the elements are [[TannakianSymbol]]s with elements in some given [[org.torsteinv.zetatypes.algebra.Monoid]] 
- *  @tparam E the type of [[org.torsteinv.zetatypes.algebra.MonoidElement]] that the [[TannakianSymbol]]s consist of
- *  @constructor Creates a new ring of [[TannakianSymbol]]s with elements in a given [[org.torsteinv.zetatypes.algebra.Monoid]] 
- *  @param monoid The [[org.torsteinv.zetatypes.algebra.Monoid]] that the [[TannakianSymbol]] elements belong to
+/** A ring where the elements are [[TannakianSymbol]]s with elements in some given [[io.github.torsteinvik.zetatypes.algebra.Monoid]] 
+ *  @tparam E the type of [[io.github.torsteinvik.zetatypes.algebra.MonoidElement]] that the [[TannakianSymbol]]s consist of
+ *  @constructor Creates a new ring of [[TannakianSymbol]]s with elements in a given [[io.github.torsteinvik.zetatypes.algebra.Monoid]] 
+ *  @param monoid The [[io.github.torsteinvik.zetatypes.algebra.Monoid]] that the [[TannakianSymbol]] elements belong to
  */
 case class TS[E <: MonoidElement](monoid : Monoid[E]) extends 
     RingClass[TannakianSymbol[E]](
@@ -20,10 +20,10 @@ case class TS[E <: MonoidElement](monoid : Monoid[E]) extends
     with PartialQAlgebra[TannakianSymbol[E]]
 
 /** An element of [[TS]]
- *  @tparam E the type of [[org.torsteinv.zetatypes.algebra.MonoidElement]] that the elements of this symbol belong to
+ *  @tparam E the type of [[io.github.torsteinvik.zetatypes.algebra.MonoidElement]] that the elements of this symbol belong to
  *  @constructor Creates a new Tannakian symbol from a list of elements
  *  @param elements The element-multiplicity pairs of this Tannakian symbol
- *  @param monoid The [[org.torsteinv.zetatypes.algebra.Monoid]] that the elements belong to
+ *  @param monoid The [[io.github.torsteinvik.zetatypes.algebra.Monoid]] that the elements belong to
  */
 class TannakianSymbol[E <: MonoidElement] (val elements : Seq[(E, BigInt)])(implicit monoid : Monoid[E]) extends 
     RingElement[TannakianSymbol[E]] 

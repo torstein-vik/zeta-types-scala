@@ -1,4 +1,4 @@
-package org.torsteinv.zetatypes.algebra
+package io.github.torsteinvik.zetatypes.algebra
 
 /** An element of some [[PartialGroup]] */
 trait PartialGroupElement extends MonoidElement
