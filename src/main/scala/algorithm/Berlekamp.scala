@@ -3,6 +3,7 @@ package io.github.torsteinvik.zetatypes.algorithm
 import io.github.torsteinvik.zetatypes.sequences._
 
 package object Berlekamp {
+    case class BerlekampException(msg : String) extends Exception(msg)
     case class BerlekampSpec(length : Int)
     case class BerlekampResult[T](recursion : Seq[T], initialdata : Seq[T])
     
