@@ -6,4 +6,7 @@ package object Berlekamp {
     
     implicit val defaultSpec = BerlekampSpec(50)
     
+    def berlekamp[T](input : Sequence[T])(implicit spec : BerlekampSpec) : Option[BerlekampResult[T]] = {
+        
+    } 
 }
