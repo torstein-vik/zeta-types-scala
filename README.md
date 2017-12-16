@@ -31,6 +31,17 @@ Please tell us if this doesn't work, because that means something is wrong with 
 * DSL bindings for polynomials and complex (rational) numbers.
 * Type synonyms for integral fractions and rational complex numbers. 
 
+#### Tannakian symbols
+* Multisets, with equality and toString
+* Division of multisets for creating Tannakian symbols with nice syntax
+* Tannakian symbols for any monoid (implemented as a lambda-ring and partial q-algebra)
+* Equality and toString for Tannakian symbols
+* Tannakian symbol structure methods
+  * Get upstairs and downstairs multiset
+  * Super-, odd-, and even dimension
+  * Augmentation
+  * Whether line element
+  
 ## Contributors
 
 _Ask Torstein ([torsteinv64@gmail.com](mailto:torsteinv64@gmail.com)) to add you here if you contribute to this project_
