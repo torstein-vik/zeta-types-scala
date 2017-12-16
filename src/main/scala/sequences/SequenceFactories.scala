@@ -16,6 +16,14 @@ trait SequenceFactory[E] {
     def length : Option[Int] = None
 }
 
+class FunctionSequence[E] (f : Int => E) extends SequenceFactory[E] {
+    def apply(seq : Sequence[E])(index : Int) = f(index)
+}
+
+class RecursiveSequence[E] (f : Sequence[E] => Int => E) extends SequenceFactory[E] {
+    def apply(seq : Sequence[E])(index : Int) = f(seq)(index)
+}
+
 /** A [[SequenceFactory]] that creates a short sequence from some input finite list 
  *  @tparam E the type of the element that the created [[Sequence]] consists of
  *  @constructor Create a new [[SequenceFactory]] from a fixed sequence of elements

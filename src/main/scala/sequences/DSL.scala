@@ -12,14 +12,10 @@ package object DSL {
     implicit def getFactory[T] (seq : Sequence[T]) = seq.asFactory
     
     /** Implicitly creates [[SequenceFactory]] from a function from ints*/
-    implicit def createSequenceFactory[T] (f : Int => T) : SequenceFactory[T] = new SequenceFactory[T] {
-        def apply(seq : Sequence[T])(index : Int) = f(index)
-    }
+    implicit def createSequenceFactory[T] (f : Int => T) : SequenceFactory[T] = new FunctionSequence(f)
     
     /** Implicitly creates [[SequenceFactory]] from a function from [[Sequence]] and ints*/
-    implicit def createRecursiveSequenceFactory[T] (f : Sequence[T] => Int => T) : SequenceFactory[T] = new SequenceFactory[T] {
-        def apply(seq : Sequence[T])(index : Int) = f(seq)(index)
-    }
+    implicit def createRecursiveSequenceFactory[T] (f : Sequence[T] => Int => T) : SequenceFactory[T] = new RecursiveSequence(f)
     
     /** Implicitly creates [[ConstantSequence]] from a constant value*/
     implicit def createConstantSequence[T] (value : T) : ConstantSequence[T] = new ConstantSequence[T](value)
