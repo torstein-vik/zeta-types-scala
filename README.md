@@ -53,6 +53,16 @@ Please tell us if this doesn't work, because that means something is wrong with 
 
 ## Usage Examples
 
+#### Polynomials
+
+    > implicit val ring : Ring[Integer] = Integers
+    
+    > (x~^5000 + 3) + (-(x~^5000) + 3*x)
+      Polynomial[Integer] = 3 + 3x
+      
+    > (2*x + 3) * (2*x~^2 + x + 4)
+      Polynomial[Integer] = 12 + 11x + 8x^2 + 4x^3
+
 ## Contributors
 
 _Ask Torstein ([torsteinv64@gmail.com](mailto:torsteinv64@gmail.com)) to add you here if you contribute to this project_
