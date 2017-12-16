@@ -55,43 +55,49 @@ Please tell us if this doesn't work, because that means something is wrong with 
 
 #### Polynomials
 
-    > import io.github.torsteinvik.zetatypes.algebra.structures._
-    > import io.github.torsteinvik.zetatypes.algebra._
-    > import io.github.torsteinvik.zetatypes.algebra.structures.DSL._
-    
-    > implicit val ring : Ring[Integer] = Integers
-    
-    > (x~^5000 + 3) + (-(x~^5000) + 3*x)
-      Polynomial[Integer] = 3 + 3x
-      
-    > (2*x + 3) * (2*x~^2 + x + 4)
-      Polynomial[Integer] = 12 + 11x + 8x^2 + 4x^3
+```scala
+> import io.github.torsteinvik.zetatypes.algebra.structures._
+> import io.github.torsteinvik.zetatypes.algebra._
+> import io.github.torsteinvik.zetatypes.algebra.structures.DSL._
+
+> implicit val ring : Ring[Integer] = Integers
+
+> (x~^5000 + 3) + (-(x~^5000) + 3*x)
+  Polynomial[Integer] = 3 + 3x
+  
+> (2*x + 3) * (2*x~^2 + x + 4)
+  Polynomial[Integer] = 12 + 11x + 8x^2 + 4x^3
+```
 
 #### Tannakian symbols
 
-    > import io.github.torsteinvik.zetatypes.algebra.structures._
-    > import io.github.torsteinvik.zetatypes.algebra._
-    > import io.github.torsteinvik.zetatypes.tannakiansymbols.DSL._
-    > import io.github.torsteinvik.zetatypes.algebra.structures.DSL._
-    
-    > implicit val monoid : Monoid[Integer] = Integers
-    
-    > ms(1, 2)/Ø + ms(1, 2)/Ø
-      TannakianSymbol[Integer] = {1, 1, 2, 2}/Ø
-      
-    > ms(2, 2, 3, 3)/Ø lambda(3)
-      TannakianSymbol[Integer] = {12, 12, 18, 18}/Ø
-      
+```scala
+> import io.github.torsteinvik.zetatypes.algebra.structures._
+> import io.github.torsteinvik.zetatypes.algebra._
+> import io.github.torsteinvik.zetatypes.tannakiansymbols.DSL._
+> import io.github.torsteinvik.zetatypes.algebra.structures.DSL._
+
+> implicit val monoid : Monoid[Integer] = Integers
+
+> ms(1, 2)/Ø + ms(1, 2)/Ø
+  TannakianSymbol[Integer] = {1, 1, 2, 2}/Ø
+  
+> ms(2, 2, 3, 3)/Ø lambda(3)
+  TannakianSymbol[Integer] = {12, 12, 18, 18}/Ø
+```
+
 #### Sequences
 
-    > import io.github.torsteinvik.zetatypes.sequences._
-    > import io.github.torsteinvik.zetatypes.sequences.DSL._
-    
-    > Sequence(1 upTo 2 followedBy 3)
-      CachedSequence[Int] = 1, 1, 1, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, ...
-      
-    > Sequence(Seq(1, 1) followedBy new RecursiveSequence(seq => i => seq(i - 1) + seq(i - 2)))
-      CachedSequence[Int] = 1, 1, 2, 3, 5, 8, 13, 21, 34, 55, 89, 144, 233, 377, 610, 987, 1597, 2584, 4181, 6765, 10946, ...
+```scala
+> import io.github.torsteinvik.zetatypes.sequences._
+> import io.github.torsteinvik.zetatypes.sequences.DSL._
+
+> Sequence(1 upTo 2 followedBy 3)
+  CachedSequence[Int] = 1, 1, 1, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, ...
+  
+> Sequence(Seq(1, 1) followedBy new RecursiveSequence(seq => i => seq(i - 1) + seq(i - 2)))
+  CachedSequence[Int] = 1, 1, 2, 3, 5, 8, 13, 21, 34, 55, 89, 144, 233, 377, 610, 987, 1597, 2584, 4181, 6765, 10946, ...
+```
 
 ## Contributors
 
