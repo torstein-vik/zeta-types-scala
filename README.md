@@ -63,6 +63,16 @@ Please tell us if this doesn't work, because that means something is wrong with 
     > (2*x + 3) * (2*x~^2 + x + 4)
       Polynomial[Integer] = 12 + 11x + 8x^2 + 4x^3
 
+#### Tannakian symbols
+
+    > implicit val monoid : Monoid[Integer] = Integers
+    
+    > ms(1, 2)/Ø + ms(1, 2)/Ø
+      TannakianSymbol[Integer] = {1, 1, 2, 2}/Ø
+      
+    > ms(2, 2, 3, 3)/Ø lambda(3)
+      TannakianSymbol[Integer] = {12, 12, 18, 18}/Ø
+      
 ## Contributors
 
 _Ask Torstein ([torsteinv64@gmail.com](mailto:torsteinv64@gmail.com)) to add you here if you contribute to this project_
