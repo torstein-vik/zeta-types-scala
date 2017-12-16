@@ -51,6 +51,8 @@ Please tell us if this doesn't work, because that means something is wrong with 
 * Subclasses for special (beginning with 1) sequences
 * Type synonyms for complex (special) algebraic sequences
 
+## Usage Examples
+
 ## Contributors
 
 _Ask Torstein ([torsteinv64@gmail.com](mailto:torsteinv64@gmail.com)) to add you here if you contribute to this project_
