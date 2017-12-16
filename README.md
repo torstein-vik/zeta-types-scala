@@ -55,6 +55,10 @@ Please tell us if this doesn't work, because that means something is wrong with 
 
 #### Polynomials
 
+    > import io.github.torsteinvik.zetatypes.algebra.structures._
+    > import io.github.torsteinvik.zetatypes.algebra._
+    > import io.github.torsteinvik.zetatypes.algebra.structures.DSL._
+    
     > implicit val ring : Ring[Integer] = Integers
     
     > (x~^5000 + 3) + (-(x~^5000) + 3*x)
@@ -65,6 +69,11 @@ Please tell us if this doesn't work, because that means something is wrong with 
 
 #### Tannakian symbols
 
+    > import io.github.torsteinvik.zetatypes.algebra.structures._
+    > import io.github.torsteinvik.zetatypes.algebra._
+    > import io.github.torsteinvik.zetatypes.tannakiansymbols.DSL._
+    > import io.github.torsteinvik.zetatypes.algebra.structures.DSL._
+    
     > implicit val monoid : Monoid[Integer] = Integers
     
     > ms(1, 2)/Ø + ms(1, 2)/Ø
@@ -75,6 +84,9 @@ Please tell us if this doesn't work, because that means something is wrong with 
       
 #### Sequences
 
+    > import io.github.torsteinvik.zetatypes.sequences._
+    > import io.github.torsteinvik.zetatypes.sequences.DSL._
+    
     > Sequence(1 upTo 2 followedBy 3)
       CachedSequence[Int] = 1, 1, 1, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, ...
       
