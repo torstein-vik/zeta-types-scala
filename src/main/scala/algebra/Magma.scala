@@ -1,6 +1,5 @@
 package io.github.torsteinvik.zetatypes.algebra
 
-import scala.annotation.tailrec
 
 /** An element of some algebraic structure */
 trait AlgebraicElement
@@ -67,3 +66,8 @@ trait Multiplicative[that <: Multiplicative[that]] extends AlgebraicElement {
         return expTailRec(n - 1, this * acc)
     } 
 }
+
+private object RepetitionAlgorithm {
+    import scala.annotation.tailrec
+}
+
