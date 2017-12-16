@@ -42,6 +42,12 @@ Please tell us if this doesn't work, because that means something is wrong with 
   * Augmentation
   * Whether line element
   
+#### Sequences
+* Abstract Sequence and SequenceFactory interface for infinite (recursive) sequences
+* CachedSequence implementation of abstract Sequence
+* SequenceFactory combinators
+* DSL for creating and combinating sequences
+
 ## Contributors
 
 _Ask Torstein ([torsteinv64@gmail.com](mailto:torsteinv64@gmail.com)) to add you here if you contribute to this project_
