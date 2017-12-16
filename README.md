@@ -16,6 +16,10 @@ Please tell us if this doesn't work, because that means something is wrong with 
 
 ## Current features
 
+#### Algebraic system
+* Abstract classes for magmas, monoids, (partial) groups, rings, lambda-rings, and (partial) q-algebras.
+* Automatic implementation of lambda-operations from adams-operations and (partial) q-algebras.
+
 ## Contributors
 
 _Ask Torstein ([torsteinv64@gmail.com](mailto:torsteinv64@gmail.com)) to add you here if you contribute to this project_
