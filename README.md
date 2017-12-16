@@ -25,8 +25,6 @@ Please tell us if this doesn't work, because that means something is wrong with 
 * Fractions for any ring (as a ring).
 * Complex numbers for any coefficient-ring (as a ring).
 * Polynomials for any ring (as a ring).
-
-
 * Equality and toString for all of these.
 * DSL bindings for polynomials and complex (rational) numbers.
 * Type synonyms for integral fractions and rational complex numbers. 
