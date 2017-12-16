@@ -17,6 +17,15 @@ class MatrixTest extends FunSuite{
         val Z     = new Matrix(1000, 1000, for {i <- 1 to 1000} yield for {j <- 1 to 1000} yield i * j + 2)
         val Zcopy = new Matrix(1000, 1000, for {i <- 1 to 1000} yield for {j <- 1 to 1000} yield i * j + 2)
         
+        test ("Matrix basic equality") {
+            assert(X !== Y)
+            assert(Y !== Z)
+            assert(Z !== X)
+            
+            assert(X === Xcopy)
+            assert(Y === Ycopy)
+            assert(Z === Zcopy)
+        }
         
     }
     
