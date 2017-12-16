@@ -47,7 +47,7 @@ trait Multiplicative[that <: Multiplicative[that]] extends AlgebraicElement {
 private object RepetitionAlgorithm {
     import scala.annotation.tailrec
         
-    //@tailrec
+    @tailrec
     def apply[T](f : (T, T) => T, n : Int, x : T, acc : T) : T = n match {
         case _ if n > 1 => RepetitionAlgorithm(f, n - 1, x, f(x, acc))
         case 1 => acc
