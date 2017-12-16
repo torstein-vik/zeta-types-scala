@@ -16,10 +16,20 @@ trait SequenceFactory[E] {
     def length : Option[Int] = None
 }
 
+/** A [[SequenceFactory]] that creates a sequence from some input function from the integers 
+ *  @tparam E the type of the element that the created [[Sequence]] consists of
+ *  @constructor Create a new [[SequenceFactory]] from a function from the integers
+ *  @param f the function taking the index to the value
+ */
 class FunctionSequence[E] (f : Int => E) extends SequenceFactory[E] {
     def apply(seq : Sequence[E])(index : Int) = f(index)
 }
 
+/** A [[SequenceFactory]] that creates a sequence from some input recusrice function from the integers 
+ *  @tparam E the type of the element that the created [[Sequence]] consists of
+ *  @constructor Create a new [[SequenceFactory]] from a recursive function from the integers
+ *  @param f the function taking the sequence it generates and an index to the value at said index
+ */
 class RecursiveSequence[E] (f : Sequence[E] => Int => E) extends SequenceFactory[E] {
     def apply(seq : Sequence[E])(index : Int) = f(seq)(index)
 }
