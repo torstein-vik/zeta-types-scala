@@ -20,6 +20,14 @@ Please tell us if this doesn't work, because that means something is wrong with 
 * Abstract classes for magmas, monoids, (partial) groups, rings, lambda-rings, and (partial) q-algebras.
 * Automatic implementation of lambda-operations from adams-operations and (partial) q-algebras.
 
+#### Implemented algebraic structures
+* Integers as lambda-ring and partial q-algebra.
+* Fractions for any ring (as a ring).
+* Complex numbers for any coefficient-ring (as a ring).
+* Polynomials for any ring (as a ring).
+* DSL bindings for polynomials and complex (rational) numbers.
+* Type synonyms for integral fractions and rational complex numbers. 
+
 ## Contributors
 
 _Ask Torstein ([torsteinv64@gmail.com](mailto:torsteinv64@gmail.com)) to add you here if you contribute to this project_
