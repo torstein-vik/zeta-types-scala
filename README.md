@@ -73,6 +73,14 @@ Please tell us if this doesn't work, because that means something is wrong with 
     > ms(2, 2, 3, 3)/Ø lambda(3)
       TannakianSymbol[Integer] = {12, 12, 18, 18}/Ø
       
+#### Sequences
+
+    > Sequence(1 upTo 2 followedBy 3)
+      CachedSequence[Int] = 1, 1, 1, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, ...
+      
+    > Sequence(Seq(1, 1) followedBy new RecursiveSequence(seq => i => seq(i - 1) + seq(i - 2)))
+      CachedSequence[Int] = 1, 1, 2, 3, 5, 8, 13, 21, 34, 55, 89, 144, 233, 377, 610, 987, 1597, 2584, 4181, 6765, 10946, ...
+
 ## Contributors
 
 _Ask Torstein ([torsteinv64@gmail.com](mailto:torsteinv64@gmail.com)) to add you here if you contribute to this project_
