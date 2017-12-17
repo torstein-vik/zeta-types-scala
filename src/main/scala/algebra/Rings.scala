@@ -12,7 +12,7 @@ trait RingElement[T <: RingElement[T]] extends GroupElement with Additive[T] wit
  *  Also has shorthands for the zero and one element
  *  @tparam E The type of [[RingElement]] that this ring uses 
  */
-trait Ring[E <: RingElement[E]] {
+trait Ring[E <: RingElement[E]] extends AlgebraicStructure[T] {
     /** The additive [[Group]] structure of this ring */
     val additive       : AdditiveGroup[E]
     /** The multiplicative [[Monoid]] structure of this ring */
