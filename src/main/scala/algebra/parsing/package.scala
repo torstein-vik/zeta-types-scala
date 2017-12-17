@@ -16,6 +16,6 @@ package object parsing {
     
     implicit def integerparser : AlgebraicParser.Parser[Integer] = IntegerParser.apply
     implicit def fractionparser[T <: RingElement[T]](implicit element : AlgebraicParser.Parser[T], ring : Ring[T]) : AlgebraicParser.Parser[Fraction[T]] = FractionParser.apply(element, ring)
-    implicit def complexparser[T <: RingElement[T]] : AlgebraicParser.Parser[ComplexNumber[T]] = ???
+    implicit def complexparser[T <: RingElement[T]](implicit element : AlgebraicParser.Parser[T], ring : Ring[T]) : AlgebraicParser.Parser[ComplexNumber[T]] = ComplexParser.apply(element, ring)
     
 }
