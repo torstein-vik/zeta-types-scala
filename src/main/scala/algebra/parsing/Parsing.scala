@@ -12,4 +12,6 @@ object AlgebraicParser extends RegexParsers {
         case Failure(msg, next) => throw ParserException(msg, next.pos)
         case Error(msg, next) => throw ParserException(msg, next.pos)
     }
+    
+    def paren[T] (p : Parser[T]) : Parser[T] = p | "(" ~> paren(p) <~ ")"
 }
