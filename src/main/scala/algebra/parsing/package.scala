@@ -2,6 +2,7 @@ package io.github.torsteinvik.zetatypes.algebra
 
 import io.github.torsteinvik.zetatypes.algebra.structures._
 import io.github.torsteinvik.zetatypes.algebra._
+import io.github.torsteinvik.zetatypes.tannakiansymbols._
 
 /** Provides implicit parsers of various algerbraic structures, such as [[io.github.torsteinvik.zetatypes.algebra.structures.ComplexNumbers]]
  *  , [[io.github.torsteinvik.zetatypes.algebra.structures.Fractions]] (for any ring), and the [[io.github.torsteinvik.zetatypes.algebra.structures.Integers]]. 
@@ -19,5 +20,6 @@ package object parsing {
     implicit def complexparser[T <: RingElement[T]](implicit element : AlgebraicParser.Parser[T], ring : Ring[T]) : AlgebraicParser.Parser[ComplexNumber[T]] = ComplexParser.apply(element, ring)
     /** Implicit synonym for [[PolynomialParser]]*/
     implicit def polynomialparser[T <: RingElement[T]](implicit element : AlgebraicParser.Parser[T], ring : Ring[T]) : AlgebraicParser.Parser[Polynomial[T]] = PolynomialParser.apply(element, ring)
+    implicit def tannakiansymbolparser[T <: RingElement[T]](implicit element : AlgebraicParser.Parser[T], ring : Ring[T]) : AlgebraicParser.Parser[TannakianSymbol[T]] = ???
     
 }
