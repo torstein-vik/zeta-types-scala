@@ -39,3 +39,14 @@ abstract class RingClass[E <: RingElement[E]] (override val zero : E, override v
         def identity = outer.one
     }
 }
+abstract class ParsableRingClass[E <: RingElement[E]] (override val zero : E, override val one : E) extends Ring[E] with Parsable[E] { outer =>
+    override object additive extends AdditiveGroup[E] with Parsable[E] {
+        def identity = outer.zero
+        def parser = outer.parser
+    }
+    
+    override object multiplicative extends MultiplicativeMonoid[E] with Parsable[E] {
+        def identity = outer.one
+        def parser = outer.parser
+    }
+}
