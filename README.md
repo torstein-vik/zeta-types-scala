@@ -115,6 +115,7 @@ Please tell us if this doesn't work, because that means something is wrong with 
 
 > implicit val ringint : Ring[Integer] = Integers
 > implicit val ringrat : Ring[Rational] = Rationals
+> implicit val ringcom : Ring[Complex] = Complex
 
 > parse[Integer]("12")
   Integer = 12
@@ -124,6 +125,9 @@ Please tell us if this doesn't work, because that means something is wrong with 
   
 > parse[Complex]("12 + 5i")
   Complex = 12 + 5 i
+
+> parse[Polynomial[Complex]]("(12 + 5i) + ix + x^75")
+  Polynomial[Complex] = 12 + 5 i + ix + x^75
 ```
 
 ## Contributors
