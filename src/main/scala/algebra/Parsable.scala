@@ -3,6 +3,10 @@ package io.github.torsteinvik.zetatypes.algebra
 import scala.util.parsing.combinator._
 import scala.util.parsing.input._
 
+trait Parsable[T <: AlgebraicElement] extends AlgebraicStructure[T] with RegexParsers {
+    def parser : Parser[T]
+}
+
 
 /** Exception coming from lexing the input
  *  @param msg message of the exception
