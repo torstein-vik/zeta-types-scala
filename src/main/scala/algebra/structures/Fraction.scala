@@ -9,9 +9,12 @@ import io.github.torsteinvik.zetatypes.algebra._
  *  @param ring The [[Ring]] that the numerator and denominator belong to.
  */
 case class Fractions[T <: RingElement[T]] (ring : Ring[T]) extends 
-    RingClass[Fraction[T]](
+    ParsableRingClass[Fraction[T]](
     new Fraction(ring.zero, ring.one)(ring), 
-    new Fraction(ring.one,  ring.one)(ring))
+    new Fraction(ring.one,  ring.one)(ring)){
+        import AlgebraicParser._
+        def parser = ???
+    }
     
 /** An element of [[Fractions]]
  *  @tparam T the type of [[RingElement]] that the numerator and denominator of this element belong to.
