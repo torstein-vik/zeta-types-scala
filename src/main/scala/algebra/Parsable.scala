@@ -7,6 +7,7 @@ import scala.util.parsing.input._
  *  @tparam T The type of [[AlgebraicElement]] that is parsed from a string
  */
 trait Parsable[T <: AlgebraicElement] extends AlgebraicStructure[T] with RegexParsers {
+    /** Returns [[parser]] applied to the input string */
     final def parse (s : String) : T = parseAll(parser, s) match {
         case Success(result, _) => result
         case Failure(msg, next) => throw ParserException(msg, next.pos)
