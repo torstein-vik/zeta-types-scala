@@ -5,8 +5,10 @@ import scala.util.parsing.combinator._
 import io.github.torsteinvik.zetatypes.algebra.structures._
 import io.github.torsteinvik.zetatypes.algebra._
 
+/** Parses an algebraic [[io.github.torsteinvik.zetatypes.algebra.structures.ComplexNumber]] from an input String */
 object ComplexParser {
     import AlgebraicParser._
+    /** Parses an algebraic [[io.github.torsteinvik.zetatypes.algebra.structures.ComplexNumber]] from an input String */
     def apply[T <: RingElement[T]](element : Parser[T], ring : Ring[T]) : Parser[ComplexNumber[T]] = 
         imaginary(element, ring) |
         addition(element, ring) | 
