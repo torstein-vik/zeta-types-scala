@@ -13,7 +13,7 @@ package object parsing {
     /** Synonym for [[AlgebraicParser.parse]] */
     def parse[T <: AlgebraicElement] (s : String)(implicit parser : AlgebraicParser.Parser[T]) = AlgebraicParser.parse(s)(parser)
     
-    implicit def integerparser : AlgebraicParser.Parser[Integer] = ???
+    implicit def integerparser : AlgebraicParser.Parser[Integer] = IntegerParser.apply
     implicit def fractionparser[T <: RingElement[T]] : AlgebraicParser.Parser[Fraction[T]] = ???
     implicit def complexparser[T <: RingElement[T]] : AlgebraicParser.Parser[ComplexNumber[T]] = ???
     
