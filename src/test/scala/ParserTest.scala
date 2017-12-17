@@ -30,5 +30,19 @@ class ParserTest extends FunSuite {
         
     }
     
+    test ("complex test") {
+        assert(parse[Complex]("12") === Complex(12))
+        assert(parse[Complex]("14 + 6i") === Complex(14, 6))
+        assert(parse[Complex]("14 - 3i") === Complex(14, -3))
+        assert(parse[Complex]("14 - 3/2i") === Complex(14, -Rational(3, 2)))
+        assert(parse[Complex]("3i") === Complex(0, 3))
+        assert(parse[Complex]("13/5") === Complex(Rational(13, 5)))
+        
+        assertThrows[ParserException]{ parse[Complex]("13i + 2i") }
+        assertThrows[ParserException]{ parse[Complex]("13 + 2") }
+        assertThrows[ParserException]{ parse[Complex]("433 443") }
+        assertThrows[ParserException]{ parse[Complex]("hello") }
+            
+    }
     
 }
