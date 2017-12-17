@@ -13,11 +13,16 @@ object PolynomialParser {
     
     private def term[T <: RingElement[T]](element : Parser[T], ring : Ring[T]) : Parser[(T, Int)] = 
         constant(element, ring) | 
+        nocoefflinear(ring) | 
+        nocoeffpower(ring) | 
         linear(element, ring) | 
         power(element, ring)
         
     private def constant[T <: RingElement[T]](element : Parser[T], ring : Ring[T]) : Parser[(T, Int)] = ???
     private def linear[T <: RingElement[T]](element : Parser[T], ring : Ring[T]) : Parser[(T, Int)] = ???
     private def power[T <: RingElement[T]](element : Parser[T], ring : Ring[T]) : Parser[(T, Int)] = ???
+    
+    private def nocoefflinear[T <: RingElement[T]](ring : Ring[T]) : Parser[(T, Int)] = ???
+    private def nocoeffpower[T <: RingElement[T]](ring : Ring[T]) : Parser[(T, Int)] = ???
     
 }
