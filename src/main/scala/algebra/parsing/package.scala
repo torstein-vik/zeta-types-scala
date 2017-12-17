@@ -21,6 +21,6 @@ package object parsing {
     /** Implicit synonym for [[PolynomialParser]]*/
     implicit def polynomialparser[T <: RingElement[T]](implicit element : AlgebraicParser.Parser[T], ring : Ring[T]) : AlgebraicParser.Parser[Polynomial[T]] = PolynomialParser.apply(element, ring)
     /** Implicit synonym for [[TannakianSymbolParser]]*/
-    implicit def tannakiansymbolparser[T <: RingElement[T]](implicit element : AlgebraicParser.Parser[T], ring : Ring[T]) : AlgebraicParser.Parser[TannakianSymbol[T]] = ???
+    implicit def tannakiansymbolparser[T <: MonoidElement](implicit element : AlgebraicParser.Parser[T], monoid : Monoid[T]) : AlgebraicParser.Parser[TannakianSymbol[T]] = TannakianSymbolParser.apply(element, monoid)
     
 }
