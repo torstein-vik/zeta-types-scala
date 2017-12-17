@@ -55,4 +55,11 @@ class ParserTest extends FunSuite {
             
     }
     
+    test ("polynomial test") {
+        implicit val ringint : Ring[Integer] = Integers
+        implicit val ringrat : Ring[Rational] = Rationals
+        implicit val ringcom : Ring[Complex] = Complex
+                
+            
+    }
 }
