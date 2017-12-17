@@ -29,6 +29,18 @@ class IntegerTest extends FunSuite {
             assert(parser.parse("12") === Integer(12))
             assert(parser.parse("1232423423423253245235") === Integer(BigInt("1232423423423253245235")))
             assert(parser.parse("-7214172481") === Integer(-BigInt("7214172481")))
+            
+            assertThrows[ParserException]{
+                parser.parse("342342 43242")
+            }
+            
+            assertThrows[ParserException]{
+                parser.parse("- 34234243242")
+            }
+            
+            assertThrows[ParserException]{
+                parser.parse("hello")
+            }
         }
     }
     
