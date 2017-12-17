@@ -7,7 +7,7 @@ import scala.util.parsing.input._
 object AlgebraicParser extends RegexParsers {
     
     /** Returns [[parser]] applied to the input string */
-    def parse[T] (str : String)(implicit parser : Parser[T]) : T = parseAll(parser, s) match {
+    def parse[T] (str : String)(implicit parser : Parser[T]) : T = parseAll(parser, str) match {
         case Success(result, _) => result
         case Failure(msg, next) => throw ParserException(msg, next.pos)
         case Error(msg, next) => throw ParserException(msg, next.pos)
