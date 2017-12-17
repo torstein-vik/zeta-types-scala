@@ -2,6 +2,7 @@ package io.github.torsteinvik.zetatypes.test
 
 import org.scalatest.FunSuite
 
+import io.github.torsteinvik.zetatypes.algebra._
 import io.github.torsteinvik.zetatypes.algebra.structures._
 import io.github.torsteinvik.zetatypes.algebra.structures.DSL._
 import io.github.torsteinvik.zetatypes.algebra.parsing._
@@ -20,6 +21,8 @@ class ParserTest extends FunSuite {
     }
         
     test ("rational test") {
+        implicit val ring : Ring[Integer] = Integers
+        
         assert(parse[Rational]("12") === Rational(12))
         assert(parse[Rational]("14/6") === Rational(14, 6))
         assert(parse[Rational]("-1/3432") === Rational(-1, 3432))
@@ -31,6 +34,8 @@ class ParserTest extends FunSuite {
     }
     
     test ("complex test") {
+        implicit val ring : Ring[Rational] = Rationals
+        
         assert(parse[Complex]("12") === Complex(12))
         assert(parse[Complex]("14 + 6i") === Complex(14, 6))
         assert(parse[Complex]("14 - 3i") === Complex(14, -3))
