@@ -14,6 +14,7 @@ trait Parsable[T <: AlgebraicElement] extends AlgebraicStructure[T] with RegexPa
         case Error(msg, next) => throw ParserException(msg, next.pos)
     }
     
+    /** Parser creating an [[AlgebraicElement]] from an input string */
     def parser : Parser[T]
 }
 
