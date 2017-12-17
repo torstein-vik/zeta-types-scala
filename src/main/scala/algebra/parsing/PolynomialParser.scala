@@ -22,7 +22,7 @@ object PolynomialParser {
     private def linear[T <: RingElement[T]](element : Parser[T], ring : Ring[T]) : Parser[(T, Int)] = ???
     private def power[T <: RingElement[T]](element : Parser[T], ring : Ring[T]) : Parser[(T, Int)] = ???
     
-    private def nocoefflinear[T <: RingElement[T]](ring : Ring[T]) : Parser[(T, Int)] = ???
-    private def nocoeffpower[T <: RingElement[T]](ring : Ring[T]) : Parser[(T, Int)] = ???
+    private def nocoefflinear[T <: RingElement[T]](ring : Ring[T]) : Parser[(T, Int)] = "x" ^^^ ((ring.one, 1))
+    private def nocoeffpower[T <: RingElement[T]](ring : Ring[T]) : Parser[(T, Int)] = "x^" ~> """\d+""".r ^^ (str => (ring.one, str.toInt))
     
 }
