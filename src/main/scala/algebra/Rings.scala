@@ -39,6 +39,13 @@ abstract class RingClass[E <: RingElement[E]] (override val zero : E, override v
         def identity = outer.one
     }
 }
+
+/** Implementation of the [[Ring]] trait, creating the additive and multiplicative structure based on the [[zero]] and [[one]] params and that passes the parser to the underlying magmas
+ *  @tparam E The type of [[RingElement]] that this [[Ring]] uses 
+ *  @constructor Create a [[Ring]] from some [[RingElement]] type and a value for [[zero]] and [[one]]
+ *  @param zero The additive identity of the [[Ring]]
+ *  @param one The multiplicative identity of the [[Ring]]
+ */
 abstract class ParsableRingClass[E <: RingElement[E]] (override val zero : E, override val one : E) extends Ring[E] with Parsable[E] { outer =>
     override object additive extends AdditiveGroup[E] with Parsable[E] {
         def identity = outer.zero
