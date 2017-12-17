@@ -8,5 +8,6 @@ import io.github.torsteinvik.zetatypes.tannakiansymbols.DSL._
 
 object TannakianSymbolParser {
     import AlgebraicParser._
+    def apply[T <: MonoidElement](element : Parser[T], monoid : Monoid[T]) : Parser[TannakianSymbol[T]] = ???
     
 }
