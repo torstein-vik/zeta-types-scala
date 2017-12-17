@@ -105,6 +105,11 @@ class ParserTest extends FunSuite {
             assert(parse[TannakianSymbol[Integer]]("{324, 3242}/Ø") === ms[Integer](324, 3242)/Ø)
             assert(parse[TannakianSymbol[Integer]]("{1, 2, 2, 2, 2 ,2 ,2}/Ø") === ms[Integer](1, 2, 2, 2, 2, 2, 2)/Ø)
             
+            assert(parse[TannakianSymbol[Integer]]("Ø/{1}") === Ø[Integer]/ms(1))
+            assert(parse[TannakianSymbol[Integer]]("Ø/{1, 2}") === Ø[Integer]/ms(1, 2))
+            assert(parse[TannakianSymbol[Integer]]("Ø/{324, 3242}") === Ø[Integer]/ms(324, 3242))
+            assert(parse[TannakianSymbol[Integer]]("Ø/{1, 2, 2, 2, 2 ,2 ,2}") === Ø[Integer]/ms(1, 2, 2, 2, 2, 2, 2))
+            
         }
         
         {
