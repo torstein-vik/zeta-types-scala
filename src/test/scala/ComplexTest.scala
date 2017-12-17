@@ -71,6 +71,11 @@ class ComplexTest extends FunSuite {
             assert(parser.parse("3i") === Complex(0, 3))
             assert(parser.parse("13/5") === Complex(Rational(13, 5)))
             
+            assertThrows[ParserException]{ parser.parse("13i + 2i") }
+            assertThrows[ParserException]{ parser.parse("13 + 2") }
+            assertThrows[ParserException]{ parser.parse("433 443") }
+            assertThrows[ParserException]{ parser.parse("hello") }
+            
         }
     }
     
