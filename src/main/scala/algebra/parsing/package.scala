@@ -20,6 +20,7 @@ package object parsing {
     implicit def complexparser[T <: RingElement[T]](implicit element : AlgebraicParser.Parser[T], ring : Ring[T]) : AlgebraicParser.Parser[ComplexNumber[T]] = ComplexParser.apply(element, ring)
     /** Implicit synonym for [[PolynomialParser]]*/
     implicit def polynomialparser[T <: RingElement[T]](implicit element : AlgebraicParser.Parser[T], ring : Ring[T]) : AlgebraicParser.Parser[Polynomial[T]] = PolynomialParser.apply(element, ring)
+    /** Implicit synonym for [[TannakianSymbolParser]]*/
     implicit def tannakiansymbolparser[T <: RingElement[T]](implicit element : AlgebraicParser.Parser[T], ring : Ring[T]) : AlgebraicParser.Parser[TannakianSymbol[T]] = ???
     
 }
