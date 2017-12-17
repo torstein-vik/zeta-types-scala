@@ -54,6 +54,10 @@ class RationalTest extends FunSuite {
             assert(parser.parse("14/6") === Rational(14, 6))
             assert(parser.parse("-1/3432") === Rational(-1, 3432))
             
+            assertThrows[ParserException]{ parser.parse("13i + 2i") }
+            assertThrows[ParserException]{ parser.parse("13/ 2") }
+            assertThrows[ParserException]{ parser.parse("13 /2") }
+            
         }
     }
     
