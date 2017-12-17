@@ -24,6 +24,14 @@ class IntegerTest extends FunSuite {
         assert(Integer(c).toString === c.toString)
     }
     
+    test ("parse test") {
+        for (parser <- Seq[Parsable[Integer]](Integers, Integers.additive, Integers.multiplicative)){
+            assert(parser.parse("12") === Integer(12))
+            assert(parser.parse("1232423423423253245235") === Integer(BigInt("1232423423423253245235")))
+            assert(parser.parse("-7214172481") === Integer(-BigInt("7214172481")))
+        }
+    }
+    
     test ("identities test") {
         assert(Integers.additive.identity === Integer(0))
         assert(Integers.multiplicative.identity === Integer(1))
