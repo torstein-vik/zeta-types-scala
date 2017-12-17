@@ -48,6 +48,15 @@ class RationalTest extends FunSuite {
         assert(Rational(d, d) === Rational(1))
     }
     
+    test ("parse test") {
+        for (parser <- Seq[Parsable[Rational]](Rationals, Rationals.additive, Rationals.multiplicative)){
+            assert(parser.parse("12") === Rational(12))
+            assert(parser.parse("14/6") === Rational(14, 6))
+            assert(parser.parse("-1/3432") === Rational(-1, 3432))
+            
+        }
+    }
+    
     test ("identities test") {
         assert(Rationals.additive.identity === Rational(0))
         assert(Rationals.multiplicative.identity === Rational(1))
