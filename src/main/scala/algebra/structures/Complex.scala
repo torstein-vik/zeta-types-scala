@@ -9,12 +9,9 @@ import io.github.torsteinvik.zetatypes.algebra._
  *  @param ring The [[Ring]] that the coefficients belong to.
  */
 case class ComplexNumbers[T <: RingElement[T]] (ring : Ring[T]) extends 
-    ParsableRingClass[ComplexNumber[T]](
+    RingClass[ComplexNumber[T]](
     new ComplexNumber(ring.zero, ring.zero)(ring), 
-    new ComplexNumber(ring.one,  ring.zero)(ring)){
-        import AlgebraicParser._
-        def parser = ???
-    }
+    new ComplexNumber(ring.one,  ring.zero)(ring))
 
 /** An element of [[ComplexNumbers]]
  *  @tparam T the type of [[RingElement]] that the real and imaginary part of this element belong to.
