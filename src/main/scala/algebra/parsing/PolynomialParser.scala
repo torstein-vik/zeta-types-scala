@@ -18,9 +18,11 @@ object PolynomialParser {
         linear(element, ring) | 
         power(element, ring)
         
-    private def power[T <: RingElement[T]](element : Parser[T], ring : Ring[T]) : Parser[(T, Int)] = ???
     private def constant[T <: RingElement[T]](element : Parser[T], ring : Ring[T]) : Parser[(T, Int)] = element ^^ ((_, 0))
     private def linear[T <: RingElement[T]](element : Parser[T], ring : Ring[T]) : Parser[(T, Int)] = element <~ "x" ^^ ((_, 1))
+    private def power[T <: RingElement[T]](element : Parser[T], ring : Ring[T]) : Parser[(T, Int)] = element ~ ("x^" ~> """\d+""".r) ^^ {
+        case elem ~ exp => (elem, exp.toInt)
+    }
     
     private def nocoefflinear[T <: RingElement[T]](ring : Ring[T]) : Parser[(T, Int)] = "x" ^^^ ((ring.one, 1))
     private def nocoeffpower[T <: RingElement[T]](ring : Ring[T]) : Parser[(T, Int)] = "x^" ~> """\d+""".r ^^ (str => (ring.one, str.toInt))
