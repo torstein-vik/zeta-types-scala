@@ -39,7 +39,13 @@ Please tell us if this doesn't work, because that means something is wrong with 
   * Super-, odd-, and even dimension
   * Augmentation
   * Whether line element
-  
+
+#### Parsing system
+* Implicit parsing system creating algebraic elements from input strings
+* Parse integers
+* Parse complex numbers for any ring
+* Parse fractions for any ring
+
 #### Sequences
 * Abstract Sequence and SequenceFactory interface for infinite (recursive) sequences
 * CachedSequence implementation of abstract Sequence
