@@ -38,7 +38,7 @@ trait Multiplicative[that <: Multiplicative[that]] extends AlgebraicElement {
     def *(y : that) : that
     /** Multiply this Multiplicative element with itself n times. Requires some implicit evidence that the type of this is a subtype of that*/
     def **(n : Int)(implicit ev: this.type <:< that) : that = MagmaRepetitionAlgorithm[that](_ * _, n, ev(this), ev(this))
-    /** Synonym for [[**]] */
+    /** Synonym for [[***]] */
     def ~^(n : Int)(implicit ev: this.type <:< that) = this.**(n)(ev)
     
     
