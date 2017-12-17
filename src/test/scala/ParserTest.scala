@@ -119,6 +119,10 @@ class ParserTest extends FunSuite {
         {
             implicit val mondcom : Monoid[Complex] = ringcom 
             
+            assert(parse[TannakianSymbol[Complex]]("{i}/{12 + i}") === ms[Complex](I)/ms(I + 12))
+            assert(parse[TannakianSymbol[Complex]]("{1 + i, -1 + i, i}/Ø") === ms[Complex](I, I + 1, I - 1)/Ø)
+            assert(parse[TannakianSymbol[Complex]]("{12}/{i}") === ms[Complex](12)/ms(I))
+            assert(parse[TannakianSymbol[Complex]]("{i, 1}/{12 + i, 12 - i}") === ms[Complex](I, 1)/ms(I + 12, 21 - I))
         }
         
         {
