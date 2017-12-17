@@ -92,5 +92,19 @@ class ParserTest extends FunSuite {
         implicit val ringpol : Ring[Polynomial[Complex]] = Polynomials(Complex)
         
         
+        {
+            implicit val mondint : Monoid[Integer] = ringint 
+            
+        }
+        
+        {
+            implicit val mondcom : Monoid[Complex] = ringcom 
+            
+        }
+        
+        {
+            implicit val mondpol : Monoid[Polynomial[Complex]] = ringpol 
+            
+        }
     }
 }
