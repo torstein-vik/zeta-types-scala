@@ -46,6 +46,7 @@ Please tell us if this doesn't work, because that means something is wrong with 
 * Parse complex numbers for any ring
 * Parse fractions for any ring
 * Parse polynomials for any ring
+* Parse Tannakian symbols for any monoid
 
 #### Sequences
 * Abstract Sequence and SequenceFactory interface for infinite (recursive) sequences
