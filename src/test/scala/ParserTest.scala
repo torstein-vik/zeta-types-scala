@@ -45,7 +45,7 @@ class ParserTest extends FunSuite {
         assert(parse[Complex]("3i") === Complex(0, 3))
         assert(parse[Complex]("13/5") === Complex(Rational(13, 5)))
         assert(parse[Complex]("(13/5) + 5i") === Complex(Rational(13, 5), 5))
-        assert(parse[Complex]("13/5 + ((5i))") === Complex(Rational(13, 5), 5))
+        assert(parse[Complex]("13/5 + ((5))i") === Complex(Rational(13, 5), 5))
         
         assertThrows[ParserException]{ parse[Complex]("13i + 2i") }
         assertThrows[ParserException]{ parse[Complex]("13 + 2") }
