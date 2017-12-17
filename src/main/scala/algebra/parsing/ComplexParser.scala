@@ -28,6 +28,6 @@ object ComplexParser {
     
     private def real[T <: RingElement[T]](element : Parser[T], ring : Ring[T]) : Parser[T] = paren(element)
     
-    private def imaginary[T <: RingElement[T]](element : Parser[T], ring : Ring[T]) : Parser[T] = paren(element) <~ "i"
+    private def imaginary[T <: RingElement[T]](element : Parser[T], ring : Ring[T]) : Parser[T] = paren(element) <~ "i" | "i" ^^^ ring.one | "-i" ^^^ -ring.one
     
 }
