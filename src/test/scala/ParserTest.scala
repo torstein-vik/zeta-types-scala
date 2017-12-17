@@ -60,6 +60,15 @@ class ParserTest extends FunSuite {
         implicit val ringrat : Ring[Rational] = Rationals
         implicit val ringcom : Ring[Complex] = Complex
                 
+        assert(parse[Polynomial[Integer]]("12") === new Polynomial[Integer](Seq((12, 0))))
+        assert(parse[Polynomial[Integer]]("12 + 3x") === new Polynomial[Integer](Seq((12, 0), (3, 1))))
+        assert(parse[Polynomial[Integer]]("12 + 3x + 452x^241") === new Polynomial[Integer](Seq((12, 0), (3, 1), (452, 241))))
+        assert(parse[Polynomial[Integer]]("x") === new Polynomial[Integer](Seq((1, 1))))
+        assert(parse[Polynomial[Integer]]("x^12") === new Polynomial[Integer](Seq((1, 12))))
+        assert(parse[Polynomial[Integer]]("x + x^12") === new Polynomial[Integer](Seq((1, 1), (1, 12))))
+        assert(parse[Polynomial[Integer]]("x + x^12") === new Polynomial[Integer](Seq((1, 1), (1, 12))))
+        assert(parse[Polynomial[Integer]]("0") === new Polynomial[Integer](Seq.empty))
+        
             
     }
 }
