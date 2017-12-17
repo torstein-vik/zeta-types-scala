@@ -128,6 +128,10 @@ class ParserTest extends FunSuite {
         {
             implicit val mondpol : Monoid[Polynomial[Complex]] = ringpol 
             
+            assert(parse[TannakianSymbol[Polynomial[Complex]]]("{x^3}/{1}") === ms[Polynomial[Complex]](x[Complex] ~^ 3)/ms(1))
+            assert(parse[TannakianSymbol[Polynomial[Complex]]]("{x^3, 1 + -x}/{i}") === ms[Polynomial[Complex]](x[Complex] ~^ 3, x[Complex] - 1)/ms(I))
+            assert(parse[TannakianSymbol[Polynomial[Complex]]]("{x + 1, x^12}/Ø") === ms[Polynomial[Complex]](x[Complex] + 1, x[Complex]~^ 12)/Ø)
+            assert(parse[TannakianSymbol[Polynomial[Complex]]]("{12 + i + x^3}/{12}") === ms[Polynomial[Complex]](x[Complex] ~^ 3 + 12 + I)/ms(12))
         }
     }
 }
