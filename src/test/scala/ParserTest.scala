@@ -36,8 +36,9 @@ class ParserTest extends FunSuite {
     }
     
     test ("complex test") {
-        implicit val ring : Ring[Rational] = Rationals
-        
+        implicit val ringint : Ring[Integer] = Integers
+        implicit val ringrat : Ring[Rational] = Rationals
+                
         assert(parse[Complex]("12") === Complex(12))
         assert(parse[Complex]("14 + 6i") === Complex(14, 6))
         assert(parse[Complex]("14 - 3i") === Complex(14, -3))
