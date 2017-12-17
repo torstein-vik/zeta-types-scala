@@ -10,10 +10,10 @@ object ComplexParser {
     import AlgebraicParser._
     /** Parses an algebraic [[io.github.torsteinvik.zetatypes.algebra.structures.ComplexNumber]] from an input String */
     def apply[T <: RingElement[T]](element : Parser[T], ring : Ring[T]) : Parser[ComplexNumber[T]] = (
-        imaginary(element, ring) |
+        imaginary(element, ring) ^^ ((ring.zero, _)) |
         addition(element, ring) | 
         subtraction(element, ring) |
-        real(element, ring)
+        real(element, ring) ^^ ((_, ring.zero))
         ) ^^ {
                 case (real, imag) => new ComplexNumber(real, imag)(ring)
         }
@@ -26,12 +26,8 @@ object ComplexParser {
         case real ~ imag => (real, -imag)
     }
     
-    private def real[T <: RingElement[T]](element : Parser[T], ring : Ring[T]) : Parser[(T, T)] = paren(element) ^^ {
-        case real => (real, ring.zero)
-    }
+    private def real[T <: RingElement[T]](element : Parser[T], ring : Ring[T]) : Parser[T] = paren(element)
     
-    private def imaginary[T <: RingElement[T]](element : Parser[T], ring : Ring[T]) : Parser[(T, T)] = paren(element) <~ "i" ^^ {
-        case imag => (ring.zero, imag)
-    }
+    private def imaginary[T <: RingElement[T]](element : Parser[T], ring : Ring[T]) : Parser[T] = paren(element) <~ "i"
     
 }
