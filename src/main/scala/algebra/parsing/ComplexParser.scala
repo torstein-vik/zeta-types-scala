@@ -18,11 +18,11 @@ object ComplexParser {
                 case (real, imag) => new ComplexNumber(real, imag)(ring)
         }
     
-    private def addition[T <: RingElement[T]](element : Parser[T], ring : Ring[T]) : Parser[(T, T)] = paren(element) ~ ("+" ~> paren(element) <~ "i") ^^ {
+    private def addition[T <: RingElement[T]](element : Parser[T], ring : Ring[T]) : Parser[(T, T)] = real(element, ring) ~ ("+" ~> imaginary(element, ring)) ^^ {
         case real ~ imag => (real, imag)
     }
     
-    private def subtraction[T <: RingElement[T]](element : Parser[T], ring : Ring[T]) : Parser[(T, T)] = paren(element) ~ ("-" ~> paren(element) <~ "i") ^^ {
+    private def subtraction[T <: RingElement[T]](element : Parser[T], ring : Ring[T]) : Parser[(T, T)] = real(element, ring) ~ ("-" ~> imaginary(element, ring)) ^^ {
         case real ~ imag => (real, -imag)
     }
     
