@@ -13,7 +13,7 @@ object PolynomialParser {
     
     private def term[T <: RingElement[T]](element : Parser[T], ring : Ring[T]) : Parser[(T, Int)] = 
         (linear(element, ring) | constant(element, ring)) |
-        (nocoefflinear(ring) ||| nocoeffpower(ring)) |||
+        ((nocoefflinear(ring) | nocoefflinearneg(ring)) ||| (nocoeffpower(ring) | nocoeffpowerneg(ring))) |||
         power(element, ring)
         
     private def constant[T <: RingElement[T]](element : Parser[T], ring : Ring[T]) : Parser[(T, Int)] = element ^^ ((_, 0))
@@ -23,6 +23,8 @@ object PolynomialParser {
     }
     
     private def nocoefflinear[T <: RingElement[T]](ring : Ring[T]) : Parser[(T, Int)] = "x" ^^^ ((ring.one, 1))
+    private def nocoefflinearneg[T <: RingElement[T]](ring : Ring[T]) : Parser[(T, Int)] = "-x" ^^^ ((-ring.one, 1))
     private def nocoeffpower[T <: RingElement[T]](ring : Ring[T]) : Parser[(T, Int)] = "x^" ~> """\d+""".r ^^ (str => (ring.one, str.toInt))
+    private def nocoeffpowerneg[T <: RingElement[T]](ring : Ring[T]) : Parser[(T, Int)] = "-x^" ~> """\d+""".r ^^ (str => (-ring.one, str.toInt))
     
 }
