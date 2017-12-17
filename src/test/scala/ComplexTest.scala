@@ -62,23 +62,6 @@ class ComplexTest extends FunSuite {
         assert(Complex(Rational(10,2), Rational(15,3)) === Complex(Rational(5), Rational(5)))
     }
     
-    test ("parse test") {
-        for (parser <- Seq[Parsable[Complex]](Complex, Complex.additive, Complex.multiplicative)){
-            assert(parser.parse("12") === Complex(12))
-            assert(parser.parse("14 + 6i") === Complex(14, 6))
-            assert(parser.parse("14 - 3i") === Complex(14, -3))
-            assert(parser.parse("14 - 3/2i") === Complex(14, -Rational(3, 2)))
-            assert(parser.parse("3i") === Complex(0, 3))
-            assert(parser.parse("13/5") === Complex(Rational(13, 5)))
-            
-            assertThrows[ParserException]{ parser.parse("13i + 2i") }
-            assertThrows[ParserException]{ parser.parse("13 + 2") }
-            assertThrows[ParserException]{ parser.parse("433 443") }
-            assertThrows[ParserException]{ parser.parse("hello") }
-            
-        }
-    }
-    
     test ("identities test") {
         assert(Complex.additive.identity === Complex(Rational(0)))
         assert(Complex.multiplicative.identity === Complex(Rational(1)))
