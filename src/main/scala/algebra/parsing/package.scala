@@ -9,6 +9,6 @@ package io.github.torsteinvik.zetatypes.algebra
  */
 package object parsing {
     /** Synonym for [[AlgebraicParser.parse]] */
-    def parse[T <: AlgebraicElement] (s : String)(implicit parser : Parser[T]) = AlgebraicParser.parse(s)(parser)
+    def parse[T <: AlgebraicElement] (s : String)(implicit parser : AlgebraicParser.Parser[T]) = AlgebraicParser.parse(s)(parser)
     
 }
