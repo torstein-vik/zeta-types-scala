@@ -105,6 +105,26 @@ Please tell us if this doesn't work, because that means something is wrong with 
   CachedSequence[Int] = 1, 1, 2, 3, 5, 8, 13, 21, 34, 55, 89, 144, 233, 377, 610, 987, 1597, 2584, 4181, 6765, 10946, ...
 ```
 
+#### Parsing
+
+```scala
+> import io.github.torsteinvik.zetatypes.algebra._
+> import io.github.torsteinvik.zetatypes.algebra.structures._
+> import io.github.torsteinvik.zetatypes.algebra.parsing._
+
+> implicit val ringint : Ring[Integer] = Integers
+> implicit val ringrat : Ring[Rational] = Rationals
+
+> parse[Integer]("12")
+  Integer = 12
+  
+> parse[Rational]("-56/3")
+  Rational = -56/3
+  
+> parse[Complex]("12 + 5i")
+  Complex = 12 + 5 i
+```
+
 ## Contributors
 
 _Ask Torstein ([torsteinv64@gmail.com](mailto:torsteinv64@gmail.com)) to add you here if you contribute to this project_
