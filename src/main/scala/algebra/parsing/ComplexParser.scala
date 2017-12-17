@@ -6,6 +6,13 @@ import io.github.torsteinvik.zetatypes.algebra.structures._
 import io.github.torsteinvik.zetatypes.algebra._
 
 object ComplexParser {
+    import AlgebraicParser._
+    def apply[T <: RingElement[T]](element : Parser[T], ring : Ring[T]) : Parser[ComplexNumber[T]] = 
+        imaginary(element, ring) |
+        addition(element, ring) | 
+        subtraction(element, ring) |
+        real(element, ring) 
+    
     private def addition[T <: RingElement[T]](element : Parser[T], ring : Ring[T]) : Parser[ComplexNumber[T]] = paren(element) ~ ("+" ~> paren(element) <~ "i") ^^ {
         case real ~ imag => new ComplexNumber(real, imag)(ring)
     }
