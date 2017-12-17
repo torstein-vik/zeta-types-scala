@@ -113,10 +113,13 @@ Please tell us if this doesn't work, because that means something is wrong with 
 > import io.github.torsteinvik.zetatypes.algebra._
 > import io.github.torsteinvik.zetatypes.algebra.structures._
 > import io.github.torsteinvik.zetatypes.algebra.parsing._
+> import io.github.torsteinvik.zetatypes.tannakiansymbols._
 
 > implicit val ringint : Ring[Integer] = Integers
 > implicit val ringrat : Ring[Rational] = Rationals
 > implicit val ringcom : Ring[Complex] = Complex
+> implicit val ringpol : Ring[Polynomial[Complex]] = Polynomials(Complex)
+> implicit val mondpol : Monoid[Polynomial[Complex]] = ringpol.multiplicative
 
 > parse[Integer]("12")
   Integer = 12
@@ -129,6 +132,9 @@ Please tell us if this doesn't work, because that means something is wrong with 
 
 > parse[Polynomial[Complex]]("(12 + 5i) + ix + x^75")
   Polynomial[Complex] = 12 + 5 i + ix + x^75
+
+> parse[TannakianSymbol[Polynomial[Complex]]]("{1 + x + x^2 + i, i}/Ø")
+  TannakianSymbol[Polynomial[Complex]] = {1 + i + x + x^2, i}/Ø
 ```
 
 ## Contributors
