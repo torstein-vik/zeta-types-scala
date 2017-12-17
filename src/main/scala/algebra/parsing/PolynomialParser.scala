@@ -11,5 +11,13 @@ object PolynomialParser {
     /** Parses an algebraic [[io.github.torsteinvik.zetatypes.algebra.structures.Polynomial]] from an input String */
     def apply[T <: RingElement[T]](element : Parser[T], ring : Ring[T]) : Parser[Polynomial[T]] = rep1sep(term(paren(element), ring), "+") ^^ (new Polynomial(_)(ring))
     
-    private def term[T <: RingElement[T]](element : Parser[T], ring : Ring[T]) : Parser[(T, Int)] = ???
+    private def term[T <: RingElement[T]](element : Parser[T], ring : Ring[T]) : Parser[(T, Int)] = 
+        constant(element, ring) | 
+        linear(element, ring) | 
+        power(element, ring)
+        
+    private def constant[T <: RingElement[T]](element : Parser[T], ring : Ring[T]) : Parser[(T, Int)] = ???
+    private def linear[T <: RingElement[T]](element : Parser[T], ring : Ring[T]) : Parser[(T, Int)] = ???
+    private def power[T <: RingElement[T]](element : Parser[T], ring : Ring[T]) : Parser[(T, Int)] = ???
+    
 }
