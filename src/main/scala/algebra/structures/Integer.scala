@@ -30,7 +30,4 @@ case class Integer (x : BigInt) extends STDLambdaRingElement[Integer] with Parti
 }
 
 /** The ring of [[Integer]]s */
-object Integers extends ParsableRingClass[Integer](Integer(0), Integer(1)) with STDLambdaRing[Integer] with PartialQAlgebra[Integer] {
-    import AlgebraicParser._
-    def parser = """-?\d+""".r ^^ (str => Integer(BigInt(str)))
-}
+object Integers extends RingClass[Integer](Integer(0), Integer(1)) with STDLambdaRing[Integer] with PartialQAlgebra[Integer] 
