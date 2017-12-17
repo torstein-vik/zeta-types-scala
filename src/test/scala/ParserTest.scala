@@ -69,6 +69,9 @@ class ParserTest extends FunSuite {
         assert(parse[Polynomial[Integer]]("x + x^12") === new Polynomial[Integer](Seq((1, 1), (1, 12))))
         assert(parse[Polynomial[Integer]]("0") === new Polynomial[Integer](Seq.empty))
         
+        assert(parse[Polynomial[Complex]]("21ix + (23/2 + i)x^2") === new Polynomial[Complex](Seq((Complex(0, 21), 1), (Complex(Rational(23, 2), 1), 2))))
+        assert(parse[Polynomial[Complex]]("x") === new Polynomial[Complex](Seq((Complex(0), 1))))
+        
             
     }
 }
