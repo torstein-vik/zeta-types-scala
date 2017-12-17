@@ -13,5 +13,6 @@ object AlgebraicParser extends RegexParsers {
         case Error(msg, next) => throw ParserException(msg, next.pos)
     }
     
+    /** Returns a parser that accepts an arbitrary amount of parentheses around the input parser*/
     def paren[T] (p : Parser[T]) : Parser[T] = p | "(" ~> paren(p) <~ ")"
 }
