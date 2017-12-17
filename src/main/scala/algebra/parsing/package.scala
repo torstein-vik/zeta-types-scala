@@ -8,7 +8,7 @@ import io.github.torsteinvik.zetatypes.algebra._
  *  @author Torstein Vik
  */
 package object parsing {
-    /** Synonym for [[AlgebraicParser.parse]] */
+    /** Synonym for [[AlgebraicParser.parse[T](str:String)*]] */
     def parse[T <: AlgebraicElement] (s : String)(implicit parser : AlgebraicParser.Parser[T]) = AlgebraicParser.parse(s)(parser)
     
     implicit def integerparser : AlgebraicParser.Parser[Integer] = IntegerParser.apply
