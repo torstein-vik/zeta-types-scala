@@ -26,10 +26,12 @@ class ParserTest extends FunSuite {
         assert(parse[Rational]("12") === Rational(12))
         assert(parse[Rational]("14/6") === Rational(14, 6))
         assert(parse[Rational]("-1/3432") === Rational(-1, 3432))
+        assert(parse[Rational]("((-1))/(3432)") === Rational(-1, 3432))
+        assert(parse[Rational]("((-1))/(3432)") === Rational(-1, 3432))
+        assert(parse[Rational]("2/ 3") === Rational(2, 3))
+        assert(parse[Rational]("2 /3") === Rational(2, 3))
         
         assertThrows[ParserException]{ parse[Rational]("13i + 2i") }
-        assertThrows[ParserException]{ parse[Rational]("13/ 2") }
-        assertThrows[ParserException]{ parse[Rational]("13 /2") }
         
     }
     
