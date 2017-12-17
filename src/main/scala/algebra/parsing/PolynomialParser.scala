@@ -9,7 +9,7 @@ import io.github.torsteinvik.zetatypes.algebra._
 object PolynomialParser {
     import AlgebraicParser._
     /** Parses an algebraic [[io.github.torsteinvik.zetatypes.algebra.structures.Polynomial]] from an input String */
-    def apply[T <: RingElement[T]](element : Parser[T], ring : Ring[T]) : Parser[Polynomial[T]] = ???
+    def apply[T <: RingElement[T]](element : Parser[T], ring : Ring[T]) : Parser[Polynomial[T]] = rep1sep(term(element, ring), "+") ^^ (new Polynomial(_)(ring))
     
-    
+    private def term[T <: RingElement[T]](element : Parser[T], ring : Ring[T]) : Parser[(T, Int)] = ???
 }
