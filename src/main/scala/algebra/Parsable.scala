@@ -8,14 +8,7 @@ import scala.util.parsing.input._
  */
 trait Parsable[T <: AlgebraicElement] extends AlgebraicStructure[T] {
     import AlgebraicParser._
-    
-    /** Returns [[parser]] applied to the input string */
-    final def parse (s : String) : T = parseAll(parser, s) match {
-        case Success(result, _) => result
-        case Failure(msg, next) => throw ParserException(msg, next.pos)
-        case Error(msg, next) => throw ParserException(msg, next.pos)
-    }
-    
+        
     /** Parser creating an [[AlgebraicElement]] from an input string */
     def parser : Parser[T]
 }
