@@ -6,6 +6,8 @@ import io.github.torsteinvik.zetatypes.algebra._
 import io.github.torsteinvik.zetatypes.algebra.structures._
 import io.github.torsteinvik.zetatypes.algebra.structures.DSL._
 import io.github.torsteinvik.zetatypes.algebra.parsing._
+import io.github.torsteinvik.zetatypes.tannakiansymbols._
+import io.github.torsteinvik.zetatypes.tannakiansymbols.DSL._
 
 class ParserTest extends FunSuite {
     
@@ -81,5 +83,8 @@ class ParserTest extends FunSuite {
         assertThrows[ParserException]{ parse[Polynomial[Integer]]("433 443") }
         assertThrows[ParserException]{ parse[Polynomial[Integer]]("hello") }
             
+    }
+    
+    test ("Tannakian symbol test") {
     }
 }
