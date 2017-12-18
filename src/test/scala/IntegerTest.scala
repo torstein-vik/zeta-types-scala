@@ -77,7 +77,6 @@ class IntegerTest extends FunSuite {
     }
     
     test ("implicit integer test") {
-        import scala.language.implicitConversions
         import io.github.torsteinvik.zetatypes.algebra.structures.DSL.{intToRational => _, intToComplex => _, _}
         
         assert(a.negation == -Integer(a))
@@ -135,7 +134,6 @@ class IntegerTest extends FunSuite {
     }
     
     test ("Integer q algebra test") {
-        import scala.language.implicitConversions
         import io.github.torsteinvik.zetatypes.algebra.structures.DSL._
         
         assert(Integer(4).partialQMult(Rational(2)) === Some(Integer(8)))
