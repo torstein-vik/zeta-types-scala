@@ -318,7 +318,7 @@ class TannakianSymbolTest extends FunSuite{
             assert((ms(1, 2)/ms(2)).islineelement)
             assert((ms(1, 2, 2)/ms(1, 2)).islineelement)
             
-            assert(!(Ø/Ø).islineelement)
+            assert((Ø/Ø).islineelement == false)
             assert(!(ms(2, 2)/Ø).islineelement)
             assert(!(Ø/ms(1)).islineelement)
             assert(!(ms(1)/ms(1)).islineelement)
@@ -481,7 +481,7 @@ class TannakianSymbolTest extends FunSuite{
             assert((ms(1, 2)/ms(2)).islineelement)
             assert((ms(1, 2, 2)/ms(1, 2)).islineelement)
             
-            assert(!(Ø/Ø).islineelement)
+            assert((Ø/Ø).islineelement == false)
             assert(!(ms(2, 2)/Ø).islineelement)
             assert(!(Ø/ms(1)).islineelement)
             assert(!(ms(1)/ms(1)).islineelement)
@@ -644,7 +644,7 @@ class TannakianSymbolTest extends FunSuite{
             assert((ms(1, 2)/ms(2)).islineelement)
             assert((ms(1, 2, 2)/ms(1, 2)).islineelement)
             
-            assert(!(Ø/Ø).islineelement)
+            assert((Ø/Ø).islineelement == false)
             assert(!(ms(2, 2)/Ø).islineelement)
             assert(!(Ø/ms(1)).islineelement)
             assert(!(ms(1)/ms(1)).islineelement)
