@@ -44,6 +44,9 @@ package object DSL {
     
     /** implicitly converts a [[Ring]] into its [[Ring.multiplicative]] [[Monoid]] */
     implicit def multiplicativeMonoid[E <: RingElement[E]] (ring : Ring[E]) : Monoid[E] = ring.multiplicative
+}
+
+package DSL {
     
     /** Dummy class so that scaladoc shows DSL */
     protected class DummyClass

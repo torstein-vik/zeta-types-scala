@@ -18,6 +18,10 @@ package object DSL {
     /** Shorthand for new empty [[Multiset]]*/
     def Ø[T] = new Multiset[T]()
     
+}
+
+package DSL {
+    
     /** Dummy class so that scaladoc shows DSL */
     protected class DummyClass
 }

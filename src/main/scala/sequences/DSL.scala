@@ -41,6 +41,9 @@ package object DSL {
         /** The [[RepeatedSequence]] of this factory. */
         def repeat : SequenceFactory[T] = new RepeatedSequence[T](old)
     }
+}
+
+package DSL {
     
     /** Dummy class so that scaladoc shows DSL */
     protected class DummyClass
