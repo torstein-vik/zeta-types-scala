@@ -110,7 +110,7 @@ class TannakianSymbol[E <: MonoidElement] (val elements : Seq[(E, BigInt)])(impl
     def odddimension : BigInt = superdimension._2
     
     /** Returns whether or not this symbol is a line-element, that is a symbol with one element [[upstairs]], and none [[downstairs]] */
-    def islineelement = superdimension == (1, 0)
+    def islineelement = superdimension == ((1, 0))
     
     /** Returns the augmentation of this symbol, that is the [[evendimension]] minus the [[odddimension]] */
     def augmentation = superdimension match {case (even, odd) => even - odd}

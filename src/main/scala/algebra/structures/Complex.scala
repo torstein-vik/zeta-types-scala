@@ -55,5 +55,5 @@ object Complex extends ComplexNumbers (Rationals) {
     /** Creates a new [[Rational]] [[ComplexNumber]] using a real and imaginary part as parameters */
     def apply(real : Rational, imaginary : Rational = Rationals.zero) = new ComplexNumber(real, imaginary)(Rationals)
     /** Takes a ([[Rational]]) [[ComplexNumber]] and extracts its real and imaginary parts */
-    def unapply(z : ComplexNumber[Rational]) : Option[(Rational, Rational)] = Some(z.real, z.imaginary)
+    def unapply(z : ComplexNumber[Rational]) : Option[(Rational, Rational)] = Some((z.real, z.imaginary))
 }
