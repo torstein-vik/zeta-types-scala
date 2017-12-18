@@ -40,7 +40,7 @@ class TannakianSymbol[E <: MonoidElement] (val elements : Seq[(E, BigInt)])(impl
     override def psi(n : Int) = new TannakianSymbol(elements.map({case (x, i) => (monoid.repeated(x, n), i)})).cleanup
     
     override def partialQMult(n : Rational) = (cleanup.elements.map({case (x, i) => (x, Integer(i).partialQMult(n))}).map({
-        case (x, None) => None
+        case (_, None) => None
         case (x, Some(Integer(i))) => Some((x, i))
     }).toList.sequence).map(new TannakianSymbol(_))
     
@@ -63,7 +63,7 @@ class TannakianSymbol[E <: MonoidElement] (val elements : Seq[(E, BigInt)])(impl
     
     /** Returns the upstairs [[Multiset]] of this [[TannakianSymbol]] */
     def upstairs : Multiset[E] = {
-        return new Multiset(this.cleanup.elements.filter({case (x, i) => i > 0}).flatMap({case (x, i) => ((1 : BigInt) to i).map( _ => x)}) : _*)
+        return new Multiset(this.cleanup.elements.filter({case (_, i) => i > 0}).flatMap({case (x, i) => ((1 : BigInt) to i).map( _ => x)}) : _*)
     }
     
     /** Returns the downstairs [[Multiset]] of this [[TannakianSymbol]] */
@@ -94,13 +94,13 @@ class TannakianSymbol[E <: MonoidElement] (val elements : Seq[(E, BigInt)])(impl
         }
         
         elements.foreach {case (x, i) => add(x, i, 0)}
-        return new TannakianSymbol(data.toSeq.filter({case (x, i) => i != 0}))
+        return new TannakianSymbol(data.toSeq.filter({case (_, i) => i != 0}))
     }
     
     /** Returns the superdimension of this symbol, that is a tuple of ([[evendimension]], [[odddimension]]) */
     def superdimension : (BigInt, BigInt) = cleanup.elements.foldLeft((0 : BigInt, 0 : BigInt)) {
-        case ((aa, ab), (x, i)) if i > 0 => (aa + i, ab)
-        case ((aa, ab), (x, i)) if i < 0 => (aa, ab - i)
+        case ((aa, ab), (_, i)) if i > 0 => (aa + i, ab)
+        case ((aa, ab), (_, i)) if i < 0 => (aa, ab - i)
     }
     
     /** Returns the even dimension of this symbol, that is the number of elements [[upstairs]] (although calculated in an efficient way) */
