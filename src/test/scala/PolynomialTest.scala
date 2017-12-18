@@ -139,7 +139,6 @@ class PolynomialTest extends FunSuite{
     {// Algebraic tests for integral polynomials
         implicit val ring : Ring[Integer] = Integers
         
-        import io.github.torsteinvik.zetatypes.tannakiansymbols.DSL._
         import io.github.torsteinvik.zetatypes.algebra.structures.DSL._
         
         test ("integral Polynomial Addition") {
@@ -175,7 +174,6 @@ class PolynomialTest extends FunSuite{
     {// Algebraic tests for rational polynomials
         implicit val ring : Ring[Rational] = Rationals
         
-        import io.github.torsteinvik.zetatypes.tannakiansymbols.DSL._
         import io.github.torsteinvik.zetatypes.algebra.structures.DSL._
         
         test ("rational Polynomial Addition") {
@@ -211,7 +209,6 @@ class PolynomialTest extends FunSuite{
     {// Algebraic tests for complex polynomials
         implicit val ring : Ring[Complex] = Complex
         
-        import io.github.torsteinvik.zetatypes.tannakiansymbols.DSL._
         import io.github.torsteinvik.zetatypes.algebra.structures.DSL._
         
         test ("complex Polynomial Addition") {
