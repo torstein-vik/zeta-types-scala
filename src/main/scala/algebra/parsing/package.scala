@@ -1,7 +1,6 @@
 package io.github.torsteinvik.zetatypes.algebra
 
 import io.github.torsteinvik.zetatypes.algebra.structures._
-import io.github.torsteinvik.zetatypes.algebra._
 import io.github.torsteinvik.zetatypes.tannakiansymbols._
 
 /** Provides implicit parsers of various algerbraic structures, such as [[io.github.torsteinvik.zetatypes.algebra.structures.ComplexNumbers]]
