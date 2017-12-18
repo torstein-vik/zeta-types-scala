@@ -5,7 +5,7 @@ name := "zeta-types"
 parallelExecution in Test := false
 
 // Show warnings
-scalacOptions ++= Seq("-unchecked", "-deprecation", "-feature", "-Ywarn-unused")
+scalacOptions ++= Seq("-unchecked", "-deprecation", "-feature", "-Ywarn-unused", "-Xlint")
 
 // Dependencies
 libraryDependencies += "org.scalactic" %% "scalactic" % "3.0.4"
