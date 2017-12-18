@@ -10,13 +10,13 @@ object PolynomialParser {
     def apply[T <: RingElement[T]](element : Parser[T], ring : Ring[T]) : Parser[Polynomial[T]] = rep1sep(term(paren(element), ring), "+") ^^ (new Polynomial(_)(ring))
     
     private def term[T <: RingElement[T]](element : Parser[T], ring : Ring[T]) : Parser[(T, Int)] = 
-        (linear(element, ring) | constant(element, ring)) |
+        (linear(element) | constant(element)) |
         ((nocoefflinear(ring) | nocoefflinearneg(ring)) ||| (nocoeffpower(ring) | nocoeffpowerneg(ring))) |||
-        power(element, ring)
+        power(element)
         
-    private def constant[T <: RingElement[T]](element : Parser[T], ring : Ring[T]) : Parser[(T, Int)] = element ^^ ((_, 0))
-    private def linear[T <: RingElement[T]](element : Parser[T], ring : Ring[T]) : Parser[(T, Int)] = element <~ "x" ^^ ((_, 1))
-    private def power[T <: RingElement[T]](element : Parser[T], ring : Ring[T]) : Parser[(T, Int)] = element ~ ("x^" ~> """\d+""".r) ^^ {
+    private def constant[T <: RingElement[T]](element : Parser[T]) : Parser[(T, Int)] = element ^^ ((_, 0))
+    private def linear[T <: RingElement[T]](element : Parser[T]) : Parser[(T, Int)] = element <~ "x" ^^ ((_, 1))
+    private def power[T <: RingElement[T]](element : Parser[T]) : Parser[(T, Int)] = element ~ ("x^" ~> """\d+""".r) ^^ {
         case elem ~ exp => (elem, exp.toInt)
     }
     
