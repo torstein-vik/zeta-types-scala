@@ -294,10 +294,10 @@ class TannakianSymbolTest extends FunSuite{
         }
         
         test ("integral TS superdimension") {
-            assert((ms(1, 2)/Ø).superdimension === (2, 0))
-            assert((ms(1)/ms(2)).superdimension === (1, 1))
-            assert((ms(1)/ms(1)).superdimension === (0, 0))
-            assert((Ø/ms(1, 2, 4, 4)).superdimension === (0, 4))
+            assert((ms(1, 2)/Ø).superdimension === ((2, 0)))
+            assert((ms(1)/ms(2)).superdimension === ((1, 1)))
+            assert((ms(1)/ms(1)).superdimension === ((0, 0)))
+            assert((Ø/ms(1, 2, 4, 4)).superdimension === ((0, 4)))
         }
         
         test ("integral TS even & odd dimension") {
@@ -457,10 +457,10 @@ class TannakianSymbolTest extends FunSuite{
         }
         
         test ("rational TS superdimension") {
-            assert((ms(1, 2)/Ø).superdimension === (2, 0))
-            assert((ms(1)/ms(2)).superdimension === (1, 1))
-            assert((ms(1)/ms(1)).superdimension === (0, 0))
-            assert((Ø/ms(1, 2, 4, 4)).superdimension === (0, 4))
+            assert((ms(1, 2)/Ø).superdimension === ((2, 0)))
+            assert((ms(1)/ms(2)).superdimension === ((1, 1)))
+            assert((ms(1)/ms(1)).superdimension === ((0, 0)))
+            assert((Ø/ms(1, 2, 4, 4)).superdimension === ((0, 4)))
         }
         
         test ("rational TS even & odd dimension") {
@@ -620,10 +620,10 @@ class TannakianSymbolTest extends FunSuite{
         }
         
         test ("complex TS superdimension") {
-            assert((ms(1, 2)/Ø).superdimension === (2, 0))
-            assert((ms(1)/ms(2)).superdimension === (1, 1))
-            assert((ms(1)/ms(1)).superdimension === (0, 0))
-            assert((Ø/ms(1, 2, 4, 4)).superdimension === (0, 4))
+            assert((ms(1, 2)/Ø).superdimension === ((2, 0)))
+            assert((ms(1)/ms(2)).superdimension === ((1, 1)))
+            assert((ms(1)/ms(1)).superdimension === ((0, 0)))
+            assert((Ø/ms(1, 2, 4, 4)).superdimension === ((0, 4)))
         }
         
         test ("complex TS even & odd dimension") {
