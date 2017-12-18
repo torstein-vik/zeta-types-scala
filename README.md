@@ -39,7 +39,15 @@ Please tell us if this doesn't work, because that means something is wrong with 
   * Super-, odd-, and even dimension
   * Augmentation
   * Whether line element
-  
+
+#### Parsing system
+* Implicit parsing system creating algebraic elements from input strings
+* Parse integers
+* Parse complex numbers for any ring
+* Parse fractions for any ring
+* Parse polynomials for any ring
+* Parse Tannakian symbols for any monoid
+
 #### Sequences
 * Abstract Sequence and SequenceFactory interface for infinite (recursive) sequences
 * CachedSequence implementation of abstract Sequence
@@ -97,6 +105,36 @@ Please tell us if this doesn't work, because that means something is wrong with 
   
 > Sequence(Seq(1, 1) followedBy new RecursiveSequence(seq => i => seq(i - 1) + seq(i - 2)))
   CachedSequence[Int] = 1, 1, 2, 3, 5, 8, 13, 21, 34, 55, 89, 144, 233, 377, 610, 987, 1597, 2584, 4181, 6765, 10946, ...
+```
+
+#### Parsing
+
+```scala
+> import io.github.torsteinvik.zetatypes.algebra._
+> import io.github.torsteinvik.zetatypes.algebra.structures._
+> import io.github.torsteinvik.zetatypes.algebra.parsing._
+> import io.github.torsteinvik.zetatypes.tannakiansymbols._
+
+> implicit val ringint : Ring[Integer] = Integers
+> implicit val ringrat : Ring[Rational] = Rationals
+> implicit val ringcom : Ring[Complex] = Complex
+> implicit val ringpol : Ring[Polynomial[Complex]] = Polynomials(Complex)
+> implicit val mondpol : Monoid[Polynomial[Complex]] = ringpol.multiplicative
+
+> parse[Integer]("12")
+  Integer = 12
+  
+> parse[Rational]("-56/3")
+  Rational = -56/3
+  
+> parse[Complex]("12 + 5i")
+  Complex = 12 + 5 i
+
+> parse[Polynomial[Complex]]("(12 + 5i) + ix + x^75")
+  Polynomial[Complex] = 12 + 5 i + ix + x^75
+
+> parse[TannakianSymbol[Polynomial[Complex]]]("{1 + x + x^2 + i, i}/Ø")
+  TannakianSymbol[Polynomial[Complex]] = {1 + i + x + x^2, i}/Ø
 ```
 
 ## Contributors

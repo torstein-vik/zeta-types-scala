@@ -1,19 +1,9 @@
 package io.github.torsteinvik.zetatypes.algebra
 
-
-/** An element of some algebraic structure */
-trait AlgebraicElement
-
-/** An exception coming from some algebraic method 
- *  @constructor Create an algebraic exception
- *  @param msg The message to be displayed alongside the exception
- */
-class AlgebraicException(msg : String) extends Exception(msg)
-
 /** An algebraic structure with a [[combine]] function. Like a [[Monoid]], but without requiring an identity element. 
  *  @tparam T the type of [[AlgebraicElement]] that this magma may combine
  */
-trait Magma[T <: AlgebraicElement] {
+trait Magma[T <: AlgebraicElement] extends AlgebraicStructure[T]{
     /** Combine two elements of type T into a signle one, according to the structure of this [[Magma]] */
     def combine (x : T, y : T) : T
     /** Repeated combination of a single T, n times */

@@ -30,4 +30,4 @@ case class Integer (x : BigInt) extends STDLambdaRingElement[Integer] with Parti
 }
 
 /** The ring of [[Integer]]s */
-object Integers extends RingClass[Integer](Integer(0), Integer(1)) with STDLambdaRing[Integer] with PartialQAlgebra[Integer]
+object Integers extends RingClass[Integer](Integer(0), Integer(1)) with STDLambdaRing[Integer] with PartialQAlgebra[Integer] 
