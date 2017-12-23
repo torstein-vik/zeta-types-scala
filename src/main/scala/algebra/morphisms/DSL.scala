@@ -2,6 +2,9 @@ package io.github.torsteinvik.zetatypes.algebra.morphisms
 
 import io.github.torsteinvik.zetatypes.algebra._
 
+/** Provides infix type synonyms for various types of [[Homomorphism]]s and the identity homomorphism, as well as synonyms for typical homomorphisms
+ *
+ */
 package object DSL {
     /** Synonym for [[Homomorphism]]*/
     type -->[A <: AlgebraicElement, B <: AlgebraicElement] = Homomorphism[A, B]
