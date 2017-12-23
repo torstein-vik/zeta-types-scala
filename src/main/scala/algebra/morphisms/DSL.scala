@@ -12,6 +12,7 @@ package object DSL {
     /** Synonym for [[Isomorphism]]*/
     type ~~>[A <: AlgebraicElement, B <: AlgebraicElement] = Isomorphism[A, B]
     
+    /** Synonym for [[Identity]] [[Homomorphism]]*/
     implicit def identity[A <: AlgebraicElement] : Isomorphism[A, A] = Identity[A]()
 }
 
