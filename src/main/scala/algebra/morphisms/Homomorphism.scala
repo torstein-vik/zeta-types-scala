@@ -16,6 +16,8 @@ trait Epimorphism  [-A <: AlgebraicElement, B <: AlgebraicElement] extends Homom
 /** An injective [[Homomorphism]] */
 trait Monomorphism [A <: AlgebraicElement, +B <: AlgebraicElement] extends Homomorphism[A, B]
 
+/** A bijective [[Homomorphism]] */
 trait Isomorphism[A <: AlgebraicElement, B <: AlgebraicElement] extends Homomorphism[A, B] with Epimorphism[A, B] with Monomorphism[A, B]{
+    /** The inverse og this isomorphism */
     def inverse : Isomorphism[B, A]
 }
