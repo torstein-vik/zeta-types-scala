@@ -6,3 +6,4 @@ trait Homomorphism[-A <: AlgebraicElement, +B <: AlgebraicElement] extends (A =>
     def apply(input : A) : B
 }
 
+trait Epimorphism  [-A <: AlgebraicElement, B <: AlgebraicElement] extends Homomorphism[A, B]
