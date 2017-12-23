@@ -32,12 +32,17 @@ class HomomorphismTest extends FunSuite {
         import io.github.torsteinvik.zetatypes.algebra.structures.Integer
         
         test ("Identity morphism test") {
-            val id : Homomorphism[Integer, Integer] = identity
+            val id : Isomorphism[Integer, Integer] = identity
             
             assert(id(Integer(5435543)) === Integer(5435543))
             assert(id(Integer(-10)) === Integer(-10))
             assert(id(Integer(0)) === Integer(0))
             assert(id(Integer(7)) === Integer(7))
+            
+            assert(id.inverse(Integer(5435543)) === Integer(5435543))
+            assert(id.inverse(Integer(-10)) === Integer(-10))
+            assert(id.inverse(Integer(0)) === Integer(0))
+            assert(id.inverse(Integer(7)) === Integer(7))
         }
     }
 }
