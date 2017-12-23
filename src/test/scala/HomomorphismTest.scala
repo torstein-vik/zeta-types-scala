@@ -17,6 +17,21 @@ class HomomorphismTest extends FunSuite {
             assertCompiles("val f : Integer ~~> Integer = identity")
         }
         
+        test ("Homomorphism type relations") {
+            val idmono : Integer ^-> Integer = new Epimorphism  [Integer, Integer](){def apply(x : Integer) = x}
+            val idepi  : Integer ->> Integer = new Monomorphism [Integer, Integer](){def apply(x : Integer) = x}
+            val idiso  : Integer ~~> Integer = new Isomorphism  [Integer, Integer](){def apply(x : Integer) = x; def inverse = this}
+            
+            assert(({case _ : (Integer --> Integer) => null} : PartialFunction[Integer --> Integer, Null]).isDefinedAt(idmono))
+            assert(({case _ : (Integer --> Integer) => null} : PartialFunction[Integer --> Integer, Null]).isDefinedAt(idepi))
+            
+            assert(({case _ : (Integer ^-> Integer) => null} : PartialFunction[Integer --> Integer, Null]).isDefinedAt(idiso))
+            assert(({case _ : (Integer ->> Integer) => null} : PartialFunction[Integer --> Integer, Null]).isDefinedAt(idiso))
+            
+            
+            assert(!({case _ : (Integer ~~> Integer) => null} : PartialFunction[Integer --> Integer, Null]).isDefinedAt(idmono))
+            assert(!({case _ : (Integer ~~> Integer) => null} : PartialFunction[Integer --> Integer, Null]).isDefinedAt(idepi))
+        }
     }
     
     {// Composition injectivity and surjectivity test
