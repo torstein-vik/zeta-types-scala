@@ -2,6 +2,10 @@ package io.github.torsteinvik.zetatypes.algebra.morphisms
 
 import io.github.torsteinvik.zetatypes.algebra._
 
+/** Homomorphism between two types of [[io.github.torsteinvik.zetatypes.algebra.AlgebraicElement]]'s 
+ *  @tparam A domain of homomorphism
+ *  @tparam B codomain of homomorphism
+ */
 trait Homomorphism[-A <: AlgebraicElement, +B <: AlgebraicElement] extends (A => B) {
     def apply(input : A) : B
 }
