@@ -7,6 +7,7 @@ import io.github.torsteinvik.zetatypes.algebra._
  *  @tparam B codomain of homomorphism
  */
 trait Homomorphism[-A <: AlgebraicElement, +B <: AlgebraicElement] extends (A => B) {
+    /** Apply this homomorphism to some input element from the domain */
     def apply(input : A) : B
 }
 
