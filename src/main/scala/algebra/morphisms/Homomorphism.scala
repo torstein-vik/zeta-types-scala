@@ -9,3 +9,5 @@ trait Homomorphism[-A <: AlgebraicElement, +B <: AlgebraicElement] extends (A =>
 trait Epimorphism  [-A <: AlgebraicElement, B <: AlgebraicElement] extends Homomorphism[A, B]
 trait Monomorphism [A <: AlgebraicElement, +B <: AlgebraicElement] extends Homomorphism[A, B]
 
+trait Isomorphism[A <: AlgebraicElement, B <: AlgebraicElement] extends Homomorphism[A, B] with Epimorphism[A, B] with Monomorphism[A, B]{
+}
