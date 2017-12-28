@@ -22,15 +22,15 @@ class HomomorphismTest extends FunSuite {
             val idepi  : Integer ->> Integer = new Monomorphism [Integer, Integer](){def apply(x : Integer) = x}
             val idiso  : Integer ~~> Integer = new Isomorphism  [Integer, Integer](){def apply(x : Integer) = x; def inverse = this}
             
-            assert(({case _ : (Integer --> Integer) => null} : PartialFunction[Integer --> Integer, Null]).isDefinedAt(idmono))
-            assert(({case _ : (Integer --> Integer) => null} : PartialFunction[Integer --> Integer, Null]).isDefinedAt(idepi))
+            assert(idmono.isInstanceOf[Integer --> Integer])
+            assert(idepi .isInstanceOf[Integer --> Integer])
             
-            assert(({case _ : (Integer ^-> Integer) => null} : PartialFunction[Integer --> Integer, Null]).isDefinedAt(idiso))
-            assert(({case _ : (Integer ->> Integer) => null} : PartialFunction[Integer --> Integer, Null]).isDefinedAt(idiso))
+            assert(idiso.isInstanceOf[Integer ^-> Integer])
+            assert(idiso.isInstanceOf[Integer ->> Integer])
             
             
-            assert(!({case _ : (Integer ~~> Integer) => null} : PartialFunction[Integer --> Integer, Null]).isDefinedAt(idmono))
-            assert(!({case _ : (Integer ~~> Integer) => null} : PartialFunction[Integer --> Integer, Null]).isDefinedAt(idepi))
+            assert(!id.isInstanceOf[Integer ^-> Integer])
+            assert(!id.isInstanceOf[Integer ->> Integer])
         }
     }
     
