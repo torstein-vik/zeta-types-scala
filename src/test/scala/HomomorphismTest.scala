@@ -18,6 +18,7 @@ class HomomorphismTest extends FunSuite {
         }
         
         test ("Homomorphism type relations") {
+            val id     : Integer --> Integer = new Homomorphism [Integer, Integer](){def apply(x : Integer) = x}
             val idmono : Integer ^-> Integer = new Epimorphism  [Integer, Integer](){def apply(x : Integer) = x}
             val idepi  : Integer ->> Integer = new Monomorphism [Integer, Integer](){def apply(x : Integer) = x}
             val idiso  : Integer ~~> Integer = new Isomorphism  [Integer, Integer](){def apply(x : Integer) = x; def inverse = this}
@@ -31,6 +32,9 @@ class HomomorphismTest extends FunSuite {
             
             assert(!id.isInstanceOf[Integer ^-> Integer])
             assert(!id.isInstanceOf[Integer ->> Integer])
+            
+            assert(!idmono.isInstanceOf[Integer ~~> Integer])
+            assert(!idepi .isInstanceOf[Integer ~~> Integer])
         }
     }
     
