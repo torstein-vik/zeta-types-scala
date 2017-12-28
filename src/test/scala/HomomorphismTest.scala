@@ -48,6 +48,10 @@ class HomomorphismTest extends FunSuite {
         val twiceiso  : Integer ~~> Integer = new Isomorphism  [Integer, Integer](){def apply(x : Integer) = x; def inverse = this}
         
         test("Composition injectivity and surjectivity induction") {
+            def none (f : Integer --> Integer) = !f.isInstanceOf[Integer ^-> Integer] && !f.isInstanceOf[Integer ->> Integer]
+            def mono (f : Integer --> Integer) =  f.isInstanceOf[Integer ^-> Integer] && !f.isInstanceOf[Integer ->> Integer]
+            def epi  (f : Integer --> Integer) = !f.isInstanceOf[Integer ^-> Integer] &&  f.isInstanceOf[Integer ->> Integer]
+            def iso  (f : Integer --> Integer) =  f.isInstanceOf[Integer ~~> Integer]
             
         }
         
