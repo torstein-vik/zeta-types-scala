@@ -81,6 +81,9 @@ class HomomorphismTest extends FunSuite {
         import io.github.torsteinvik.zetatypes.algebra.structures.Integer
         import io.github.torsteinvik.zetatypes.algebra.structures.DSL.intToInteger
         
+        val addone : Integer --> Integer = new Homomorphism [Integer, Integer](){def apply(x : Integer) = x + 1}
+        val twice  : Integer --> Integer = new Homomorphism [Integer, Integer](){def apply(x : Integer) = x * 2}
+        val square : Integer --> Integer = new Homomorphism [Integer, Integer](){def apply(x : Integer) = x * x}
         
         test("Composition application") {
         }
