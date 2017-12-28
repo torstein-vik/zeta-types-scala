@@ -53,6 +53,25 @@ class HomomorphismTest extends FunSuite {
             def epi  (f : Integer --> Integer) = !f.isInstanceOf[Integer ^-> Integer] &&  f.isInstanceOf[Integer ->> Integer]
             def iso  (f : Integer --> Integer) =  f.isInstanceOf[Integer ~~> Integer]
             
+            assert(none (twice of twice))
+            assert(none (twice of twicemono))
+            assert(none (twice of twiceepi))
+            assert(none (twice of twiceiso))
+            
+            assert(none (twicemono of twice))
+            assert(mono (twicemono of twicemono))
+            assert(none (twicemono of twiceepi))
+            assert(mono (twicemono of twiceiso))
+            
+            assert(none (twiceepi of twice))
+            assert(none (twiceepi of twicemono))
+            assert(epi  (twiceepi of twiceepi))
+            assert(epi  (twiceepi of twiceiso))
+            
+            assert(none (twiceiso of twice))
+            assert(mono (twiceiso of twicemono))
+            assert(epi  (twiceiso of twiceepi))
+            assert(iso  (twiceiso of twiceiso))
         }
         
     }
