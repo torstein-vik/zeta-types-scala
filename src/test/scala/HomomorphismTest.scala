@@ -39,6 +39,13 @@ class HomomorphismTest extends FunSuite {
     }
     
     {// Composition injectivity and surjectivity test
+        import io.github.torsteinvik.zetatypes.algebra.morphisms.DSL._
+        import io.github.torsteinvik.zetatypes.algebra.structures.Integer
+        
+        
+        test("Composition injectivity and surjectivity induction") {
+            
+        }
         
     }
     
