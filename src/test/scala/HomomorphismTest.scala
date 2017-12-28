@@ -19,8 +19,8 @@ class HomomorphismTest extends FunSuite {
         
         test ("Homomorphism type relations") {
             val id     : Integer --> Integer = new Homomorphism [Integer, Integer](){def apply(x : Integer) = x}
-            val idmono : Integer ^-> Integer = new Epimorphism  [Integer, Integer](){def apply(x : Integer) = x}
-            val idepi  : Integer ->> Integer = new Monomorphism [Integer, Integer](){def apply(x : Integer) = x}
+            val idmono : Integer ^-> Integer = new Monomorphism  [Integer, Integer](){def apply(x : Integer) = x}
+            val idepi  : Integer ->> Integer = new Epimorphism [Integer, Integer](){def apply(x : Integer) = x}
             val idiso  : Integer ~~> Integer = new Isomorphism  [Integer, Integer](){def apply(x : Integer) = x; def inverse = this}
             
             assert(idmono.isInstanceOf[Integer --> Integer])
@@ -43,8 +43,8 @@ class HomomorphismTest extends FunSuite {
         import io.github.torsteinvik.zetatypes.algebra.structures.Integer
         
         val twice     : Integer --> Integer = new Homomorphism [Integer, Integer](){def apply(x : Integer) = x}
-        val twicemono : Integer ^-> Integer = new Epimorphism  [Integer, Integer](){def apply(x : Integer) = x}
-        val twiceepi  : Integer ->> Integer = new Monomorphism [Integer, Integer](){def apply(x : Integer) = x}
+        val twicemono : Integer ^-> Integer = new Monomorphism  [Integer, Integer](){def apply(x : Integer) = x}
+        val twiceepi  : Integer ->> Integer = new Epimorphism [Integer, Integer](){def apply(x : Integer) = x}
         val twiceiso  : Integer ~~> Integer = new Isomorphism  [Integer, Integer](){def apply(x : Integer) = x; def inverse = this}
         
         test("Composition injectivity and surjectivity induction") {
