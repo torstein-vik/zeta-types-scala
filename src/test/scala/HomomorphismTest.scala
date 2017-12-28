@@ -118,6 +118,14 @@ class HomomorphismTest extends FunSuite {
         import io.github.torsteinvik.zetatypes.algebra.structures.Integer
         import io.github.torsteinvik.zetatypes.algebra.structures.DSL.intToInteger
         
+        def m1    : Integer ~~> Integer = new Isomorphism [Integer, Integer](){def apply(x : Integer) = x + 2; def inverse = m1inv}
+        def m1inv : Integer ~~> Integer = new Isomorphism [Integer, Integer](){def apply(x : Integer) = x - 2; def inverse = m1}
+        
+        def m2    : Integer ~~> Integer = new Isomorphism [Integer, Integer](){def apply(x : Integer) = x * 2; def inverse = m2inv}
+        def m2inv : Integer ~~> Integer = new Isomorphism [Integer, Integer](){def apply(x : Integer) = x match {case Integer(x) => Integer(x/2)}; def inverse = m2}
+        
+        def m3    : Integer ~~> Integer = new Isomorphism [Integer, Integer](){def apply(x : Integer) = x + 3; def inverse = m3inv}
+        def m3inv : Integer ~~> Integer = new Isomorphism [Integer, Integer](){def apply(x : Integer) = x - 3; def inverse = m3}
         
         test("Composition inverse") {
         }
