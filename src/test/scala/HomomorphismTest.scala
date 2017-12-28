@@ -82,6 +82,13 @@ class HomomorphismTest extends FunSuite {
     
     
     {// Composition inversion test
+        import io.github.torsteinvik.zetatypes.algebra.morphisms.DSL._
+        import io.github.torsteinvik.zetatypes.algebra.structures.Integer
+        import io.github.torsteinvik.zetatypes.algebra.structures.DSL.intToInteger
+        
+        
+        test("Composition inverse") {
+        }
     }
     
     {// Identitity application test
