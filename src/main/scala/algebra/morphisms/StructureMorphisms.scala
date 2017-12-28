@@ -14,4 +14,8 @@ object StructureMorphisms {
         def apply(x : E) = new ComplexNumber(x, ring.zero)(ring)
     }
     
+    implicit def polynomialInclusion[E <: RingElement[E]](implicit ring : Ring[E]) : (E ^-> Polynomial[E]) = new Monomorphism[E, Polynomial[E]]{
+        def apply(x : E) = new Polynomial(Seq((x, 0)))(ring)
+    }
+    
 }
