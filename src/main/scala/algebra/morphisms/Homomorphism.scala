@@ -6,15 +6,15 @@ import io.github.torsteinvik.zetatypes.algebra._
  *  @tparam A domain of homomorphism
  *  @tparam B codomain of homomorphism
  */
-trait Homomorphism[-A <: AlgebraicElement, +B <: AlgebraicElement] extends (A => B) {
+trait Homomorphism[A <: AlgebraicElement, B <: AlgebraicElement] extends (A => B) {
     /** Apply this homomorphism to some input element from the domain */
     def apply(input : A) : B
 }
 
 /** A surjective [[Homomorphism]] */
-trait Epimorphism  [-A <: AlgebraicElement, B <: AlgebraicElement] extends Homomorphism[A, B]
+trait Epimorphism  [A <: AlgebraicElement, B <: AlgebraicElement] extends Homomorphism[A, B]
 /** An injective [[Homomorphism]] */
-trait Monomorphism [A <: AlgebraicElement, +B <: AlgebraicElement] extends Homomorphism[A, B]
+trait Monomorphism [A <: AlgebraicElement, B <: AlgebraicElement] extends Homomorphism[A, B]
 
 /** A bijective [[Homomorphism]] */
 trait Isomorphism[A <: AlgebraicElement, B <: AlgebraicElement] extends Homomorphism[A, B] with Epimorphism[A, B] with Monomorphism[A, B]{
