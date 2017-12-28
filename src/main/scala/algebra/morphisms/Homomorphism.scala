@@ -15,11 +15,6 @@ trait Homomorphism[A <: AlgebraicElement, B <: AlgebraicElement] extends (A => B
      *  @param f the morphism to compose with
      */
     final def of [C <: AlgebraicElement](f : Homomorphism[C, A]) = Composition(this, f)
-    /** Precompose this morphism with some other morphism 
-     *  @tparam C the output type of the final morphism
-     *  @param f the morphism to precompose with
-     */
-    final def and [C <: AlgebraicElement](f : Homomorphism[B, C]) = Composition(f, this)
 }
 
 /** A surjective [[Homomorphism]] */
