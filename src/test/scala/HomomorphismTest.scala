@@ -42,6 +42,10 @@ class HomomorphismTest extends FunSuite {
         import io.github.torsteinvik.zetatypes.algebra.morphisms.DSL._
         import io.github.torsteinvik.zetatypes.algebra.structures.Integer
         
+        val twice     : Integer --> Integer = new Homomorphism [Integer, Integer](){def apply(x : Integer) = x}
+        val twicemono : Integer ^-> Integer = new Epimorphism  [Integer, Integer](){def apply(x : Integer) = x}
+        val twiceepi  : Integer ->> Integer = new Monomorphism [Integer, Integer](){def apply(x : Integer) = x}
+        val twiceiso  : Integer ~~> Integer = new Isomorphism  [Integer, Integer](){def apply(x : Integer) = x; def inverse = this}
         
         test("Composition injectivity and surjectivity induction") {
             
