@@ -86,6 +86,27 @@ class HomomorphismTest extends FunSuite {
         val square : Integer --> Integer = new Homomorphism [Integer, Integer](){def apply(x : Integer) = x * x}
         
         test("Composition application") {
+            assert((addone of addone) (3) === Integer(5))
+            assert((addone of addone) (5) === Integer(7))
+            assert((addone of twice)  (3) === Integer(7))
+            assert((addone of twice)  (5) === Integer(11))
+            assert((addone of square) (3) === Integer(10))
+            assert((addone of square) (5) === Integer(26))
+            
+            assert((twice  of addone) (3) === Integer(8))
+            assert((twice  of addone) (5) === Integer(12))
+            assert((twice  of twice)  (3) === Integer(12))
+            assert((twice  of twice)  (5) === Integer(20))
+            assert((twice  of square) (3) === Integer(18))
+            assert((twice  of square) (5) === Integer(50))
+            
+            assert((square of addone) (3) === Integer(16))
+            assert((square of addone) (5) === Integer(36))
+            assert((square of twice)  (3) === Integer(36))
+            assert((square of twice)  (5) === Integer(100))
+            assert((square of square) (3) === Integer(81))
+            assert((square of square) (5) === Integer(625))   
+                 
         }
         
     }
