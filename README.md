@@ -19,7 +19,7 @@ Please tell us if this doesn't work, because that means something is wrong with 
 #### Algebraic system
 * Abstract classes for magmas, monoids, (partial) groups, rings, lambda-rings, and (partial) q-algebras.
 * Automatic implementation of lambda-operations from adams-operations and (partial) q-algebras.
-* Traits for morphisms, and functionality for composition of them
+* Traits for morphisms, and functionality for composition of them, as well as important structure morphisms.
 
 #### Implemented algebraic structures
 * Integers as lambda-ring and partial q-algebra.
