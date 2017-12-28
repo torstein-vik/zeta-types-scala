@@ -128,6 +128,16 @@ class HomomorphismTest extends FunSuite {
         def m3inv : Integer ~~> Integer = new Isomorphism [Integer, Integer](){def apply(x : Integer) = x - 3; def inverse = m3}
         
         test("Composition inverse") {
+            for (i <- 1 to 10){
+                assert((m1 of m2).inverse(i) == (m2inv of m1inv)(i))
+                assert((m2 of m1).inverse(i) == (m1inv of m2inv)(i))
+                
+                assert((m2 of m3).inverse(i) == (m3inv of m2inv)(i))
+                assert((m3 of m2).inverse(i) == (m2inv of m3inv)(i))
+                    
+                assert((m3 of m1).inverse(i) == (m1inv of m3inv)(i))
+                assert((m1 of m3).inverse(i) == (m3inv of m1inv)(i))
+            }
         }
     }
     
