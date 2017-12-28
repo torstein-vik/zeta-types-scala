@@ -77,7 +77,11 @@ class HomomorphismTest extends FunSuite {
     }
     
     {// Composition application test
+    }
         
+    
+    
+    {// Composition inversion test
     }
     
     {// Identitity application test
