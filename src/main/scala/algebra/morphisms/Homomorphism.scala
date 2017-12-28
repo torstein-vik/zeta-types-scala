@@ -22,7 +22,9 @@ trait Epimorphism [A <: AlgebraicElement, B <: AlgebraicElement] extends Homomor
     final def of [C <: AlgebraicElement](f : Epimorphism[C, A]) : Epimorphism[C, B] = new Composition(this, f) with Epimorphism[C, B]
 }
 /** An injective [[Homomorphism]] */
-trait Monomorphism [A <: AlgebraicElement, B <: AlgebraicElement] extends Homomorphism[A, B]
+trait Monomorphism [A <: AlgebraicElement, B <: AlgebraicElement] extends Homomorphism[A, B] {
+    final def of [C <: AlgebraicElement](f : Monomorphism[C, A]) : Monomorphism[C, B] = new Composition(this, f) with Monomorphism[C, B]
+}
 
 /** A bijective [[Homomorphism]] */
 trait Isomorphism[A <: AlgebraicElement, B <: AlgebraicElement] extends Homomorphism[A, B] with Epimorphism[A, B] with Monomorphism[A, B]{
