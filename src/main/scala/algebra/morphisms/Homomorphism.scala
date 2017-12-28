@@ -9,6 +9,8 @@ import io.github.torsteinvik.zetatypes.algebra._
 trait Homomorphism[A <: AlgebraicElement, B <: AlgebraicElement] extends (A => B) {
     /** Apply this homomorphism to some input element from the domain */
     def apply(input : A) : B
+    final def of [C <: AlgebraicElement](f : Homomorphism[C, A]) = Composition(this, f)
+    final def and [C <: AlgebraicElement](f : Homomorphism[B, C]) = Composition(f, this)
 }
 
 /** A surjective [[Homomorphism]] */
