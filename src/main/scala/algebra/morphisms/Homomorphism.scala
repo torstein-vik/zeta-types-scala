@@ -18,7 +18,9 @@ trait Homomorphism[A <: AlgebraicElement, B <: AlgebraicElement] extends (A => B
 }
 
 /** A surjective [[Homomorphism]] */
-trait Epimorphism  [A <: AlgebraicElement, B <: AlgebraicElement] extends Homomorphism[A, B]
+trait Epimorphism [A <: AlgebraicElement, B <: AlgebraicElement] extends Homomorphism[A, B] {
+    final def of [C <: AlgebraicElement](f : Epimorphism[C, A]) : Epimorphism[C, B] = new Composition(this, f) with Epimorphism[C, B]
+}
 /** An injective [[Homomorphism]] */
 trait Monomorphism [A <: AlgebraicElement, B <: AlgebraicElement] extends Homomorphism[A, B]
 
