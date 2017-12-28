@@ -27,7 +27,12 @@ trait Monomorphism [A <: AlgebraicElement, B <: AlgebraicElement] extends Homomo
 }
 
 /** A bijective [[Homomorphism]] */
-trait Isomorphism[A <: AlgebraicElement, B <: AlgebraicElement] extends Homomorphism[A, B] with Epimorphism[A, B] with Monomorphism[A, B]{
+trait Isomorphism[A <: AlgebraicElement, B <: AlgebraicElement] extends Homomorphism[A, B] with Epimorphism[A, B] with Monomorphism[A, B]
+{ outer =>
     /** The inverse of this isomorphism */
     def inverse : Isomorphism[B, A]
+    
+    final def of [C <: AlgebraicElement](f : Isomorphism[C, A]) : Isomorphism[C, B] = new Composition(this, f) with Isomorphism[C, B] {
+        def inverse : Isomorphism[B, C] = f.inverse of outer.inverse
+    }
 }
