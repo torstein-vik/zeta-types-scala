@@ -3,51 +3,51 @@ package io.github.torsteinvik.zetatypes.tannakiansymbols
 import io.github.torsteinvik.zetatypes.algebra.structures._
 import io.github.torsteinvik.zetatypes.algebra._
 
-/** Provides methods for creating [[Multiset]]s, which in turn can be used to create
- *  Tannakian symbols. Multisets can always be created easily, but to covert it
+/** Provides methods for creating [[AlgebraicMultiset]]s, which in turn can be used to create
+ *  Tannakian symbols. AlgebraicMultisets can always be created easily, but to covert it
  *  into a Tannakian symbol, there needs to be an implicit 
  *  [[io.github.torsteinvik.zetatypes.algebra.Monoid]] in the scope.
- *  This is explained further in [[Multiset./]]
+ *  This is explained further in [[AlgebraicMultiset./]]
  */
 package object DSL {
     object General {
-        /** Shorthand for new [[Multiset]]*/
-        def ms[T <: MonoidElement] (x : T*) : Multiset[T] = new Multiset(x : _*)
+        /** Shorthand for new [[AlgebraicMultiset]]*/
+        def ms[T <: MonoidElement] (x : T*) : AlgebraicMultiset[T] = new AlgebraicMultiset(x : _*)
         
-        /** Shorthand for new empty [[Multiset]]*/
-        def Ø[T <: MonoidElement] = new Multiset[T]()
+        /** Shorthand for new empty [[AlgebraicMultiset]]*/
+        def Ø[T <: MonoidElement] = new AlgebraicMultiset[T]()
     }
     
     object Integer {
-        /** Shorthand for new [[Multiset]]*/
-        def ms (x : Integer*) : Multiset[Integer] = new Multiset(x : _*)
+        /** Shorthand for new [[AlgebraicMultiset]]*/
+        def ms (x : Integer*) : AlgebraicMultiset[Integer] = new AlgebraicMultiset(x : _*)
         
-        /** Shorthand for new empty [[Multiset]]*/
-        def Ø = new Multiset[Integer]()
+        /** Shorthand for new empty [[AlgebraicMultiset]]*/
+        def Ø = new AlgebraicMultiset[Integer]()
     }
     
     object Rational {
-        /** Shorthand for new [[Multiset]]*/
-        def ms (x : Rational*) : Multiset[Rational] = new Multiset(x : _*)
+        /** Shorthand for new [[AlgebraicMultiset]]*/
+        def ms (x : Rational*) : AlgebraicMultiset[Rational] = new AlgebraicMultiset(x : _*)
         
-        /** Shorthand for new empty [[Multiset]]*/
-        def Ø = new Multiset[Rational]()
+        /** Shorthand for new empty [[AlgebraicMultiset]]*/
+        def Ø = new AlgebraicMultiset[Rational]()
     }
     
     object Complex {
-        /** Shorthand for new [[Multiset]]*/
-        def ms (x : Complex*) : Multiset[Complex] = new Multiset(x : _*)
+        /** Shorthand for new [[AlgebraicMultiset]]*/
+        def ms (x : Complex*) : AlgebraicMultiset[Complex] = new AlgebraicMultiset(x : _*)
         
-        /** Shorthand for new empty [[Multiset]]*/
-        def Ø = new Multiset[Complex]()
+        /** Shorthand for new empty [[AlgebraicMultiset]]*/
+        def Ø = new AlgebraicMultiset[Complex]()
     }
     
     object ComplexPolynomial {
-        /** Shorthand for new [[Multiset]]*/
-        def ms (x : Polynomial[Complex]*) : Multiset[Polynomial[Complex]] = new Multiset(x : _*)
+        /** Shorthand for new [[AlgebraicMultiset]]*/
+        def ms (x : Polynomial[Complex]*) : AlgebraicMultiset[Polynomial[Complex]] = new AlgebraicMultiset(x : _*)
         
-        /** Shorthand for new empty [[Multiset]]*/
-        def Ø = new Multiset[Polynomial[Complex]]()
+        /** Shorthand for new empty [[AlgebraicMultiset]]*/
+        def Ø = new AlgebraicMultiset[Polynomial[Complex]]()
     }
 }
 

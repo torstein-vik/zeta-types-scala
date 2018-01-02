@@ -2,13 +2,13 @@ package io.github.torsteinvik.zetatypes.test
 
 import org.scalatest.FunSuite
 
-class MultisetTest extends FunSuite {
+class AlgebraicMultisetTest extends FunSuite {
     
     {// With DSL
         import io.github.torsteinvik.zetatypes.tannakiansymbols.DSL.Integer._
         import io.github.torsteinvik.zetatypes.algebra.structures.DSL._
         
-        test ("Multiset equality") {
+        test ("AlgebraicMultiset equality") {
             assert(Ø === ms())
             
             assert(ms(1, 2) === ms(1, 2))
@@ -28,7 +28,7 @@ class MultisetTest extends FunSuite {
             assert(ms(4, 8, 8, 2, 9) === ms(2, 4, 8, 8, 9))
         }
         
-        test ("Multiset toString test") {
+        test ("AlgebraicMultiset toString test") {
             assert(Ø.toString === "Ø")
             
             assert(ms(1, 2, 3).toString === "{1, 2, 3}")

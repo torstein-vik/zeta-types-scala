@@ -61,13 +61,13 @@ class TannakianSymbol[E <: MonoidElement] (val elements : Seq[(E, BigInt)])(impl
         return upstairs + "/" + downstairs
     } 
     
-    /** Returns the upstairs [[Multiset]] of this [[TannakianSymbol]] */
-    def upstairs : Multiset[E] = {
-        return new Multiset(this.cleanup.elements.filter({case (_, i) => i > 0}).flatMap({case (x, i) => ((1 : BigInt) to i).map( _ => x)}) : _*)
+    /** Returns the upstairs [[AlgebraicMultiset]] of this [[TannakianSymbol]] */
+    def upstairs : AlgebraicMultiset[E] = {
+        return new AlgebraicMultiset(this.cleanup.elements.filter({case (_, i) => i > 0}).flatMap({case (x, i) => ((1 : BigInt) to i).map( _ => x)}) : _*)
     }
     
-    /** Returns the downstairs [[Multiset]] of this [[TannakianSymbol]] */
-    def downstairs : Multiset[E] = {
+    /** Returns the downstairs [[AlgebraicMultiset]] of this [[TannakianSymbol]] */
+    def downstairs : AlgebraicMultiset[E] = {
         return this.negation.upstairs
     }
     
