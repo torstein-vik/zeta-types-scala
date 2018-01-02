@@ -2,11 +2,19 @@ package io.github.torsteinvik.zetatypes.sequences
 
 import scala.language.implicitConversions
 
+import io.github.torsteinvik.zetatypes.algebra._
+
 /** Provides implicit methods for creating sequence factories. Provides the 
  *  implicit [[SequenceFactoryDSL]] class, which has methods to alter factories.
  *  
  */
 package object DSL {
+    
+    /** Implicit functor of a ring to the ring of [[AlgebraicSequences]] with coefficients in that ring */
+    implicit def algebraicsequences[E <: RingElement[E]](implicit ring : Ring[E]) : AlgebraicSequences[E] = AlgebraicSequences(ring)
+    
+    /** Implicit functor of a ring to the ring of [[SpecialAlgebraicSequences]] with coefficients in that ring */
+    implicit def specialalgebraicsequences[E <: RingElement[E]](implicit ring : Ring[E]) : SpecialAlgebraicSequences[E] = SpecialAlgebraicSequences(ring)
     
     /** Implicitly creates [[SequenceFactory]] from a [[Sequence]], using [[Sequence.asFactory]]*/
     implicit def getFactory[T] (seq : Sequence[T]) = seq.asFactory
