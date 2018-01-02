@@ -82,10 +82,6 @@ class ParserTest extends FunSuite {
     }
     
     test ("Tannakian symbol test") {
-        implicit val ringint : Ring[Integer] = Integers
-        implicit val ringrat : Ring[Rational] = Rationals
-        implicit val ringcom : Ring[Complex] = Complex
-        implicit val ringpol : Ring[Polynomial[Complex]] = Polynomials(Complex)
         
         
         {
