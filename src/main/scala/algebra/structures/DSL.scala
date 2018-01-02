@@ -7,6 +7,7 @@ import io.github.torsteinvik.zetatypes.algebra._
 /** Provides various methods for simplifying the syntax of working with algebra,
  *  such as converters between the main structures, the value [[DSL.I]], which 
  *  is the imaginary unit, and the implicit [[DSL.multiplicativeMonoid]]
+ *  Also provides implicit rings for all rings in [[structures]] package
  */
 package object DSL {
     /** Implicit instance of ring of [[Integers]] */
