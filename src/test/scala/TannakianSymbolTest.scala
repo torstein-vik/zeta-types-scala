@@ -77,9 +77,8 @@ class TannakianSymbolTest extends FunSuite{
     }
     
     {// Upstairs & Downstairs
-        implicit val monoid : Monoid[Integer] = Integers.multiplicative
         
-        import io.github.torsteinvik.zetatypes.tannakiansymbols.DSL._
+        import io.github.torsteinvik.zetatypes.tannakiansymbols.DSL.General._
         import io.github.torsteinvik.zetatypes.algebra.structures.DSL._
         val X = new TannakianSymbol(Seq((Integer(1), 1 : BigInt), (Integer(1), -1 : BigInt), (Integer(2), 1 : BigInt)))
         val Y = new TannakianSymbol(Seq((Integer(10), 5 : BigInt), (Integer(10), -4 : BigInt), (Integer(2), -1 : BigInt)))
@@ -106,9 +105,8 @@ class TannakianSymbolTest extends FunSuite{
     }
     
     {// Using ms(...) / ms(...) notation integer
-        implicit val monoid : Monoid[Integer] = Integers.multiplicative
     
-        import io.github.torsteinvik.zetatypes.tannakiansymbols.DSL._
+        import io.github.torsteinvik.zetatypes.tannakiansymbols.DSL.Integer._
         import io.github.torsteinvik.zetatypes.algebra.structures.DSL._
         
         val X = new TannakianSymbol(Seq((Integer(1), 1 : BigInt), (Integer(2), -1 : BigInt), (Integer(3), 1 : BigInt)))
@@ -127,9 +125,8 @@ class TannakianSymbolTest extends FunSuite{
     }
     
     {// Using ms(...) / ms(...) notation rational
-        implicit val monoidrat : Monoid[Rational] = Rationals.multiplicative
         
-        import io.github.torsteinvik.zetatypes.tannakiansymbols.DSL._
+        import io.github.torsteinvik.zetatypes.tannakiansymbols.DSL.Rational._
         import io.github.torsteinvik.zetatypes.algebra.structures.DSL._
             
         val X = new TannakianSymbol(Seq((Rational(Integer(1)), 1 : BigInt), (Rational(Integer(2)), -1 : BigInt), (Rational(Integer(3)), 1 : BigInt)))
@@ -148,9 +145,8 @@ class TannakianSymbolTest extends FunSuite{
     }
     
     {// Using ms(...) / ms(...) notation complex
-        implicit val monoidcom : Monoid[Complex] = Complex.multiplicative
     
-        import io.github.torsteinvik.zetatypes.tannakiansymbols.DSL._
+        import io.github.torsteinvik.zetatypes.tannakiansymbols.DSL.Complex._
         import io.github.torsteinvik.zetatypes.algebra.structures.DSL._
             
         val X = new TannakianSymbol(Seq((Complex(Rational(Integer(1))), 1 : BigInt), (Complex(Rational(Integer(2))), -1 : BigInt), (Complex(Rational(Integer(3))), 1 : BigInt)))
@@ -170,9 +166,8 @@ class TannakianSymbolTest extends FunSuite{
     }
     
     {// Algebraic tests for integral tannakiansymbols
-        implicit val monoidint : Monoid[Integer] = Integers.multiplicative
         
-        import io.github.torsteinvik.zetatypes.tannakiansymbols.DSL._
+        import io.github.torsteinvik.zetatypes.tannakiansymbols.DSL.Integer._
         import io.github.torsteinvik.zetatypes.algebra.structures.DSL._
         
         test ("integral TS Addition") {
@@ -333,9 +328,8 @@ class TannakianSymbolTest extends FunSuite{
     }
     
     {// Algebraic tests for rational tannakiansymbols
-        implicit val monoidrat : Monoid[Rational] = Rationals.multiplicative
         
-        import io.github.torsteinvik.zetatypes.tannakiansymbols.DSL._
+        import io.github.torsteinvik.zetatypes.tannakiansymbols.DSL.Rational._
         import io.github.torsteinvik.zetatypes.algebra.structures.DSL._
         
         test ("rational TS Addition") {
@@ -496,9 +490,8 @@ class TannakianSymbolTest extends FunSuite{
     }
     
     {// Algebraic tests for complex tannakiansymbols
-        implicit val monoidcom : Monoid[Complex] = Complex.multiplicative
         
-        import io.github.torsteinvik.zetatypes.tannakiansymbols.DSL._
+        import io.github.torsteinvik.zetatypes.tannakiansymbols.DSL.Complex._
         import io.github.torsteinvik.zetatypes.algebra.structures.DSL._
         
         test ("complex TS Addition") {
