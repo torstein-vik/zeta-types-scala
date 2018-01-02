@@ -48,11 +48,21 @@ package object DSL {
      *  @tparam E the type of [[RingElement]] the coefficients of the [[Polynomial]] belong to
      *  @param ring the [[Ring]] the polynomial unit has coefficients in
      */
-    def x[E <: RingElement[E]](implicit ring : Ring[E]) = new Polynomial[E](Seq((ring.one, 1)))
+    def pvar[E <: RingElement[E]](implicit ring : Ring[E]) = new Polynomial[E](Seq((ring.one, 1)))
     
     /** implicitly converts a [[Ring]] into its [[Ring.multiplicative]] [[Monoid]] */
     implicit def implcitMultiplicativeMonoid[E <: RingElement[E]] (implicit ring : Ring[E]) : Monoid[E] = ring.multiplicative
     implicit def multiplicativeMonoid[E <: RingElement[E]] (ring : Ring[E]) : Monoid[E] = ring.multiplicative
+    
+    object IntegerPolynomial {
+        def x = pvar[Integer]
+    }
+    object RationalPolynomial {
+        def x = pvar[Rational]
+    }
+    object ComplexPolynomial {
+        def x = pvar[Complex]
+    }
 }
 
 package DSL {
