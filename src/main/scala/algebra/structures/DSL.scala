@@ -5,8 +5,8 @@ import scala.language.implicitConversions
 import io.github.torsteinvik.zetatypes.algebra._
 
 /** Provides various methods for simplifying the syntax of working with algebra,
- *  such as converters between the main structures, the value [[DSL.I]], which 
- *  is the imaginary unit, and the implicit [[DSL.multiplicativeMonoid]]
+ *  such as converters between the main structures, the value [[DSL.I]] as the 
+ *  imaginary unit, as well as various subobjects for polynomials and conversion from ring to monoid
  *  Also provides implicit rings for all rings in [[structures]] package
  */
 package object DSL {
