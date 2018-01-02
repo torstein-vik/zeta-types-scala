@@ -77,9 +77,10 @@ class PolynomialTest extends FunSuite{
     
         
     {// Using polynomial notation integer
-        implicit val ring : Ring[Integer] = Integers
     
         import io.github.torsteinvik.zetatypes.algebra.structures.DSL._
+        
+        import io.github.torsteinvik.zetatypes.algebra.structures.DSL.IntegerPolynomial._
         
         val X = new Polynomial(Seq((Integer(1), 1), (Integer(2), 2), (Integer(3), 4)))
         val Y = new Polynomial(Seq((Integer(10), 0), (Integer(11), 5), (Integer(2), 400)))
@@ -97,9 +98,10 @@ class PolynomialTest extends FunSuite{
     }
     
     {// Using polynomial notation rational
-        implicit val ring : Ring[Rational] = Rationals
     
         import io.github.torsteinvik.zetatypes.algebra.structures.DSL._
+        
+        import io.github.torsteinvik.zetatypes.algebra.structures.DSL.RationalPolynomial._
         
         val X = new Polynomial(Seq((Rational(Integer(1)), 1), (Rational(Integer(2)), 2), (Rational(Integer(3)), 4)))
         val Y = new Polynomial(Seq((Rational(Integer(10)), 0), (Rational(Integer(11)), 5), (Rational(Integer(2)), 400)))
@@ -117,9 +119,10 @@ class PolynomialTest extends FunSuite{
     }
     
     {// Using polynomial notation complex
-        implicit val ring : Ring[Complex] = Complex
     
         import io.github.torsteinvik.zetatypes.algebra.structures.DSL._
+        
+        import io.github.torsteinvik.zetatypes.algebra.structures.DSL.ComplexPolynomial._
         
         val X = new Polynomial(Seq((Complex(Rational(Integer(1))), 1), (Complex(Rational(Integer(2))), 2), (Complex(Rational(Integer(3))), 4)))
         val Y = new Polynomial(Seq((Complex(Rational(Integer(10))), 0), (Complex(Rational(Integer(11))), 5), (Complex(Rational(Integer(2))), 400)))
@@ -137,9 +140,10 @@ class PolynomialTest extends FunSuite{
     }
     
     {// Algebraic tests for integral polynomials
-        implicit val ring : Ring[Integer] = Integers
         
         import io.github.torsteinvik.zetatypes.algebra.structures.DSL._
+        
+        import io.github.torsteinvik.zetatypes.algebra.structures.DSL.IntegerPolynomial._
         
         test ("integral Polynomial Addition") {
             assert((1 + x) + (2 + 3 * x) === 3 + 4 * x)
@@ -172,9 +176,10 @@ class PolynomialTest extends FunSuite{
     }
     
     {// Algebraic tests for rational polynomials
-        implicit val ring : Ring[Rational] = Rationals
         
         import io.github.torsteinvik.zetatypes.algebra.structures.DSL._
+        
+        import io.github.torsteinvik.zetatypes.algebra.structures.DSL.RationalPolynomial._
         
         test ("rational Polynomial Addition") {
             assert((1 + x) + (2 + 3 * x) === 3 + 4 * x)
@@ -207,9 +212,10 @@ class PolynomialTest extends FunSuite{
     }
     
     {// Algebraic tests for complex polynomials
-        implicit val ring : Ring[Complex] = Complex
         
         import io.github.torsteinvik.zetatypes.algebra.structures.DSL._
+        
+        import io.github.torsteinvik.zetatypes.algebra.structures.DSL.ComplexPolynomial._
         
         test ("complex Polynomial Addition") {
             assert((1 + x) + (2 + 3 * x) === 3 + 4 * x)
