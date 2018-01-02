@@ -1,6 +1,5 @@
 package io.github.torsteinvik.zetatypes.tannakiansymbols
 
-import scala.language.implicitConversions
 import io.github.torsteinvik.zetatypes.algebra.structures._
 import io.github.torsteinvik.zetatypes.algebra._
 
