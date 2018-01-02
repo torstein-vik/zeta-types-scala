@@ -10,6 +10,7 @@ import io.github.torsteinvik.zetatypes.algebra._
  *  This is explained further in [[AlgebraicMultiset./]]
  */
 package object DSL {
+    /** Provides multiset methods in a generic setting */
     object General {
         /** Shorthand for new [[AlgebraicMultiset]]*/
         def ms[T <: MonoidElement] (x : T*) : AlgebraicMultiset[T] = new AlgebraicMultiset(x : _*)
@@ -18,6 +19,7 @@ package object DSL {
         def Ø[T <: MonoidElement] = new AlgebraicMultiset[T]()
     }
     
+    /** Provides multiset methods in an integral setting */
     object Integer {
         /** Shorthand for new [[AlgebraicMultiset]]*/
         def ms (x : Integer*) : AlgebraicMultiset[Integer] = new AlgebraicMultiset(x : _*)
@@ -26,6 +28,7 @@ package object DSL {
         def Ø = new AlgebraicMultiset[Integer]()
     }
     
+    /** Provides multiset methods in a rational setting */
     object Rational {
         /** Shorthand for new [[AlgebraicMultiset]]*/
         def ms (x : Rational*) : AlgebraicMultiset[Rational] = new AlgebraicMultiset(x : _*)
@@ -34,6 +37,7 @@ package object DSL {
         def Ø = new AlgebraicMultiset[Rational]()
     }
     
+    /** Provides multiset methods in a complex setting */
     object Complex {
         /** Shorthand for new [[AlgebraicMultiset]]*/
         def ms (x : Complex*) : AlgebraicMultiset[Complex] = new AlgebraicMultiset(x : _*)
@@ -42,6 +46,7 @@ package object DSL {
         def Ø = new AlgebraicMultiset[Complex]()
     }
     
+    /** Provides multiset methods in a complex-polynomial setting */
     object ComplexPolynomial {
         /** Shorthand for new [[AlgebraicMultiset]]*/
         def ms (x : Polynomial[Complex]*) : AlgebraicMultiset[Polynomial[Complex]] = new AlgebraicMultiset(x : _*)
