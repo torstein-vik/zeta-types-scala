@@ -8,7 +8,7 @@ import io.github.torsteinvik.zetatypes.algebra._
  *  @constructor Creates a new Multiset from a list of elements
  *  @param elements The list of elements building up the Multiset
  */
-class Multiset[T](val elements : T*) {
+class Multiset[T <: MonoidElement](val elements : T*) {
     
     override def toString : String = {
         if (elements.length == 0) {
