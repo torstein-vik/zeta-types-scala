@@ -46,7 +46,7 @@ package object DSL {
      */
     implicit def intoPolynomial[S, E <: RingElement[E]](x : S)(implicit ring : Ring[E], ev : S => E) : Polynomial[E] = new Polynomial(Seq((ev(x), 0)))
     
-    /** The polynomial unit, so that a [[Polynomial]] can be specified like 1 + x 
+    /** The polynomial unit, use synonyms in [[IntegerPolynomial]], [[RationalPolynomial]], and [[ComplexPolynomial]] 
      *  @tparam E the type of [[RingElement]] the coefficients of the [[Polynomial]] belong to
      *  @param ring the [[Ring]] the polynomial unit has coefficients in
      */
