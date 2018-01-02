@@ -50,18 +50,29 @@ package object DSL {
      */
     def pvar[E <: RingElement[E]](implicit ring : Ring[E]) = new Polynomial[E](Seq((ring.one, 1)))
     
-    /** implicitly converts a [[Ring]] into its [[Ring.multiplicative]] [[Monoid]] */
-    implicit def implcitMultiplicativeMonoid[E <: RingElement[E]] (implicit ring : Ring[E]) : Monoid[E] = ring.multiplicative
-    implicit def multiplicativeMonoid[E <: RingElement[E]] (ring : Ring[E]) : Monoid[E] = ring.multiplicative
     
     object IntegerPolynomial {
         def x = pvar[Integer]
     }
+    
     object RationalPolynomial {
         def x = pvar[Rational]
     }
+    
     object ComplexPolynomial {
         def x = pvar[Complex]
+    }
+    
+    object Multiplicative {
+        
+        implicit def implcitMultiplicativeMonoid[E <: RingElement[E]] (implicit ring : Ring[E]) : Monoid[E] = ring.multiplicative
+        implicit def multiplicativeMonoid[E <: RingElement[E]] (ring : Ring[E]) : Monoid[E] = ring.multiplicative
+    }
+    
+    object Additive {
+        
+        implicit def implcitAdditiveMonoid[E <: RingElement[E]] (implicit ring : Ring[E]) : Monoid[E] = ring.additive
+        implicit def additiveMonoid[E <: RingElement[E]] (ring : Ring[E]) : Monoid[E] = ring.additive
     }
 }
 
