@@ -119,6 +119,7 @@ class ParserTest extends FunSuite {
         
         {
             import io.github.torsteinvik.zetatypes.tannakiansymbols.DSL.ComplexPolynomial._
+            import io.github.torsteinvik.zetatypes.algebra.structures.DSL.ComplexPolynomial._
             
             assert(parse[TannakianSymbol[Polynomial[Complex]]]("{x^3}/{1}") === ms(x ~^ 3)/ms(1))
             assert(parse[TannakianSymbol[Polynomial[Complex]]]("{x^3, 1 + -x}/{i}") === ms(x ~^ 3, 1 - x)/ms(I))
