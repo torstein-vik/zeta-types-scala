@@ -9,6 +9,8 @@ import io.github.torsteinvik.zetatypes.algebra._
  *  is the imaginary unit, and the implicit [[DSL.multiplicativeMonoid]]
  */
 package object DSL {
+    implicit val integers : Ring[Integer] = Integers
+    
     /** implicitly converts an int in standard syntax to an [[Integer]] */
     implicit def intToInteger  (x : Int) : Integer  = Integer(x)
     /** implicitly converts an int in standard syntax to a [[Rational]] number */
