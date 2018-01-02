@@ -9,12 +9,15 @@ import scala.language.implicitConversions
  *  This is explained further in [[Multiset./]]
  */
 package object DSL {
+    object General {
+        /** Shorthand for new [[Multiset]]*/
+        def ms[T <: MonoidElement] (x : T*) : Multiset[T] = new Multiset(x : _*)
+        
+        /** Shorthand for new empty [[Multiset]]*/
+        def Ø[T <: MonoidElement] = new Multiset[T]()
+    }
     
-    /** Shorthand for new [[Multiset]]*/
-    def ms[T] (x : T*) : Multiset[T] = new Multiset(x : _*)
     
-    /** Shorthand for new empty [[Multiset]]*/
-    def Ø[T] = new Multiset[T]()
     
 }
 
