@@ -5,7 +5,8 @@ import org.scalatest.FunSuite
 class MultisetTest extends FunSuite {
     
     {// With DSL
-        import io.github.torsteinvik.zetatypes.tannakiansymbols.DSL._
+        import io.github.torsteinvik.zetatypes.tannakiansymbols.DSL.Integer._
+        import io.github.torsteinvik.zetatypes.algebra.structures.DSL._
         
         test ("Multiset equality") {
             assert(Ø === ms())
