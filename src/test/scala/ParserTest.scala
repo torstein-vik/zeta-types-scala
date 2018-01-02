@@ -109,7 +109,7 @@ class ParserTest extends FunSuite {
         }
         
         {
-            implicit val mondcom : Monoid[Complex] = ringcom 
+            import io.github.torsteinvik.zetatypes.tannakiansymbols.DSL.Complex._
             
             assert(parse[TannakianSymbol[Complex]]("{i}/{12 + i}") === ms(I)/ms(I + 12))
             assert(parse[TannakianSymbol[Complex]]("{1 + i, -1 + i, i}/Ø") === ms(I, I + 1, I - 1)/Ø)
@@ -118,7 +118,7 @@ class ParserTest extends FunSuite {
         }
         
         {
-            implicit val mondpol : Monoid[Polynomial[Complex]] = ringpol 
+            import io.github.torsteinvik.zetatypes.tannakiansymbols.DSL.ComplexPolynomial._
             
             assert(parse[TannakianSymbol[Polynomial[Complex]]]("{x^3}/{1}") === ms(x ~^ 3)/ms(1))
             assert(parse[TannakianSymbol[Polynomial[Complex]]]("{x^3, 1 + -x}/{i}") === ms(x ~^ 3, 1 - x)/ms(I))
