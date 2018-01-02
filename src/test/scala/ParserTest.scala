@@ -85,7 +85,7 @@ class ParserTest extends FunSuite {
         
         
         {
-            implicit val mondint : Monoid[Integer] = ringint 
+            import io.github.torsteinvik.zetatypes.tannakiansymbols.DSL.Integer._
             
             assert(parse[TannakianSymbol[Integer]]("{}/{}") === Ø[Integer]/Ø)
             assert(parse[TannakianSymbol[Integer]]("Ø/{}") === Ø[Integer]/Ø)
