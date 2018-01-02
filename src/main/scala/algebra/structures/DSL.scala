@@ -52,17 +52,19 @@ package object DSL {
      */
     def pvar[E <: RingElement[E]](implicit ring : Ring[E]) = new Polynomial[E](Seq((ring.one, 1)))
     
-    
+    /** Import to use [[IntegerPolynomial.x]] as integral polynomial indeterminate*/
     object IntegerPolynomial {
         /** Synonym for [[pvar]] but with [[Integer]] type */
         def x = pvar[Integer]
     }
     
+    /** Import to use [[IntegerPolynomial.x]] as rational polynomial indeterminate*/
     object RationalPolynomial {
         /** Synonym for [[pvar]] but with [[Rational]] type */
         def x = pvar[Rational]
     }
     
+    /** Import to use [[IntegerPolynomial.x]] as complex polynomial indeterminate*/
     object ComplexPolynomial {
         /** Synonym for [[pvar]] but with [[Complex]] type */
         def x = pvar[Complex]
