@@ -10,6 +10,10 @@ import io.github.torsteinvik.zetatypes.algebra._
  *  This is explained further in [[AlgebraicMultiset./]]
  */
 package object DSL {
+    
+    /** Implicit functor of a monoid to its [[TS]]-ring */
+    implicit def tannakiansymbols[E <: MonoidElement](implicit monoid : Monoid[E]) : TS[E] = TS(monoid)
+    
     /** Provides multiset methods in a generic setting */
     object General {
         /** Shorthand for new [[AlgebraicMultiset]]*/
