@@ -7,6 +7,7 @@ import io.github.torsteinvik.zetatypes.algebra.structures.{Rational, Complex}
 class TannakianSymbolTest extends FunSuite{
     import io.github.torsteinvik.zetatypes.tannakiansymbols._
     import io.github.torsteinvik.zetatypes.algebra.structures._
+    import io.github.torsteinvik.zetatypes.algebra.structures.DSL.Multiplicative._
     import io.github.torsteinvik.zetatypes.algebra._
     
     
