@@ -51,6 +51,7 @@ package object DSL {
     def x[E <: RingElement[E]](implicit ring : Ring[E]) = new Polynomial[E](Seq((ring.one, 1)))
     
     /** implicitly converts a [[Ring]] into its [[Ring.multiplicative]] [[Monoid]] */
+    implicit def implcitMultiplicativeMonoid[E <: RingElement[E]] (implicit ring : Ring[E]) : Monoid[E] = ring.multiplicative
     implicit def multiplicativeMonoid[E <: RingElement[E]] (ring : Ring[E]) : Monoid[E] = ring.multiplicative
 }
 
