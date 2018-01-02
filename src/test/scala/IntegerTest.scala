@@ -77,11 +77,11 @@ class IntegerTest extends FunSuite {
     }
     
     test ("implicit integer test") {
-        import io.github.torsteinvik.zetatypes.algebra.structures.DSL.{intToRational => _, intToComplex => _, _}
+        import io.github.torsteinvik.zetatypes.algebra.structures.DSL._
         
-        assert(a.negation == -Integer(a))
-        assert(b.negation == -Integer(b))
-        assert(c.negation == -Integer(c))
+        assert((a : Integer).negation === -Integer(a))
+        assert((b : Integer).negation === -Integer(b))
+        assert((c : Integer).negation === -Integer(c))
     }
     
     test ("Integer psi^k") {
