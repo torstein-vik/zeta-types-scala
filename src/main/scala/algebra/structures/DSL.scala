@@ -70,6 +70,7 @@ package object DSL {
         def x = pvar[Complex]
     }
     
+    /** Import to get multiplicative monoid implicitly */
     object Multiplicative {
         
         /** implicitly converts a [[Ring]] into its [[Ring.multiplicative]] [[Monoid]] (with implicit input) */
@@ -78,6 +79,7 @@ package object DSL {
         implicit def multiplicativeMonoid[E <: RingElement[E]] (ring : Ring[E]) : Monoid[E] = ring.multiplicative
     }
     
+    /** Import to get additive monoid implicitly */
     object Additive {
         
         /** implicitly converts a [[Ring]] into its [[Ring.multiplicative]] [[Monoid]] (with implicit input) */
