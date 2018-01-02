@@ -2,7 +2,7 @@ package io.github.torsteinvik.zetatypes.algebra.parsing
 
 import io.github.torsteinvik.zetatypes.algebra._
 import io.github.torsteinvik.zetatypes.tannakiansymbols._
-import io.github.torsteinvik.zetatypes.tannakiansymbols.DSL._
+import io.github.torsteinvik.zetatypes.tannakiansymbols.DSL.General._
 
 /** Parses an algebraic [[io.github.torsteinvik.zetatypes.tannakiansymbols.TannakianSymbol]] from an input String */
 object TannakianSymbolParser {
