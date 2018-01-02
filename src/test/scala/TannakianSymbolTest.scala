@@ -36,7 +36,6 @@ class TannakianSymbolTest extends FunSuite{
             assert(Y.toString() === "{3, 3, 2}/Ø")
             assert(Z.toString() === "{1, 3}/{2}")
             
-            import io.github.torsteinvik.zetatypes.algebra.structures.DSL._
             assert(TS(Integers).one.toString() === "{1}/Ø")
             assert(TS(Integers).zero.toString() === "Ø/Ø")
         }
