@@ -92,8 +92,8 @@ class PolynomialTest extends FunSuite{
             assert(Y === 10 + 11 * x~^5 + 2 * x~^400)
             assert(Z === -1 - 3 * x ~^ 8 + 4 * x~^4)
             assert(W === -x + 10 + 2 * x~^2)
-            assert(Polynomials(Integers).one  === intoPolynomial(1))
-            assert(Polynomials(Integers).zero === intoPolynomial(0))
+            assert(Polynomials(Integers).one  === (1 : Polynomial[Integer]))
+            assert(Polynomials(Integers).zero === (0 : Polynomial[Integer]))
         }
     }
     
@@ -113,8 +113,8 @@ class PolynomialTest extends FunSuite{
             assert(Y === 10 + 11 * x~^5 + 2 * x~^400)
             assert(Z === -1 - 3 * x ~^ 8 + 4 * x~^4)
             assert(W === -x + 10 + 2 * x~^2)
-            assert(Polynomials(Rationals).one  === intoPolynomial(1))
-            assert(Polynomials(Rationals).zero === intoPolynomial(0))
+            assert(Polynomials(Rationals).one  === (1 : Polynomial[Rational]))
+            assert(Polynomials(Rationals).zero === (0 : Polynomial[Rational]))
         }
     }
     
@@ -134,8 +134,8 @@ class PolynomialTest extends FunSuite{
             assert(Y === 10 + 11 * x~^5 + 2 * x~^400)
             assert(Z === -1 - 3 * x ~^ 8 + 4 * x~^4)
             assert(W === -x + 10 + 2 * x~^2)
-            assert(Polynomials(Complex).one  === intoPolynomial(1))
-            assert(Polynomials(Complex).zero === intoPolynomial(0))
+            assert(Polynomials(Complex).one  === (1 : Polynomial[Complex]))
+            assert(Polynomials(Complex).zero === (0 : Polynomial[Complex]))
         }
     }
     
