@@ -65,11 +65,8 @@ Please tell us if this doesn't work, because that means something is wrong with 
 #### Polynomials
 
 ```scala
-> import io.github.torsteinvik.zetatypes.algebra.structures._
-> import io.github.torsteinvik.zetatypes.algebra._
 > import io.github.torsteinvik.zetatypes.algebra.structures.DSL._
-
-> implicit val ring : Ring[Integer] = Integers
+> import io.github.torsteinvik.zetatypes.algebra.structures.DSL.IntegerPolynomial._
 
 > (x~^5000 + 3) + (-(x~^5000) + 3*x)
   Polynomial[Integer] = 3 + 3x
@@ -81,12 +78,9 @@ Please tell us if this doesn't work, because that means something is wrong with 
 #### Tannakian symbols
 
 ```scala
-> import io.github.torsteinvik.zetatypes.algebra.structures._
-> import io.github.torsteinvik.zetatypes.algebra._
-> import io.github.torsteinvik.zetatypes.tannakiansymbols.DSL._
+> import io.github.torsteinvik.zetatypes.tannakiansymbols.DSL.Integer._
 > import io.github.torsteinvik.zetatypes.algebra.structures.DSL._
-
-> implicit val monoid : Monoid[Integer] = Integers
+> import io.github.torsteinvik.zetatypes.algebra.structures.DSL.Multiplicative._
 
 > ms(1, 2)/Ø + ms(1, 2)/Ø
   TannakianSymbol[Integer] = {1, 1, 2, 2}/Ø
@@ -111,16 +105,11 @@ Please tell us if this doesn't work, because that means something is wrong with 
 #### Parsing
 
 ```scala
-> import io.github.torsteinvik.zetatypes.algebra._
 > import io.github.torsteinvik.zetatypes.algebra.structures._
+> import io.github.torsteinvik.zetatypes.algebra.structures.DSL._
+> import io.github.torsteinvik.zetatypes.algebra.structures.DSL.Multiplicative._
 > import io.github.torsteinvik.zetatypes.algebra.parsing._
 > import io.github.torsteinvik.zetatypes.tannakiansymbols._
-
-> implicit val ringint : Ring[Integer] = Integers
-> implicit val ringrat : Ring[Rational] = Rationals
-> implicit val ringcom : Ring[Complex] = Complex
-> implicit val ringpol : Ring[Polynomial[Complex]] = Polynomials(Complex)
-> implicit val mondpol : Monoid[Polynomial[Complex]] = ringpol.multiplicative
 
 > parse[Integer]("12")
   Integer = 12
