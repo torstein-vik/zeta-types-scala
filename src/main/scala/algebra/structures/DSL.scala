@@ -11,6 +11,12 @@ import io.github.torsteinvik.zetatypes.algebra._
 package object DSL {
     implicit val integers : Ring[Integer] = Integers
     
+    implicit def fractions[E <: RingElement[E]](implicit ring : Ring[E]) : Ring[Fraction[E]] = Fractions(ring)
+    
+    implicit def complexnumbers[E <: RingElement[E]](implicit ring : Ring[E]) : Ring[ComplexNumber[E]] = ComplexNumbers(ring)
+    
+    implicit def polynomials[E <: RingElement[E]](implicit ring : Ring[E]) : Ring[Polynomial[E]] = Polynomials(ring)
+    
     /** implicitly converts an int in standard syntax to an [[Integer]] */
     implicit def intToInteger  (x : Int) : Integer  = Integer(x)
     /** implicitly converts an int in standard syntax to a [[Rational]] number */
