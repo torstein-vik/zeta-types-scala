@@ -87,43 +87,43 @@ class ParserTest extends FunSuite {
         {
             import io.github.torsteinvik.zetatypes.tannakiansymbols.DSL.Integer._
             
-            assert(parse[TannakianSymbol[Integer]]("{}/{}") === Ø[Integer]/Ø)
-            assert(parse[TannakianSymbol[Integer]]("Ø/{}") === Ø[Integer]/Ø)
-            assert(parse[TannakianSymbol[Integer]]("{}/Ø") === Ø[Integer]/Ø)
-            assert(parse[TannakianSymbol[Integer]]("Ø/Ø") === Ø[Integer]/Ø)
+            assert(parse[TannakianSymbol[Integer]]("{}/{}") === Ø/Ø)
+            assert(parse[TannakianSymbol[Integer]]("Ø/{}") === Ø/Ø)
+            assert(parse[TannakianSymbol[Integer]]("{}/Ø") === Ø/Ø)
+            assert(parse[TannakianSymbol[Integer]]("Ø/Ø") === Ø/Ø)
             
-            assert(parse[TannakianSymbol[Integer]]("{1}/Ø") === ms[Integer](1)/Ø)
-            assert(parse[TannakianSymbol[Integer]]("{1, 2}/Ø") === ms[Integer](1, 2)/Ø)
-            assert(parse[TannakianSymbol[Integer]]("{324, 3242}/Ø") === ms[Integer](324, 3242)/Ø)
-            assert(parse[TannakianSymbol[Integer]]("{1, 2, 2, 2, 2 ,2 ,2}/Ø") === ms[Integer](1, 2, 2, 2, 2, 2, 2)/Ø)
+            assert(parse[TannakianSymbol[Integer]]("{1}/Ø") === ms(1)/Ø)
+            assert(parse[TannakianSymbol[Integer]]("{1, 2}/Ø") === ms(1, 2)/Ø)
+            assert(parse[TannakianSymbol[Integer]]("{324, 3242}/Ø") === ms(324, 3242)/Ø)
+            assert(parse[TannakianSymbol[Integer]]("{1, 2, 2, 2, 2 ,2 ,2}/Ø") === ms(1, 2, 2, 2, 2, 2, 2)/Ø)
             
-            assert(parse[TannakianSymbol[Integer]]("Ø/{1}") === Ø[Integer]/ms(1))
-            assert(parse[TannakianSymbol[Integer]]("Ø/{1, 2}") === Ø[Integer]/ms(1, 2))
-            assert(parse[TannakianSymbol[Integer]]("Ø/{324, 3242}") === Ø[Integer]/ms(324, 3242))
-            assert(parse[TannakianSymbol[Integer]]("Ø/{1, 2, 2, 2, 2 ,2 ,2}") === Ø[Integer]/ms(1, 2, 2, 2, 2, 2, 2))
+            assert(parse[TannakianSymbol[Integer]]("Ø/{1}") === Ø/ms(1))
+            assert(parse[TannakianSymbol[Integer]]("Ø/{1, 2}") === Ø/ms(1, 2))
+            assert(parse[TannakianSymbol[Integer]]("Ø/{324, 3242}") === Ø/ms(324, 3242))
+            assert(parse[TannakianSymbol[Integer]]("Ø/{1, 2, 2, 2, 2 ,2 ,2}") === Ø/ms(1, 2, 2, 2, 2, 2, 2))
             
-            assert(parse[TannakianSymbol[Integer]]("{1}/{12}") === ms[Integer](1)/ms(12))
-            assert(parse[TannakianSymbol[Integer]]("{1, 2}/{2, 2}") === ms[Integer](1, 2)/ms(2, 2))
-            assert(parse[TannakianSymbol[Integer]]("{324, 3242}/{1}") === ms[Integer](324, 3242)/ms(1))
-            assert(parse[TannakianSymbol[Integer]]("{1, 2, 2, 2, 2 ,2 ,2}/{23, 23, 23}") === ms[Integer](1, 2, 2, 2, 2, 2, 2)/ms(23, 23, 23))
+            assert(parse[TannakianSymbol[Integer]]("{1}/{12}") === ms(1)/ms(12))
+            assert(parse[TannakianSymbol[Integer]]("{1, 2}/{2, 2}") === ms(1, 2)/ms(2, 2))
+            assert(parse[TannakianSymbol[Integer]]("{324, 3242}/{1}") === ms(324, 3242)/ms(1))
+            assert(parse[TannakianSymbol[Integer]]("{1, 2, 2, 2, 2 ,2 ,2}/{23, 23, 23}") === ms(1, 2, 2, 2, 2, 2, 2)/ms(23, 23, 23))
         }
         
         {
             implicit val mondcom : Monoid[Complex] = ringcom 
             
-            assert(parse[TannakianSymbol[Complex]]("{i}/{12 + i}") === ms[Complex](I)/ms(I + 12))
-            assert(parse[TannakianSymbol[Complex]]("{1 + i, -1 + i, i}/Ø") === ms[Complex](I, I + 1, I - 1)/Ø)
-            assert(parse[TannakianSymbol[Complex]]("{12}/{i}") === ms[Complex](12)/ms(I))
-            assert(parse[TannakianSymbol[Complex]]("{i, 1}/{12 + i, 12 - i}") === ms[Complex](I, 1)/ms(I + 12, 12 - I))
+            assert(parse[TannakianSymbol[Complex]]("{i}/{12 + i}") === ms(I)/ms(I + 12))
+            assert(parse[TannakianSymbol[Complex]]("{1 + i, -1 + i, i}/Ø") === ms(I, I + 1, I - 1)/Ø)
+            assert(parse[TannakianSymbol[Complex]]("{12}/{i}") === ms(12)/ms(I))
+            assert(parse[TannakianSymbol[Complex]]("{i, 1}/{12 + i, 12 - i}") === ms(I, 1)/ms(I + 12, 12 - I))
         }
         
         {
             implicit val mondpol : Monoid[Polynomial[Complex]] = ringpol 
             
-            assert(parse[TannakianSymbol[Polynomial[Complex]]]("{x^3}/{1}") === ms[Polynomial[Complex]](x[Complex] ~^ 3)/ms(1))
-            assert(parse[TannakianSymbol[Polynomial[Complex]]]("{x^3, 1 + -x}/{i}") === ms[Polynomial[Complex]](x[Complex] ~^ 3, 1 - x[Complex])/ms(I))
-            assert(parse[TannakianSymbol[Polynomial[Complex]]]("{x + 1, x^12}/Ø") === ms[Polynomial[Complex]](x[Complex] + 1, x[Complex]~^ 12)/Ø)
-            assert(parse[TannakianSymbol[Polynomial[Complex]]]("{12 + i + x^3}/{12}") === ms[Polynomial[Complex]](x[Complex] ~^ 3 + 12 + I)/ms(12))
+            assert(parse[TannakianSymbol[Polynomial[Complex]]]("{x^3}/{1}") === ms(x ~^ 3)/ms(1))
+            assert(parse[TannakianSymbol[Polynomial[Complex]]]("{x^3, 1 + -x}/{i}") === ms(x ~^ 3, 1 - x)/ms(I))
+            assert(parse[TannakianSymbol[Polynomial[Complex]]]("{x + 1, x^12}/Ø") === ms(x + 1, x~^ 12)/Ø)
+            assert(parse[TannakianSymbol[Polynomial[Complex]]]("{12 + i + x^3}/{12}") === ms(x ~^ 3 + 12 + I)/ms(12))
         }
     }
 }
