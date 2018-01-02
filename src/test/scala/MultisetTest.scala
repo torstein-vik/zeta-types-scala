@@ -8,7 +8,7 @@ class MultisetTest extends FunSuite {
         import io.github.torsteinvik.zetatypes.tannakiansymbols.DSL._
         
         test ("Multiset equality") {
-            assert(Ø[Int] === ms())
+            assert(Ø === ms())
             
             assert(ms(1, 2) === ms(1, 2))
             assert(ms(1, 2, 2, 3) === ms(1, 2, 2, 3))
@@ -28,7 +28,7 @@ class MultisetTest extends FunSuite {
         }
         
         test ("Multiset toString test") {
-            assert(Ø[Int].toString === "Ø")
+            assert(Ø.toString === "Ø")
             
             assert(ms(1, 2, 3).toString === "{1, 2, 3}")
             assert(ms(1, 2, 2, 3).toString === "{1, 2, 2, 3}")
