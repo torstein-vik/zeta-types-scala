@@ -23,7 +23,6 @@ class ParserTest extends FunSuite {
     }
         
     test ("rational test") {
-        implicit val ring : Ring[Integer] = Integers
         
         assert(parse[Rational]("12") === Rational(12))
         assert(parse[Rational]("14/6") === Rational(14, 6))
@@ -38,8 +37,6 @@ class ParserTest extends FunSuite {
     }
     
     test ("complex test") {
-        implicit val ringint : Ring[Integer] = Integers
-        implicit val ringrat : Ring[Rational] = Rationals
                 
         assert(parse[Complex]("12") === Complex(12))
         assert(parse[Complex]("14 + 6i") === Complex(14, 6))
@@ -62,9 +59,6 @@ class ParserTest extends FunSuite {
     }
     
     test ("polynomial test") {
-        implicit val ringint : Ring[Integer] = Integers
-        implicit val ringrat : Ring[Rational] = Rationals
-        implicit val ringcom : Ring[Complex] = Complex
                 
         assert(parse[Polynomial[Integer]]("12") === new Polynomial[Integer](Seq((12, 0))))
         assert(parse[Polynomial[Integer]]("12 + 3x") === new Polynomial[Integer](Seq((12, 0), (3, 1))))
