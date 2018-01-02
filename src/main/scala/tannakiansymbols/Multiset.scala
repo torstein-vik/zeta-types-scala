@@ -42,10 +42,10 @@ class Multiset[T <: MonoidElement](val elements : T*) {
      *  @param monoid the [[io.github.torsteinvik.zetatypes.algebra.Monoid]] that the [[TannakianSymbol]] is to compute using
      *  @param conv implicit evidence that converts the type of the upstairs and downstairs elements into the elements of the [[TannakianSymbol]]
      */
-    def /[S <: MonoidElement](downstairs : Multiset[T])(implicit monoid : Monoid[S], conv: T => S) : TannakianSymbol[S] = {
-        var el : Map[S, BigInt] = Map()
-                   elements.foreach(x => el += conv(x) -> (el.getOrElse(conv(x), 0 : BigInt) + 1))
-        downstairs.elements.foreach(x => el += conv(x) -> (el.getOrElse(conv(x), 0 : BigInt) - 1))
-        return new TannakianSymbol[S](el.toSeq)(monoid)
+    def /(downstairs : Multiset[T])(implicit monoid : Monoid[T]) : TannakianSymbol[T] = {
+        var el : Map[T, BigInt] = Map()
+                   elements.foreach(x => el += x -> (el.getOrElse(x, 0 : BigInt) + 1))
+        downstairs.elements.foreach(x => el += x -> (el.getOrElse(x, 0 : BigInt) - 1))
+        return new TannakianSymbol[T](el.toSeq)(monoid)
     }
 }
