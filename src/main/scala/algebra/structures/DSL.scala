@@ -54,14 +54,17 @@ package object DSL {
     
     
     object IntegerPolynomial {
+        /** Synonym for [[pvar]] but with [[Integer]] type */
         def x = pvar[Integer]
     }
     
     object RationalPolynomial {
+        /** Synonym for [[pvar]] but with [[Rational]] type */
         def x = pvar[Rational]
     }
     
     object ComplexPolynomial {
+        /** Synonym for [[pvar]] but with [[Complex]] type */
         def x = pvar[Complex]
     }
     
