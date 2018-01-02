@@ -36,11 +36,9 @@ class AlgebraicMultiset[T <: MonoidElement](val elements : T*) {
     }
     
     /** Create a [[TannakianSymbol]] with this [[AlgebraicMultiset]] as upstairs, and some other [[AlgebraicMultiset]] as downstairs. 
-     *  Requires some implicit evidence to make all types compatible, along with a [[io.github.torsteinvik.zetatypes.algebra.Monoid]].
-     *  @tparam S the type of the elements of the created [[TannakianSymbol]].
+     *  Requires an implicit [[io.github.torsteinvik.zetatypes.algebra.Monoid]].
      *  @param downstairs the downstairs [[AlgebraicMultiset]] to create the [[TannakianSymbol]]
      *  @param monoid the [[io.github.torsteinvik.zetatypes.algebra.Monoid]] that the [[TannakianSymbol]] is to compute using
-     *  @param conv implicit evidence that converts the type of the upstairs and downstairs elements into the elements of the [[TannakianSymbol]]
      */
     def /(downstairs : AlgebraicMultiset[T])(implicit monoid : Monoid[T]) : TannakianSymbol[T] = {
         var el : Map[T, BigInt] = Map()
