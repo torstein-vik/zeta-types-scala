@@ -2,10 +2,13 @@ package io.github.torsteinvik.zetatypes
 
 import io.github.torsteinvik.zetatypes.numbertheory._
 
+/** An avatar for the global data of a zeta-type */
 sealed trait Avatar {
+    /** The local avatar at any given prime */
     def localavatar (p : Prime) : LocalAvatar
 }
 
+/** Contains the only legal (global) zeta-type avatars */
 object Avatar {
     
     /** [[Avatar!]] for representation using Tannakian symbols */
