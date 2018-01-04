@@ -7,9 +7,9 @@ sealed trait LocalAvatar
 object LocalAvatar {
     
     /** [[LocalAvatar!]] for representation using a Tannakian symbol */
-    case object TS  extends LocalAvatar
+    case object TS extends LocalAvatar
     
-    /** [[LocalAvatar!]] for representation using a rational expression for the local zeta-funcation */
+    /** [[LocalAvatar!]] for representation using a rational expression for the local zeta-function */
     case object RationalLZF extends LocalAvatar
     
     /** [[LocalAvatar!]] for representation using Bell coefficients */
