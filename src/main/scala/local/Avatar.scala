@@ -1,10 +1,10 @@
 package io.github.torsteinvik.zetatypes.local
 
 /** An avatar for the local data of a zeta-type */
-sealed trait LocalAvatar
+sealed trait Avatar
 
 /** Contains the only legal zeta-type local avatars */
-object LocalAvatar {
+object Avatar {
     
     /** Trait used to restrict possible choices in LocalZetaType type params */
     sealed trait Concrete
@@ -18,16 +18,16 @@ object LocalAvatar {
     /** Type synonym for [[PointCounts#]] with [[Concrete]] */
     type PointCounts = PointCounts.type with Concrete
     
-    /** [[LocalAvatar!]] for representation using a Tannakian symbol */
-    case object TS extends LocalAvatar
+    /** [[Avatar!]] for representation using a Tannakian symbol */
+    case object TS extends Avatar
     
-    /** [[LocalAvatar!]] for representation using a rational expression for the local zeta-function */
-    case object RationalLZF extends LocalAvatar
+    /** [[Avatar!]] for representation using a rational expression for the local zeta-function */
+    case object RationalLZF extends Avatar
     
-    /** [[LocalAvatar!]] for representation using Bell coefficients */
-    case object BellCoeffs extends LocalAvatar
+    /** [[Avatar!]] for representation using Bell coefficients */
+    case object BellCoeffs extends Avatar
     
-    /** [[LocalAvatar!]] for representation using point counts */
-    case object PointCounts extends LocalAvatar
+    /** [[Avatar!]] for representation using point counts */
+    case object PointCounts extends Avatar
 
 }
