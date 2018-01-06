@@ -1,6 +1,7 @@
 package io.github.torsteinvik.zetatypes.global
 
 import io.github.torsteinvik.zetatypes.numbertheory._
+import io.github.torsteinvik.zetatypes.local.{Avatar => LocalAvatar}
 
 /** An avatar for the global data of a zeta-type */
 sealed trait Avatar {
