@@ -6,11 +6,16 @@ sealed trait LocalAvatar
 /** Contains the only legal zeta-type local avatars */
 object LocalAvatar {
     
+    /** Trait used to restrict possible choices in LocalZetaType type params */
     sealed trait Concrete
     
+    /** Type synonym for [[TS#]] with [[Concrete]] */
     type TS = TS.type with Concrete
+    /** Type synonym for [[RationalLZF#]] with [[Concrete]] */
     type RationalLZF = RationalLZF.type with Concrete
+    /** Type synonym for [[BellCoeffs#]] with [[Concrete]] */
     type BellCoeffs = BellCoeffs.type with Concrete
+    /** Type synonym for [[PointCounts#]] with [[Concrete]] */
     type PointCounts = PointCounts.type with Concrete
     
     /** [[LocalAvatar!]] for representation using a Tannakian symbol */
