@@ -1,4 +1,4 @@
-package io.github.torsteinvik.zetatypes
+package io.github.torsteinvik.zetatypes.local
 
 /** An avatar for the local data of a zeta-type */
 sealed trait LocalAvatar

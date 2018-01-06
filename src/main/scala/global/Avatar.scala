@@ -1,4 +1,4 @@
-package io.github.torsteinvik.zetatypes
+package io.github.torsteinvik.zetatypes.global
 
 import io.github.torsteinvik.zetatypes.numbertheory._
 
