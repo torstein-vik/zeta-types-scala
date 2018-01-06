@@ -6,7 +6,7 @@ sealed trait Avatar
 /** Contains the only legal zeta-type local avatars */
 object Avatar {
     
-    /** Trait used to restrict possible choices in LocalZetaType type params */
+    /** Trait used to restrict possible choices in ZetaType type params */
     sealed trait Concrete
     
     /** Type synonym for [[TS#]] with [[Concrete]] */

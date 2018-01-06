@@ -1,7 +1,7 @@
 package io.github.torsteinvik.zetatypes.local
 
-import LocalAvatar._
+import Avatar._
 
-abstract class LocalZetaType[E, A <: LocalAvatar with Concrete] {
-    def to[B <: LocalAvatar with Concrete](implicit transform : LocalTransform[A, B, E]) : LocalZetaType[transform.out, B] = transform(this)
+abstract class ZetaType[E, A <: Avatar with Concrete] {
+    def to[B <: Avatar with Concrete](implicit transform : Transform[A, B, E]) : ZetaType[transform.newbase, B] = transform(this)
 }
