@@ -325,6 +325,13 @@ class TannakianSymbolTest extends FunSuite{
             assert((ms(1)/ms(1)).augmentation === 0)
             assert((Ø/ms(1, 2, 4, 4)).augmentation === -4)
         }
+        
+        test("integral TS additive combineAll") {
+            assert((ms(1, 2)/Ø).combineAll(Integers.additive) === Integer(3))
+            assert((ms(1)/ms(2)).combineAll(Integers.additive) === Integer(-1))
+            assert((ms(1)/ms(1)).combineAll(Integers.additive) === Integer(0))
+            assert((Ø/ms(1, 2, 4, 4)).combineAll(Integers.additive) === Integer(-11))
+        }
     }
     
     {// Algebraic tests for rational tannakiansymbols
@@ -487,6 +494,13 @@ class TannakianSymbolTest extends FunSuite{
             assert((ms(1)/ms(1)).augmentation === 0)
             assert((Ø/ms(1, 2, 4, 4)).augmentation === -4)
         }
+        
+        test("rational TS additive combineAll") {
+            assert((ms(1, 2)/Ø).combineAll(Rationals.additive) === Rational(3))
+            assert((ms(1)/ms(2)).combineAll(Rationals.additive) === Rational(-1))
+            assert((ms(1)/ms(1)).combineAll(Rationals.additive) === Rational(0))
+            assert((Ø/ms(1, 2, 4, 4)).combineAll(Rationals.additive) === Rational(-11))
+        }
     }
     
     {// Algebraic tests for complex tannakiansymbols
@@ -648,6 +662,13 @@ class TannakianSymbolTest extends FunSuite{
             assert((ms(1)/ms(2)).augmentation === 0)
             assert((ms(1)/ms(1)).augmentation === 0)
             assert((Ø/ms(1, 2, 4, 4)).augmentation === -4)
+        }
+        
+        test("complex TS additive combineAll") {
+            assert((ms(1, 2)/Ø).combineAll(Complex.additive) === Complex(3))
+            assert((ms(1)/ms(2)).combineAll(Complex.additive) === Complex(-1))
+            assert((ms(1)/ms(1)).combineAll(Complex.additive) === Complex(0))
+            assert((Ø/ms(1, 2, 4, 4)).combineAll(Complex.additive) === Complex(-11))
         }
     }
 }
