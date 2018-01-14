@@ -117,4 +117,5 @@ class TannakianSymbol[E <: MonoidElement] (val elements : Seq[(E, BigInt)])(impl
     
     /** Returns the augmentation of this symbol, that is the [[evendimension]] minus the [[odddimension]] */
     def augmentation = superdimension match {case (even, odd) => even - odd}
+    def combineAll[E1 <: GroupElement](group : Group[E1])(implicit ev : E => E1) : E1 = ???
 }
