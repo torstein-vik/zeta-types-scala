@@ -115,5 +115,6 @@ class TannakianSymbol[E <: MonoidElement] (val elements : Seq[(E, BigInt)])(impl
      *  @param group the [[io.github.torsteinvik.zetatypes.algebra.Group]] to use when combining elements
      *  @param ev the implicit converter taking elements to E1
      */
-    def combineAll[E1 <: GroupElement](group : Group[E1])(implicit ev : E => E1) : E1 = ???
+    def combineAll[E1 <: GroupElement](group : Group[E1])(implicit ev : E => E1) : E1 = cleanup.elements.map{case (x, i) => (ev(x), i.toInt)}.map((group.repeated _).tupled(_)).foldLeft(group.identity)(group.combine(_, _))
+    
 }
