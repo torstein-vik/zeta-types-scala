@@ -17,7 +17,7 @@ trait Magma[T <: MagmaElement] extends AlgebraicStructure[T] {
 /** A [[MagmaElement]] with an addition defined on it
  *  @tparam that The type that this element may combined with and yield. that must be a subtype of Additive[that]
  */
-trait Additive[that <: Additive[that]] extends AlgebraicElement {
+trait MagmaAdditive[that <: MagmaAdditive[that]] extends MagmaElement {
     /** Add some other element to this */
     def +(y : that) : that
     /** Add this Additive element to itself n times. Requires some implicit evidence that the type of this is a subtype of that*/
@@ -28,7 +28,7 @@ trait Additive[that <: Additive[that]] extends AlgebraicElement {
 /** A [[MagmaElement]] with a multiplication defined on it
  *  @tparam that The type that this element may combined with and yield. that must be a subtype of Multiplicative[that]
  */
-trait Multiplicative[that <: Multiplicative[that]] extends AlgebraicElement {
+trait MagmaMultiplicative[that <: MagmaMultiplicative[that]] extends MagmaElement {
     /** Multiply some other element with this */
     def *(y : that) : that
     /** Multiply this Multiplicative element with itself n times. Requires some implicit evidence that the type of this is a subtype of that*/
