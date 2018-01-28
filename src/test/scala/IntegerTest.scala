@@ -113,6 +113,9 @@ class IntegerTest extends FunSuite {
     }
     
     test ("Integer module multiplication") {
+        assert((Integer(a) ++ 0) === Integer(0))
+        assert((Integer(b) ++ 0) === Integer(0))
+        assert((Integer(c) ++ 0) === Integer(0))
         assert((Integer(a) ++ 1) === Integer(a))
         assert((Integer(b) ++ 1) === Integer(b))
         assert((Integer(c) ++ 1) === Integer(c))
@@ -122,10 +125,6 @@ class IntegerTest extends FunSuite {
         assert((Integer(a) ++ 3) === Integer(a + a + a))
         assert((Integer(b) ++ 3) === Integer(b + b + b))
         assert((Integer(c) ++ 3) === Integer(c + c + c))
-        
-        assert((Integer(a) ++ 0) === Integer(0))
-        assert((Integer(b) ++ 0) === Integer(0))
-        assert((Integer(c) ++ 0) === Integer(0))
         
         assert((Integer(a) ++ -1) === Integer(-a))
         assert((Integer(b) ++ -1) === Integer(-b))
