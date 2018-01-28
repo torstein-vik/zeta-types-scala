@@ -10,7 +10,7 @@ case class Integer (x : BigInt) extends STDLambdaRingElement[Integer] with Parti
     
     override def +(that : Integer) = Integer(x + that.x) 
     override def *(that : Integer) = Integer(x * that.x)
-    override def negation() = Integer(-x)
+    override def negation = Integer(-x)
     
     override def psi(n : Int) = this
     
