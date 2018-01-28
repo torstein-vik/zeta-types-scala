@@ -8,8 +8,8 @@ import io.github.torsteinvik.zetatypes.algebra._
  *  @constructor Creates a new ring of complex numbers with coefficients in some ring.
  *  @param ring The [[Ring]] that the coefficients belong to.
  */
-case class ComplexNumbers[T <: RingElement[T]] (ring : Ring[T]) extends 
-    RingClass[ComplexNumber[T]](
+case class ComplexNumbers[T <: FieldElement[T]] (ring : Field[T]) extends 
+    FieldClass[ComplexNumber[T]](
     new ComplexNumber(ring.zero, ring.zero)(ring), 
     new ComplexNumber(ring.one,  ring.zero)(ring))
 
@@ -20,7 +20,7 @@ case class ComplexNumbers[T <: RingElement[T]] (ring : Ring[T]) extends
  *  @param imaginary The imaginary part of this complex number
  *  @param ring The ring that the real and imaginary parts belong to
  */
-class ComplexNumber[T <: RingElement[T]] (val real : T, val imaginary : T)(implicit val ring : Ring[T]) extends RingElement[ComplexNumber[T]]{
+class ComplexNumber[T <: FieldElement[T]] (val real : T, val imaginary : T)(implicit val ring : Field[T]) extends FieldElement[ComplexNumber[T]]{
     
     override lazy val canonicalRing = ComplexNumbers(ring)
     
