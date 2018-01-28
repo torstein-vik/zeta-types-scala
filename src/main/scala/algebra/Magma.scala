@@ -38,6 +38,12 @@ trait MagmaMultiplicative[that <: MagmaMultiplicative[that]] extends MagmaElemen
     
 }
 
+trait AdditiveMagma[T <: MagmaAdditive[T]] extends Magma[T] {
+}
+
+trait MultiplicativeMagma[T <: MagmaMultiplicative[T]] extends Magma[T] {
+}
+
 private object MagmaRepetitionAlgorithm {
     import scala.annotation.tailrec
         
