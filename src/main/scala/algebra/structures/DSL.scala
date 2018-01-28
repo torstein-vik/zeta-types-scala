@@ -13,9 +13,9 @@ package object DSL {
     /** Implicit instance of ring of [[Integers]] */
     implicit val integers : Ring[Integer] = Integers
     /** Implicit functor of a ring to its ring of [[Fractions]] */
-    implicit def fractions[E <: RingElement[E]](implicit ring : Ring[E]) : Ring[Fraction[E]] = Fractions(ring)
+    implicit def fractions[E <: RingElement[E]](implicit ring : Ring[E]) : Field[Fraction[E]] = Fractions(ring)
     /** Implicit functor of a ring to its ring of [[ComplexNumbers]] */
-    implicit def complexnumbers[E <: RingElement[E]](implicit ring : Ring[E]) : Ring[ComplexNumber[E]] = ComplexNumbers(ring)
+    implicit def complexnumbers[E <: FieldElement[E]](implicit ring : Field[E]) : Field[ComplexNumber[E]] = ComplexNumbers(ring)
     /** Implicit functor of a ring to the ring of [[Polynomials]] with coefficients in the input ring */
     implicit def polynomials[E <: RingElement[E]](implicit ring : Ring[E]) : Ring[Polynomial[E]] = Polynomials(ring)
     
