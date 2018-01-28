@@ -75,6 +75,12 @@ class RationalTest extends FunSuite {
         assert(Rationals.additive.combine(Rational(b, c), Rational(d, a)) === Rational(b * a + c * d, c * a))
     }
     
+    test ("divide by zero test") {
+        assertThrows[AlgebraicException]{
+            Rationals.multiplicative.invert(Rational(0, 1))
+        }
+    }
+    
     test ("multiplication test") {
         assert(Rationals.multiplicative.combine(Rational(a), Rational(b)) === Rational(a * b))
         assert(Rationals.multiplicative.combine(Rational(b), Rational(c)) === Rational(b * c))

@@ -79,6 +79,12 @@ class ComplexTest extends FunSuite {
         assert(Complex.additive.invert(Complex(d, a)) === Complex(-d, -a))
     }
     
+    test ("divide by zero test") {
+        assertThrows[AlgebraicException]{
+            Complex.multiplicative.invert(Complex(0, 0))
+        }
+    }
+    
     test ("addition test") {
         assert(Complex.additive.combine(Complex(a), Complex(b)) === Complex(a + b))
         assert(Complex.additive.combine(Complex(b), Complex(c)) === Complex(b + c))
