@@ -79,6 +79,19 @@ class ComplexTest extends FunSuite {
         assert(Complex.additive.invert(Complex(d, a)) === Complex(-d, -a))
     }
     
+    test ("multiplicative inverse test") {
+        assert(Complex.multiplicative.invert(Complex(a, b)) === Complex(a/(a*a + b*b), -b/(a*a + b*b)))
+        assert(Complex.multiplicative.invert(Complex(b, c)) === Complex(b/(b*b + c*c), -c/(b*b + c*c)))
+        assert(Complex.multiplicative.invert(Complex(c, d)) === Complex(c/(c*c + d*d), -d/(c*c + d*d)))
+        assert(Complex.multiplicative.invert(Complex(d, a)) === Complex(d/(d*d + a*a), -a/(d*d + a*a)))
+    }
+    
+    test ("divide by zero test") {
+        assertThrows[AlgebraicException]{
+            Complex.multiplicative.invert(Complex(0, 0))
+        }
+    }
+    
     test ("addition test") {
         assert(Complex.additive.combine(Complex(a), Complex(b)) === Complex(a + b))
         assert(Complex.additive.combine(Complex(b), Complex(c)) === Complex(b + c))
@@ -126,6 +139,13 @@ class ComplexTest extends FunSuite {
         assert(-Complex(d, a) === Complex(-d, -a))
     }
     
+    test ("notation inverse test") {
+        assert(~Complex(a, b) === Complex(a/(a*a + b*b), -b/(a*a + b*b)))
+        assert(~Complex(b, c) === Complex(b/(b*b + c*c), -c/(b*b + c*c)))
+        assert(~Complex(c, d) === Complex(c/(c*c + d*d), -d/(c*c + d*d)))
+        assert(~Complex(d, a) === Complex(d/(d*d + a*a), -a/(d*d + a*a)))
+    }
+    
     test ("subtraction test") {
         assert(Complex(a) - Complex(b) === Complex(a - b))
         assert(Complex(b) - Complex(c) === Complex(b - c))
@@ -136,6 +156,18 @@ class ComplexTest extends FunSuite {
         assert(Complex(b, c) - Complex(d, a) === Complex(b - d, c - a))
     }
     
+    test ("division test") {
+        assert(Complex(a, 0) / Complex(b, 0) === Complex(a/b, 0))
+        assert(Complex(b, 0) / Complex(0, c) === Complex(0,-b/c))
+        assert(Complex(0, c) / Complex(d, 0) === Complex(0,c/d))
+        assert(Complex(0, d) / Complex(0, a) === Complex(d/a, 0))
+        
+        assert(Complex(a, b) / Complex(c, d) === Complex((a*c + b*d)/(c*c + d*d), (b*c - a*d)/(c*c + d*d)))
+        assert(Complex(b, c) / Complex(d, a) === Complex((b*d + c*a)/(d*d + a*a), (c*d - b*a)/(d*d + a*a)))
+        assert(Complex(c, d) / Complex(a, b) === Complex((c*a + d*b)/(a*a + b*b), (d*a - c*b)/(a*a + b*b)))
+        assert(Complex(d, a) / Complex(b, c) === Complex((d*b + a*c)/(b*b + c*c), (a*b - d*c)/(b*b + c*c)))
+    }
+        
     test ("Complex exponentiation") {
         assert((Complex(a, b) ** 1) === Complex(a, b))
         assert((Complex(b, c) ** 1) === Complex(b, c))

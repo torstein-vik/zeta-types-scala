@@ -11,7 +11,7 @@ class RationalTest extends FunSuite {
         
     val (a, b, c, d) = (2, -3, 7, 4)
     
-    test ("divide by zero test") {
+    test ("zero as denominator test") {
         assertThrows[AlgebraicException] {
             Rational(1, 0)
         } 
@@ -75,6 +75,19 @@ class RationalTest extends FunSuite {
         assert(Rationals.additive.combine(Rational(b, c), Rational(d, a)) === Rational(b * a + c * d, c * a))
     }
     
+    test ("multiplicative inverse test") {
+        assert(Rationals.multiplicative.invert(Rational(a, b)) === Rational(b, a))
+        assert(Rationals.multiplicative.invert(Rational(b, c)) === Rational(c, b))
+        assert(Rationals.multiplicative.invert(Rational(c, d)) === Rational(d, c))
+        assert(Rationals.multiplicative.invert(Rational(d, a)) === Rational(a, d))
+    }
+    
+    test ("divide by zero test") {
+        assertThrows[AlgebraicException]{
+            Rationals.multiplicative.invert(Rational(0, 1))
+        }
+    }
+    
     test ("multiplication test") {
         assert(Rationals.multiplicative.combine(Rational(a), Rational(b)) === Rational(a * b))
         assert(Rationals.multiplicative.combine(Rational(b), Rational(c)) === Rational(b * c))
@@ -112,6 +125,13 @@ class RationalTest extends FunSuite {
         assert(-Rational(d, a) === Rational(-d, a))
     }
     
+    test ("notation inverse test") {
+        assert(~Rational(a, b) === Rational(b, a))
+        assert(~Rational(b, c) === Rational(c, b))
+        assert(~Rational(c, d) === Rational(d, c))
+        assert(~Rational(d, a) === Rational(a, d))
+    }
+    
     test ("subtraction test") {
         assert(Rational(a) - Rational(b) === Rational(a - b))
         assert(Rational(b) - Rational(c) === Rational(b - c))
@@ -120,6 +140,16 @@ class RationalTest extends FunSuite {
         
         assert(Rational(a, b) - Rational(c, d) === Rational(a * d - b * c, b * d))
         assert(Rational(b, c) - Rational(d, a) === Rational(b * a - c * d, c * a))
+    }
+    
+    test ("division test") {
+        assert(Rational(a) / Rational(b) === Rational(a, b))
+        assert(Rational(b) / Rational(c) === Rational(b, c))
+        assert(Rational(c) / Rational(d) === Rational(c, d))
+        assert(Rational(d) / Rational(a) === Rational(d, a))
+        
+        assert(Rational(a, b) / Rational(c, d) === Rational(a * d, b * c))
+        assert(Rational(b, c) / Rational(d, a) === Rational(a * b, d * c))
     }
     
         
