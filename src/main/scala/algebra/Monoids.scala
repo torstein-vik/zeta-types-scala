@@ -12,13 +12,13 @@ trait Monoid[T <: MonoidElement] extends Magma[T]{
     def identity : T
 }
 
-/** A [[Monoid]] where the elements are [[MonoidAdditive]]. This requries the identity "zero" be declared */
+/** A [[Monoid]] where the elements are [[MonoidAdditive]]. Provides synonym for the identity. */
 trait AdditiveMonoid[T <: MonoidAdditive[T]] extends Monoid[T] with AdditiveMagma[T] {
     /** Synonym for the monoid identity for additive structures */
     def zero : T = identity
 }
 
-/** A [[Monoid]] where the elements are [[MonoidMultiplicative]]. This requries the identity "one" be declared */
+/** A [[Monoid]] where the elements are [[MonoidMultiplicative]]. Provides synonym for the identity. */
 trait MultiplicativeMonoid[T <: MonoidMultiplicative[T]] extends Monoid[T] with MultiplicativeMagma[T] {
     /** Synonym for the monoid identity for multiplicative structures */
     def one : T = identity
