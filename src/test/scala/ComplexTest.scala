@@ -79,6 +79,13 @@ class ComplexTest extends FunSuite {
         assert(Complex.additive.invert(Complex(d, a)) === Complex(-d, -a))
     }
     
+    test ("multiplicative inverse test") {
+        assert(Complex.multiplicative.invert(Complex(a, b)) === Complex(a/(a*a + b*b), -b/(a*a + b*b)))
+        assert(Complex.multiplicative.invert(Complex(b, c)) === Complex(b/(b*b + c*c), -c/(b*b + c*c)))
+        assert(Complex.multiplicative.invert(Complex(c, d)) === Complex(c/(c*c + d*d), -d/(c*c + d*d)))
+        assert(Complex.multiplicative.invert(Complex(d, a)) === Complex(d/(d*d + a*a), -a/(d*d + a*a)))
+    }
+    
     test ("divide by zero test") {
         assertThrows[AlgebraicException]{
             Complex.multiplicative.invert(Complex(0, 0))
@@ -130,6 +137,13 @@ class ComplexTest extends FunSuite {
         assert(-Complex(b, c) === Complex(-b, -c))
         assert(-Complex(c, d) === Complex(-c, -d))
         assert(-Complex(d, a) === Complex(-d, -a))
+    }
+    
+    test ("notation inverse test") {
+        assert(/Complex(a, b) === Complex(a/(a*a + b*b), -b/(a*a + b*b)))
+        assert(/Complex(b, c) === Complex(b/(b*b + c*c), -c/(b*b + c*c)))
+        assert(/Complex(c, d) === Complex(c/(c*c + d*d), -d/(c*c + d*d)))
+        assert(/Complex(d, a) === Complex(d/(d*d + a*a), -a/(d*d + a*a)))
     }
     
     test ("subtraction test") {
