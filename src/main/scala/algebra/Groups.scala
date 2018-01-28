@@ -43,6 +43,7 @@ trait Subtractive[that <: Subtractive[that]] extends GroupElement with Additive[
     def unary_-() : that = this.negation
     /** Returns this added to the negation of some other element*/
     def -(y : that) : that = (this + y.negation)
+    
 }
 
 /** A [[GroupElement]] with an [[Multiplicative]] structure and with an [[inverse]] defined on it
@@ -55,4 +56,5 @@ trait Divisible[that <: Divisible[that]] extends GroupElement with Multiplicativ
     def unary_~() : that = this.inverse
     /** Returns this multiplied by the inverse of some other element*/
     def /(y : that) : that = (this * y.inverse)
+    
 }
