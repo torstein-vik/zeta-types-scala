@@ -167,13 +167,6 @@ class RationalTest extends FunSuite {
         assert((Rational(c, d) ** 3) === Rational(c * c * c, d * d * d))
         assert((Rational(d, a) ** 3) === Rational(d * d * d, a * a * a))
         
-        assertThrows[AlgebraicException] {
-            Rational(1, 2) ** 0
-        }
-        
-        assertThrows[AlgebraicException] {
-            Rational(1, 2) ** (-1)
-        }
     }
     
     
@@ -191,13 +184,6 @@ class RationalTest extends FunSuite {
         assert((Rational(c, d) ++ 3) === Rational(c + c + c, d))
         assert((Rational(d, a) ++ 3) === Rational(d + d + d, a))
         
-        assertThrows[AlgebraicException] {
-            Rational(1, 2) ++ 0
-        }
-        
-        assertThrows[AlgebraicException] {
-            Rational(1, 2) ++ (-1)
-        }
     }
     
     
