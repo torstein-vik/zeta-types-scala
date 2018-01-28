@@ -5,8 +5,6 @@ import scala.annotation.tailrec
 import io.github.torsteinvik.zetatypes.algebra._
 import io.github.torsteinvik.zetatypes.algebra.structures.{Rational, Integer}
 
-import scalaz.{Monoid => _, _}, std.list._, std.option._, syntax.traverse._
-
 /** A ring where the elements are [[TannakianSymbol]]s with elements in some given [[io.github.torsteinvik.zetatypes.algebra.Monoid]] 
  *  @tparam E the type of [[io.github.torsteinvik.zetatypes.algebra.MonoidElement]] that the [[TannakianSymbol]]s consist of
  *  @constructor Creates a new ring of [[TannakianSymbol]]s with elements in a given [[io.github.torsteinvik.zetatypes.algebra.Monoid]] 
