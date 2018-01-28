@@ -5,8 +5,6 @@ import scala.annotation.tailrec
 import io.github.torsteinvik.zetatypes.algebra._
 import io.github.torsteinvik.zetatypes.algebra.structures.{Rational, Integer}
 
-import scalaz.{Monoid => _, _}, std.list._, std.option._, syntax.traverse._
-
 /** A ring where the elements are [[TannakianSymbol]]s with elements in some given [[io.github.torsteinvik.zetatypes.algebra.Monoid]] 
  *  @tparam E the type of [[io.github.torsteinvik.zetatypes.algebra.MonoidElement]] that the [[TannakianSymbol]]s consist of
  *  @constructor Creates a new ring of [[TannakianSymbol]]s with elements in a given [[io.github.torsteinvik.zetatypes.algebra.Monoid]] 
@@ -39,10 +37,15 @@ class TannakianSymbol[E <: MonoidElement] (val elements : Seq[(E, BigInt)])(impl
     
     override def psi(n : Int) = new TannakianSymbol(elements.map({case (x, i) => (monoid.repeated(x, n), i)})).cleanup
     
+    // TODO: Improve with monadic TS
     override def partialQMult(n : Rational) = (cleanup.elements.map({case (x, i) => (x, Integer(i).partialQMult(n))}).map({
         case (_, None) => None
         case (x, Some(Integer(i))) => Some((x, i))
-    }).toList.sequence).map(new TannakianSymbol(_))
+    }).foldLeft[Option[Seq[(E, BigInt)]]](Some(Seq())){
+        case (None, _) => None
+        case (_, None) => None
+        case (Some(acc), Some(x)) => Some(acc ++ Seq(x))
+    }).map(new TannakianSymbol(_))
     
     override def equals(that : Any) : Boolean = {
         // Other choice: upstairs == other.upstairs && downstairs == other.downstairs. Unsure which is best... 
