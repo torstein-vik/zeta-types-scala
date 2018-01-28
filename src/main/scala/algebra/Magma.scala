@@ -4,17 +4,17 @@ package io.github.torsteinvik.zetatypes.algebra
 trait MagmaElement extends AlgebraicElement
 
 /** An algebraic structure with a [[combine]] function. Like a [[Monoid]], but without requiring an identity element. 
- *  @tparam T the type of [[AlgebraicElement]] that this magma may combine
+ *  @tparam T the type of [[MagmaElement]] that this magma may combine
  */
-trait Magma[T <: AlgebraicElement] extends AlgebraicStructure[T]{
+trait Magma[T <: MagmaElement] extends AlgebraicStructure[T] {
     /** Combine two elements of type T into a signle one, according to the structure of this [[Magma]] */
     def combine (x : T, y : T) : T
     /** Repeated combination of a single T, n times */
     def repeated (x : T, n : Int) : T
     
 }
-/** An [[AlgebraicElement]] with an addition defined on it
 
+/** A [[MagmaElement]] with an addition defined on it
  *  @tparam that The type that this element may combined with and yield. that must be a subtype of Additive[that]
  */
 trait Additive[that <: Additive[that]] extends AlgebraicElement {
@@ -24,8 +24,8 @@ trait Additive[that <: Additive[that]] extends AlgebraicElement {
     def ++(n : Int)(implicit ev: this.type <:< that) : that = MagmaRepetitionAlgorithm[that](_ + _, n, ev(this), ev(this))
     
 }
-/** An [[AlgebraicElement]] with a multiplication defined on it
 
+/** A [[MagmaElement]] with a multiplication defined on it
  *  @tparam that The type that this element may combined with and yield. that must be a subtype of Multiplicative[that]
  */
 trait Multiplicative[that <: Multiplicative[that]] extends AlgebraicElement {
