@@ -30,6 +30,8 @@ class ComplexNumber[T <: FieldElement[T]] (val real : T, val imaginary : T)(impl
     
     override def negation() = new ComplexNumber(-real,-imaginary)
     
+    override def inverse() = checkZero{new ComplexNumber(real/(real*real + imaginary*imaginary), -imaginary/(real*real + imaginary*imaginary))}
+    
     override def equals(that : Any) : Boolean = that match {
         case _ : ComplexNumber[T] => {
             val other = that.asInstanceOf[ComplexNumber[T]]
