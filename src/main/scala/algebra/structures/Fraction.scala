@@ -9,7 +9,7 @@ import io.github.torsteinvik.zetatypes.algebra._
  *  @param ring The [[Ring]] that the numerator and denominator belong to.
  */
 case class Fractions[T <: RingElement[T]] (ring : Ring[T]) extends 
-    RingClass[Fraction[T]](
+    FieldClass[Fraction[T]](
     new Fraction(ring.zero, ring.one)(ring), 
     new Fraction(ring.one,  ring.one)(ring))
     
@@ -20,7 +20,7 @@ case class Fractions[T <: RingElement[T]] (ring : Ring[T]) extends
  *  @param denominator The denominator of this fraction
  *  @param ring The ring that the numerator and denominator belong to
  */
-class Fraction[T <: RingElement[T]] (val numerator : T, val denominator : T)(implicit val ring : Ring[T]) extends RingElement[Fraction[T]]{
+class Fraction[T <: RingElement[T]] (val numerator : T, val denominator : T)(implicit val ring : Ring[T]) extends FieldElement[Fraction[T]]{
     if (denominator == ring.zero) {
         throw new AlgebraicException("Denominator may not be zero!")
     }
@@ -32,6 +32,8 @@ class Fraction[T <: RingElement[T]] (val numerator : T, val denominator : T)(imp
     override def *(that : Fraction[T]) = new Fraction(numerator * that.numerator, denominator * that.denominator)
     
     override def negation() = new Fraction(-numerator, denominator)
+    
+    override def inverse() = checkZero{new Fraction(denominator, numerator)}
     
     override def equals(that : Any) : Boolean = that match {
         case _ : Fraction[T] => {
