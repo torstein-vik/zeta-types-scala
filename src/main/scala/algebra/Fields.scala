@@ -10,6 +10,12 @@ trait Field[E <: FieldElement[E]] extends Ring[E] {
     
 }
 
+/** Implementation of the [[Field]] trait, creating the additive and multiplicative structure based on the [[zero]] and [[one]] params
+ *  @tparam E The type of [[FieldElement]] that this [[Field]] uses 
+ *  @constructor Create a [[Field]] from some [[FieldElement]] type and a value for [[zero]] and [[one]]
+ *  @param zero The additive identity of the [[Field]]
+ *  @param one The multiplicative identity of the [[Field]]
+ */
 abstract class FieldClass[E <: FieldElement[E]] (override val zero : E, override val one : E) extends Field[E]{ outer =>
     override object additive extends AdditiveGroup[E] {
         def identity = outer.zero
