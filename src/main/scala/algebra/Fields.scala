@@ -10,3 +10,12 @@ trait Field[E <: FieldElement[E]] extends Ring[E] {
     
 }
 
+abstract class FieldClass[E <: FieldElement[E]] (override val zero : E, override val one : E) extends Field[E]{ outer =>
+    override object additive extends AdditiveGroup[E] {
+        def identity = outer.zero
+    }
+    
+    override object multiplicative extends MultiplicativeGroup[E] {
+        def identity = outer.one
+    }
+}
