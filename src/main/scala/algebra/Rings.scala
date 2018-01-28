@@ -4,7 +4,7 @@ package io.github.torsteinvik.zetatypes.algebra
 
 /** An element of some [[Ring]], with implementations of [[Additive]], [[Subtractive]], and [[Multiplicative]]*/
 trait RingElement[T <: RingElement[T]] extends GroupElement with Additive[T] with Subtractive[T] with Multiplicative[T] {
-    /** The canonical [[Ring]] that this element is a part of */
+    /** The canonical [[io.github.torsteinvik.zetatypes.algebra.Ring]] that this element is a part of */
     val canonicalRing : Ring[T]
 }
 
