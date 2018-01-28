@@ -26,9 +26,13 @@ trait MultiplicativeMonoid[T <: MonoidMultiplicative[T]] extends Monoid[T] with 
 
 
 trait MonoidAdditive[that <: MonoidAdditive[that]] extends MonoidElement with MagmaAdditive[that] {
+    /** The additive identity */
+    val zero : that
     
 }
 
 trait MonoidMultiplicative[that <: MonoidMultiplicative[that]] extends MonoidElement with MagmaMultiplicative[that] {
+    /** The multiplicative identity */
+    val one : that
     
 }
