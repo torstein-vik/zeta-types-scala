@@ -1,5 +1,7 @@
 package io.github.torsteinvik.zetatypes.algebra
 
+/** An element of a [[Magma]] */
+trait MagmaElement extends AlgebraicElement
 
 /** An algebraic structure with a [[combine]] function. Like a [[Monoid]], but without requiring an identity element. 
  *  @tparam T the type of [[AlgebraicElement]] that this magma may combine
