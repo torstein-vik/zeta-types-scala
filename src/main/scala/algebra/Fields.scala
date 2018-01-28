@@ -5,6 +5,8 @@ trait FieldElement[T <: FieldElement[T]] extends GroupElement with RingElement[T
     /** The canonical [[Field]] that this element is a part of */
     override val canonicalRing : Field[T]
     
+    /** Check that this is nonzero, and if so execute and return the input */
+    protected final def checkZero(nonzero : =>T) : T = if (this == canonicalRing.zero) throw new AlgebraicException("May not divide by zero") else nonzero
 }
 
 /** An algebraic structure containing an [[additive]] and a [[multiplicative]] [[Group]] structure.
