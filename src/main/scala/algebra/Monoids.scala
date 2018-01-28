@@ -25,12 +25,18 @@ trait MultiplicativeMonoid[T <: MonoidMultiplicative[T]] extends Monoid[T] with 
 }
 
 
+/** A [[MonoidElement]] with an addition defined on it
+ *  @tparam that The type that this element may combined with and yield. that must be a subtype of MonoidAdditive[that]
+ */
 trait MonoidAdditive[that <: MonoidAdditive[that]] extends MonoidElement with MagmaAdditive[that] {
     /** The additive identity */
     val zero : that
     
 }
 
+/** A [[MonoidElement]] with a multiplication defined on it
+ *  @tparam that The type that this element may combined with and yield. that must be a subtype of MonoidMultiplicative[that]
+ */
 trait MonoidMultiplicative[that <: MonoidMultiplicative[that]] extends MonoidElement with MagmaMultiplicative[that] {
     /** The multiplicative identity */
     val one : that
