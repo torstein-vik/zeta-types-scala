@@ -41,7 +41,7 @@ private object MagmaRepetitionAlgorithm {
     def apply[T](f : (T, T) => T, n : Int, x : T, acc : T) : T = n match {
         case _ if n > 1 => MagmaRepetitionAlgorithm(f, n - 1, x, f(x, acc))
         case 1 => acc
-        case _ => throw new AlgebraicException("Magmatic repeated multiplication requires n > 0")
+        case _ => throw new AlgebraicException("Magmatic repeated application requires n > 0")
     }
 }
 
