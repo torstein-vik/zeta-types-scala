@@ -8,7 +8,7 @@ trait Magma[T <: AlgebraicElement] extends AlgebraicStructure[T]{
     /** Combine two elements of type T into a signle one, according to the structure of this [[Magma]] */
     def combine (x : T, y : T) : T
     /** Repeated combination of a single T, n times */
-    def repeated (x : T, n : Int) : T = MagmaRepetitionAlgorithm[T](combine, n, x, x)
+    def repeated (x : T, n : Int) : T
     
 }
 /** An [[AlgebraicElement]] with an addition defined on it
@@ -46,4 +46,3 @@ private object MagmaRepetitionAlgorithm {
         case _ => throw new AlgebraicException("Magmatic repeated application requires n > 0")
     }
 }
-
