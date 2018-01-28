@@ -13,7 +13,7 @@ trait Magma[T <: AlgebraicElement] extends AlgebraicStructure[T]{
 /** An [[AlgebraicElement]] with an addition defined on it
  *  @tparam that The type that this element may combined with and yield. that must be a subtype of Additive[that]
  */
-trait Additive[that <: Additive[that]] extends AlgebraicElement{
+trait Additive[that <: Additive[that]] extends AlgebraicElement {
     /** Add some other element to this */
     def +(y : that) : that
     /** Add this Additive element to itself n times. Requires some implicit evidence that the type of this is a subtype of that*/
