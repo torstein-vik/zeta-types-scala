@@ -33,8 +33,8 @@ trait MultiplicativeGroup[T <: GroupElement with Multiplicative[T] with Divisibl
     def invert (x : T) = x.inverse
 }
 
-/** A [[GroupElement]] with an [[Additive]] structure and with a [[negation]] defined on it
- *  @tparam that The type that this element is negated into, and of the underlying [[Additive]] structure
+/** A [[GroupElement]] with an [[MonoidAdditive]] structure and with a [[negation]] defined on it
+ *  @tparam that The type that this element is negated into, and of the underlying [[MonoidAdditive]] structure
  */
 trait GroupAdditive[that <: GroupAdditive[that]] extends GroupElement with MonoidAdditive[that]{
     /** The additive negation of this element */
@@ -46,8 +46,8 @@ trait GroupAdditive[that <: GroupAdditive[that]] extends GroupElement with Monoi
     
 }
 
-/** A [[GroupElement]] with an [[Multiplicative]] structure and with an [[inverse]] defined on it
- *  @tparam that The type that this element is inverted into, and of the underlying [[Multiplicative]] structure
+/** A [[GroupElement]] with an [[MonoidMultiplicative]] structure and with an [[inverse]] defined on it
+ *  @tparam that The type that this element is inverted into, and of the underlying [[MonoidMultiplicative]] structure
  */
 trait GroupMultiplicative[that <: GroupMultiplicative[that]] extends GroupElement with MonoidMultiplicative[that]{
     /** The multiplicative inverse of this element */
