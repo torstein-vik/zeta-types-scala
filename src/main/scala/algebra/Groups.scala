@@ -23,12 +23,12 @@ trait Group[T <: GroupElement] extends PartialGroup[T] {
     def partialinvert (x : T) = Some(invert(x))
 }
 
-/** A [[Group]] where the elements are [[Additive]]. This allows [[invert]] to be inferred. */
+/** A [[Group]] where the elements are [[GroupAdditive]]. This allows [[invert]] to be inferred. */
 trait AdditiveGroup[T <: GroupAdditive[T]] extends Group[T] with AdditiveMonoid[T] {
     def invert (x : T) = x.negation
 }
 
-/** A [[Group]] where the elements are [[Multiplicative]]. This allows [[invert]] to be inferred. */
+/** A [[Group]] where the elements are [[GroupMultiplicative]]. This allows [[invert]] to be inferred. */
 trait MultiplicativeGroup[T <: GroupMultiplicative[T]] extends Group[T] with MultiplicativeMonoid[T] {
     def invert (x : T) = x.inverse
 }
