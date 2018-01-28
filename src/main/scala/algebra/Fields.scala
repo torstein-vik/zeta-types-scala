@@ -6,6 +6,7 @@ trait FieldElement[T <: FieldElement[T]] extends GroupElement with RingElement[T
 }
 
 trait Field[E <: FieldElement[E]] extends Ring[E] {
+    /** The multiplicative [[Group]] structure of this ring */
     override val multiplicative : MultiplicativeGroup[E]
     
 }
