@@ -11,8 +11,8 @@ object StructureMorphisms {
         def apply(x : E) = new Fraction(x, ring.one)(ring)
     }
     
-    /** Natural inclusion of a ring into its ring of complex numbers */
-    implicit def complexInclusion[E <: RingElement[E]](implicit ring : Ring[E]) : (E ^-> ComplexNumber[E]) = new Monomorphism[E, ComplexNumber[E]]{
+    /** Natural inclusion of a field into its field of complex numbers */
+    implicit def complexInclusion[E <: FieldElement[E]](implicit ring : Field[E]) : (E ^-> ComplexNumber[E]) = new Monomorphism[E, ComplexNumber[E]]{
         def apply(x : E) = new ComplexNumber(x, ring.zero)(ring)
     }
     
