@@ -23,36 +23,46 @@ trait Group[T <: GroupElement] extends PartialGroup[T] {
     def partialinvert (x : T) = Some(invert(x))
 }
 
-/** A [[Group]] where the elements are [[Additive]]. This allows [[invert]] to be inferred. */
-trait AdditiveGroup[T <: GroupElement with Additive[T] with Subtractive[T]] extends Group[T] with AdditiveMonoid[T] {
-    def invert (x : T) = -x
+/** A [[Group]] where the elements are [[GroupAdditive]]. This allows [[invert]] to be inferred. */
+trait AdditiveGroup[T <: GroupAdditive[T]] extends Group[T] with AdditiveMonoid[T] {
+    def invert (x : T) = x.negation
 }
 
-/** A [[Group]] where the elements are [[Multiplicative]]. This allows [[invert]] to be inferred. */
-trait MultiplicativeGroup[T <: GroupElement with Multiplicative[T] with Divisible[T]] extends Group[T] with MultiplicativeMonoid[T] {
-    def invert (x : T) = x.inverse()
+/** A [[Group]] where the elements are [[GroupMultiplicative]]. This allows [[invert]] to be inferred. */
+trait MultiplicativeGroup[T <: GroupMultiplicative[T]] extends Group[T] with MultiplicativeMonoid[T] {
+    def invert (x : T) = x.inverse
 }
 
-/** A [[GroupElement]] with an [[Additive]] structure and with a [[negation]] defined on it
- *  @tparam that The type that this element is negated into, and of the underlying [[Additive]] structure
+/** A [[GroupElement]] with an [[MonoidAdditive]] structure and with a [[negation]] defined on it
+ *  @tparam that The type that this element is negated into, and of the underlying [[MonoidAdditive]] structure
  */
-trait Subtractive[that <: Subtractive[that]] extends GroupElement with Additive[that]{
+trait GroupAdditive[that <: GroupAdditive[that]] extends GroupElement with MonoidAdditive[that]{
     /** The additive negation of this element */
-    def negation() : that 
+    def negation : that 
     /** Syntax synonym for [[negation]] */
-    def unary_-() : that = this.negation()
+    def unary_-() : that = this.negation
     /** Returns this added to the negation of some other element*/
-    def -(y : that) : that = (this + -y)
+    def -(y : that) : that = (this + y.negation)
+    
+    override def ++(n : Int)(implicit ev: this.type <:< that) : that = n match {
+        case _ if n >= 0 => super.++(n)(ev)
+        case n => negation.++(-n)
+    }
 }
 
-/** A [[GroupElement]] with an [[Multiplicative]] structure and with an [[inverse]] defined on it
- *  @tparam that The type that this element is inverted into, and of the underlying [[Multiplicative]] structure
+/** A [[GroupElement]] with an [[MonoidMultiplicative]] structure and with an [[inverse]] defined on it
+ *  @tparam that The type that this element is inverted into, and of the underlying [[MonoidMultiplicative]] structure
  */
-trait Divisible[that <: Divisible[that]] extends GroupElement with Multiplicative[that]{
+trait GroupMultiplicative[that <: GroupMultiplicative[that]] extends GroupElement with MonoidMultiplicative[that]{
     /** The multiplicative inverse of this element */
-    def inverse() : that
+    def inverse : that
     /** Syntax synonym for [[inverse]] */
-    def unary_~() : that = this.inverse()
+    def unary_~() : that = this.inverse
     /** Returns this multiplied by the inverse of some other element*/
-    def /(y : that) : that = (this * y.inverse())
+    def /(y : that) : that = (this * y.inverse)
+    
+    override def **(n : Int)(implicit ev: this.type <:< that) : that = n match {
+        case _ if n >= 0 => super.**(n)(ev)
+        case n => inverse.**(-n)
+    }
 }

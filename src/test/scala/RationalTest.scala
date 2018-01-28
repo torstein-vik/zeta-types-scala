@@ -154,6 +154,10 @@ class RationalTest extends FunSuite {
     
         
     test ("Rational exponentiation") {
+        assert((Rational(a, b) ** 0) === Rational(1, 1))
+        assert((Rational(b, c) ** 0) === Rational(1, 1))
+        assert((Rational(c, d) ** 0) === Rational(1, 1))
+        assert((Rational(d, a) ** 0) === Rational(1, 1))
         assert((Rational(a, b) ** 1) === Rational(a, b))
         assert((Rational(b, c) ** 1) === Rational(b, c))
         assert((Rational(c, d) ** 1) === Rational(c, d))
@@ -167,17 +171,26 @@ class RationalTest extends FunSuite {
         assert((Rational(c, d) ** 3) === Rational(c * c * c, d * d * d))
         assert((Rational(d, a) ** 3) === Rational(d * d * d, a * a * a))
         
-        assertThrows[AlgebraicException] {
-            Rational(1, 2) ** 0
-        }
-        
-        assertThrows[AlgebraicException] {
-            Rational(1, 2) ** (-1)
-        }
+        assert((Rational(a, b) ** -1) === Rational(b, a))
+        assert((Rational(b, c) ** -1) === Rational(c, b))
+        assert((Rational(c, d) ** -1) === Rational(d, c))
+        assert((Rational(d, a) ** -1) === Rational(a, d))
+        assert((Rational(a, b) ** -2) === Rational(b * b, a * a))
+        assert((Rational(b, c) ** -2) === Rational(c * c, b * b))
+        assert((Rational(c, d) ** -2) === Rational(d * d, c * c))
+        assert((Rational(d, a) ** -2) === Rational(a * a, d * d))
+        assert((Rational(a, b) ** -3) === Rational(b * b * b, a * a * a))
+        assert((Rational(b, c) ** -3) === Rational(c * c * c, b * b * b))
+        assert((Rational(c, d) ** -3) === Rational(d * d * d, c * c * c))
+        assert((Rational(d, a) ** -3) === Rational(a * a * a, d * d * d))
     }
     
     
     test ("Rational module multiplication") {
+        assert((Rational(a, b) ++ 0) === Rational(0, 1))
+        assert((Rational(b, c) ++ 0) === Rational(0, 1))
+        assert((Rational(c, d) ++ 0) === Rational(0, 1))
+        assert((Rational(d, a) ++ 0) === Rational(0, 1))
         assert((Rational(a, b) ++ 1) === Rational(a, b))
         assert((Rational(b, c) ++ 1) === Rational(b, c))
         assert((Rational(c, d) ++ 1) === Rational(c, d))
@@ -191,13 +204,18 @@ class RationalTest extends FunSuite {
         assert((Rational(c, d) ++ 3) === Rational(c + c + c, d))
         assert((Rational(d, a) ++ 3) === Rational(d + d + d, a))
         
-        assertThrows[AlgebraicException] {
-            Rational(1, 2) ++ 0
-        }
-        
-        assertThrows[AlgebraicException] {
-            Rational(1, 2) ++ (-1)
-        }
+        assert((Rational(a, b) ++ -1) === Rational(-a, b))
+        assert((Rational(b, c) ++ -1) === Rational(-b, c))
+        assert((Rational(c, d) ++ -1) === Rational(-c, d))
+        assert((Rational(d, a) ++ -1) === Rational(-d, a))
+        assert((Rational(a, b) ++ -2) === Rational(-a - a, b))
+        assert((Rational(b, c) ++ -2) === Rational(-b - b, c))
+        assert((Rational(c, d) ++ -2) === Rational(-c - c, d))
+        assert((Rational(d, a) ++ -2) === Rational(-d - d, a))
+        assert((Rational(a, b) ++ -3) === Rational(-a - a - a, b))
+        assert((Rational(b, c) ++ -3) === Rational(-b - b - b, c))
+        assert((Rational(c, d) ++ -3) === Rational(-c - c - c, d))
+        assert((Rational(d, a) ++ -3) === Rational(-d - d - d, a))
     }
     
     

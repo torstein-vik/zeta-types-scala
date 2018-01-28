@@ -28,7 +28,7 @@ class AlgebraicSequence[E <: RingElement[E]] (factory : SequenceFactory[E])(impl
     
     override def *(that : AlgebraicSequence[E]) = new AlgebraicSequence(new CombinedSequence(this, that)(_ * _)(true))
     
-    override def negation() = new AlgebraicSequence(new MappedSequence(this)(_.negation)(true))
+    override def negation = new AlgebraicSequence(new MappedSequence(this)(_.negation)(true))
 }
 
 /** A ring of [[AlgebraicSequence]]s with elements in the [[io.github.torsteinvik.zetatypes.algebra.structures.Complex]] numbers
