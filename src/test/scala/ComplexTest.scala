@@ -140,10 +140,10 @@ class ComplexTest extends FunSuite {
     }
     
     test ("notation inverse test") {
-        assert(/Complex(a, b) === Complex(a/(a*a + b*b), -b/(a*a + b*b)))
-        assert(/Complex(b, c) === Complex(b/(b*b + c*c), -c/(b*b + c*c)))
-        assert(/Complex(c, d) === Complex(c/(c*c + d*d), -d/(c*c + d*d)))
-        assert(/Complex(d, a) === Complex(d/(d*d + a*a), -a/(d*d + a*a)))
+        assert(~Complex(a, b) === Complex(a/(a*a + b*b), -b/(a*a + b*b)))
+        assert(~Complex(b, c) === Complex(b/(b*b + c*c), -c/(b*b + c*c)))
+        assert(~Complex(c, d) === Complex(c/(c*c + d*d), -d/(c*c + d*d)))
+        assert(~Complex(d, a) === Complex(d/(d*d + a*a), -a/(d*d + a*a)))
     }
     
     test ("subtraction test") {

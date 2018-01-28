@@ -126,10 +126,10 @@ class RationalTest extends FunSuite {
     }
     
     test ("notation inverse test") {
-        assert(/Rational(a, b) === Rational(b, a))
-        assert(/Rational(b, c) === Rational(c, b))
-        assert(/Rational(c, d) === Rational(d, c))
-        assert(/Rational(d, a) === Rational(a, d))
+        assert(~Rational(a, b) === Rational(b, a))
+        assert(~Rational(b, c) === Rational(c, b))
+        assert(~Rational(c, d) === Rational(d, c))
+        assert(~Rational(d, a) === Rational(a, d))
     }
     
     test ("subtraction test") {

@@ -52,7 +52,7 @@ trait Divisible[that <: Divisible[that]] extends GroupElement with Multiplicativ
     /** The multiplicative inverse of this element */
     def inverse() : that
     /** Syntax synonym for [[inverse]] */
-    def unary_/() : that = this.inverse()
+    def unary_~() : that = this.inverse()
     /** Returns this multiplied by the inverse of some other element*/
     def /(y : that) : that = (this * y.inverse())
 }
