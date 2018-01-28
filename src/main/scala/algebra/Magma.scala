@@ -38,11 +38,13 @@ trait MagmaMultiplicative[that <: MagmaMultiplicative[that]] extends MagmaElemen
     
 }
 
+/** A [[Magma]] where the elements are [[MagmaAdditive]]. This allows [[combine]] and [[repeated]] to be inferred. */
 trait AdditiveMagma[T <: MagmaAdditive[T]] extends Magma[T] {
     override def combine (x : T, y : T) : T = x + y
     override def repeated (x : T, n : Int) : T = x ++ n
 }
 
+/** A [[Magma]] where the elements are [[MagmaMultiplicative]]. This allows [[combine]] and [[repeated]] to be inferred. */
 trait MultiplicativeMagma[T <: MagmaMultiplicative[T]] extends Magma[T] {
     override def combine (x : T, y : T) : T = x * y
     override def repeated (x : T, n : Int) : T = x ** n
