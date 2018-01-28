@@ -91,11 +91,7 @@ class AlgebraicSequenceTest extends FunSuite {
             assert((B ** 3).createSeq(0, 6) === Seq[Complex](0, 1, 64, 729, 4096, 15625, 46656))
             assert((C ** 3).createSeq(0, 6) === Seq[Complex](8, 125, 512, 1331, 2744, 4913, 8000))
             assert((D ** 3).createSeq(0, 6) === Seq[Complex](27, 125, 343, 729, 1331, 2197, 3375))
-            
-            assertThrows[AlgebraicException] {
-                A ** 0
-            }
-            
+                        
             assertThrows[AlgebraicException] {
                 A ** (-1)
             }
@@ -117,13 +113,6 @@ class AlgebraicSequenceTest extends FunSuite {
             assert((C ++ 3).createSeq(0, 6) === Seq[Complex](6, 15, 24, 33, 42, 51, 60))
             assert((D ++ 3).createSeq(0, 6) === Seq[Complex](9, 15, 21, 27, 33, 39, 45))
             
-            assertThrows[AlgebraicException] {
-                A ++ 0
-            }
-            
-            assertThrows[AlgebraicException] {
-                A ++ (-1)
-            }
         }
     }
 }
