@@ -1,10 +1,15 @@
 package io.github.torsteinvik.zetatypes.algebra
 
+/** An element of some [[Field]], with implementations of [[RingElement]] and [[Divisible]]*/
 trait FieldElement[T <: FieldElement[T]] extends GroupElement with RingElement[T] with Divisible[T] {
     override val canonicalRing : Field[T]
     
 }
 
+/** An algebraic structure containing an [[additive]] and a [[multiplicative]] [[Group]] structure.
+ *  Also has shorthands for the zero and one element
+ *  @tparam E The type of [[FieldElement]] that this ring uses 
+ */
 trait Field[E <: FieldElement[E]] extends Ring[E] {
     /** The multiplicative [[Group]] structure of this ring */
     override val multiplicative : MultiplicativeGroup[E]
