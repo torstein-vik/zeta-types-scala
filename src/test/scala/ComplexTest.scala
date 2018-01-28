@@ -182,13 +182,6 @@ class ComplexTest extends FunSuite {
         assert((Complex(c, d) ** 3) === Complex(c * c * c - 3 * c * d * d, 3 * c * c * d - d * d * d))
         assert((Complex(d, a) ** 3) === Complex(d * d * d - 3 * d * a * a, 3 * d * d * a - a * a * a))
         
-        assertThrows[AlgebraicException] {
-            Complex(1, 2) ** 0
-        }
-        
-        assertThrows[AlgebraicException] {
-            Complex(1, 2) ** (-1)
-        }
     }
     
     test ("Complex module multiplication") {
@@ -205,13 +198,6 @@ class ComplexTest extends FunSuite {
         assert((Complex(c, d) ++ 3) === Complex(c + c + c, d + d + d))
         assert((Complex(d, a) ++ 3) === Complex(d + d + d, a + a + a))
         
-        assertThrows[AlgebraicException] {
-            Complex(1, 2) ++ 0
-        }
-        
-        assertThrows[AlgebraicException] {
-            Complex(1, 2) ++ (-1)
-        }
     }
     
     test ("Complex DSL") {
