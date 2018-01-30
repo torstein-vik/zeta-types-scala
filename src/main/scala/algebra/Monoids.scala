@@ -8,8 +8,15 @@ trait MonoidElement extends AlgebraicElement
  *  @tparam T The type of MonoidElement which is combined in this Monoid
  */
 trait Monoid[T <: MonoidElement] extends AlgebraicStructure[T] {
+    
     /** The identity of this [[Monoid]] */
     def identity : T
+    
+    /** Combine two elements of type T into a signle one, according to the structure of this [[Monoid]] */
+    def combine (x : T, y : T) : T
+    
+    /** Repeated combination of a single T, n times */
+    def repeated (x : T, n : Int) : T
 }
 
 /** A [[Monoid]] where the elements are [[MonoidAdditive]]. Provides synonym for the identity. */
