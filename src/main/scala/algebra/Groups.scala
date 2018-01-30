@@ -17,7 +17,7 @@ trait PartialGroup[T <: PartialGroupElement] extends Monoid[T] {
  *  @tparam T the type of [[GroupElement]] that this Group deals with
  */
 trait Group[T <: GroupElement] extends PartialGroup[T] {
-    /** Inverts x accoring to this Group's underlying [[Magma]] structure */
+    /** Inverts x accoring to this Group's underlying [[Monoid]] structure */
     def invert (x : T) : T
     /** Returns Some([[invert]](x)) */
     def partialinvert (x : T) = Some(invert(x))
