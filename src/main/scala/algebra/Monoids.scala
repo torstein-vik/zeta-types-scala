@@ -70,3 +70,15 @@ trait MonoidMultiplicative[that <: MonoidMultiplicative[that]] extends MonoidEle
     /** The multiplicative identity */
     val one : that
 }
+
+private object MonoidRepetitionAlgorithm {
+    import scala.annotation.tailrec
+        
+    @tailrec
+    def apply[T](f : (T, T) => T, n : Int, unit : T, x : T, acc : T) : T = n match {
+        case _ if n > 1 => MonoidRepetitionAlgorithm(f, n - 1, unit, x, f(x, acc))
+        case 1 => acc
+        case 0 => unit
+        case _ => throw new AlgebraicException("Monoidal repeated combination requires n >= 0")
+    }
+}
