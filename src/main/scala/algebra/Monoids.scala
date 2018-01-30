@@ -44,6 +44,12 @@ trait MultiplicativeMonoid[T <: MonoidMultiplicative[T]] extends Monoid[T] {
  *  @tparam that The type that this element may combined with and yield. that must be a subtype of MonoidAdditive[that]
  */
 trait MonoidAdditive[that <: MonoidAdditive[that]] extends MonoidElement {
+    /** Add some other element to this */
+    def +(y : that) : that
+    
+    /** Add this Additive element to itself n times. Requires some implicit evidence that the type of this is a subtype of that*/
+    def ++(n : Int)(implicit ev: this.type <:< that) : that = MonoidRepetitionAlgorithm[that](_ + _, n, zero, ev(this), ev(this))
+    
     /** The additive identity */
     val zero : that
     
@@ -58,6 +64,15 @@ trait MonoidAdditive[that <: MonoidAdditive[that]] extends MonoidElement {
  *  @tparam that The type that this element may combined with and yield. that must be a subtype of MonoidMultiplicative[that]
  */
 trait MonoidMultiplicative[that <: MonoidMultiplicative[that]] extends MonoidElement {
+    /** Multiply some other element with this */
+    def *(y : that) : that
+    
+    /** Multiply this Multiplicative element with itself n times. Requires some implicit evidence that the type of this is a subtype of that*/
+    def **(n : Int)(implicit ev: this.type <:< that) : that = MonoidRepetitionAlgorithm[that](_ * _, n, one, ev(this), ev(this))
+    
+    /** Synonym for [[***]] */
+    def ~^(n : Int)(implicit ev: this.type <:< that) = this.**(n)(ev)
+    
     /** The multiplicative identity */
     val one : that
     
