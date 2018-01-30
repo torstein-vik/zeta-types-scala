@@ -45,7 +45,7 @@ class TannakianSymbol[E <: MonoidElement] (val elements : Seq[(E, BigInt)])(impl
         case (None, _) => None
         case (_, None) => None
         case (Some(acc), Some(x)) => Some(acc ++ Seq(x))
-    }).map(new TannakianSymbol(_))
+    }).map(new TannakianSymbol(_) with Clean)
     
     override def equals(that : Any) : Boolean = {
         // Other choice: upstairs == other.upstairs && downstairs == other.downstairs. Unsure which is best... 
