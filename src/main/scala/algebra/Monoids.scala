@@ -2,7 +2,7 @@ package io.github.torsteinvik.zetatypes.algebra
 
 
 /** An element of a [[Monoid]] */
-trait MonoidElement extends MagmaElement
+trait MonoidElement extends AlgebraicElement
 
 /** A [[Magma]] together with an [[identity]] 
  *  @tparam T The type of MonoidElement which the identity is of, and of the underlying Magma
