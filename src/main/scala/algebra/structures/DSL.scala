@@ -50,7 +50,9 @@ package object DSL {
      *  @tparam E the type of [[RingElement]] the coefficients of the [[Polynomial]] belong to
      *  @param ring the [[Ring]] the polynomial unit has coefficients in
      */
-    def pvar[E <: RingElement[E]](implicit ring : Ring[E]) = new Polynomial[E](Seq((ring.one, 1)))
+    def pvar[E <: RingElement[E]](implicit ring : Ring[E]) = new Polynomial[E](Seq((ring.one, 1))){
+        override def **(n : Int)(implicit ev: this.type <:< Polynomial[E]) = new Polynomial[E](Seq((ring.one, n)))
+    }
     
     /** Import to use [[IntegerPolynomial.x]] as integral polynomial indeterminate*/
     object IntegerPolynomial {
