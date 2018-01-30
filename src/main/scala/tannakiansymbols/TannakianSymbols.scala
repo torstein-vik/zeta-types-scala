@@ -24,7 +24,7 @@ case class TS[E <: MonoidElement](monoid : Monoid[E]) extends
  *  @param monoid The [[io.github.torsteinvik.zetatypes.algebra.Monoid]] that the elements belong to
  */
 class TannakianSymbol[E <: MonoidElement] (val elements : Seq[(E, BigInt)])(implicit monoid : Monoid[E]) extends 
-    RingElement[TannakianSymbol[E]] 
+    RingElement[TannakianSymbol[E]] with Cleanable
     with STDLambdaRingElement[TannakianSymbol[E]]
     with PartialQAlgebraElement[TannakianSymbol[E]]{
     override lazy val canonicalRing = TS(monoid)
@@ -45,7 +45,7 @@ class TannakianSymbol[E <: MonoidElement] (val elements : Seq[(E, BigInt)])(impl
         case (None, _) => None
         case (_, None) => None
         case (Some(acc), Some(x)) => Some(acc ++ Seq(x))
-    }).map(new TannakianSymbol(_))
+    }).map(new TannakianSymbol(_) with Clean)
     
     override def equals(that : Any) : Boolean = {
         // Other choice: upstairs == other.upstairs && downstairs == other.downstairs. Unsure which is best... 
@@ -77,7 +77,7 @@ class TannakianSymbol[E <: MonoidElement] (val elements : Seq[(E, BigInt)])(impl
     /** Returns a cleaned-up version of this [[TannakianSymbol]], where element-multiplicity pairs have been combined as much as possible,
      *  and those pairs where the multiplicity is zero, have been removed
      */
-    def cleanup : TannakianSymbol[E] = {
+    override def cleanup : TannakianSymbol[E] with Clean = {
         import scala.collection.mutable.{Seq => MSeq}
         
         var data : MSeq[(E, BigInt)] = MSeq()
@@ -97,7 +97,7 @@ class TannakianSymbol[E <: MonoidElement] (val elements : Seq[(E, BigInt)])(impl
         }
         
         elements.foreach {case (x, i) => add(x, i, 0)}
-        return new TannakianSymbol(data.toSeq.filter({case (_, i) => i != 0}))
+        return new TannakianSymbol(data.toSeq.filter({case (_, i) => i != 0})) with Clean
     }
     
     /** Returns the superdimension of this symbol, that is a tuple of ([[evendimension]], [[odddimension]]) */
