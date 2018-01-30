@@ -224,7 +224,7 @@ class TannakianSymbolTest extends FunSuite{
             assert((ms(1)/ms(2)).partialQMult(Rational(Integer(1), Integer(2))) === None)
             assert((ms(1)/ms(2, 2)).partialQMult(Rational(Integer(1), Integer(2))) === None)
             assert((ms(1, 1)/ms(2, 2)).partialQMult(Rational(Integer(1), Integer(4))) === None)
-            assert((ms(1, 1, 1)/ms(2, 2, 2)).partialQMult(Rational(Integer(1), Integer(6))) === None)
+            assert((ms(1, 1, 1, 1, 1, 1)/ms(2, 2, 2)).partialQMult(Rational(Integer(1), Integer(6))) === None)
             
             assert((ms(1, 1, 1)/Ø).partialQMult(Rational(Integer(1), Integer(3))) === Some(ms(1)/Ø))
             assert((ms(1, 1, 1)/ms(2, 2, 2)).partialQMult(Rational(Integer(1), Integer(3))) === Some(ms(1)/ms(2)))
