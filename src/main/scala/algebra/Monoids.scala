@@ -52,12 +52,6 @@ trait MonoidAdditive[that <: MonoidAdditive[that]] extends MonoidElement {
     
     /** The additive identity */
     val zero : that
-    
-    override def ++(n : Int)(implicit ev: this.type <:< that) : that = n match {
-        case _ if n > 0 => super.++(n)(ev)
-        case 0 => zero
-        case _ => throw new AlgebraicException("Monoidal repeated application requires n >= 0")
-    }
 }
 
 /** A [[MonoidElement]] with a multiplication defined on it
@@ -75,10 +69,4 @@ trait MonoidMultiplicative[that <: MonoidMultiplicative[that]] extends MonoidEle
     
     /** The multiplicative identity */
     val one : that
-    
-    override def **(n : Int)(implicit ev: this.type <:< that) : that = n match {
-        case _ if n > 0 => super.**(n)(ev)
-        case 0 => one
-        case _ => throw new AlgebraicException("Monoidal repeated application requires n >= 0")
-    }
 }
