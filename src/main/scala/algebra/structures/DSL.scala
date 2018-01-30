@@ -74,7 +74,7 @@ package object DSL {
     object Multiplicative {
         
         /** implicitly converts a [[Ring]] into its [[Ring.multiplicative]] [[Monoid]] (with implicit input) */
-        implicit def implcitMultiplicativeMonoid[E <: RingElement[E]] (implicit ring : Ring[E]) : Monoid[E] = ring.multiplicative
+        implicit def implicitMultiplicativeMonoid[E <: RingElement[E]] (implicit ring : Ring[E]) : Monoid[E] = ring.multiplicative
         /** implicitly converts a [[Ring]] into its [[Ring.multiplicative]] [[Monoid]] */
         implicit def multiplicativeMonoid[E <: RingElement[E]] (ring : Ring[E]) : Monoid[E] = ring.multiplicative
     }
