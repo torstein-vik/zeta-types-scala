@@ -4,8 +4,8 @@ package io.github.torsteinvik.zetatypes.algebra
 /** An element of a [[Monoid]] */
 trait MonoidElement extends AlgebraicElement
 
-/** A [[Magma]] together with an [[identity]] 
- *  @tparam T The type of MonoidElement which the identity is of, and of the underlying Magma
+/** A unital assosiative commutative operation together with an [[identity]] 
+ *  @tparam T The type of MonoidElement which is combined in this Monoid
  */
 trait Monoid[T <: MonoidElement] extends AlgebraicStructure[T] {
     /** The identity of this [[Monoid]] */
