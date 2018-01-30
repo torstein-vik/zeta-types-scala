@@ -36,10 +36,7 @@ class Fraction[T <: RingElement[T]] (val numerator : T, val denominator : T)(imp
     override def inverse = checkZero{new Fraction(denominator, numerator)}
     
     override def equals(that : Any) : Boolean = that match {
-        case _ : Fraction[T] => {
-            val other = that.asInstanceOf[Fraction[T]]
-            this.numerator * other.denominator == other.numerator * this.denominator
-        }
+        case x : Fraction[T] => this.numerator * x.denominator == x.numerator * this.denominator
         case _ => false
     }
 

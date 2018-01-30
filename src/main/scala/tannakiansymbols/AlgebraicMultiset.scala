@@ -19,12 +19,8 @@ class AlgebraicMultiset[T <: MonoidElement](val elements : T*) {
     }
     
     override def equals (that : Any) : Boolean = that match {
-        case _ : AlgebraicMultiset[_] =>  {
-            val those = that.asInstanceOf[AlgebraicMultiset[_]].elements
-            
-            // If the lengths are the same, then 'those' cancelling all in elements must mean they are equal
-            return those.length == elements.length && elements.diff(those) == Seq() 
-        }
+        // If the lengths are the same, then 'those' cancelling all in elements must mean they are equal
+        case x : AlgebraicMultiset[_] => x.elements.length == elements.length && elements.diff(x.elements) == Seq() 
         case _ => false
     }
     
