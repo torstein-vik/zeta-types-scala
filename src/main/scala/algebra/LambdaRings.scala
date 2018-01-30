@@ -36,11 +36,11 @@ trait STDLambdaRingElement[T <: STDLambdaRingElement[T]] extends LambdaRingEleme
      *  @param ev2 evidence that allows [[PartialQAlgebraElement]] to be re-embedded into this type, after division
      */
     def lambda[S <: PartialQAlgebraElement[S]] (n : Int)(implicit ev: T => S, ev2: S => T) : T = n match {
-        case 0 => canonicalRing.one
-        case 1 => this * canonicalRing.one
+        case 0 => one
+        case 1 => this * one
         case n if lambdacache.contains(n) => lambdacache(n)
         case n if n > 1 => {
-            var res = canonicalRing.zero
+            var res = zero
             for (i <- 0 to n - 1) {
                 val ires = this.psi(n - i) * this.lambda(i)(ev, ev2)
                 res += (if (i % 2 == 0) ires else ires.negation)
