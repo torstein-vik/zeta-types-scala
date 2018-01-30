@@ -22,7 +22,7 @@ case class Polynomials[E <: RingElement[E]](ring : Ring[E]) extends
  *  @param ring The [[io.github.torsteinvik.zetatypes.algebra.Ring]] that the coefficients belong to
  */
 class Polynomial[E <: RingElement[E]] (val elements : Seq[(E, Int)])(implicit ring : Ring[E]) extends 
-    RingElement[Polynomial[E]] {
+    RingElement[Polynomial[E]] with Cleanable {
     override lazy val canonicalRing = Polynomials(ring)
         
     override def +(that : Polynomial[E]) = new Polynomial(elements ++ that.elements).cleanup 
@@ -52,7 +52,7 @@ class Polynomial[E <: RingElement[E]] (val elements : Seq[(E, Int)])(implicit ri
     /** Returns a cleaned-up version of this [[Polynomial]], where coefficient-exponent pairs have been combined as much as possible,
      *  and those pairs where the coefficient is zero, have been removed. It is also sorted according to the coefficient
      */
-    def cleanup : Polynomial[E] = {
+    override def cleanup : Polynomial[E] with Clean = {
         import scala.collection.mutable.{Seq => MSeq}
         
         var data : MSeq[(E, Int)] = MSeq()
@@ -72,7 +72,7 @@ class Polynomial[E <: RingElement[E]] (val elements : Seq[(E, Int)])(implicit ri
         }
         
         elements.foreach {case (c, e) => add(c, e, 0)}
-        return new Polynomial(data.toSeq.filter({case (c, _) => c != ring.zero}).sortWith(_._2 < _._2))
+        return new Polynomial(data.toSeq.filter({case (c, _) => c != ring.zero}).sortWith(_._2 < _._2)) with Clean
     }
     
 }
