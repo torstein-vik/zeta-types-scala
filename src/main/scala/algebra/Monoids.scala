@@ -48,7 +48,7 @@ trait MonoidAdditive[that <: MonoidAdditive[that]] extends MonoidElement {
     def +(y : that) : that
     
     /** Add this Additive element to itself n times. Requires some implicit evidence that the type of this is a subtype of that*/
-    def ++(n : Int)(implicit ev: this.type <:< that) : that = MonoidRepetitionAlgorithm[that](_ + _, n, zero, ev(this), ev(this))
+    def ++(n : Int)(implicit ev: this.type <:< that) : that = MonoidRepetitionAlgorithm[that](_ + _, n, zero, ev(this))
     
     /** The additive identity */
     val zero : that
@@ -62,7 +62,7 @@ trait MonoidMultiplicative[that <: MonoidMultiplicative[that]] extends MonoidEle
     def *(y : that) : that
     
     /** Multiply this Multiplicative element with itself n times. Requires some implicit evidence that the type of this is a subtype of that*/
-    def **(n : Int)(implicit ev: this.type <:< that) : that = MonoidRepetitionAlgorithm[that](_ * _, n, one, ev(this), ev(this))
+    def **(n : Int)(implicit ev: this.type <:< that) : that = MonoidRepetitionAlgorithm[that](_ * _, n, one, ev(this))
     
     /** Synonym for [[***]] */
     def ~^(n : Int)(implicit ev: this.type <:< that) = this.**(n)(ev)
@@ -72,13 +72,24 @@ trait MonoidMultiplicative[that <: MonoidMultiplicative[that]] extends MonoidEle
 }
 
 private object MonoidRepetitionAlgorithm {
-    import scala.annotation.tailrec
-        
-    @tailrec
-    def apply[T](f : (T, T) => T, n : Int, unit : T, x : T, acc : T) : T = n match {
-        case _ if n > 1 => MonoidRepetitionAlgorithm(f, n - 1, unit, x, f(x, acc))
-        case 1 => acc
-        case 0 => unit
+
+    // TODO: remove mutability
+    def apply[T](f : (T, T) => T, n : Int, unit : T, x : T) : T = n match {
+        case _ if n >= 0 => {
+            var base : T = x
+            var exp = n
+            var result = unit
+            
+            while(exp > 0){
+                if((exp & 1) == 1){
+                    result = f(result, base)
+                }
+                base = f(base, base)
+                exp >>= 1
+            }
+            
+            return result
+        }
         case _ => throw new AlgebraicException("Monoidal repeated combination requires n >= 0")
     }
 }
