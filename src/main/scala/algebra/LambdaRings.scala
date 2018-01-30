@@ -1,6 +1,5 @@
 package io.github.torsteinvik.zetatypes.algebra
 
-import structures.{Integer, Rational}
 
 /** An element of some [[LambdaRing]] */
 trait LambdaRingElement[T <: LambdaRingElement[T]] extends RingElement[T]
@@ -22,25 +21,19 @@ trait STDLambdaRingElement[T <: STDLambdaRingElement[T]] extends LambdaRingEleme
     
     private var lambdacache : Map[Int, T] = Map()
     
+    import structures.DSL.intToInteger
+    import structures.Rational
     /** The n-th lambda operation applied to this element */
     def lambda (n : Int) : T = n match {
         case 0 => one
         case 1 => this * one
         case n if lambdacache.contains(n) => lambdacache(n)
-        case n if n > 1 => {
-            var res = zero
-            for (i <- 0 to n - 1) {
-                val ires = this.psi(n - i) * this.lambda(i)
-                res += (if (i % 2 == 0) ires else ires.negation)
-            }
-            val coeff = Rational(if (n % 2 == 0) Integer(-1) else Integer(1), Integer(n))
-            res.partialQMult(coeff) match {
-                case None => throw new AlgebraicException("Wilkersons hypothesis did not hold! You may not use lambda in this ring")
-                case Some(r) => {
-                    lambdacache += n -> r
-                    return r
-                }
-            } 
+        case n if n > 1 => (0 to n - 1).foldLeft(zero) {
+            case (sum, i) if i % 2 == 0 => sum + (this.psi(n - i) * this.lambda(i))
+            case (sum, i) if i % 2 == 1 => sum - (this.psi(n - i) * this.lambda(i))
+        }.partialQMult(Rational(if (n % 2 == 0) -1 else 1, n)) match {
+            case Some(result) => {lambdacache += n -> result; result}
+            case None => throw new AlgebraicException("Wilkersons hypothesis did not hold! You may not use lambda in this ring")
         }
         case _ => throw new AlgebraicException("Lambda operation only defined for n >= 0 !")
     }
