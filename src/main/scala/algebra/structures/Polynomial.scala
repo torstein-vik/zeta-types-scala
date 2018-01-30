@@ -1,7 +1,5 @@
 package io.github.torsteinvik.zetatypes.algebra.structures
 
-import scala.annotation.tailrec
-
 import io.github.torsteinvik.zetatypes.algebra._
 
 /** A ring where the elements are [[Polynomial]]s with elements in some given [[io.github.torsteinvik.zetatypes.algebra.Ring]] 
@@ -48,31 +46,13 @@ class Polynomial[E <: RingElement[E]] (val elements : Seq[(E, Int)])(implicit ri
         case (c, n) => c.toString + "x^" + n
     }).mkString(" + ")
     
-    // TODO: Optimize by combining sorting and combination
     /** Returns a cleaned-up version of this [[Polynomial]], where coefficient-exponent pairs have been combined as much as possible,
      *  and those pairs where the coefficient is zero, have been removed. It is also sorted according to the coefficient
      */
-    override def cleanup : Polynomial[E] with Clean = {
-        import scala.collection.mutable.{Seq => MSeq}
-        
-        var data : MSeq[(E, Int)] = MSeq()
-        
-        @tailrec
-        def add(c : E, e : Int, index : Int) : Unit = {
-            if (index >= data.length){
-                data = data ++ Seq((c, e))
-            } else {
-                val (d, f) = data(index) 
-                if (e == f) {
-                    data(index) = (ring.additive.combine(c, d), e)
-                } else {
-                    add(c, e, index + 1)
-                }
-            }
-        }
-        
-        elements.foreach {case (c, e) => add(c, e, 0)}
-        return new Polynomial(data.toSeq.filter({case (c, _) => c != ring.zero}).sortWith(_._2 < _._2)) with Clean
-    }
+    override def cleanup : Polynomial[E] with Clean = new Polynomial(elements.sortWith(_._2 > _._2).foldLeft(Nil : List[(E, Int)]){
+        case (Nil, term) => term :: Nil
+        case ((x, e) :: tail, (y, d)) if e == d => (ring.additive.combine(x, y), e) :: tail
+        case (list, term) => term :: list
+    }.filter{case (c, _) => c != ring.zero}) with Clean
     
 }
