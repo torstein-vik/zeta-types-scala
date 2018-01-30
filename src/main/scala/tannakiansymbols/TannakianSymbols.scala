@@ -47,17 +47,9 @@ class TannakianSymbol[E <: MonoidElement] (val elements : Seq[(E, BigInt)])(impl
         case (Some(acc), Some(x)) => Some(acc ++ Seq(x))
     }).map(new TannakianSymbol(_) with Clean)
     
-    override def equals(that : Any) : Boolean = {
-        // Other choice: upstairs == other.upstairs && downstairs == other.downstairs. Unsure which is best... 
-        // that depends on multiplicities, but the current choice allows for high multiplicity without issue
-        
-        return that match {
-            case _ : TannakianSymbol[E] => {
-                (this - that.asInstanceOf[TannakianSymbol[E]]).elements.length == 0
-            }
-            
-            case _ => false
-        }
+    override def equals(that : Any) : Boolean = that match {
+        case x : TannakianSymbol[E] => (this - x).elements.length == 0
+        case _ => false
     }
     
     override def toString : String = {
