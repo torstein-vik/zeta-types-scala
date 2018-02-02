@@ -35,7 +35,7 @@ class TannakianSymbol[E <: MonoidElement] (val elements : Seq[(E, BigInt)])(impl
     
     override def negation = mmap(-_)
     
-    override def psi(n : Int) = new TannakianSymbol(elements.map({case (x, i) => (monoid.repeated(x, n), i)})).cleanup
+    override def psi(n : Int) = map(monoid.repeated(_, n))
     
     // TODO: Improve with monadic TS
     override def partialQMult(n : Rational) = (cleanup.elements.map({case (x, i) => (x, Integer(i).partialQMult(n))}).map({
