@@ -37,15 +37,7 @@ class TannakianSymbol[E <: MonoidElement] (val elements : Seq[(E, BigInt)])(impl
     
     override def psi(n : Int) = map(monoid.repeated(_, n))
     
-    // TODO: Improve with monadic TS
-    override def partialQMult(n : Rational) = (cleanup.elements.map({case (x, i) => (x, Integer(i).partialQMult(n))}).map({
-        case (_, None) => None
-        case (x, Some(Integer(i))) => Some((x, i))
-    }).foldLeft[Option[Seq[(E, BigInt)]]](Some(Seq())){
-        case (None, _) => None
-        case (_, None) => None
-        case (Some(acc), Some(x)) => Some(acc ++ Seq(x))
-    }).map(new TannakianSymbol(_) with Clean)
+    override def partialQMult(n : Rational) = try Some(mmap(Integer(_).partialQMult(n).get.x)) catch {case _: NoSuchElementException => None}
     
     override def equals(that : Any) : Boolean = that match {
         case x : TannakianSymbol[E] => (this - x).elements.length == 0
