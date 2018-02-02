@@ -24,7 +24,7 @@ trait STDLambdaRingElement[T <: STDLambdaRingElement[T]] extends LambdaRingEleme
     import structures.DSL.intToInteger
     import structures.Rational
     /** The n-th lambda operation applied to this element */
-    def lambda (n : Int) : T = n match {
+    final def lambda (n : Int) : T = n match {
         case 0 => one
         case 1 => this * one
         case n if lambdacache.contains(n) => lambdacache(n)
@@ -41,6 +41,6 @@ trait STDLambdaRingElement[T <: STDLambdaRingElement[T]] extends LambdaRingEleme
 
 /** Standard implementation of [[LambdaRing]], using [[STDLambdaRingElement]] */
 trait STDLambdaRing[E <: STDLambdaRingElement[E]] extends LambdaRing[E] with PartialQAlgebra[E] {
-    override def psi (x : E)(n : Int) : E = x.psi(n)
-    override def lambda (x : E)(n : Int) : E = x.lambda(n)
+    final override def psi (x : E)(n : Int) : E = x.psi(n)
+    final override def lambda (x : E)(n : Int) : E = x.lambda(n)
 }

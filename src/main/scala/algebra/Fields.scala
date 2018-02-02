@@ -26,11 +26,11 @@ trait Field[E <: FieldElement[E]] extends Ring[E] {
  *  @param one The multiplicative identity of the [[Field]]
  */
 abstract class FieldClass[E <: FieldElement[E]] (override val zero : E, override val one : E) extends Field[E]{ outer =>
-    override object additive extends AdditiveGroup[E] {
-        def identity = outer.zero
+    final override object additive extends AdditiveGroup[E] {
+        final def identity = outer.zero
     }
     
-    override object multiplicative extends MultiplicativeGroup[E] {
-        def identity = outer.one
+    final override object multiplicative extends MultiplicativeGroup[E] {
+        final def identity = outer.one
     }
 }

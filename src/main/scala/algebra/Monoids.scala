@@ -22,21 +22,21 @@ trait Monoid[T <: MonoidElement] extends AlgebraicStructure[T] {
 /** A [[Monoid]] where the elements are [[MonoidAdditive]]. Provides synonym for the identity. */
 trait AdditiveMonoid[T <: MonoidAdditive[T]] extends Monoid[T] {
     
-    override def combine (x : T, y : T) : T = x + y
-    override def repeated (x : T, n : Int) : T = x ++ n
+    final override def combine (x : T, y : T) : T = x + y
+    final override def repeated (x : T, n : Int) : T = x ++ n
     
     /** Synonym for the monoid identity for additive structures */
-    def zero : T = identity
+    final def zero : T = identity
 }
 
 /** A [[Monoid]] where the elements are [[MonoidMultiplicative]]. Provides synonym for the identity. */
 trait MultiplicativeMonoid[T <: MonoidMultiplicative[T]] extends Monoid[T] {
     
-    override def combine (x : T, y : T) : T = x * y
-    override def repeated (x : T, n : Int) : T = x ** n
+    final override def combine (x : T, y : T) : T = x * y
+    final override def repeated (x : T, n : Int) : T = x ** n
     
     /** Synonym for the monoid identity for multiplicative structures */
-    def one : T = identity
+    final def one : T = identity
 }
 
 

@@ -20,17 +20,17 @@ trait Group[T <: GroupElement] extends PartialGroup[T] {
     /** Inverts x accoring to this Group's underlying [[Monoid]] structure */
     def invert (x : T) : T
     /** Returns Some([[invert]](x)) */
-    def partialinvert (x : T) = Some(invert(x))
+    final def partialinvert (x : T) = Some(invert(x))
 }
 
 /** A [[Group]] where the elements are [[GroupAdditive]]. This allows [[invert]] to be inferred. */
 trait AdditiveGroup[T <: GroupAdditive[T]] extends Group[T] with AdditiveMonoid[T] {
-    def invert (x : T) = x.negation
+    final def invert (x : T) = x.negation
 }
 
 /** A [[Group]] where the elements are [[GroupMultiplicative]]. This allows [[invert]] to be inferred. */
 trait MultiplicativeGroup[T <: GroupMultiplicative[T]] extends Group[T] with MultiplicativeMonoid[T] {
-    def invert (x : T) = x.inverse
+    final def invert (x : T) = x.inverse
 }
 
 /** A [[GroupElement]] with an [[MonoidAdditive]] structure and with a [[negation]] defined on it
@@ -40,9 +40,9 @@ trait GroupAdditive[that <: GroupAdditive[that]] extends GroupElement with Monoi
     /** The additive negation of this element */
     def negation : that 
     /** Syntax synonym for [[negation]] */
-    def unary_-() : that = this.negation
+    final def unary_-() : that = this.negation
     /** Returns this added to the negation of some other element*/
-    def -(y : that) : that = (this + y.negation)
+    final def -(y : that) : that = (this + y.negation)
     
     override def ++(n : Int) : that = n match {
         case _ if n >= 0 => super.++(n)
@@ -57,9 +57,9 @@ trait GroupMultiplicative[that <: GroupMultiplicative[that]] extends GroupElemen
     /** The multiplicative inverse of this element */
     def inverse : that
     /** Syntax synonym for [[inverse]] */
-    def unary_~() : that = this.inverse
+    final def unary_~() : that = this.inverse
     /** Returns this multiplied by the inverse of some other element*/
-    def /(y : that) : that = (this * y.inverse)
+    final def /(y : that) : that = (this * y.inverse)
     
     override def **(n : Int) : that = n match {
         case _ if n >= 0 => super.**(n)

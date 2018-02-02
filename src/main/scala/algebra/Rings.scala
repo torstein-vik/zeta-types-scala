@@ -6,8 +6,8 @@ package io.github.torsteinvik.zetatypes.algebra
 trait RingElement[T <: RingElement[T]] extends GroupAdditive[T] with MonoidMultiplicative[T] {
     /** The canonical [[io.github.torsteinvik.zetatypes.algebra.Ring]] that this element is a part of */
     val canonicalRing : Ring[T]
-    override lazy val one = canonicalRing.one
-    override lazy val zero = canonicalRing.zero
+    final override lazy val one = canonicalRing.one
+    final override lazy val zero = canonicalRing.zero
 }
 
 /** An algebraic structure containing an [[additive]] [[Group]] structure, and a [[multiplicative]] [[Monoid]] structure.
@@ -33,11 +33,11 @@ trait Ring[E <: RingElement[E]] extends AlgebraicStructure[E] {
  *  @param one The multiplicative identity of the [[Ring]]
  */
 abstract class RingClass[E <: RingElement[E]] (override val zero : E, override val one : E) extends Ring[E]{ outer =>
-    override object additive extends AdditiveGroup[E] {
-        def identity = outer.zero
+    final override object additive extends AdditiveGroup[E] {
+        final def identity = outer.zero
     }
     
-    override object multiplicative extends MultiplicativeMonoid[E] {
-        def identity = outer.one
+    final override object multiplicative extends MultiplicativeMonoid[E] {
+        final def identity = outer.one
     }
 }
