@@ -128,4 +128,9 @@ class TannakianSymbol[E <: MonoidElement] (val elements : Seq[(E, BigInt)])(impl
      */
     def mmap(f : BigInt => BigInt) = new TannakianSymbol(cleanup.elements.map{case (x, i) => (x, f(i))})(monoid).cleanup
     
+    /** Functorially flat-map through algebraic elements of this Tannakian Symbol using some function
+     *  @tparam B The type being mapped into
+     *  @param f the function used to map the elements of this Tannakian Symbol
+     */
+    def flatMap[B <: MonoidElement](f : E => TannakianSymbol[B])(implicit monoid : Monoid[B]) = new TannakianSymbol(cleanup.elements.flatMap{case (x, i) => f(x).elements.map{case (y, j) => (y, i * j)}}).cleanup
 }
