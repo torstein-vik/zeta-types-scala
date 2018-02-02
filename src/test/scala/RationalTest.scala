@@ -183,6 +183,8 @@ class RationalTest extends FunSuite {
         assert((Rational(b, c) ** -3) === Rational(c * c * c, b * b * b))
         assert((Rational(c, d) ** -3) === Rational(d * d * d, c * c * c))
         assert((Rational(d, a) ** -3) === Rational(a * a * a, d * d * d))
+        
+        assert(Rationals.multiplicative.repeated(Rational(a, b), -3) === Rational(b * b * b, a * a * a))
     }
     
     
@@ -216,6 +218,8 @@ class RationalTest extends FunSuite {
         assert((Rational(b, c) ++ -3) === Rational(-b - b - b, c))
         assert((Rational(c, d) ++ -3) === Rational(-c - c - c, d))
         assert((Rational(d, a) ++ -3) === Rational(-d - d - d, a))
+        
+        assert(Rationals.additive.repeated(Rational(a, b), -3) === Rational(-a - a - a, b))
     }
     
     
