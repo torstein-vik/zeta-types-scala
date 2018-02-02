@@ -14,8 +14,8 @@ trait LambdaRing[E <: LambdaRingElement[E]] extends Ring[E] {
     def lambda (x : E)(n : Int) : E
 }
 
-/** Standard implementation of [[LambdaRingElement]] */
-trait STDLambdaRingElement[T <: STDLambdaRingElement[T]] extends LambdaRingElement[T] with PartialQModuleElement[T] {
+/** A [[LambdaRingElement]] where lambda is inferred from psi's */
+trait PsiRingElement[T <: PsiRingElement[T]] extends LambdaRingElement[T] with PartialQModuleElement[T] { 
     /** The n-th Adams/psi operation applied to this element */
     def psi (n : Int) : T
     
@@ -39,8 +39,8 @@ trait STDLambdaRingElement[T <: STDLambdaRingElement[T]] extends LambdaRingEleme
     }
 }
 
-/** Standard implementation of [[LambdaRing]], using [[STDLambdaRingElement]] */
-trait STDLambdaRing[E <: STDLambdaRingElement[E]] extends LambdaRing[E] with PartialQAlgebra[E] {
+/** A [[LambdaRing]] where lambda is inferred from psi's, using [[PsiRingElement]] */
+trait PsiRing[E <: PsiRingElement[E]] extends LambdaRing[E] with PartialQAlgebra[E] {
     final override def psi (x : E)(n : Int) : E = x.psi(n)
     final override def lambda (x : E)(n : Int) : E = x.lambda(n)
 }
