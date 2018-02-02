@@ -44,8 +44,8 @@ trait GroupAdditive[that <: GroupAdditive[that]] extends GroupElement with Monoi
     /** Returns this added to the negation of some other element*/
     def -(y : that) : that = (this + y.negation)
     
-    override def ++(n : Int)(implicit ev: this.type <:< that) : that = n match {
-        case _ if n >= 0 => super.++(n)(ev)
+    override def ++(n : Int) : that = n match {
+        case _ if n >= 0 => super.++(n)
         case n => negation.++(-n)
     }
 }
@@ -61,8 +61,8 @@ trait GroupMultiplicative[that <: GroupMultiplicative[that]] extends GroupElemen
     /** Returns this multiplied by the inverse of some other element*/
     def /(y : that) : that = (this * y.inverse)
     
-    override def **(n : Int)(implicit ev: this.type <:< that) : that = n match {
-        case _ if n >= 0 => super.**(n)(ev)
+    override def **(n : Int) : that = n match {
+        case _ if n >= 0 => super.**(n)
         case n => inverse.**(-n)
     }
 }
