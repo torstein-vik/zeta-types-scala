@@ -31,7 +31,7 @@ class TannakianSymbol[E <: MonoidElement] (val elements : Seq[(E, BigInt)])(impl
         
     override def +(that : TannakianSymbol[E]) = new TannakianSymbol(elements ++ that.elements).cleanup 
     
-    override def *(that : TannakianSymbol[E]) = new TannakianSymbol(for ((x, i) <- elements; (y, j) <- that.elements) yield (monoid.combine(x, y), i * j)).cleanup
+    override def *(that : TannakianSymbol[E]) = for (x <- this; y <- that) yield monoid.combine(x, y)
     
     override def negation = new TannakianSymbol(elements.map({case (x, i) => (x, -i)}))
     
