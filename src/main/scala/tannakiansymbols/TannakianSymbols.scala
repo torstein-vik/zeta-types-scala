@@ -117,4 +117,10 @@ class TannakianSymbol[E <: MonoidElement] (val elements : Seq[(E, BigInt)])(impl
      */
     def combineAll[E1 <: GroupElement](group : Group[E1])(implicit ev : E => E1) : E1 = cleanup.elements.map{case (x, i) => (ev(x), i.toInt)}.map((group.repeated _).tupled(_)).foldLeft(group.identity)(group.combine(_, _))
     
+    /** Functorially map through algebraic elements of this Tannakian Symbol using some function
+     *  @tparam B The type being mapped into
+     *  @param f the function used to map the elements of this Tannakian Symbol
+     */
+    def map[B <: MonoidElement](f : E => B)(implicit monoid : Monoid[B]) = new TannakianSymbol(cleanup.elements.map{case (x, i) => (f(x), i)})(monoid).cleanup
+    
 }
