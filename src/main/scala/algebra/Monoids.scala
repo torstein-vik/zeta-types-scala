@@ -65,7 +65,7 @@ trait MonoidMultiplicative[that <: MonoidMultiplicative[that]] extends MonoidEle
     def **(n : Int) : that = MonoidRepetitionAlgorithm[that](_ * _, n, one, this * one)
     
     /** Synonym for [[***]] */
-    def ~^(n : Int) = this.**(n)
+    final def ~^(n : Int) = this.**(n)
     
     /** The multiplicative identity */
     val one : that
