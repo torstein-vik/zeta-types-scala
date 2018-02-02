@@ -26,7 +26,7 @@ case class TS[E <: MonoidElement](monoid : Monoid[E]) extends
 class TannakianSymbol[E <: MonoidElement] (val elements : Seq[(E, BigInt)])(implicit monoid : Monoid[E]) extends 
     RingElement[TannakianSymbol[E]] with Cleanable
     with STDLambdaRingElement[TannakianSymbol[E]]
-    with PartialQAlgebraElement[TannakianSymbol[E]]{
+    with PartialQModuleElement[TannakianSymbol[E]]{
     override lazy val canonicalRing = TS(monoid)
         
     override def +(that : TannakianSymbol[E]) = new TannakianSymbol(elements ++ that.elements).cleanup 

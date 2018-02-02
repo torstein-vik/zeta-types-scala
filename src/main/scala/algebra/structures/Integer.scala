@@ -6,7 +6,7 @@ import io.github.torsteinvik.zetatypes.algebra._
  *  @constructor Create a new Integer from a BigInt
  *  @param x the number that this Integer is created from
  */
-case class Integer (x : BigInt) extends STDLambdaRingElement[Integer] with PartialQAlgebraElement[Integer]{
+case class Integer (x : BigInt) extends STDLambdaRingElement[Integer] with PartialQModuleElement[Integer]{
     
     override def +(that : Integer) = Integer(x + that.x) 
     override def *(that : Integer) = Integer(x * that.x)

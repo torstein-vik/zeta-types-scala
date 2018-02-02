@@ -15,7 +15,7 @@ trait LambdaRing[E <: LambdaRingElement[E]] extends Ring[E] {
 }
 
 /** Standard implementation of [[LambdaRingElement]] */
-trait STDLambdaRingElement[T <: STDLambdaRingElement[T]] extends LambdaRingElement[T] with PartialQAlgebraElement[T] {
+trait STDLambdaRingElement[T <: STDLambdaRingElement[T]] extends LambdaRingElement[T] with PartialQModuleElement[T] {
     /** The n-th Adams/psi operation applied to this element */
     def psi (n : Int) : T
     
