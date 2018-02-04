@@ -2,6 +2,9 @@ scalaVersion := "2.12.3"
 
 name := "zeta-types"
 
+// Compiler plugin
+resolvers += Resolver.sonatypeRepo("releases")
+addCompilerPlugin("org.scalamacros" % "paradise" % "2.1.0" cross CrossVersion.full)
 
 // Scalac config
 scalacOptions ++= Seq("-unchecked", "-deprecation", "-feature", "-Ywarn-unused", "-Xlint")
