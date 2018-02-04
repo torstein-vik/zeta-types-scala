@@ -2,13 +2,13 @@ scalaVersion := "2.12.3"
 
 name := "zeta-types"
 
-parallelExecution in Test := false
 
-// Show warnings
+// Compiler options
 scalacOptions ++= Seq("-unchecked", "-deprecation", "-feature", "-Ywarn-unused", "-Xlint")
 
-// Show test time usage
+// Test options
 testOptions in Test += Tests.Argument("-oD")
+parallelExecution in Test := false
 
 // Dependencies
 libraryDependencies += "org.scalactic" %% "scalactic" % "3.0.4"
