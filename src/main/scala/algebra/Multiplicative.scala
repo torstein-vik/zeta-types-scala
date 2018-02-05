@@ -8,3 +8,6 @@ trait MultiplicationProvider[-X, -Y, +T] {
     def multiply (x : X, y : Y) : T 
 }
 
+trait MultiplicativeMonoid[T] extends MultiplicationProvider[T, T, T] with OneProvider[T] {
+}
+
