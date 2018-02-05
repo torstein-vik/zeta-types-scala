@@ -116,12 +116,6 @@ class IntegerTest extends FunSuite {
     }
     
     test ("Integer q algebra test") {
-        import io.github.torsteinvik.zetatypes.algebra.structures.DSL._
-        
-        assert(Integer(4).partialQMult(Rational(2)) === Some(Integer(8)))
-        assert(Integer(2).partialQMult(Rational(2)) === Some(Integer(4)))
-        assert(Integer(4).partialQMult(Rational(16, 8)) === Some(Integer(8)))
-        assert(Integer(2).partialQMult(Rational(16, 8)) === Some(Integer(4)))
         
         assert(Integer(4).partialQMult(Rational(1, 3)) === None)
         assert(Integer(4).partialQMult(Rational(1, 5)) === None)
@@ -132,11 +126,6 @@ class IntegerTest extends FunSuite {
         assert(Integer(7).partialQMult(Rational(1, 7)) === Some(Integer(1)))
         assert(Integer(20).partialQMult(Rational(1, 10)) === Some(Integer(2)))
         assert(Integer(40).partialQMult(Rational(1, 10)) === Some(Integer(4)))
-        
-        assert(Integer(6).partialQMult(Rational(2, 3)) === Some(Integer(4)))
-        assert(Integer(4).partialQMult(Rational(2, 8)) === Some(Integer(1)))
-        assert(Integer(10).partialQMult(Rational(3, 6)) === Some(Integer(5)))
-        assert(Integer(40).partialQMult(Rational(10, 25)) === Some(Integer(16)))
     }
     
     test ("Integer lambda operation") {
