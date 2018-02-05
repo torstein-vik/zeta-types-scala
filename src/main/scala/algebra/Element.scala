@@ -22,6 +22,7 @@ trait Element {
     final def /##[T](y : Int)(implicit provider : PartialQModuleDivisionProvider [this.type, T]) : Option[T] = provider.partialmdivide(this)(y)
     
     final def psi   [T](y : Int)(implicit provider : PsiProvider    [this.type, T]) : T = provider.psi(this)(y)
+    final def adams [T](y : Int)(implicit provider : PsiProvider    [this.type, T]) : T = provider.psi(this)(y)
     final def lambda[T](y : Int)(implicit provider : LambdaProvider [this.type, T]) : T = provider.lambda(this)(y)
     
 }
