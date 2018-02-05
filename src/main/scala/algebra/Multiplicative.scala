@@ -20,7 +20,9 @@ trait DivisionProvider[-X, -Y, +T] {
     def divide (x : X, y : Y) : T 
 }
 
-trait MultiplicativeMonoid[T] extends MultiplicationProvider[T, T, T] with OneProvider[T] {
+trait MultiplicativeMonoid[T] extends MultiplicationProvider[T, T, T] with OneProvider[T]
+    with ExponentiationProvider[T, T] {
+    def raise (x : T)(i : Int) : T = MonoidRepetitionAlgorithm[T](multiply _, i, one, x)
 }
 
 trait MultiplicativeGroup[T] extends MultiplicativeMonoid[T] with InverseProvider[T, T]

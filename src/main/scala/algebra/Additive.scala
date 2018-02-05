@@ -20,7 +20,9 @@ trait SubtractionProvider[-X, -Y, +T] {
     def subtract (x : X, y : Y) : T 
 }
 
-trait AdditiveMonoid[T] extends AdditionProvider[T, T, T] with ZeroProvider[T] {
+trait AdditiveMonoid[T] extends AdditionProvider[T, T, T] with ZeroProvider[T]
+    with ModuleMultiplicationProvider[T, T] {
+    def mmultiply (x : T)(i : Int) : T = MonoidRepetitionAlgorithm[T](add _, i, zero, x)
 }
 
 trait AdditiveGroup[T] extends AdditiveMonoid[T] with NegationProvider[T, T]
