@@ -28,4 +28,8 @@ trait MultiplicativeMonoid[T] extends MultiplicationProvider[T, T, T] with OnePr
 trait MultiplicativeGroup[T] extends MultiplicativeMonoid[T] with InverseProvider[T, T]
     with DivisionProvider[T, T, T] {
     def divide (x : T, y : T) = multiply(x, invert(y))
+    override def raise (x : T)(i : Int) : T = i match {
+        case _ if i >= 0 => super.raise(x)(i)
+        case _ => super.raise(invert(x))(-i)
+    }
 }

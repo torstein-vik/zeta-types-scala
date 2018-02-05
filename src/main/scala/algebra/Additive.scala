@@ -28,5 +28,9 @@ trait AdditiveMonoid[T] extends AdditionProvider[T, T, T] with ZeroProvider[T]
 trait AdditiveGroup[T] extends AdditiveMonoid[T] with NegationProvider[T, T]
     with SubtractionProvider[T, T, T] {
     def subtract (x : T, y : T) = add(x, negate(y))
+    override def mmultiply (x : T)(i : Int) : T = i match {
+        case _ if i >= 0 => super.mmultiply(x)(i)
+        case _ => super.mmultiply(negate(x))(-i)
+    }
 }
 
