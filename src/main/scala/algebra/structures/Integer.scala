@@ -11,4 +11,6 @@ case class Integer (x : BigInt) extends Element {
 }
 
 object Integer {
+    implicit object integerRing extends Ring[Integer] {
+    }
 }
