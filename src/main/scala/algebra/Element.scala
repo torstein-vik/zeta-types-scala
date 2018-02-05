@@ -2,6 +2,7 @@ package io.github.torsteinvik.zetatypes.algebra
 
 /** An element in the algebraic system */
 // Macros would be so much better!
+// Add NoSuchImplicit errors
 trait Element {
     def +[T, S](y : T)(implicit provider : AdditionProvider       [this.type, T, S]) : S = provider.add(this, y)
     def *[T, S](y : T)(implicit provider : MultiplicationProvider [this.type, T, S]) : S = provider.multiply(this, y)
