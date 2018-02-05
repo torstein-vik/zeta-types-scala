@@ -12,6 +12,8 @@ case class Integer (x : BigInt) extends Element {
 
 object Integer {
     implicit object integerRing extends Ring[Integer] {
+        def add (i : Integer, j : Integer) = Integer(i.x + j.x)
+        def multiply (i : Integer, j : Integer) = Integer(i.x * j.x)
         
         def zero = Integer(0)
         def one = Integer(1)
