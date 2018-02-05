@@ -20,6 +20,10 @@ trait SubtractionProvider[-X, -Y, +T] {
     def subtract (x : X, y : Y) : T 
 }
 
+trait PartialQModuleDivisionProvider[-X, +T] {
+    def partialmdivide (x : X)(y : Int) : Option[T]
+}
+
 trait AdditiveMonoid[T] extends AdditionProvider[T, T, T] with ZeroProvider[T]
     with ModuleMultiplicationProvider[T, T] {
     def mmultiply (x : T)(i : Int) : T = MonoidRepetitionAlgorithm[T](add _, i, zero, x)
