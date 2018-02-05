@@ -1,7 +1,7 @@
 package io.github.torsteinvik.zetatypes.algebra
 
 /** Something with a cleanup method to (partially) normalize an element */
-trait Cleanable {
+trait Cleanable extends Element {
     /** Returns a normalized/cleaned up version of this */
     def cleanup : Clean
 }
