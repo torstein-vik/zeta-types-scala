@@ -20,5 +20,7 @@ trait DivisionProvider[-X, -Y, +T] {
 trait MultiplicativeMonoid[T] extends MultiplicationProvider[T, T, T] with OneProvider[T] {
 }
 
-trait MultiplicativeGroup[T] extends MultiplicativeMonoid[T] with InverseProvider[T, T] {
+trait MultiplicativeGroup[T] extends MultiplicativeMonoid[T] with InverseProvider[T, T]
+    with DivisionProvider[T, T, T] {
+    def divide (x : T, y : T) = multiply(x, invert(y))
 }

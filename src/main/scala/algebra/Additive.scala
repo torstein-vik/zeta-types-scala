@@ -20,6 +20,8 @@ trait SubtractionProvider[-X, -Y, +T] {
 trait AdditiveMonoid[T] extends AdditionProvider[T, T, T] with ZeroProvider[T] {
 }
 
-trait AdditiveGroup[T] extends AdditiveMonoid[T] with NegationProvider[T, T] {
+trait AdditiveGroup[T] extends AdditiveMonoid[T] with NegationProvider[T, T]
+    with SubtractionProvider[T, T, T] {
+    def subtract (x : T, y : T) = add(x, negate(y))
 }
 
