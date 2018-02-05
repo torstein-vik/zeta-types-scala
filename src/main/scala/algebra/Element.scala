@@ -4,25 +4,25 @@ package io.github.torsteinvik.zetatypes.algebra
 // Macros would be so much better!
 // Add NoSuchImplicit errors
 trait Element {
-    def +[T, S](y : T)(implicit provider : AdditionProvider       [this.type, T, S]) : S = provider.add(this, y)
-    def *[T, S](y : T)(implicit provider : MultiplicationProvider [this.type, T, S]) : S = provider.multiply(this, y)
+    final def +[T, S](y : T)(implicit provider : AdditionProvider       [this.type, T, S]) : S = provider.add(this, y)
+    final def *[T, S](y : T)(implicit provider : MultiplicationProvider [this.type, T, S]) : S = provider.multiply(this, y)
     
-    def -[T, S](y : T)(implicit provider : SubtractionProvider [this.type, T, S]) : S = provider.subtract(this, y)
-    def /[T, S](y : T)(implicit provider : DivisionProvider    [this.type, T, S]) : S = provider.divide(this, y)
+    final def -[T, S](y : T)(implicit provider : SubtractionProvider [this.type, T, S]) : S = provider.subtract(this, y)
+    final def /[T, S](y : T)(implicit provider : DivisionProvider    [this.type, T, S]) : S = provider.divide(this, y)
     
-    def ++[T](y : Int)(implicit provider : ModuleMultiplicationProvider [this.type, T]) : T = provider.mmultiply(this)(y)
-    def **[T](y : Int)(implicit provider : ExponentiationProvider       [this.type, T]) : T = provider.raise(this)(y)
+    final def ++[T](y : Int)(implicit provider : ModuleMultiplicationProvider [this.type, T]) : T = provider.mmultiply(this)(y)
+    final def **[T](y : Int)(implicit provider : ExponentiationProvider       [this.type, T]) : T = provider.raise(this)(y)
     
-    def unary_-  [T](implicit provider : NegationProvider [this.type, T]) : T = provider.negate(this)
-    def unary_~  [T](implicit provider : InverseProvider  [this.type, T]) : T = provider.invert(this)
-    def negation [T](implicit provider : NegationProvider [this.type, T]) : T = provider.negate(this)
-    def inverse  [T](implicit provider : InverseProvider  [this.type, T]) : T = provider.invert(this)
+    final def unary_-  [T](implicit provider : NegationProvider [this.type, T]) : T = provider.negate(this)
+    final def unary_~  [T](implicit provider : InverseProvider  [this.type, T]) : T = provider.invert(this)
+    final def negation [T](implicit provider : NegationProvider [this.type, T]) : T = provider.negate(this)
+    final def inverse  [T](implicit provider : InverseProvider  [this.type, T]) : T = provider.invert(this)
     
-    def /# [T](y : Int)(implicit provider : QModuleDivisionProvider        [this.type, T]) : T         = provider.mdivide(this)(y)
-    def /##[T](y : Int)(implicit provider : PartialQModuleDivisionProvider [this.type, T]) : Option[T] = provider.partialmdivide(this)(y)
+    final def /# [T](y : Int)(implicit provider : QModuleDivisionProvider        [this.type, T]) : T         = provider.mdivide(this)(y)
+    final def /##[T](y : Int)(implicit provider : PartialQModuleDivisionProvider [this.type, T]) : Option[T] = provider.partialmdivide(this)(y)
     
-    def psi   [T](y : Int)(implicit provider : PsiProvider    [this.type, T]) : T = provider.psi(this)(y)
-    def lambda[T](y : Int)(implicit provider : LambdaProvider [this.type, T]) : T = provider.lambda(this)(y)
+    final def psi   [T](y : Int)(implicit provider : PsiProvider    [this.type, T]) : T = provider.psi(this)(y)
+    final def lambda[T](y : Int)(implicit provider : LambdaProvider [this.type, T]) : T = provider.lambda(this)(y)
     
 }
 
