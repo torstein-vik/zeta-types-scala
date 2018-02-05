@@ -10,3 +10,5 @@ case class Integer (x : BigInt) extends Element {
     override def toString() = x.toString()
 }
 
+object Integer {
+}
