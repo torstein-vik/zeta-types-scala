@@ -11,7 +11,7 @@ case class Integer (x : BigInt) extends Element {
 }
 
 object Integer {
-    implicit object integerRing extends PartialQAlgebra[Integer] {
+    implicit object integerRing extends PsiRing[Integer] {
         def add (i : Integer, j : Integer) = Integer(i.x + j.x)
         def multiply (i : Integer, j : Integer) = Integer(i.x * j.x)
         
@@ -25,5 +25,6 @@ object Integer {
             case _ => None
         }
         
+        def psi (i : Integer)(j : Int) = i
     }
 }
