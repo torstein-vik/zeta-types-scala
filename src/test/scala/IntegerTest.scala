@@ -18,17 +18,17 @@ class IntegerTest extends FunSuite {
         assert(Integer(c) !== Integer(c + 3))
     }
     
+    test ("identities test") {
+        assert(Element.zero[Integer] === Integer(0))
+        assert(Element.one[Integer]  === Integer(1))
+    }
+    
     test ("Integer toString") {
         assert(Integer(a).toString === a.toString)
         assert(Integer(b).toString === b.toString)
         assert(Integer(c).toString === c.toString)
     }
         
-    test ("identities test") {
-        assert(Integers.additive.identity === Integer(0))
-        assert(Integers.multiplicative.identity === Integer(1))
-    }
-    
     test ("zero and one test") {
         assert(Integers.zero === Integer(0))
         assert(Integers.one  === Integer(1))
