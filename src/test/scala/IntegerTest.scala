@@ -116,16 +116,15 @@ class IntegerTest extends FunSuite {
     }
     
     test ("Integer q algebra test") {
+        assert(Integer(4) /## 3 === None)
+        assert(Integer(4) /## 5 === None)
+        assert(Integer(4) /## 7 === None)
+        assert(Integer(4) /## 8 === None)
         
-        assert(Integer(4).partialQMult(Rational(1, 3)) === None)
-        assert(Integer(4).partialQMult(Rational(1, 5)) === None)
-        assert(Integer(4).partialQMult(Rational(1, 7)) === None)
-        assert(Integer(4).partialQMult(Rational(1, 8)) === None)
-        
-        assert(Integer(3).partialQMult(Rational(1, 3)) === Some(Integer(1)))
-        assert(Integer(7).partialQMult(Rational(1, 7)) === Some(Integer(1)))
-        assert(Integer(20).partialQMult(Rational(1, 10)) === Some(Integer(2)))
-        assert(Integer(40).partialQMult(Rational(1, 10)) === Some(Integer(4)))
+        assert(Integer(3) /## 3 === Some(Integer(1)))
+        assert(Integer(7) /## 7 === Some(Integer(1)))
+        assert(Integer(20) /## 10 === Some(Integer(2)))
+        assert(Integer(40) /## 10 === Some(Integer(4)))
     }
     
     test ("Integer lambda operation") {
