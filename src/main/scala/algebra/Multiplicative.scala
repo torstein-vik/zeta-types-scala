@@ -16,3 +16,5 @@ trait InverseProvider[-X, +T] {
 trait MultiplicativeMonoid[T] extends MultiplicationProvider[T, T, T] with OneProvider[T] {
 }
 
+trait MultiplicativeGroup[T] extends MultiplicativeMonoid[T] with InverseProvider[T, T] {
+}

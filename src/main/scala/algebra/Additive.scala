@@ -17,3 +17,6 @@ trait NegationProvider[-X, +T] {
 trait AdditiveMonoid[T] extends AdditionProvider[T, T, T] with ZeroProvider[T] {
 }
 
+trait AdditiveGroup[T] extends AdditiveMonoid[T] with NegationProvider[T, T] {
+}
+
