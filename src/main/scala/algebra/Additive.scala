@@ -43,3 +43,5 @@ trait AdditiveGroup[T] extends AdditiveMonoid[T] with NegationProvider[T, T]
     }
 }
 
+trait PartialQModule[T] extends AdditiveGroup[T] with PartialQModuleDivisionProvider[T, T] 
+trait QModule[T] extends PartialQModule[T] with QModuleDivisionProvider[T, T]
