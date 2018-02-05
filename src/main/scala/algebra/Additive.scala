@@ -13,6 +13,9 @@ trait NegationProvider[-X, +T] {
     def negate (x : X) : T 
 }
 
+trait SubtractionProvider[-X, -Y, +T] { 
+    def subtract (x : X, y : Y) : T 
+}
 
 trait AdditiveMonoid[T] extends AdditionProvider[T, T, T] with ZeroProvider[T] {
 }
