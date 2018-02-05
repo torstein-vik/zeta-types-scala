@@ -18,5 +18,7 @@ object Integer {
         def zero = Integer(0)
         def one = Integer(1)
         
+        def negate (i : Integer) = Integer(-i.x)
+        
     }
 }
