@@ -6,4 +6,6 @@ trait Element {
 }
 
 object Element {
+    def zero[T](implicit provider : ZeroProvider [T]) = provider.zero
+    def one [T](implicit provider : OneProvider  [T]) = provider.one
 }
