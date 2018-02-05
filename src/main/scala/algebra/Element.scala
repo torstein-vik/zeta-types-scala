@@ -21,6 +21,9 @@ trait Element {
     def /# [T](y : Int)(implicit provider : QModuleDivisionProvider        [this.type, T]) : T         = provider.mdivide(this)(y)
     def /##[T](y : Int)(implicit provider : PartialQModuleDivisionProvider [this.type, T]) : Option[T] = provider.partialmdivide(this)(y)
     
+    def psi   [T](y : Int)(implicit provider : PsiProvider    [this.type, T]) : T = provider.psi(this)(y)
+    def lambda[T](y : Int)(implicit provider : LambdaProvider [this.type, T]) : T = provider.lambda(this)(y)
+    
 }
 
 object Element {
