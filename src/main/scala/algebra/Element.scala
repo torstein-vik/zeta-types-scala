@@ -9,6 +9,9 @@ trait Element {
     def -[T, S](y : T)(implicit provider : SubtractionProvider [this.type, T, S]) : S = provider.subtract(this, y)
     def /[T, S](y : T)(implicit provider : DivisionProvider    [this.type, T, S]) : S = provider.divide(this, y)
     
+    def ++[T](y : Int)(implicit provider : ModuleMultiplicationProvider [this.type, T]) : T = provider.mmultiply(this)(y)
+    def **[T](y : Int)(implicit provider : ExponentiationProvider       [this.type, T]) : T = provider.raise(this)(y)
+    
     def unary_-  [T](implicit provider : NegationProvider [this.type, T]) : T = provider.negate(this)
     def unary_~  [T](implicit provider : InverseProvider  [this.type, T]) : T = provider.invert(this)
     def negation [T](implicit provider : NegationProvider [this.type, T]) : T = provider.negate(this)
