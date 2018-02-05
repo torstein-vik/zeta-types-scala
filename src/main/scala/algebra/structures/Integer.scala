@@ -11,7 +11,7 @@ case class Integer (x : BigInt) extends Element {
 }
 
 object Integer {
-    implicit object integerRing extends Ring[Integer] {
+    implicit object integerRing extends PartialQAlgebra[Integer] {
         def add (i : Integer, j : Integer) = Integer(i.x + j.x)
         def multiply (i : Integer, j : Integer) = Integer(i.x * j.x)
         
@@ -19,6 +19,11 @@ object Integer {
         def one = Integer(1)
         
         def negate (i : Integer) = Integer(-i.x)
+        
+        def partialmdivide (i : Integer)(j : Int) : Option[Integer] = i.x /% j match {
+            case (div : BigInt, mod : BigInt) if mod == 0 => Some(Integer(div))
+            case _ => None
+        }
         
     }
 }
