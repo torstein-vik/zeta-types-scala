@@ -8,6 +8,9 @@ trait AdditionProvider[-X, -Y, +T] {
     def add (x : X, y : Y) : T 
 }
 
+trait ModuleMultiplicationProvider[-X, +T] {
+    def mmultiply (x : X)(y : Int) : T
+}
 
 trait NegationProvider[-X, +T] { 
     def negate (x : X) : T 

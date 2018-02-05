@@ -8,6 +8,9 @@ trait MultiplicationProvider[-X, -Y, +T] {
     def multiply (x : X, y : Y) : T 
 }
 
+trait ExponentiationProvider[-X, +T] {
+    def raise (x : X)(y : Int) : T
+}
 
 trait InverseProvider[-X, +T] { 
     def invert (x : X) : T 
