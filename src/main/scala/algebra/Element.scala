@@ -18,6 +18,9 @@ trait Element {
     def negation [T](implicit provider : NegationProvider [this.type, T]) : T = provider.negate(this)
     def inverse  [T](implicit provider : InverseProvider  [this.type, T]) : T = provider.invert(this)
     
+    def /# [T](y : Int)(implicit provider : QModuleDivisionProvider        [this.type, T]) : T         = provider.mdivide(this)(y)
+    def /##[T](y : Int)(implicit provider : PartialQModuleDivisionProvider [this.type, T]) : Option[T] = provider.partialmdivide(this)(y)
+    
 }
 
 object Element {
