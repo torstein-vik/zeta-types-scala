@@ -23,6 +23,10 @@ class Fraction[T <: Element] (val numerator : T, val denominator : T)(implicit r
 
 object Fraction {
     implicit def fractionField[T <: Element](implicit ring : Ring[T]) : Field[Fraction[T]] = new Field[Fraction[T]] {
+        def add      (i : Fraction[T], j : Fraction[T]) = (i, j) match {case (Fraction(num1, den1), Fraction(num2, den2)) => 
+            Fraction (num1 * den2 + num2 * den1, den1 * den2)}
+        def multiply (i : Fraction[T], j : Fraction[T]) = (i, j) match {case (Fraction(num1, den1), Fraction(num2, den2)) => 
+            Fraction (num1 * num2, den1 * den2)}
         
         def zero = Fraction(Element.zero[T], Element.one[T])
         def one  = Fraction(Element.one[T] , Element.one[T])
