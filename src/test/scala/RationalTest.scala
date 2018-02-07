@@ -49,8 +49,8 @@ class RationalTest extends FunSuite {
     }
     
     test ("zero and one test") {
-        assert(Rationals.zero === Rational(0))
-        assert(Rationals.one  === Rational(1))
+        assert(Element.zero[Rational] === Rational(0))
+        assert(Element.one[Rational]  === Rational(1))
     }
     
     test ("divide by zero test") {
