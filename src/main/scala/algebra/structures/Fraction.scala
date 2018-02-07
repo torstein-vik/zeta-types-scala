@@ -17,15 +17,10 @@ class Fraction[T <: Element] (val numerator : T, val denominator : T)(implicit r
         case x : Fraction[T] => this.numerator * x.denominator == x.numerator * this.denominator
         case _ => false
     }
+    
+    override def toString : String = if (denominator == Element.one[T]) numerator.toString else numerator.toString + "/" + denominator.toString
 
     
-    override def toString : String = {
-        if (denominator == ring.one){
-            return numerator.toString
-        } else {
-            return numerator + "/" + denominator
-        }
-    } 
 }
 
 /** An object to create a [[Fraction]] with [[Integer]] parts.
