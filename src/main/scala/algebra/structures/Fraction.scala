@@ -3,8 +3,8 @@ package io.github.torsteinvik.zetatypes.algebra.structures
 import io.github.torsteinvik.zetatypes.algebra._
 
     
-/** An element of [[Fractions]]
- *  @tparam T the type of [[RingElement]] that the numerator and denominator of this element belong to.
+/** A fraction of different types of [[Element]]s
+ *  @tparam T the type of [[Element]] that the numerator and denominator of this element belong to.
  *  @constructor Creates a new fraction from a numerator and a denominator
  *  @param numerator The numerator of this fraction
  *  @param denominator The denominator of this fraction
