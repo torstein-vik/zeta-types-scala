@@ -15,16 +15,6 @@ class Fraction[T <: RingElement[T]] (val numerator : T, val denominator : T)(imp
         throw new AlgebraicException("Denominator may not be zero!")
     }
     
-    override lazy val canonicalRing = Fractions(ring)
-    
-    override def +(that : Fraction[T]) = new Fraction(numerator * that.denominator + that.numerator * denominator, denominator * that.denominator)
-    
-    override def *(that : Fraction[T]) = new Fraction(numerator * that.numerator, denominator * that.denominator)
-    
-    override def negation = new Fraction(-numerator, denominator)
-    
-    override def inverse = checkZero{new Fraction(denominator, numerator)}
-    
     override def equals(that : Any) : Boolean = that match {
         case x : Fraction[T] => this.numerator * x.denominator == x.numerator * this.denominator
         case _ => false
