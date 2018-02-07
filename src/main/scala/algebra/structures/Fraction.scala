@@ -23,6 +23,10 @@ class Fraction[T <: Element] (val numerator : T, val denominator : T)(implicit r
 
 object Fraction {
     implicit def fractionField[T <: Element](implicit ring : Ring[T]) : Field[Fraction[T]] = new Field[Fraction[T]] {
+        
+        def zero = Fraction(Element.zero[T], Element.one[T])
+        def one  = Fraction(Element.one[T] , Element.one[T])
+        
     }
     
     /** Creates a new [[Fraction]] using a numerator and denominator part as parameters */
