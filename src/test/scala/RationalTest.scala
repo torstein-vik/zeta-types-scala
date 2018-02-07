@@ -48,54 +48,15 @@ class RationalTest extends FunSuite {
         assert(Rational(d, d) === Rational(1))
     }
     
-    test ("identities test") {
-        assert(Rationals.additive.identity === Rational(0))
-        assert(Rationals.multiplicative.identity === Rational(1))
-    }
-    
     test ("zero and one test") {
         assert(Rationals.zero === Rational(0))
         assert(Rationals.one  === Rational(1))
-    }
-    
-    test ("additive inverse test") {
-        assert(Rationals.additive.invert(Rational(a, b)) === Rational(-a, b))
-        assert(Rationals.additive.invert(Rational(b, c)) === Rational(-b, c))
-        assert(Rationals.additive.invert(Rational(c, d)) === Rational(-c, d))
-        assert(Rationals.additive.invert(Rational(d, a)) === Rational(-d, a))
-    }
-    
-    test ("addition test") {
-        assert(Rationals.additive.combine(Rational(a), Rational(b)) === Rational(a + b))
-        assert(Rationals.additive.combine(Rational(b), Rational(c)) === Rational(b + c))
-        assert(Rationals.additive.combine(Rational(c), Rational(d)) === Rational(c + d))
-        assert(Rationals.additive.combine(Rational(d), Rational(a)) === Rational(d + a))
-        
-        assert(Rationals.additive.combine(Rational(a, b), Rational(c, d)) === Rational(a * d + b * c, b * d))
-        assert(Rationals.additive.combine(Rational(b, c), Rational(d, a)) === Rational(b * a + c * d, c * a))
-    }
-    
-    test ("multiplicative inverse test") {
-        assert(Rationals.multiplicative.invert(Rational(a, b)) === Rational(b, a))
-        assert(Rationals.multiplicative.invert(Rational(b, c)) === Rational(c, b))
-        assert(Rationals.multiplicative.invert(Rational(c, d)) === Rational(d, c))
-        assert(Rationals.multiplicative.invert(Rational(d, a)) === Rational(a, d))
     }
     
     test ("divide by zero test") {
         assertThrows[AlgebraicException]{
             Rationals.multiplicative.invert(Rational(0, 1))
         }
-    }
-    
-    test ("multiplication test") {
-        assert(Rationals.multiplicative.combine(Rational(a), Rational(b)) === Rational(a * b))
-        assert(Rationals.multiplicative.combine(Rational(b), Rational(c)) === Rational(b * c))
-        assert(Rationals.multiplicative.combine(Rational(c), Rational(d)) === Rational(c * d))
-        assert(Rationals.multiplicative.combine(Rational(d), Rational(a)) === Rational(d * a))
-        
-        assert(Rationals.multiplicative.combine(Rational(a, b), Rational(c, d)) === Rational(a * c, b * d))
-        assert(Rationals.multiplicative.combine(Rational(b, c), Rational(d, a)) === Rational(b * d, c * a))
     }
     
     test ("notation adidition test") {
