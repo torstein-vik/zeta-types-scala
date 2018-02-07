@@ -2,16 +2,6 @@ package io.github.torsteinvik.zetatypes.algebra.structures
 
 import io.github.torsteinvik.zetatypes.algebra._
 
-/** A ring where the elements are x / y where x and y are in some ring and y is not zero. 
- *  An important special case is [[Rationals]] = Fractions([[Integers]])
- *  @tparam T the type of [[RingElement]] that the numerator and denominator of this ring's elements belong to.
- *  @constructor Creates a new ring of fractions with coefficients in some ring.
- *  @param ring The [[Ring]] that the numerator and denominator belong to.
- */
-case class Fractions[T <: RingElement[T]] (ring : Ring[T]) extends 
-    FieldClass[Fraction[T]](
-    new Fraction(ring.zero, ring.one)(ring), 
-    new Fraction(ring.one,  ring.one)(ring))
     
 /** An element of [[Fractions]]
  *  @tparam T the type of [[RingElement]] that the numerator and denominator of this element belong to.
@@ -49,9 +39,6 @@ class Fraction[T <: RingElement[T]] (val numerator : T, val denominator : T)(imp
         }
     } 
 }
-/** A ring that [[Fractions]]s with [[Rational]] numerator and denominator belong to.
- */
-object Rationals extends Fractions[Integer] (Integers)
 
 /** An object to create a [[Fraction]] with [[Integer]] parts.
  *  Also provides unapply, so that [[Rational]] numbers can be pattern matched.
