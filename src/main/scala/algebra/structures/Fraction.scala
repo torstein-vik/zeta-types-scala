@@ -19,7 +19,9 @@ class Fraction[T <: Element] (val numerator : T, val denominator : T)(implicit r
     }
     
     override def toString : String = if (denominator == Element.one[T]) numerator.toString else numerator.toString + "/" + denominator.toString
+}
 
+object Fraction {
     
 }
 
