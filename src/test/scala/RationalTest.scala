@@ -55,7 +55,7 @@ class RationalTest extends FunSuite {
     
     test ("divide by zero test") {
         assertThrows[AlgebraicException]{
-            Rationals.multiplicative.invert(Rational(0, 1))
+            ~Rational(0, 1)
         }
     }
     
