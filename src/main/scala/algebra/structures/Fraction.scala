@@ -30,7 +30,7 @@ object Fraction {
  */
 object Rational {   
      /** Creates a new [[Rational]] number using a numerator and denominator part as parameters */
-    def apply(numerator : Integer, denominator : Integer = Integers.one) = new Fraction(numerator, denominator)(Integers)
+    def apply(numerator : Integer, denominator : Integer = Element.one[Integer]) = Fraction(numerator, denominator)
     /** Takes a ([[Rational]]) number and extracts its numerator and denominator */
     def unapply(q : Fraction[Integer]) : Option[(Integer, Integer)] = Some((q.numerator, q.denominator))
 }
