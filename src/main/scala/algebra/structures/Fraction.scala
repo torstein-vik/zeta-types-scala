@@ -11,9 +11,7 @@ import io.github.torsteinvik.zetatypes.algebra._
  *  @param ring The ring that the numerator and denominator belong to
  */
 class Fraction[T <: RingElement[T]] (val numerator : T, val denominator : T)(implicit val ring : Ring[T]) extends FieldElement[Fraction[T]]{
-    if (denominator == ring.zero) {
-        throw new AlgebraicException("Denominator may not be zero!")
-    }
+    if (denominator == Element.zero[T]) throw new AlgebraicException("Denominator may not be zero!")
     
     override def equals(that : Any) : Boolean = that match {
         case x : Fraction[T] => this.numerator * x.denominator == x.numerator * this.denominator
