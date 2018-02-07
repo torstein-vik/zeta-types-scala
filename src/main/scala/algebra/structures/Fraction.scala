@@ -31,6 +31,8 @@ object Fraction {
         def zero = Fraction(Element.zero[T], Element.one[T])
         def one  = Fraction(Element.one[T] , Element.one[T])
         
+        def negate (i : Fraction[T]) = i match {case Fraction(num, den) => Fraction (-num, den)}
+        def invert (i : Fraction[T]) = i match {case Fraction(num, den) => Fraction ( den, num)}
     }
     
     /** Creates a new [[Fraction]] using a numerator and denominator part as parameters */
