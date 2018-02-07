@@ -23,6 +23,8 @@ class Fraction[T <: Element] (val numerator : T, val denominator : T)(implicit r
 
 object Fraction {
     
+    def apply[T <: Element](numerator : T, denominator : T)(implicit ring : Ring[T]) = new Fraction(numerator, denominator)(ring)
+    def unapply[T <: Element](q : Fraction[T]) : Option[(T, T)] = Some((q.numerator, q.denominator))
 }
 
 /** An object to create a [[Fraction]] with [[Integer]] parts.
